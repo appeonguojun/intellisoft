@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_get_letter_path.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=char(100) update=yes updatewhereclause=yes name=letter_path dbname="facility.letter_path" )
+ column=(type=long updatewhereclause=yes key=yes name=facility_id dbname="facility.facility_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"facility~" ) COLUMN(NAME=~"facility.letter_path~") COLUMN(NAME=~"facility.facility_id~")WHERE(    EXP1 =~"facility.facility_id~"   OP =~"=~"    EXP2 =~"1~" ) ) " update="facility" updatewhere=0 updatekeyinplace=no )
+text(band=detail alignment="1" text="Letter Path:"border="0" color="0" x="32" y="16" height="52" width="251"  name=letter_path_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="306" y="8" height="64" width="2011" format="[general]"  name=letter_path edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

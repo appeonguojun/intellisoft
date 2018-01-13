@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_master_child_sort.srs
+global type str_master_child_sort from structure
+	long		al_child_sort_index
+	long		al_ctx_id
+end type
+

@@ -1,0 +1,20 @@
+﻿$PBExportHeader$str_doc_compare.srs
+global type str_doc_compare from structure
+	long		doc_id1
+	string		doc_ext1
+	decimal { 1 }		revision1
+	string		filename1
+	string		fullname1
+	boolean		readonly1
+	boolean		readonly2
+	long		doc_id2
+	string		doc_ext2
+	decimal { 1 }		revision2
+	string		filename2
+	string		fullname2
+	boolean		revision_control1
+	boolean		revision_control2
+	long		ctx_id1
+	long		ctx_id2
+end type
+

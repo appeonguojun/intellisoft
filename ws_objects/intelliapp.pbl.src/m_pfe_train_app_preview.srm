@@ -1,0 +1,206 @@
+﻿$PBExportHeader$m_pfe_train_app_preview.srm
+forward
+global type m_pfe_train_app_preview from m_pfe_train_app
+end type
+type m_121 from menu within m_file
+end type
+type m_practitionersearch from menu within m_file
+end type
+end forward
+
+global type m_pfe_train_app_preview from m_pfe_train_app
+end type
+global m_pfe_train_app_preview m_pfe_train_app_preview
+
+on m_pfe_train_app_preview.create
+m_pfe_train_app_preview=this
+call super::create
+end on
+
+on m_pfe_train_app_preview.destroy
+call super::destroy
+end on
+
+type m_file from m_pfe_train_app`m_file within m_pfe_train_app_preview
+m_121 m_121
+m_practitionersearch m_practitionersearch
+end type
+
+on m_file.create
+call super::create
+this.m_121=create m_121
+this.m_practitionersearch=create m_practitionersearch
+this.Item[UpperBound(this.item)+1]=this.m_121
+this.Item[UpperBound(this.item)+1]=this.m_practitionersearch
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_121)
+destroy(this.m_practitionersearch)
+end on
+
+on m_save.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_dash12.create
+call super::create
+this.Visible=false
+end on
+
+on m_print.create
+call super::create
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=176
+this.ToolBarItemBarIndex=2
+this.ToolBarItemVisible=true
+end on
+
+event m_print::clicked;of_SendMessage( "pfc_print_preview_app" )
+end event
+
+on m_scanapplication.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_10.create
+call super::create
+this.Visible=false
+end on
+
+on m_previewpage.create
+call super::create
+this.Text="Train"
+this.ToolBarItemName="img\Report_Design_16x16.png"
+this.ToolBarItemText="Train"
+end on
+
+on m_edit.create
+call super::create
+this.Visible=false
+end on
+
+on m_removeobject.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_8.create
+call super::create
+this.Visible=false
+end on
+
+on m_copyfields.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+event m_nextpage::clicked;of_SendMessage( "pfc_next_preview_page" )
+end event
+
+event m_priorpage::clicked;call super::clicked;of_SendMessage( "pfc_prior_preview_page" )
+end event
+
+on m_templates.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_recordnumbers.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_tools.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_tools1.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_selectfield.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_ropeselect.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_drawbox.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_text.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_page.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_page1.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_straightenpage.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_appendblankpage.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_pageproperties.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+on m_previewcurrentpage.create
+call super::create
+this.ToolBarItemVisible=false
+end on
+
+type m_121 from menu within m_file
+end type
+
+on m_121.create
+this.Text="-"
+end on
+
+type m_practitionersearch from menu within m_file
+end type
+
+event clicked;of_sendmessage( "pfc_prac_search" )
+end event
+
+on m_practitionersearch.create
+this.Text="Practitioner Search"
+this.ToolBarItemName="Custom076!"
+this.ToolBarItemText="Practitioner"
+this.ToolBarItemOrder=50
+this.ToolBarItemBarIndex=2
+end on
+

@@ -1,0 +1,156 @@
+﻿$PBExportHeader$d_dm_batchadd_document.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=1073741824 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" grid.lines=0 selected.mouse=no )
+header(height=68 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=80 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=doc_id dbname="ctx_am_document.doc_id" dbalias=".doc_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="ctx_am_document.ctx_id" dbalias=".ctx_id" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=doc_name dbname="ctx_am_document.doc_name" dbalias=".doc_name" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=revision dbname="ctx_am_document.revision" dbalias=".revision" initial="1.0" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=doc_type dbname="ctx_am_document.doc_type" dbalias=".doc_type" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=doc_ext dbname="ctx_am_document.doc_ext" dbalias=".doc_ext" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=category dbname="ctx_am_document.category" dbalias=".category" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=base_type dbname="ctx_am_document.base_type" dbalias=".base_type" initial="3" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=from_templete_id dbname="ctx_am_document.from_templete_id" dbalias=".from_templete_id" )
+ column=(type=long update=yes updatewhereclause=yes name=wf_id dbname="ctx_am_document.wf_id" dbalias=".wf_id" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=create_by dbname="ctx_am_document.create_by" dbalias=".create_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=create_date dbname="ctx_am_document.create_date" dbalias=".create_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=status dbname="ctx_am_document.status" dbalias=".status" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=status_by dbname="ctx_am_document.status_by" dbalias=".status_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=status_date dbname="ctx_am_document.status_date" dbalias=".status_date" )
+ column=(type=char(500) update=yes updatewhereclause=yes name=filename dbname="ctx_am_document.filename" dbalias=".filename" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=doc_from_type dbname="ctx_am_document.doc_from_type" dbalias=".doc_from_type" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=doc_from_name dbname="ctx_am_document.doc_from_name" dbalias=".doc_from_name" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=notes dbname="ctx_am_document.notes" dbalias=".notes" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=checkout_by dbname="ctx_am_document.checkout_by" dbalias=".checkout_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=checkout_date dbname="ctx_am_document.checkout_date" dbalias=".checkout_date" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=checkout_status dbname="ctx_am_document.checkout_status" dbalias=".checkout_status" initial="0" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=revision_control dbname="ctx_am_document.revision_control" dbalias=".revision_control" initial="1" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=received_by dbname="ctx_am_document.received_by" dbalias=".received_by" )
+ column=(type=datetime update=yes updatewhereclause=yes name=received_date dbname="ctx_am_document.received_date" dbalias=".received_date" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_1 dbname="ctx_am_document.custom_1" dbalias=".custom_1" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_2 dbname="ctx_am_document.custom_2" dbalias=".custom_2" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_3 dbname="ctx_am_document.custom_3" dbalias=".custom_3" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_4 dbname="ctx_am_document.custom_4" dbalias=".custom_4" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_5 dbname="ctx_am_document.custom_5" dbalias=".custom_5" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_6 dbname="ctx_am_document.custom_6" dbalias=".custom_6" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_7 dbname="ctx_am_document.custom_7" dbalias=".custom_7" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_8 dbname="ctx_am_document.custom_8" dbalias=".custom_8" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_9 dbname="ctx_am_document.custom_9" dbalias=".custom_9" )
+ column=(type=char(75) update=yes updatewhereclause=yes name=custom_10 dbname="ctx_am_document.custom_10" dbalias=".custom_10" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n1 dbname="ctx_am_document.custom_n1" dbalias=".custom_n1" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n2 dbname="ctx_am_document.custom_n2" dbalias=".custom_n2" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n3 dbname="ctx_am_document.custom_n3" dbalias=".custom_n3" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n4 dbname="ctx_am_document.custom_n4" dbalias=".custom_n4" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n5 dbname="ctx_am_document.custom_n5" dbalias=".custom_n5" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n6 dbname="ctx_am_document.custom_n6" dbalias=".custom_n6" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n7 dbname="ctx_am_document.custom_n7" dbalias=".custom_n7" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n8 dbname="ctx_am_document.custom_n8" dbalias=".custom_n8" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n9 dbname="ctx_am_document.custom_n9" dbalias=".custom_n9" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=custom_n10 dbname="ctx_am_document.custom_n10" dbalias=".custom_n10" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date1 dbname="ctx_am_document.custom_date1" dbalias=".custom_date1" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date2 dbname="ctx_am_document.custom_date2" dbalias=".custom_date2" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date3 dbname="ctx_am_document.custom_date3" dbalias=".custom_date3" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date4 dbname="ctx_am_document.custom_date4" dbalias=".custom_date4" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date5 dbname="ctx_am_document.custom_date5" dbalias=".custom_date5" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_date6 dbname="ctx_am_document.custom_date6" dbalias=".custom_date6" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=primary_doc dbname="ctx_am_document.primary_doc" dbalias=".primary_doc" )
+ column=(type=long updatewhereclause=yes name=received_date_flag dbname="received_date_flag" )
+ column=(type=long updatewhereclause=yes name=create_date_flag dbname="create_date_flag" )
+ column=(type=long updatewhereclause=yes name=checkout_date_flag dbname="checkout_date_flag" )
+ column=(type=long updatewhereclause=yes name=status_date_flag dbname="status_date_flag" )
+ column=(type=long updatewhereclause=yes name=custom_date1_flag dbname="custom_date1_flag" )
+ column=(type=long updatewhereclause=yes name=custom_date2_flag dbname="custom_date2_flag" )
+ column=(type=long updatewhereclause=yes name=custom_date3_flag dbname="custom_date3_flag" )
+ column=(type=long updatewhereclause=yes name=custom_date4_flag dbname="custom_date4_flag" )
+ column=(type=long updatewhereclause=yes name=custom_date5_flag dbname="custom_date5_flag" )
+ column=(type=long updatewhereclause=yes name=custom_date6_flag dbname="custom_date6_flag" )
+ column=(type=long update=yes updatewhereclause=yes name=export_id dbname="ctx_am_document.export_id" dbalias=".export_id" )
+ retrieve="  SELECT ctx_am_document.doc_id,   
+         ctx_am_document.ctx_id,   
+         ctx_am_document.doc_name,   
+         ctx_am_document.revision,   
+         ctx_am_document.doc_type,   
+         ctx_am_document.doc_ext,   
+         ctx_am_document.category,   
+         ctx_am_document.base_type,   
+         ctx_am_document.from_templete_id,   
+         ctx_am_document.wf_id,   
+         ctx_am_document.create_by,   
+         ctx_am_document.create_date,   
+         ctx_am_document.status,   
+         ctx_am_document.status_by,   
+         ctx_am_document.status_date,   
+         ctx_am_document.filename,   
+         ctx_am_document.doc_from_type,   
+         ctx_am_document.doc_from_name,   
+         ctx_am_document.notes,   
+         ctx_am_document.checkout_by,   
+         ctx_am_document.checkout_date,   
+         ctx_am_document.checkout_status,   
+         ctx_am_document.revision_control,   
+         ctx_am_document.received_by,   
+         ctx_am_document.received_date,   
+         ctx_am_document.custom_1,   
+         ctx_am_document.custom_2,   
+         ctx_am_document.custom_3,   
+         ctx_am_document.custom_4,   
+         ctx_am_document.custom_5,   
+         ctx_am_document.custom_6,   
+         ctx_am_document.custom_7,   
+         ctx_am_document.custom_8,   
+         ctx_am_document.custom_9,   
+         ctx_am_document.custom_10,   
+         ctx_am_document.custom_n1,   
+         ctx_am_document.custom_n2,   
+         ctx_am_document.custom_n3,   
+         ctx_am_document.custom_n4,   
+         ctx_am_document.custom_n5,   
+         ctx_am_document.custom_n6,   
+         ctx_am_document.custom_n7,   
+         ctx_am_document.custom_n8,   
+         ctx_am_document.custom_n9,   
+         ctx_am_document.custom_n10,   
+         ctx_am_document.custom_date1,   
+         ctx_am_document.custom_date2,   
+         ctx_am_document.custom_date3,   
+         ctx_am_document.custom_date4,   
+         ctx_am_document.custom_date5,   
+         ctx_am_document.custom_date6,   
+         ctx_am_document.primary_doc,
+         0 received_date_flag,
+		0 create_date_flag,
+		0 checkout_date_flag,
+		0 status_date_flag,
+  		0 custom_date1_flag,   
+         0 custom_date2_flag,   
+         0 custom_date3_flag,   
+         0 custom_date4_flag,   
+         0 custom_date5_flag,   
+         0 custom_date6_flag,
+		ctx_am_document.export_id
+    FROM ctx_am_document  
+" update="ctx_am_document" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Document Name" border="6" color="33554432" x="992" y="8" height="52" width="1097" html.valueishtml="0"  name=doc_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Row No" border="6" color="33554432" x="9" y="8" height="52" width="242" html.valueishtml="0"  name=rowno_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Original File Name" border="6" color="33554432" x="261" y="8" height="52" width="722" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Path" border="6" color="33554432" x="2098" y="8" height="52" width="1010" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="0" text="Category" border="6" color="0" x="3118" y="4" height="52" width="366" html.valueishtml="0"  name=category_t visible="0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" background.transparency="0" background.gradient.color="0" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="0" background.gradient.focus="0" background.gradient.scale="0" background.gradient.spread="0" tooltip.backcolor="0" tooltip.delay.initial="0" tooltip.delay.visible="0" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="0" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="2" expression="getrow()"border="0" color="33554432" x="9" y="8" height="64" width="242" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression="if (lastpos( filename ,'\') > 0 , mid(filename , lastpos( filename ,'\')  + 1 ),  filename )"border="0" color="0" x="261" y="8" height="64" width="722" format="[GENERAL]" html.valueishtml="0"  name=compute_name visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+compute(band=detail alignment="0" expression="if (lastpos( filename ,'\') > 0 , mid(filename , 1 , lastpos( filename ,'\') -1 ),  filename )"border="0" color="0" x="2098" y="8" height="64" width="1010" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="992" y="8" height="64" width="1097" format="[general]" html.valueishtml="0"  name=doc_name visible="1" edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3122" y="12" height="52" width="361" format="[general]" html.valueishtml="0"  name=category  tag="need exits it checked for required" visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.required=yes edit.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0  template=(comment="" encoding="UTF-16LE" name="1" xml="<?xml version=~"1.0~" encoding=~"UTF-16LE~" standalone=~"no~"?><d_dm_batchadd_document><d_dm_batchadd_document_row __pbband=~"detail~"><doc_id/><ctx_id/><doc_name>doc_name</doc_name><revision/><doc_type/><doc_ext/><category/><base_type/><from_templete_id/><export_id/><wf_id/><create_by/><create_date/><status/><status_by/><status_date/><filename/><doc_from_type/><doc_from_name/><notes/><checkout_by/><checkout_date/><checkout_status/><revision_control/><received_by/><received_date/><custom_1/><custom_2/><custom_3/><custom_4/><custom_5/><custom_6/><custom_7/><custom_8/><custom_9/><custom_10/><custom_n1/><custom_n2/><custom_n3/><custom_n4/><custom_n5/><custom_n6/><custom_n7/><custom_n8/><custom_n9/><custom_n10/><custom_date1/><custom_date2/><custom_date3/><custom_date4/><custom_date5/><custom_date6/><es_apicode/><es_fileid/><es_docid/><es_sender/><es_sender_email/><approve_id/><alm_appointment/><primary_doc/><esign_type/><template_ctx_id/><es_license_user_id/><salesforce_id/><received_date_flag/><create_date_flag/><checkout_date_flag/><status_date_flag/><custom_date1_flag/><custom_date2_flag/><custom_date3_flag/><custom_date4_flag/><custom_date5_flag/><custom_date6_flag/></d_dm_batchadd_document_row></d_dm_batchadd_document>"))
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

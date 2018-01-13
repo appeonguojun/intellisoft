@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_priv_clin_req3.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1516 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=priv_clinical_area_3_clinical_area_id dbname="priv_clinical_area_3.clinical_area_id" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=priv_clinical_area_3_custom1 dbname="priv_clinical_area_3.custom1" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=priv_clinical_area_3_custom2 dbname="priv_clinical_area_3.custom2" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=priv_clinical_area_3_custom1_label dbname="priv_clinical_area_3.custom1_label" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=priv_clinical_area_3_custom2_label dbname="priv_clinical_area_3.custom2_label" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"priv_clinical_area~" )  TABLE(NAME=~"priv_clinical_area_3~" ) COLUMN(NAME=~"priv_clinical_area_3.clinical_area_id~") COLUMN(NAME=~"priv_clinical_area_3.custom1~") COLUMN(NAME=~"priv_clinical_area_3.custom2~") COLUMN(NAME=~"priv_clinical_area_3.custom1_label~") COLUMN(NAME=~"priv_clinical_area_3.custom2_label~")    JOIN (LEFT=~"priv_clinical_area.clinical_area_id~"    OP =~"=~"RIGHT=~"priv_clinical_area_3.clinical_area_id~" )WHERE(    EXP1 =~"priv_clinical_area_3.clinical_area_id~"   OP =~"=~"    EXP2 =~":ai_clinic_id~" ) ) ARG(NAME = ~"ai_clinic_id~" TYPE = number) " update="priv_clinical_area_3" updatewhere=0 updatekeyinplace=no arguments=(("ai_clinic_id", number)) )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="14" y="76" height="132" width="3365" format="[general]"  name=priv_clinical_area_3_custom1 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=3 alignment="0" tabsequence=40 border="5" color="0" x="18" y="296" height="132" width="3365" format="[general]"  name=priv_clinical_area_3_custom2 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="0" x="14" y="4" height="56" width="1065" format="[general]"  name=priv_clinical_area_3_custom1_label edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="5" color="0" x="14" y="224" height="56" width="1065" format="[general]"  name=priv_clinical_area_3_custom2_label edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

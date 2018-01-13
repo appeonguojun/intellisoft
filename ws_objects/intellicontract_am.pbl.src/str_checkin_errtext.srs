@@ -1,0 +1,11 @@
+﻿$PBExportHeader$str_checkin_errtext.srs
+global type str_checkin_errtext from structure
+	long		doc_id[]
+	long		ctx_id[]
+	string		doc_name[]
+	string		doc_ext[]
+	string		errortext[]
+	long		error_cnt
+	long		suc_cnt
+end type
+

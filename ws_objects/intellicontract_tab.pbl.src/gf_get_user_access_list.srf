@@ -1,0 +1,18 @@
+﻿$PBExportHeader$gf_get_user_access_list.srf
+global type gf_get_user_access_list from function_object
+end type
+
+forward prototypes
+global subroutine gf_get_user_access_list (string as_user, ref long al_ctx_id[])
+end prototypes
+
+global subroutine gf_get_user_access_list (string as_user, ref long al_ctx_id[]);n_ds   lds_search
+
+lds_search = create n_ds
+lds_search.dataobject = 'ds_user_ctx_access_list'
+lds_Search.SetTransObject( sqlca )
+lds_search.Retrieve( as_user )
+
+If lds_Search.RowCount( )  > 0 Then al_ctx_id = lds_search.object.ctx_id[1, lds_Search.RowCount( ) ]
+end subroutine
+

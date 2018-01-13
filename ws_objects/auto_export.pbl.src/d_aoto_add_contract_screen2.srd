@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_aoto_add_contract_screen2.srd
+release 11.5;
+datawindow(units=0 timer_interval=0 color=1073741824 brushmode=0 transparency=0 gradient.angle=0 gradient.color=8421504 gradient.focus=0 gradient.repetition.count=0 gradient.repetition.length=100 gradient.repetition.mode=0 gradient.scale=100 gradient.spread=100 gradient.transparency=0 picture.blur=0 picture.clip.bottom=0 picture.clip.left=0 picture.clip.right=0 picture.clip.top=0 picture.mode=0 picture.scale.x=100 picture.scale.y=100 picture.transparency=0 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.background=no print.preview.background=no print.preview.outline=yes hidegrayline=no showbackcoloronxp=no picture.file="" grid.lines=0 selected.mouse=no )
+header(height=68 color="67108864" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+detail(height=72 color="67108864" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
+table(column=(type=char(255) updatewhereclause=yes name=screen_name dbname="ctx_screen.screen_name" dbalias=".screen_name" )
+ column=(type=long updatewhereclause=yes name=screen_id dbname="ctx_screen.screen_id" dbalias=".screen_id" )
+ column=(type=char(200) updatewhereclause=yes name=dataobject dbname="dataobject" )
+ column=(type=char(50) updatewhereclause=yes name=table_name dbname="table_name" )
+ column=(type=long updatewhereclause=yes name=ck dbname="ck" values="	1/	0" )
+ retrieve=" SELECT ctx_screen.screen_name,   
+        		ctx_screen.screen_id,   
+         	( case when screen_style = 'G' then  ctx_screen.grid_dataobject else  ctx_screen.dataobject  end ) dataobject ,
+			(select bb.table_name from ctx_screen bb where bb.data_view_id = 1001 and bb.screen_id  = ctx_screen.screen_id ) as table_name,
+			0 as ck
+    FROM ctx_screen  
+   WHERE ( ctx_screen.data_view_id = :al_view ) AND  
+         ( ctx_screen.screen_id not between 34 and 41 ) AND  
+         ( ctx_screen.screen_id not in (13,15,16,23,25,27,28,29,2, 58,45,46,47,59,60,1,43,57,32,61,62,63,64,65 ) )  
+UNION
+SELECT 'Contacts->Detail' screen_name,
+		  	2001 screen_id,
+			'd_cntx_master' dataobject,
+			'ctx_contacts'  table_name,
+			0 as ck
+UNION
+SELECT 'Contacts->Phone Numbers' screen_name,
+		  	2002 screen_id,
+			'd_cntx_phone' dataobject,
+			'ctx_contacts_numbers'  table_name,
+			0 as ck
+UNION
+SELECT 'Company->Detail' screen_name,
+		  	2003 screen_id,
+			'd_facility_detail' dataobject,
+			'app_facility'  table_name,
+			0 as ck
+UNION
+SELECT 'Contract Status Track' screen_name,
+		  	2004 screen_id,
+			'd_export_status_track' dataobject,
+			'sys_statusaudit'  table_name,
+			0 as ck
+ORDER BY ctx_screen.screen_name ASC   " arguments=(("al_view", number)) )
+text(band=header alignment="2" text="Screen Name" border="6" color="33554432" x="96" y="4" height="56" width="1358" html.valueishtml="0"  name=screen_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+text(band=header alignment="2" text="Table Name" border="6" color="0" x="1463" y="4" height="56" width="1147" html.valueishtml="0"  name=table_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="0" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="0" background.gradient.focus="0" background.gradient.scale="0" background.gradient.spread="0" tooltip.backcolor="0" tooltip.delay.initial="0" tooltip.delay.visible="0" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="0" tooltip.transparency="0" transparency="0" )
+column(band=detail id=5 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="4" height="64" width="73" format="[general]" html.valueishtml="0"  name=ck visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=1 alignment="0" tabsequence=50 border="0" color="33554432" x="96" y="4" height="64" width="1358" format="[general]" html.valueishtml="0" protect="0~t1"  name=screen_name visible="1" edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+column(band=detail id=4 alignment="0" tabsequence=60 border="0" color="33554432" x="1467" y="4" height="64" width="1143" format="[general]" html.valueishtml="0"  name=table_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0  template=(comment="" encoding="UTF-16LE" name="a" xml="<?xml version=~"1.0~" encoding=~"UTF-16LE~" standalone=~"no~"?><d_contract_screen_list><d_contract_screen_list_row __pbband=~"detail~"><data_view_id>data_view_id</data_view_id><screen_id>screen_id</screen_id><tab_name/><screen_name>screen_name</screen_name><dw_name>dw_name</dw_name><dataobject/><description>description</description><dw_sql>dw_sql</dw_sql><create_date>create_date</create_date><modify_date>modify_date</modify_date><ck>ck</ck></d_contract_screen_list_row></d_contract_screen_list>"))
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

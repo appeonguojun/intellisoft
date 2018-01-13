@@ -1,0 +1,162 @@
+﻿$PBExportHeader$d_ltr_expiring_dea_registration_2_web.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=24 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=692 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=crec_id dbname="verif_info.rec_id" )
+ column=(type=long updatewhereclause=yes name=verif_facility_id dbname="verif_info.facility_id" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_first_sent dbname="verif_info.first_sent" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_last_sent dbname="verif_info.last_sent" )
+ column=(type=char(20) updatewhereclause=yes name=doc_id dbname="verif_info.doc_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="v_full_name.prac_id" )
+ column=(type=char(183) updatewhereclause=yes name=cfull_name dbname="v_full_name.full_name" )
+ column=(type=datetime updatewhereclause=yes name=cdate_of_birth dbname="v_full_name.date_of_birth" )
+ column=(type=char(11) updatewhereclause=yes name=cssn dbname="v_full_name.ssn" )
+ column=(type=char(30) updatewhereclause=yes name=title dbname="v_full_name.title" )
+ column=(type=char(15) updatewhereclause=yes name=first_name dbname="v_full_name.first_name" )
+ column=(type=char(15) updatewhereclause=yes name=middle_name dbname="v_full_name.middle_name" )
+ column=(type=char(100) updatewhereclause=yes name=last_name dbname="v_full_name.last_name" )
+ column=(type=char(30) updatewhereclause=yes name=prof_suffix dbname="v_full_name.prof_suffix" )
+ column=(type=datetime updatewhereclause=yes name=cprev_exp_date dbname="pd_dea_state_csr.prev_exp_date" )
+ column=(type=datetime updatewhereclause=yes name=cexpiration_date dbname="pd_dea_state_csr.expiration_date" )
+ column=(type=char(30) updatewhereclause=yes name=clicense_number dbname="pd_dea_state_csr.license_number" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_license_state dbname="code_lookup.license_state" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_state dbname="code_lookup.state" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(50) updatewhereclause=yes name=pd_address_link_contact_person dbname="pd_address_link.contact_person" )
+ column=(type=char(100) updatewhereclause=yes name=creturn_facility_name dbname="facility.return_facility_name" )
+ column=(type=char(75) updatewhereclause=yes name=creturn_street dbname="facility.return_street" )
+ column=(type=char(75) updatewhereclause=yes name=creturn_street_2 dbname="facility.return_street_2" )
+ column=(type=char(35) updatewhereclause=yes name=creturn_city dbname="facility.return_city" )
+ column=(type=char(2) updatewhereclause=yes name=creturn_state dbname="facility.return_state" )
+ column=(type=char(25) updatewhereclause=yes name=creturn_phone dbname="facility.return_phone" )
+ column=(type=char(10) updatewhereclause=yes name=creturn_ext dbname="facility.return_ext" )
+ column=(type=char(25) updatewhereclause=yes name=creturn_fax dbname="facility.return_fax" )
+ column=(type=char(12) updatewhereclause=yes name=creturn_zip dbname="facility.return_zip" )
+ column=(type=char(30) updatewhereclause=yes name=creturn_contact dbname="facility.return_contact" )
+ column=(type=char(30) updatewhereclause=yes name=creturn_title dbname="facility.return_title" )
+ column=(type=char(0) updatewhereclause=yes name=cparent_facility_name dbname="parent_facility_name" )
+ column=(type=long updatewhereclause=yes name=cnumber_sent dbname="number_sent" )
+ column=(type=char(75) updatewhereclause=yes name=sex dbname="sex" )
+ column=(type=char(50) updatewhereclause=yes name=maiden_other_name dbname="maiden_other_name" )
+ column=(type=char(50) updatewhereclause=yes name=suite_apart dbname="suite_apart" )
+ retrieve="    SELECT DISTINCT
+			verif_info.rec_id,   
+			verif_info.facility_id,
+			verif_info.first_sent,
+         verif_info.last_sent,     
+			verif_info.doc_id,     
+         v_full_name.prac_id,   
+         v_full_name.full_name,   
+         v_full_name.date_of_birth,   
+         v_full_name.ssn,   
+			v_full_name.title,  			 
+			v_full_name.first_name,  	
+			v_full_name.middle_name,  			 
+			v_full_name.last_name,  			 
+			v_full_name.prof_suffix, 
+         pd_dea_state_csr.prev_exp_date,   
+         pd_dea_state_csr.expiration_date,   
+         pd_dea_state_csr.license_number,
+			code_lookup_a.description license_state,
+			pd_address.street,
+			pd_address.street_2,
+			pd_address.city,
+			code_lookup.code state,
+			pd_address.zip,		
+			pd_address.fax,
+			pd_address_link.contact_person,
+			facility.return_facility_name,
+			facility.return_street,
+			facility.return_street_2,
+			facility.return_city,
+			facility.return_state,
+			facility.return_phone,
+			facility.return_ext,
+			facility.return_fax,
+			facility.return_zip,		
+			facility.credentialing_contact_name return_contact,
+			facility.credentialing_contact_title return_title,
+			parent_facility_name = '',
+			number_sent = verif_info.number_sent + 1,
+         sex = code_lookup_b.description,
+         maiden_other_name = pd_basic.maiden_other_name, 
+         suite_apart = pd_address.suite_apart 
+   FROM 	pd_dea_state_csr,   
+         v_full_name,   
+         verif_info,
+	      code_lookup,   
+         pd_address,
+			pd_address_link,
+			code_lookup code_lookup_a,
+			facility,
+			pd_affil_stat,
+         pd_basic,
+         code_lookup code_lookup_b  ,
+v_ic_client_data_vchar
+   WHERE ( pd_affil_stat.verifying_facility = verif_info.facility_id ) AND
+			( pd_affil_stat.active_status = 1 ) and
+         ( pd_dea_state_csr.rec_id = verif_info.rec_id ) and  
+         ( pd_dea_state_csr.prac_id = v_full_name.prac_id ) and  
+			( pd_dea_state_csr.prac_id = pd_address.prac_id ) and
+			( pd_address.rec_id = pd_address_link.address_id ) and
+			( pd_address_link.facility_id = pd_affil_stat.parent_facility_id ) and
+			( pd_address.state = code_lookup.lookup_code ) and  
+			( pd_dea_state_csr.state = code_lookup_a.lookup_code ) and
+			( verif_info.facility_id = facility.facility_id ) and
+         ( pd_basic.prac_id = v_full_name.prac_id ) and
+         ( pd_basic.sex = code_lookup_b.lookup_code ) and 
+			( verif_info.exp_credential_flag = 1 ) and
+			( verif_info.active_status = 1 ) and
+			( pd_address_link.exp_letters = 1) and
+			( pd_address.active_status = 1 ) and
+         ((verif_info.doc_id = v_ic_client_data_vchar.data_vchar and v_ic_client_data_vchar.client_id = :as_client_id ) )    
+" arguments=(("as_client_id", string)) )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="91" y="368" height="52" width="690" format="[general]" html.valueishtml="0"  name=clicense_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="91" y="460" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=cexpiration_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="96" y="540" height="52" width="1911" format="[general]" html.valueishtml="0"  name=cfull_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="0" x="18112" y="0" height="52" width="183" format="[general]" html.valueishtml="0"  name=cparent_facility_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="18295" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=creturn_facility_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="24105" y="0" height="52" width="1728" format="[general]" html.valueishtml="0"  name=creturn_street_2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="25833" y="0" height="52" width="805" format="[general]" html.valueishtml="0"  name=creturn_city visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="0" x="26638" y="0" height="52" width="46" format="[general]" html.valueishtml="0"  name=creturn_state visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="0" x="26683" y="0" height="52" width="370" format="[general]" html.valueishtml="0"  name=creturn_phone visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="0" x="27054" y="0" height="52" width="229" format="[general]" html.valueishtml="0"  name=creturn_ext visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="0" x="27282" y="0" height="52" width="370" format="[general]" html.valueishtml="0"  name=creturn_fax visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="0" x="27653" y="0" height="52" width="987" format="[general]" html.valueishtml="0"  name=creturn_zip visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="30939" y="0" height="52" width="690" format="[general]" html.valueishtml="0"  name=creturn_contact visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="31630" y="0" height="52" width="690" format="[general]" html.valueishtml="0"  name=creturn_title visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="32320" y="0" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=cfirst_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="32987" y="0" height="52" width="1723" format="[general]" html.valueishtml="0"  name=creturn_street visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="34711" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=cdoc_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1015" y="332" height="76" width="128" format="[general]" html.valueishtml="0"  name=verif_facility_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="35058" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=title visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="35406" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=first_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1010" y="408" height="76" width="384" format="[shortdate] [time]" html.valueishtml="0"  name=verif_info_first_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1531" y="376" height="76" width="384" format="[shortdate] [time]" html.valueishtml="0"  name=verif_info_last_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="35753" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=last_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="38053" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=middle_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="38400" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=prof_suffix visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="763" y="300" height="76" width="512" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="38747" y="0" height="52" width="325" format="[general]" html.valueishtml="0"  name=pd_address_fax visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="39072" y="0" height="52" width="1728" format="[general]" html.valueishtml="0"  name=code_lookup_license_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="40800" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="44251" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street_2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="47703" y="0" height="52" width="576" format="[general]" html.valueishtml="0"  name=pd_address_city visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="48279" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=code_lookup_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="48626" y="0" height="52" width="256" format="[general]" html.valueishtml="0"  name=pd_address_zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="48882" y="0" height="52" width="1152" format="[general]" html.valueishtml="0"  name=pd_address_link_contact_person visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="50034" y="0" height="52" width="1728" format="[general]" html.valueishtml="0"  name=sex visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="51762" y="0" height="52" width="1152" format="[general]" html.valueishtml="0"  name=maiden_other_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=41 alignment="0" tabsequence=32766 border="0" color="0" x="52914" y="0" height="52" width="1152" format="[general]" html.valueishtml="0"  name=suite_apart visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

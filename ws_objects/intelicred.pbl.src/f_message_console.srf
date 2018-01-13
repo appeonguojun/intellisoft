@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_message_console.srf
+global type f_message_console from function_object
+end type
+
+forward prototypes
+global function integer f_message_console (string as_msg)
+end prototypes
+
+global function integer f_message_console (string as_msg);string ls_parm
+
+ls_parm = as_msg
+
+IF NOT isValid(w_message_console) THEN
+	open(w_message_console)
+END IF
+
+w_message_console.of_message(ls_parm)
+
+return 1
+
+end function
+

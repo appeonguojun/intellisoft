@@ -1,0 +1,102 @@
+﻿$PBExportHeader$of_delete_provider_data.srf
+global type of_delete_provider_data from function_object
+end type
+
+forward prototypes
+global function integer of_delete_provider_data (long al_id)
+end prototypes
+
+global function integer of_delete_provider_data (long al_id);//Start Code Change ---- 12.11.2006 #V7 maha created new. Called from w_delete _provide_utl
+
+Long ll_prac_id
+Integer li_ans
+gs_search lstr_search
+n_ds lds_tables
+integer t
+integer tc
+string ls_tname
+string ls_sql
+
+ll_prac_id = al_id
+
+if ll_prac_id = 0 then //not passed
+	lstr_search.stran_transaction = SQLCA
+	lstr_search.ls_open_for = "DELETE"
+	
+	OpenWithParm( w_extended_search_new , lstr_search )
+	ll_prac_id = Message.DoubleParm
+	IF ll_prac_id = -1 THEN Return -1
+	
+END IF
+	
+// code rewritten maha 061804 (4.187)to catch all pd tables including customs.
+lds_tables = create n_ds
+lds_tables.dataobject = "d_pd_tables_for_prac_delete"
+lds_tables.dataobject = "d_pd_tables_for_prac_delete_sql"
+lds_tables.settransobject(sqlca)
+tc = lds_tables.retrieve()
+
+for t = 1 to tc
+	ls_tname = lds_tables.getitemstring(t,"table_name")
+	choose case ls_tname //save basic and affil stat for last
+		case "pd_basic", "pd_affil_stat"
+			continue
+		case else
+			ls_sql = "DELETE FROM " + ls_tname + " where prac_id = " + string(ll_prac_id) + ";"
+			execute immediate :ls_sql using sqlca;
+			commit using sqlca;
+	end choose
+next
+	
+delete from verif_info
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from net_dev_ids
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from net_dev_action_items
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from net_dev_notes
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from pd_affil_stat
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+delete from pd_basic
+where prac_id = :ll_prac_id;
+IF SQLCA.SQLCODE = -1 THEN
+	MessageBox("Delete", SQLCA.SQLERRTEXT )
+	RETURN -1
+END IF
+
+
+
+
+COMMIT USING SQLCA;
+
+MessageBox("DELETE", "The record has been deleted.", Information! )
+
+RETURN 0
+end function
+

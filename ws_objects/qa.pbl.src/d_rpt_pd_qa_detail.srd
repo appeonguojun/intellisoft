@@ -1,0 +1,105 @@
+﻿$PBExportHeader$d_rpt_pd_qa_detail.srd
+$PBExportComments$Detail Lising of the profiles for the doctor
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="Physician Profile Report" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=no hidegrayline=no )
+header(height=684 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=56 color="536870912"  height.autosize=yes)
+table(column=(type=char(100) updatewhereclause=yes name=qa_measurement_qa_measurement_name dbname="QA_MEASUREMENT.qa_measurement_name" )
+ column=(type=char(100) updatewhereclause=yes name=qa_profile_group_qa_profile_group_name dbname="QA_PROFILE_GROUP.qa_profile_group_name" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=pd_qa_measurements_measurement_value dbname="PD_QA_MEASUREMENTS.measurement_value" )
+ column=(type=char(100) updatewhereclause=yes name=qa_profile_profile_name dbname="QA_PROFILE.profile_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_qa_hdr_prac_id dbname="PD_QA_HDR.prac_id" )
+ column=(type=decimal(2) updatewhereclause=yes name=qa_measurement_threshold dbname="QA_MEASUREMENT.threshold" )
+ column=(type=decimal(2) updatewhereclause=yes name=pd_qa_hdr_pd_qa_hdr_id dbname="PD_QA_HDR.pd_qa_hdr_id" )
+ column=(type=long updatewhereclause=yes name=pd_qa_hdr_active_status dbname="PD_QA_HDR.active_status" )
+ column=(type=char(76) updatewhereclause=yes name=prac_name dbname="prac_name" )
+ column=(type=char(24) updatewhereclause=yes name=stataus dbname="stataus" values="Active	1/Inactive	2/" )
+ column=(type=char(76) updatewhereclause=yes name=department_1 dbname="department" )
+ column=(type=char(17) updatewhereclause=yes name=provider_id dbname="provider_id" )
+ column=(type=char(17) updatewhereclause=yes name=apptmnt_start_date dbname="apptmnt_start_date" )
+ column=(type=char(76) updatewhereclause=yes name=staff_category dbname="staff_category" )
+ column=(type=char(76) updatewhereclause=yes name=division dbname="division" )
+ column=(type=char(76) updatewhereclause=yes name=primary_speciality dbname="primary_speciality" )
+ column=(type=char(16) updatewhereclause=yes name=last_reappointment_date_1 dbname="last_reappointment_date_1" )
+ column=(type=char(58) updatewhereclause=yes name=report_name_1 dbname="report_name_1" )
+ column=(type=long updatewhereclause=yes name=pd_qa_measurements_pd_qa_measurements_id dbname="PD_QA_MEASUREMENTS.pd_qa_measurements_id" )
+ retrieve="  SELECT DISTINCT qa_measurement.qa_measurement_name,   
+         qa_profile_group.qa_profile_group_name,   
+         pd_qa_measurements.measurement_value,   
+         qa_profile.profile_name,   
+         pd_qa_hdr.prac_id,   
+         qa_measurement.threshold,   
+         pd_qa_hdr.pd_qa_hdr_id,   
+         pd_qa_hdr.active_status,   
+         '                                                                            ' prac_name,   
+         '                        'stataus,   
+         '                                                                            ' department,   
+         '                 ' provider_id,   
+         '                 'apptmnt_start_date,   
+         '                                                                            'staff_category,   
+         '                                                                            'division,   
+         '                                                                            ' primary_speciality,   
+           '                ' last_reappointment_date_1,   
+         '                                                          ' report_name_1  
+			, pd_qa_measurements.pd_qa_measurements_id
+    FROM pd_qa_measurements,   
+         qa_measurement,   
+         qa_profile,   
+         qa_profile_group,   
+         pd_qa_hdr  
+   WHERE ( pd_qa_measurements.profile_group_measurement_id = qa_measurement.profile_group_measurement_id ) and  
+         ( qa_measurement.qa_profile_id = qa_profile.qa_profile_id ) and  
+         ( qa_profile_group.qa_profile_id = qa_profile.qa_profile_id ) and  
+         ( qa_profile_group.qa_profile_group_id = qa_measurement.qa_profile_group_id ) and  
+         ( qa_profile_group.qa_profile_id = pd_qa_hdr.qa_profile_id ) and  
+         ( pd_qa_measurements.pd_qa_hdr_id = pd_qa_hdr.pd_qa_hdr_id ) and  
+         ( (pd_qa_hdr.prac_id = :al_Prac_id ) ) AND  
+         ((:al_fac_id is null) OR  (qa_profile.facility_id = :al_fac_id)) AND  
+        ( (pd_qa_hdr.active_status in ( :al_active_status) ) ) AND    
+         pd_qa_hdr.pd_qa_hdr_id = :al_hdr_id    
+" arguments=(("al_Prac_id", number),("al_fac_id", number),("al_active_status", numberlist),("al_hdr_id", number))  sort="pd_qa_hdr_pd_qa_hdr_id D qa_profile_group_qa_profile_group_name A pd_qa_measurements_pd_qa_measurements_id A " )
+group(level=1 header.height=68 trailer.height=0 by=("qa_profile_profile_name" , "pd_qa_hdr_pd_qa_hdr_id" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=64 trailer.height=0 by=("qa_profile_group_qa_profile_group_name" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="33554432" x="50" y="80" height="60" width="599" format="dd mmmm  yyyy" html.valueishtml="0"  name=date_1 visible="1"  font.face="MS Sans Serif" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Name:" border="0" color="33554432" x="151" y="348" height="52" width="366" html.valueishtml="0"  name=pd_basic_first_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=9 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="348" height="52" width="713" format="[general]" html.valueishtml="0"  name=prac_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="Appointment Date:" border="0" color="33554432" x="1394" y="348" height="52" width="681" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Status:" border="0" color="33554432" x="151" y="408" height="52" width="366" html.valueishtml="0"  name=t_8 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=10 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="408" height="52" width="713" format="[general]" html.valueishtml="0"  name=stataus visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="Last Reappointment Date:" border="0" color="33554432" x="1289" y="404" height="52" width="786" html.valueishtml="0"  name=t_11 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Department:" border="0" color="33554432" x="151" y="468" height="52" width="366" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=11 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="468" height="52" width="713" format="[general]" html.valueishtml="0"  name=department_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="Staff Category:" border="0" color="33554432" x="1394" y="468" height="52" width="681" html.valueishtml="0"  name=t_10 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Provider ID:" border="0" color="33554432" x="151" y="524" height="52" width="366" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=12 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="524" height="52" width="713" format="[general]" html.valueishtml="0"  name=provider_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="Division:" border="0" color="33554432" x="1394" y="524" height="52" width="681" html.valueishtml="0"  name=t_9 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Primary Speciality:" border="0" color="0" x="837" y="596" height="52" width="562" html.valueishtml="0"  name=t_12 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=16 alignment="0" tabsequence=32766 border="0" color="0" x="1344" y="600" height="52" width="1559" format="[general]" html.valueishtml="0"  name=primary_speciality visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=18 alignment="2" tabsequence=32766 border="0" color="0" x="686" y="80" height="96" width="2217" format="[general]" html.valueishtml="0"  name=report_name_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-14" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=header x1="14" y1="20" x2="3287" y2="20"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="14" y1="676" x2="3287" y2="676"  name=l_2 visible="1" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="14" y1="252" x2="3287" y2="252"  name=l_7 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="14" y1="56" x2="3287" y2="56"  name=l_5 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="14" y1="220" x2="3287" y2="220"  name=l_6 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+column(band=header id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2089" y="348" height="52" width="713" format="[General]" html.valueishtml="0"  name=apptmnt_start_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=17 alignment="0" tabsequence=32766 border="0" color="0" x="2089" y="408" height="52" width="713" format="[general]" html.valueishtml="0"  name=last_reappointment_date_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=14 alignment="0" tabsequence=32766 border="0" color="0" x="2089" y="468" height="52" width="713" format="[general]" html.valueishtml="0"  name=staff_category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=15 alignment="0" tabsequence=32766 border="0" color="0" x="2089" y="524" height="52" width="713" format="[general]" html.valueishtml="0"  name=division visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=header.1 x1="133" y1="64" x2="2528" y2="64"  name=l_1 visible="1" pen.style="0" pen.width="9" pen.color="0"  background.mode="2" background.color="0" )
+text(band=header.1 alignment="0" text="Historical Record~tif(  pd_qa_hdr_active_status = 1 , 'Currently  Active Data' , 'Historical Data')" border="0" color="0" x="992" y="0" height="52" width="869" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Measurement Value" border="0" color="0" x="1810" y="0" height="52" width="430" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="1" text="Threshold" border="0" color="0" x="2281" y="0" height="52" width="215" html.valueishtml="0"  name=t_qa_measurement_threshold visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Profile:" border="0" color="0" x="137" y="0" height="52" width="146" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=4 alignment="0" tabsequence=32766 border="0" color="0" x="293" y="0" height="52" width="1029" format="[general]" html.valueishtml="0"  name=qa_profile_profile_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header.2 alignment="0" text="Measurement Group:" border="0" color="0" x="251" y="4" height="52" width="453" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.2 id=2 alignment="0" tabsequence=32766 border="0" color="0" x="709" y="4" height="52" width="1682" format="[general]" html.valueishtml="0"  name=qa_profile_group_qa_profile_group_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="786" y="4" height="52" width="841" format="[general]" html.valueishtml="0"  name=qa_measurement_qa_measurement_name visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="1632" y="4" height="52" width="608" format="[general]" html.valueishtml="0"  name=pd_qa_measurements_measurement_value visible="1" editmask.mask="###,###.00" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="33554432" x="2286" y="4" height="52" width="215" format="[general]" html.valueishtml="0"  name=qa_measurement_threshold visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_dashboard_user_access.srd
+$PBExportComments$the user access:
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=292 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes key=yes name=user_id dbname="security_users.user_id" )
+ column=(type=long update=yes updatewhereclause=yes name=tdl_rights dbname="security_users.tdl_rights" initial="0" values="User can only view their own To Do Lists	0/User can view All other users To Do Lists	2/" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=tdl_other_user dbname="security_users.tdl_other_user" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"security_users~" ) COLUMN(NAME=~"security_users.user_id~") COLUMN(NAME=~"security_users.tdl_rights~") COLUMN(NAME=~"security_users.tdl_other_user~")WHERE(    EXP1 =~"security_users.user_id~"   OP =~"=~"    EXP2 =~":as_user~" ) ) ARG(NAME = ~"as_user~" TYPE = string) " update="security_users" updatewhere=1 updatekeyinplace=yes arguments=(("as_user", string)) )
+data(null null null ) 
+groupbox(band=detail text="Rights Settings for "border="5" color="128" x="14" y="12" height="264" width="1445"  name=gb_1 visible="1"  resizeable=1  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="0" text="User" border="0" color="33554432" x="1216" y="100" height="52" width="101" html.valueishtml="0"  name=role_t visible="0"  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="0" color="33554432" x="37" y="76" height="172" width="1024" format="[general]" html.valueishtml="0"  name=tdl_rights visible="1" radiobuttons.columns=1 radiobuttons.scale=no radiobuttons.threed=yes  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="33554432" x="1061" y="164" height="68" width="279" format="[general]" html.valueishtml="0" protect="0~tif (  tdl_rights = 1 , 0, 1)"  name=tdl_other_user visible="0" dddw.name=d_tdl_role_user dddw.displaycolumn=user_name dddw.datacolumn=user_id dddw.percentwidth=0 dddw.lines=5 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

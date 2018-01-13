@@ -1,0 +1,77 @@
+﻿$PBExportHeader$gf_check_programfile_dir.srf
+global type gf_check_programfile_dir from function_object
+end type
+
+forward prototypes
+global function boolean gf_check_programfile_dir (string as_dir)
+end prototypes
+
+global function boolean gf_check_programfile_dir (string as_dir);//====================================================================
+// Function: gf_check_programfile_dir
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_dir
+//--------------------------------------------------------------------
+// Returns:  boolean
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 03-26-2014
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2013 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+string ls_path,ls_test_file,ls_AppData_path,ls_AppData_path1,ls_AppData_path2,ls_dir,ls_virtual_dirfile1,ls_virtual_dirfile2,ls_filename
+integer li_FileNum,i
+long ll_pos
+string ls_special_folder[] = {'\program files\','\program files (x86)\'}
+boolean lb_rtn = true
+
+If DirectoryExists(as_dir) Then 
+	if gs_os = '6.2' or gs_os = '6.3' then  //windows 8 or 8.1
+		ls_path = lower(as_dir)
+		ls_AppData_path = gs_appdata_local_path
+		ls_filename = 'test'+String(now(),'hhmmss')+'.txt'
+		ls_test_file = ls_path + '\' + ls_filename
+		ls_AppData_path1 = ls_AppData_path + '\VirtualStore\Program Files\'
+		ls_AppData_path2 = ls_AppData_path + '\VirtualStore\Program Files (x86)\'
+		li_FileNum = FileOpen( ls_test_file ,LineMode!, Write!, LockWrite!, Append!)
+		IF li_FileNum < 0 OR ISNULL(li_FileNum) THEN 
+			lb_rtn = false
+		ElseIF FileWrite(li_FileNum, "Test") < 0 THEN 
+			lb_rtn = false
+		End If
+		FileClose ( li_FileNum )
+		for i = 1 to upperbound(ls_special_folder)
+			ll_pos = pos(ls_path,ls_special_folder[i])
+			if ll_pos <> 3 then continue
+			if ls_special_folder[i] = '\program files (x86)\' then
+				ls_dir = right(ls_path,len(ls_path) - ll_pos - 20)
+			else
+				ls_dir = right(ls_path,len(ls_path) - ll_pos - 14)
+			end if
+			ls_virtual_dirfile1 = ls_AppData_path1 + ls_dir + '\' + ls_filename
+			ls_virtual_dirfile2 = ls_AppData_path2 + ls_dir + '\' + ls_filename
+			IF FileExists(ls_virtual_dirfile1) THEN
+				lb_rtn = false
+			END IF
+			IF FileExists(ls_virtual_dirfile2) THEN
+				lb_rtn = false
+			END IF
+		next
+		FileDelete(ls_test_file)
+	end if
+	
+else
+	lb_rtn = false
+end if
+
+return lb_rtn
+
+
+
+end function
+

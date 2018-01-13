@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_priv_clin_req2.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1516 color="536870912" )
+table(column=(type=char(32766) update=yes updatewhereclause=no name=priv_clinical_area2_observations dbname="priv_clinical_area2.observations" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=priv_clinical_area2_reappoint_req dbname="priv_clinical_area2.reappoint_req" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=priv_clinical_area2_clinical_area_id dbname="priv_clinical_area2.clinical_area_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"priv_clinical_area~" )  TABLE(NAME=~"priv_clinical_area2~" ) COLUMN(NAME=~"priv_clinical_area2.observations~") COLUMN(NAME=~"priv_clinical_area2.reappoint_req~") COLUMN(NAME=~"priv_clinical_area2.clinical_area_id~")    JOIN (LEFT=~"priv_clinical_area.clinical_area_id~"    OP =~"=~"RIGHT=~"priv_clinical_area2.clinical_area_id~" )WHERE(    EXP1 =~"priv_clinical_area2.clinical_area_id~"   OP =~"=~"    EXP2 =~":ai_clinic_id~" ) ) ARG(NAME = ~"ai_clinic_id~" TYPE = number) " update="priv_clinical_area2" updatewhere=0 updatekeyinplace=no arguments=(("ai_clinic_id", number)) )
+text(band=detail alignment="0" text="Observations:"border="0" color="0" x="32" y="8" height="52" width="416"  name=priv_obsev_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Reappointment Requirements :"border="0" color="0" x="32" y="240" height="52" width="919"  name=req_reappoint_t  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="18" y="76" height="132" width="3365" format="[general]"  name=priv_clinical_area2_observations edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="18" y="312" height="132" width="3365" format="[general]"  name=priv_clinical_area2_reappoint_req edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

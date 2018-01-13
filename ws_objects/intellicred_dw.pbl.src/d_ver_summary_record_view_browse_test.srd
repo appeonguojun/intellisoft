@@ -1,0 +1,146 @@
+﻿$PBExportHeader$d_ver_summary_record_view_browse_test.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=verif_info_rec_id dbname="verif_info.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_prac_id dbname="verif_info.prac_id" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_first_sent dbname="verif_info.first_sent" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_last_sent dbname="verif_info.last_sent" )
+ column=(type=long updatewhereclause=yes name=verif_info_number_sent dbname="verif_info.number_sent" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_date_recieved dbname="verif_info.date_recieved" )
+ column=(type=char(10) updatewhereclause=yes name=verif_info_user_name dbname="verif_info.user_name" )
+ column=(type=char(10) updatewhereclause=yes name=verif_info_source dbname="verif_info.source" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_response_code dbname="verif_info.response_code" )
+ column=(type=long updatewhereclause=yes name=verif_info_active_status dbname="verif_info.active_status" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_verification_method dbname="verif_info.verification_method" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_expiration_date dbname="verif_info.expiration_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_verification_id dbname="verif_info.verification_id" )
+ column=(type=char(100) updatewhereclause=yes name=verif_info_reference_value dbname="verif_info.reference_value" )
+ column=(type=long updatewhereclause=yes name=verif_info_screen_id dbname="verif_info.screen_id" )
+ column=(type=char(50) updatewhereclause=yes name=data_view_screen_screen_name dbname="data_view_screen.screen_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=verif_info_address_lookup_code dbname="verif_info.address_lookup_code" )
+ column=(type=long updatewhereclause=yes name=verif_info_facility_id dbname="verif_info.facility_id" )
+ column=(type=long updatewhereclause=yes name=verif_info_seq_no dbname="verif_info.seq_no" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ column=(type=char(10) updatewhereclause=yes name=verif_info_priority_user dbname="verif_info.priority_user" )
+ column=(type=long updatewhereclause=yes name=verif_info_priority dbname="verif_info.priority" )
+ column=(type=long updatewhereclause=yes name=verif_info_exp_credential_flag dbname="verif_info.exp_credential_flag" )
+ column=(type=char(20) updatewhereclause=yes name=verif_info_doc_id dbname="verif_info.doc_id" )
+ column=(type=long updatewhereclause=yes name=verif_info_print_flag dbname="verif_info.print_flag" )
+ column=(type=char(255) updatewhereclause=yes name=verif_info_notes dbname="verif_info.notes" )
+ column=(type=long updatewhereclause=yes name=cselected dbname="selected" )
+ column=(type=char(25) updatewhereclause=yes name=address_lookup_phone dbname="address_lookup.phone" )
+ column=(type=char(50) updatewhereclause=yes name=address_lookup_web_address dbname="address_lookup.web_address" )
+ retrieve="  SELECT verif_info.rec_id,   
+         verif_info.prac_id,   
+         verif_info.first_sent,   
+         verif_info.last_sent,   
+         verif_info.number_sent,   
+         verif_info.date_recieved,   
+         verif_info.user_name,   
+         verif_info.source,   
+         verif_info.response_code,   
+         verif_info.active_status,   
+         verif_info.verification_method,   
+         verif_info.expiration_date,   
+         verif_info.verification_id,   
+         verif_info.reference_value,   
+         verif_info.screen_id,   
+         data_view_screen.screen_name,   
+         verif_info.address_lookup_code,   
+         verif_info.facility_id,   
+         verif_info.seq_no,   
+         facility.facility_name,   
+         verif_info.priority_user,   
+         verif_info.priority,   
+         verif_info.exp_credential_flag,   
+         verif_info.doc_id,   
+         verif_info.print_flag,   
+         verif_info.notes,   
+         selected=0,   
+         address_lookup.phone,   
+         address_lookup.web_address  
+    FROM (verif_info  LEFT OUTER JOIN address_lookup  ON verif_info.address_lookup_code = address_lookup.lookup_code),   
+         data_view_screen,   
+         facility  
+   WHERE ( verif_info.screen_id = data_view_screen.screen_id ) and  
+         ( verif_info.facility_id = facility.facility_id ) and  
+         ( ( data_view_screen.data_view_id = :data_view_id ) AND  
+         ( verif_info.prac_id = :prac_id ) AND  
+         (verif_info.facility_id = :facility_id))    
+" arguments=(("data_view_id", number),("prac_id", number),("facility_id", number)) )
+text(band=header alignment="2" text="Verif Info
+Rec Id"border="0" color="0" x="9" y="8" height="104" width="274"  name=verif_info_rec_id_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="prac_id"border="0" color="0" x="293" y="8" height="52" width="274"  name=verif_info_prac_id_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="first_sent"border="0" color="0" x="576" y="8" height="52" width="503"  name=verif_info_first_sent_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="last_sent"border="0" color="0" x="1088" y="8" height="52" width="503"  name=verif_info_last_sent_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="number_sent"border="0" color="0" x="1600" y="8" height="52" width="279"  name=verif_info_number_sent_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="date_recieved"border="0" color="0" x="1888" y="8" height="52" width="503"  name=verif_info_date_recieved_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+User Name"border="0" color="0" x="2400" y="8" height="104" width="251"  name=verif_info_user_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="source"border="0" color="0" x="2661" y="8" height="52" width="251"  name=verif_info_source_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="response_code"border="0" color="0" x="2921" y="8" height="52" width="334"  name=verif_info_response_code_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="active_status"border="0" color="0" x="3264" y="8" height="52" width="288"  name=verif_info_active_status_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Verification Method"border="0" color="0" x="3561" y="8" height="104" width="416"  name=verif_info_verification_method_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Expiration Date"border="0" color="0" x="3986" y="8" height="104" width="503"  name=verif_info_expiration_date_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Verification Id"border="0" color="0" x="4498" y="8" height="104" width="293"  name=verif_info_verification_id_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Reference Value"border="0" color="0" x="4800" y="8" height="104" width="2309"  name=verif_info_reference_value_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Screen Id"border="0" color="0" x="7118" y="8" height="104" width="274"  name=verif_info_screen_id_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="screen_name"border="0" color="0" x="7401" y="8" height="52" width="1166"  name=data_view_screen_screen_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Address Lookup Code"border="0" color="0" x="8576" y="8" height="104" width="480"  name=verif_info_address_lookup_code_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Facility Id"border="0" color="0" x="9065" y="8" height="104" width="274"  name=verif_info_facility_id_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Seq No"border="0" color="0" x="9349" y="8" height="104" width="274"  name=verif_info_seq_no_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Facility
+Facility Name"border="0" color="0" x="9632" y="8" height="104" width="2309"  name=facility_facility_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Priority User"border="0" color="0" x="11950" y="8" height="52" width="293"  name=verif_info_priority_user_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Priority"border="0" color="0" x="12251" y="8" height="52" width="206"  name=verif_info_priority_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Exp Credential Flag"border="0" color="0" x="12466" y="8" height="52" width="416"  name=verif_info_exp_credential_flag_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc Id"border="0" color="0" x="12891" y="8" height="52" width="407"  name=verif_info_doc_id_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Print Flag"border="0" color="0" x="13307" y="8" height="52" width="206"  name=verif_info_print_flag_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Notes"border="0" color="0" x="13522" y="8" height="52" width="5893"  name=verif_info_notes_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Selected"border="0" color="0" x="19424" y="8" height="52" width="274"  name=cselected_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Address Lookup
+Phone"border="0" color="0" x="19707" y="8" height="104" width="352"  name=address_lookup_phone_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Address Lookup
+Web Address"border="0" color="0" x="20069" y="8" height="104" width="1166"  name=address_lookup_web_address_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="9" y="8" height="64" width="274" format="[general]"  name=verif_info_rec_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="293" y="8" height="64" width="274" format="[general]"  name=verif_info_prac_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="576" y="8" height="64" width="503" format="[shortdate] [time]"  name=verif_info_first_sent edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1088" y="8" height="64" width="503" format="[shortdate] [time]"  name=verif_info_last_sent edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="1600" y="8" height="64" width="279" format="[general]"  name=verif_info_number_sent edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1888" y="8" height="64" width="503" format="[shortdate] [time]"  name=verif_info_date_recieved edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2400" y="8" height="64" width="251" format="[general]"  name=verif_info_user_name edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2661" y="8" height="64" width="251" format="[general]"  name=verif_info_source edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="2921" y="8" height="64" width="334" format="[general]"  name=verif_info_response_code edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="0" x="3264" y="8" height="64" width="288" format="[general]"  name=verif_info_active_status edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="0" x="3561" y="8" height="64" width="416" format="[general]"  name=verif_info_verification_method edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3986" y="8" height="64" width="503" format="[shortdate] [time]"  name=verif_info_expiration_date edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="0" x="4498" y="8" height="64" width="293" format="[general]"  name=verif_info_verification_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="4800" y="8" height="64" width="2309" format="[general]"  name=verif_info_reference_value edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="1" tabsequence=32766 border="0" color="0" x="7118" y="8" height="64" width="274" format="[general]"  name=verif_info_screen_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="7401" y="8" height="64" width="1166" format="[general]"  name=data_view_screen_screen_name edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="1" tabsequence=32766 border="0" color="0" x="8576" y="8" height="64" width="480" format="[general]"  name=verif_info_address_lookup_code edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="0" color="0" x="9065" y="8" height="64" width="274" format="[general]"  name=verif_info_facility_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="1" tabsequence=32766 border="0" color="0" x="9349" y="8" height="64" width="274" format="[general]"  name=verif_info_seq_no edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="9632" y="8" height="64" width="2309" format="[general]"  name=facility_facility_name edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="11950" y="8" height="52" width="293" format="[general]"  name=verif_info_priority_user edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="1" tabsequence=32766 border="0" color="0" x="12251" y="8" height="52" width="206" format="[General]"  name=verif_info_priority edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="1" tabsequence=32766 border="0" color="0" x="12466" y="8" height="52" width="416" format="[General]"  name=verif_info_exp_credential_flag edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="12891" y="8" height="52" width="407" format="[general]"  name=verif_info_doc_id edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="1" tabsequence=32766 border="0" color="0" x="13307" y="8" height="52" width="206" format="[General]"  name=verif_info_print_flag edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="13522" y="8" height="52" width="5893" format="[general]"  name=verif_info_notes edit.limit=255 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="1" tabsequence=32766 border="0" color="0" x="19424" y="8" height="64" width="274" format="[general]"  name=cselected edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="19707" y="8" height="64" width="352" format="[general]"  name=address_lookup_phone edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="20069" y="8" height="64" width="1166" format="[general]"  name=address_lookup_web_address edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

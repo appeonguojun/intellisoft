@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_resend_letters_document.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes key=yes identity=yes name=seq_id dbname="ctx_am_action_item.seq_id" )
+ column=(type=long updatewhereclause=yes key=yes name=doc_id dbname="ctx_am_action_item.doc_id" )
+ column=(type=long update=yes updatewhereclause=yes name=print_flag dbname="ctx_am_action_item.print_flag" )
+ column=(type=long updatewhereclause=yes name=wf_action_status_day_interval dbname="wf_action_status.day_interval" )
+ column=(type=long updatewhereclause=yes name=attempt_times dbname="ctx_am_action_item.attempt_times" )
+ retrieve="  SELECT ctx_am_action_item.seq_id,   
+         ctx_am_action_item.doc_id,   
+         ctx_am_action_item.print_flag,   
+         wf_action_status.day_interval,
+			ctx_am_action_item.attempt_times
+    FROM wf_action_status,   
+         ctx_am_action_item  
+   WHERE ( ctx_am_action_item.wf_id = wf_action_status.wf_id ) and  
+			( ctx_am_action_item.wf_action_type_id = wf_action_status.step_id ) and  
+         ( ctx_am_action_item.action_status = wf_action_status.action_status_id ) and  
+         ( ctx_am_action_item.print_flag <= 0 ) AND
+         ( wf_action_status.process_flag = 1 ) AND
+         ( wf_action_status.letter_id is not null )  AND
+         (isnull(ctx_am_action_item.attempt_times,0) < wf_action_status.resend_times) AND  
+         (( ctx_am_action_item.last_attempt + wf_action_status.day_interval < getdate() )  or
+			   ctx_am_action_item.last_attempt is null)
+" update="ctx_am_action_item" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Doc Id" border="0" color="33554432" x="9" y="8" height="52" width="274" html.valueishtml="0"  name=doc_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Seq Id" border="0" color="33554432" x="293" y="8" height="52" width="274" html.valueishtml="0"  name=seq_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Attempt Times" border="0" color="33554432" x="576" y="8" height="52" width="306" html.valueishtml="0"  name=attempt_times_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Print Flag" border="0" color="33554432" x="891" y="8" height="52" width="274" html.valueishtml="0"  name=print_flag_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Wf Action Status Day Interval" border="0" color="0" x="1175" y="4" height="76" width="978" html.valueishtml="0"  name=wf_action_status_day_interval_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="293" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=seq_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=20 border="0" color="33554432" x="576" y="8" height="64" width="306" format="[general]" html.valueishtml="0"  name=attempt_times visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="33554432" x="891" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=print_flag visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="33554432" x="1175" y="0" height="52" width="978" format="[general]" html.valueishtml="0"  name=wf_action_status_day_interval visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

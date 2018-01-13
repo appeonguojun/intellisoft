@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_export_status_track.srd
+release 9;
+datawindow(units=0 timer_interval=60000 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=ctx_id dbname="sys_statusaudit.ctx_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=seq_no dbname="sys_statusaudit.seq_no" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=status dbname="sys_statusaudit.status" )
+ column=(type=decimal(0) updatewhereclause=yes name=processing_setting dbname="sys_statusaudit.processing_setting" )
+ column=(type=datetime update=yes updatewhereclause=yes name=start_time dbname="sys_statusaudit.start_time" )
+ column=(type=long update=yes updatewhereclause=yes name=delay_days dbname="sys_statusaudit.delay_days" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=user_id dbname="sys_statusaudit.user_id" )
+ column=(type=char(50) updatewhereclause=yes name=field_name dbname="sys_statusaudit.field_name" )
+ retrieve="  SELECT sys_statusaudit.ctx_id,   
+         sys_statusaudit.seq_no,   
+         sys_statusaudit.status,
+         sys_statusaudit.status Processing_setting,
+         sys_statusaudit.start_time,   
+         sys_statusaudit.delay_days,   
+         sys_statusaudit.user_id,
+			sys_statusaudit.field_name  
+    FROM sys_statusaudit  
+   WHERE sys_statusaudit.ctx_id = :ai_ctxid    
+" update="sys_statusaudit" updatewhere=0 updatekeyinplace=no arguments=(("ai_ctxid", number)) )
+text(band=header alignment="2" text="Status" border="6" color="33554432" x="9" y="4" height="68" width="672" html.valueishtml="0"  name=status_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Processing Setting" border="6" color="0" x="690" y="4" height="68" width="421" html.valueishtml="0"  name=status_1_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Start Time" border="6" color="33554432" x="1120" y="4" height="68" width="384" html.valueishtml="0"  name=start_time_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Equal Days" border="6" color="0" x="1513" y="4" height="68" width="283" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="User Id" border="6" color="33554432" x="1806" y="4" height="68" width="320" html.valueishtml="0"  name=user_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Processing Setting" border="0" color="0" x="2135" y="4" height="76" width="978" html.valueishtml="0"  name=processing_setting_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="4" height="68" width="672" format="[general]" html.valueishtml="0"  name=status  tag="Contract Status" visible="1" dddw.name=d_dddw_contract_status dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=312 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=2 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="690" y="4" height="68" width="421" format="[general]" html.valueishtml="0"  name=status_1 visible="1" dddw.name=d_dddw_contract_status dddw.displaycolumn=compute_1 dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="1806" y="4" height="68" width="320" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="0" color="33554432" x="1120" y="4" height="68" width="384" format="mm/dd/yyyy" html.valueishtml="0"  name=start_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="2" expression="if(getrow()=rowcount(),daysafter(start_time,today()),daysafter(start_time,start_time[1]))"border="0" color="0" x="1513" y="4" height="68" width="283" format="[General]" html.valueishtml="0"  name=delay_days visible="1~tif(getrow()=rowcount(),0,1)"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="0" color="33554432" x="2135" y="12" height="52" width="978" format="[general]" html.valueishtml="0"  name=processing_setting visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=40 border="0" color="33554432" x="3127" y="0" height="52" width="1143" html.valueishtml="0"  name=field_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Field Name" border="0" color="0" x="3122" y="4" height="76" width="1147" html.valueishtml="0"  name=field_name_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

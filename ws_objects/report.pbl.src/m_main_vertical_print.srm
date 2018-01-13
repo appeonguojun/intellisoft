@@ -1,0 +1,117 @@
+﻿$PBExportHeader$m_main_vertical_print.srm
+forward
+global type m_main_vertical_print from menu
+end type
+type m_vertical_print from menu within m_main_vertical_print
+end type
+type m_synctosf from menu within m_main_vertical_print
+end type
+global type m_main_vertical_print from menu
+m_vertical_print m_vertical_print
+m_synctosf m_synctosf
+end type
+end forward
+
+global type m_main_vertical_print from menu
+m_vertical_print m_vertical_print
+m_synctosf m_synctosf
+end type
+global m_main_vertical_print m_main_vertical_print
+
+type variables
+datawindow idw_data
+
+end variables
+
+on m_main_vertical_print.create
+m_main_vertical_print=this
+call super::create
+this.text = "m_main_vertical_print"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_vertical_print=create m_vertical_print
+this.m_synctosf=create m_synctosf
+this.Item[UpperBound(this.Item)+1]=this.m_vertical_print
+this.Item[UpperBound(this.Item)+1]=this.m_synctosf
+end on
+
+on m_main_vertical_print.destroy
+call super::destroy
+destroy(this.m_vertical_print)
+destroy(this.m_synctosf)
+end on
+
+type m_vertical_print from menu within m_main_vertical_print
+end type
+
+on m_vertical_print.create
+call super::create
+this.text = "Vertical Print..."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_vertical_print.destroy
+call super::destroy
+end on
+
+event clicked;openwithparm(w_print_columns_select,idw_data)
+end event
+
+type m_synctosf from menu within m_main_vertical_print
+end type
+
+on m_synctosf.create
+call super::create
+this.visible = false
+this.text = "Sync to Salesforce"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_synctosf.destroy
+call super::destroy
+end on
+
+event clicked;idw_data.dynamic event ue_sync_to_salesforce()  //Added by Harry 20170321
+end event
+

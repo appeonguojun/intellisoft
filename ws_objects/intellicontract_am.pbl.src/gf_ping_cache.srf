@@ -1,0 +1,51 @@
+﻿$PBExportHeader$gf_ping_cache.srf
+global type gf_ping_cache from function_object
+end type
+
+forward prototypes
+global function integer gf_ping_cache (string as_cache_name)
+end prototypes
+
+global function integer gf_ping_cache (string as_cache_name);//====================================================================
+// Function: gf_ping_cache
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_cache_name
+//--------------------------------------------------------------------
+// Returns:  integer
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 08-11-2014
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2013 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+String ls_cachename
+n_tr TR_WEBLINK
+
+TR_WEBLINK = Create n_tr
+			
+//ping database
+ls_cachename = Trim(as_cache_name)
+TR_WEBLINK.AutoCommit = True
+TR_WEBLINK.DBMS = 'ODB-MSS'
+TR_WEBLINK.DBParm = "CacheName='" + ls_cachename + "'"
+Connect USING TR_WEBLINK;
+			
+IF TR_WEBLINK.SQLCODE = -1 THEN
+	Destroy TR_WEBLINK
+	Return -1
+else
+	DisConnect USING TR_WEBLINK;
+	Destroy TR_WEBLINK
+	Return 1	
+END IF
+			
+			
+
+end function
+

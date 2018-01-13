@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_email_parm.srs
+global type str_email_parm from structure
+	integer		ai_from_type
+	integer		ai_folder_type
+end type
+

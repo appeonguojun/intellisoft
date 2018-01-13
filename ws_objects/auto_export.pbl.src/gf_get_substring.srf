@@ -1,0 +1,24 @@
+﻿$PBExportHeader$gf_get_substring.srf
+global type gf_get_substring from function_object
+end type
+
+forward prototypes
+global function string gf_get_substring (string as_source, string as_delimiter, integer ai_returnorder)
+end prototypes
+
+global function string gf_get_substring (string as_source, string as_delimiter, integer ai_returnorder);
+If IsNull( as_source ) Or Trim( as_Source ) = '' Then Return ''
+
+If ai_returnorder <=0 Then return ''
+
+string 	ls_Array[]
+
+gnv_String.of_parsetoarray( as_source, as_delimiter, ref  ls_array )
+
+If ai_returnOrder > UpperBound( ls_array ) Then Return ''
+
+return ls_array[ ai_returnOrder ]
+	
+
+end function
+

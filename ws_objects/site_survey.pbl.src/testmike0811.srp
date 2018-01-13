@@ -1,0 +1,11 @@
+﻿$PBExportHeader$testmike0811.srp
+PIPELINE(source_connect=IntelliCred Client,destination_connect=IntelliCred Client,type=create,commit=100,errors=100,keyname="address_lookup_x")
+SOURCE(name="address_lookup",COLUMN(type=decimal,name="lookup_code",dbtype="numeric(6,0)",key=yes,nulls_allowed=no)
+ COLUMN(type=varchar,name="lookup_name",dbtype="char(20)",nulls_allowed=no)
+ COLUMN(type=varchar,name="code",dbtype="char(15)",nulls_allowed=no)
+ COLUMN(type=varchar,name="entity_name",dbtype="char(50)",nulls_allowed=yes))
+RETRIEVE(statement="PBSELECT( VERSION(400) TABLE(NAME=~"address_lookup~" ) COLUMN(NAME=~"address_lookup.lookup_code~") COLUMN(NAME=~"address_lookup.lookup_name~") COLUMN(NAME=~"address_lookup.code~") COLUMN(NAME=~"address_lookup.entity_name~")) ")
+DESTINATION(name="cd_testmike",COLUMN(type=decimal,name="lookup_code",dbtype="numeric(6,0)",key=yes,nulls_allowed=no,initial_value="0")
+ COLUMN(type=varchar,name="lookup_name",dbtype="char(20)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="code",dbtype="char(15)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="entity_name",dbtype="char(50)",nulls_allowed=yes))

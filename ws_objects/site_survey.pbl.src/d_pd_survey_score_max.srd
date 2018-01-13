@@ -1,0 +1,143 @@
+﻿$PBExportHeader$d_pd_survey_score_max.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=236 color="536870912" )
+summary(height=156 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=0 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=question_id dbname="review_question.question_id" )
+ column=(type=long updatewhereclause=yes name=review_question_review_id dbname="review_question.review_id" )
+ column=(type=char(255) updatewhereclause=yes name=review_question_question dbname="review_question.question" )
+ column=(type=long updatewhereclause=yes name=review_question_question_order dbname="review_question.question_order" )
+ column=(type=long updatewhereclause=yes name=review_question_group_id dbname="review_question.group_id" )
+ column=(type=long updatewhereclause=yes name=review_question_sub_group_id dbname="review_question.sub_group_id" )
+ column=(type=long updatewhereclause=yes name=review_question_key_quest dbname="review_question.key_quest" )
+ column=(type=decimal(2) updatewhereclause=yes name=review_question_key_value dbname="review_question.key_value" )
+ column=(type=char(150) updatewhereclause=yes name=review_question_groups_group_name dbname="review_question.group_name" )
+ column=(type=char(150) updatewhereclause=yes name=review_question_groups_group_name_1 dbname="review_question.group_name" )
+ column=(type=long updatewhereclause=yes name=review_question_answer_review_id dbname="review_question_answer.review_id" )
+ column=(type=long updatewhereclause=yes name=review_question_answer_answer_id dbname="review_question_answer.answer_id" )
+ column=(type=char(100) updatewhereclause=yes name=review_question_answer_question_answer dbname="review_question_answer.question_answer" )
+ column=(type=decimal(1) updatewhereclause=yes name=review_question_answer_answer_score dbname="review_question_answer.answer_score" )
+ column=(type=long updatewhereclause=yes name=review_question_answer_answer_order dbname="review_question_answer.answer_order" )
+ column=(type=decimal(0) updatewhereclause=yes name=review_question_answer_rec_id dbname="review_question_answer.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=review_hdr_review_type dbname="review_hdr.review_type" )
+ column=(type=long updatewhereclause=yes name=review_hdr_review_id dbname="review_hdr.review_id" )
+ column=(type=char(100) updatewhereclause=yes name=review_hdr_review_description dbname="review_hdr.review_description" )
+ column=(type=long updatewhereclause=yes name=review_hdr_maximum_score dbname="review_hdr.maximum_score" )
+ column=(type=long updatewhereclause=yes name=review_hdr_minimum_passing_score dbname="review_hdr.minimum_passing_score" )
+ column=(type=decimal(2) updatewhereclause=yes name=review_hdr_total_points dbname="review_hdr.total_points" )
+ column=(type=decimal(0) updatewhereclause=yes name=rec_id dbname="pd_review_answers.rec_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=question_answer_id dbname="pd_review_answers.question_answer_id" )
+ column=(type=long update=yes updatewhereclause=yes name=answer_on_off dbname="pd_review_answers.answer_on_off" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=answers_score dbname="pd_review_answers.score" )
+ column=(type=char(255) update=yes updatewhereclause=yes name=answers_notes dbname="pd_review_answers.notes" )
+ column=(type=char(150) updatewhereclause=yes name=group_practice_street dbname="group_practice.street" )
+ column=(type=char(25) updatewhereclause=yes name=group_practice_city dbname="group_practice.city" )
+ column=(type=char(15) updatewhereclause=yes name=state dbname="state" )
+ column=(type=char(11) updatewhereclause=yes name=group_practice_zip dbname="group_practice.zip" )
+ column=(type=char(150) updatewhereclause=yes name=group_practice_street_2 dbname="group_practice.street_2" )
+ column=(type=decimal(2) updatewhereclause=yes name=group_total_point_1 dbname="review_question.group_total_points" )
+ column=(type=decimal(2) updatewhereclause=yes name=group_total_point_2 dbname="review_question.group_total_points" )
+ column=(type=decimal(2) updatewhereclause=yes name=group_passing_score_1 dbname="review_question.group_passing_score" )
+ column=(type=decimal(2) updatewhereclause=yes name=group_passing_score_2 dbname="review_question.group_passing_score" )
+ retrieve="  SELECT DISTINCT review_question.question_id,   
+         review_question.review_id,   
+         review_question.question,   
+         review_question.question_order,   
+         review_question.group_id,   
+         review_question.sub_group_id, 
+         review_question.key_quest,   
+         review_question.key_value,  
+         review_question_groups_a.group_name,   
+         review_question_groups_b.group_name,   
+         review_question_answer.review_id,   
+         review_question_answer.answer_id,   
+         review_question_answer.question_answer,   
+         review_question_answer.answer_score,   
+         review_question_answer.answer_order,   
+         review_question_answer.rec_id,   
+         review_hdr.review_type,   
+         review_hdr.review_id,   
+         review_hdr.review_description,   
+         review_hdr.maximum_score,   
+         review_hdr.minimum_passing_score,
+         review_hdr.total_points,   
+         pd_review_answers.rec_id,   
+         pd_review_answers.question_answer_id,   
+         pd_review_answers.answer_on_off,   
+         pd_review_answers.score,   
+         pd_review_answers.notes,   
+         group_practice.street,   
+         group_practice.city,   
+         state = code_lookup.code,   
+         group_practice.zip,   
+         group_practice.street_2,   
+         review_question_groups_a.group_total_points,   
+         review_question_groups_b.group_total_points,   
+         review_question_groups_a.group_passing_score,   
+         review_question_groups_b.group_passing_score  
+    FROM review_question RIGHT OUTER JOIN review_question_groups review_question_groups_a ON review_question_groups_a.group_id = review_question.group_id
+         RIGHT OUTER JOIN review_question_groups review_question_groups_b ON review_question_groups_b.group_id = review_question.sub_group_id, 
+         review_question_answer,   
+         review_hdr,   
+         pd_review_answers,   
+         pd_review_hdr,   
+         group_practice,   
+         code_lookup  
+   WHERE 
+         ( review_question.review_id = review_question_groups_a.review_id ) and  
+         ( review_question.review_id = review_question_groups_b.review_id ) and  
+         ( review_question.question_id = review_question_answer.question_id ) and  
+         ( review_hdr.review_id = review_question.review_id ) and  
+         ( pd_review_hdr.review_id = review_hdr.review_id ) and  
+         ( pd_review_answers.question_answer_id = review_question_answer.question_answer_id ) and  
+         ( pd_review_hdr.address_id = group_practice.rec_id ) and  
+         ( group_practice.state = code_lookup.lookup_code ) and  
+         ( pd_review_answers.rec_id = pd_review_hdr.rec_id ) and  
+         ( ( pd_review_hdr.rec_id = :rec_id ) AND  
+         (pd_review_answers.answer_on_off = 1))   
+ORDER BY review_question.question_order ASC,   
+         review_question_answer.answer_id ASC   
+" arguments=(("rec_id", number))  sort="review_question_groups_group_name A review_question_groups_group_name_1 A " )
+group(level=1 header.height=160 trailer.height=96 by=("review_question_groups_group_name" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=0 trailer.height=80 by=("review_question_groups_group_name_1" ) header.color="536870912" trailer.color="536870912" )
+group(level=3 header.height=0 trailer.height=0 by=("review_question_question" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="2" expression=" Upper(review_hdr_review_description )+ ~" SCORE SUMMARY ~" +  group_practice_street +   ~"   ~" +  group_practice_street_2   + ~"   ~" + group_practice_city + ~", ~" + state  + ~" ~" + group_practice_zip    "border="0" color="0" x="965" y="20" height="184" width="1472" format="[general]"  name=header  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="110" y="144" height="60" width="480" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2821" y="144" height="60" width="539" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Points Recieved"border="0" color="0" x="489" y="92" height="64" width="411"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Points Needed"border="0" color="0" x="933" y="92" height="64" width="357"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Section"border="0" color="0" x="1326" y="92" height="64" width="219"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Passed/Failed"border="0" color="0" x="105" y="92" height="64" width="347"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="16777215" )
+column(band=header.1 id=9 alignment="0" tabsequence=32766 border="0" color="16777215" x="105" y="8" height="68" width="3259" format="[general]"  name=review_question_groups_group_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="16777215" x="869" y="12" height="52" width="485" format="[general]"  name=group_total_point_1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="16777215" x="242" y="8" height="56" width="114" format="[general]"  name=answer_on_off edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="16777215" x="453" y="16" height="52" width="370" format="[general]"  name=review_question_answer_answer_score edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="16777215" x="1422" y="12" height="52" width="352" format="[general]"  name=group_total_point_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="16777215" x="1861" y="8" height="52" width="334" format="[general]"  name=group_passing_score_1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="16777215" x="2226" y="8" height="52" width="448" format="[general]"  name=group_passing_score_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="16777215" x="2715" y="8" height="64" width="283" format="[general]"  name=review_question_key_quest edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="16777215" x="3031" y="12" height="64" width="251" format="[general]"  name=review_question_key_value edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+compute(band=detail alignment="0" expression="if( review_question_key_quest  = 1 ,if ( review_question_answer_answer_score < review_question_key_value ,1,0),0)"border="0" color="16777215" x="3305" y="8" height="64" width="215" format="[general]"  name=keyed  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+compute(band=trailer.2 alignment="0" expression="if( sum(review_question_answer_answer_score for group 2)  > 
+ group_total_point_2 , ~"Passed~", ~"Failed~" )"border="0" color="0" x="96" y="12" height="56" width="297" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.2 alignment="0" expression="sum(review_question_answer_answer_score for group 2)"border="0" color="0" x="590" y="12" height="56" width="142" format="[general]"  name=pointes_recieved  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.2 alignment="0" expression="group_total_point_2 "border="0" color="0" x="992" y="12" height="56" width="114" format="[general]"  name=points_needed  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.2 alignment="0" expression="IF ( Len(review_question_groups_group_name_1) > 75, Left(review_question_groups_group_name_1, 75 ) + ~"...~", review_question_groups_group_name_1 )"border="0" color="0" x="1321" y="12" height="56" width="2043" format="[general]"  name=review_question_groups_group_name_1_calc  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.2 alignment="0" expression="sum(keyed for group 2)"border="0" color="16777215" x="3387" y="8" height="64" width="105" format="[general]"  name=key_count  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.1 alignment="0" expression="if( key_sum = 0 ,IF( sum(review_question_answer_answer_score for group 1) >=  group_total_point_1 , ~"PASSED SECTION~" , ~"FAILED SECTION~"),~"FAILED KEY REQUIREMENT~")"border="0" color="255" x="96" y="20" height="64" width="859" format="[general]"  name=pass_fail  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+text(band=trailer.1 alignment="1" text="Total Points For Section:"border="0" color="0" x="1161" y="20" height="64" width="622"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.1 alignment="0" expression="sum(review_question_answer_answer_score for group 1)"border="0" color="0" x="1801" y="20" height="64" width="114" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=trailer.1 alignment="1" text="Points Needed To Pass:"border="0" color="0" x="2007" y="20" height="64" width="713"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.1 alignment="0" expression=" group_total_point_1 "border="0" color="0" x="2743" y="20" height="64" width="247" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=trailer.1 alignment="0" expression="sum( keyed for group 1)"border="0" color="16777215" x="3342" y="8" height="68" width="183" format="[general]"  name=key_sum  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+text(band=summary alignment="2" text="Totals"border="0" color="16777215" x="105" y="4" height="64" width="3259"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="8421504" )
+text(band=summary alignment="1" text="Needed for Passing:"border="0" color="0" x="2117" y="80" height="64" width="603"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=summary id=21 alignment="0" tabsequence=32766 border="0" color="0" x="2734" y="80" height="64" width="229" format="[general]"  name=review_hdr_minimum_passing_score edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="1" text="Total PointsScored:"border="0" color="0" x="1202" y="84" height="64" width="576"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="sum(review_question_answer_answer_score)"border="0" color="0" x="1797" y="84" height="64" width="114" format="[general]"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="1" text="Total Points Possible:"border="0" color="0" x="128" y="84" height="64" width="649"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=summary id=22 alignment="0" tabsequence=32766 border="0" color="0" x="768" y="84" height="64" width="242" format="[general]"  name=review_hdr_total_points edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+
+sparse(names="group_total_point_1	group_total_point_2")htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

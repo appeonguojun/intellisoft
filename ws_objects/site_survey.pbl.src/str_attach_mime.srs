@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_attach_mime.srs
+global type str_attach_mime from structure
+	string		as_attachlist[]
+	string		as_mimelist[]
+end type
+

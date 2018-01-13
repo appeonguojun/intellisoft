@@ -1,0 +1,1964 @@
+﻿$PBExportHeader$m_pfe_cst_app_audit.srm
+forward
+global type m_pfe_cst_app_audit from m_pfe_cst_master_menu
+end type
+type m_action from menu within m_pfe_cst_app_audit
+end type
+type m_faxmissinginforequest from menu within m_action
+end type
+type m_callprac from menu within m_action
+end type
+type m_11 from menu within m_action
+end type
+type m_copyrequireddata from menu within m_action
+end type
+type m_addmissingitems from menu within m_action
+end type
+type m_action from menu within m_pfe_cst_app_audit
+m_faxmissinginforequest m_faxmissinginforequest
+m_callprac m_callprac
+m_11 m_11
+m_copyrequireddata m_copyrequireddata
+m_addmissingitems m_addmissingitems
+end type
+global type m_pfe_cst_app_audit from m_pfe_cst_master_menu
+m_action m_action
+end type
+end forward
+
+global type m_pfe_cst_app_audit from m_pfe_cst_master_menu
+m_action m_action
+end type
+global m_pfe_cst_app_audit m_pfe_cst_app_audit
+
+on m_pfe_cst_app_audit.create
+m_pfe_cst_app_audit=this
+call super::create
+this.m_action=create m_action
+this.Item[UpperBound(this.Item)+1]=this.m_action
+end on
+
+on m_pfe_cst_app_audit.destroy
+call super::destroy
+destroy(this.m_action)
+end on
+
+type m_file from m_pfe_cst_master_menu`m_file within m_pfe_cst_app_audit
+end type
+
+on m_file.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_file.destroy
+call super::destroy
+end on
+
+type m_practitioner from m_pfe_cst_master_menu`m_practitioner within m_file
+end type
+
+on m_practitioner.create
+call super::create
+this.toolbaritemtext = "Practitioner"
+end on
+
+on m_practitioner.destroy
+call super::destroy
+end on
+
+type m_facility from m_pfe_cst_master_menu`m_facility within m_file
+end type
+
+on m_facility.create
+call super::create
+this.toolbaritemname = "Library!"
+this.toolbaritemtext = "Facility"
+end on
+
+on m_facility.destroy
+call super::destroy
+end on
+
+type m_meetings from m_pfe_cst_master_menu`m_meetings within m_file
+end type
+
+on m_meetings.create
+call super::create
+this.toolbaritemname = "ComputeToday5!"
+this.toolbaritemtext = "Meetings"
+end on
+
+on m_meetings.destroy
+call super::destroy
+end on
+
+type m_privileging from m_pfe_cst_master_menu`m_privileging within m_file
+end type
+
+on m_privileging.create
+call super::create
+this.toolbaritemtext = "Privileging"
+end on
+
+on m_privileging.destroy
+call super::destroy
+end on
+
+type m_actionitems from m_pfe_cst_master_menu`m_actionitems within m_file
+end type
+
+on m_actionitems.create
+call super::create
+end on
+
+on m_actionitems.destroy
+call super::destroy
+end on
+
+type m_todolist from m_pfe_cst_master_menu`m_todolist within m_file
+end type
+
+on m_todolist.create
+call super::create
+end on
+
+on m_todolist.destroy
+call super::destroy
+end on
+
+type m_sitesurvey from m_pfe_cst_master_menu`m_sitesurvey within m_file
+end type
+
+on m_sitesurvey.create
+call super::create
+end on
+
+on m_sitesurvey.destroy
+call super::destroy
+end on
+
+type m_grouppractices from m_pfe_cst_master_menu`m_grouppractices within m_file
+end type
+
+on m_grouppractices.create
+call super::create
+end on
+
+on m_grouppractices.destroy
+call super::destroy
+end on
+
+type m_contract from m_pfe_cst_master_menu`m_contract within m_file
+end type
+
+on m_contract.create
+call super::create
+end on
+
+on m_contract.destroy
+call super::destroy
+end on
+
+type m_contacts from m_pfe_cst_master_menu`m_contacts within m_file
+end type
+
+on m_contacts.create
+call super::create
+end on
+
+on m_contacts.destroy
+call super::destroy
+end on
+
+type m_qualityprofilemeasurements from m_pfe_cst_master_menu`m_qualityprofilemeasurements within m_file
+end type
+
+on m_qualityprofilemeasurements.create
+call super::create
+end on
+
+on m_qualityprofilemeasurements.destroy
+call super::destroy
+end on
+
+type m_casepeerreview from m_pfe_cst_master_menu`m_casepeerreview within m_file
+end type
+
+on m_casepeerreview.create
+call super::create
+end on
+
+on m_casepeerreview.destroy
+call super::destroy
+end on
+
+type m_contractglobalsearch from m_pfe_cst_master_menu`m_contractglobalsearch within m_file
+end type
+
+on m_contractglobalsearch.create
+call super::create
+end on
+
+on m_contractglobalsearch.destroy
+call super::destroy
+end on
+
+type m_4 from m_pfe_cst_master_menu`m_4 within m_file
+end type
+
+on m_4.create
+call super::create
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_close from m_pfe_cst_master_menu`m_close within m_file
+end type
+
+on m_close.create
+call super::create
+this.toolbaritembarindex = 2
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_dash11 from m_pfe_cst_master_menu`m_dash11 within m_file
+end type
+
+on m_dash11.create
+call super::create
+end on
+
+on m_dash11.destroy
+call super::destroy
+end on
+
+type m_save from m_pfe_cst_master_menu`m_save within m_file
+end type
+
+on m_save.create
+call super::create
+this.toolbaritemvisible = true
+this.toolbaritembarindex = 2
+end on
+
+on m_save.destroy
+call super::destroy
+end on
+
+type m_dash12 from m_pfe_cst_master_menu`m_dash12 within m_file
+end type
+
+on m_dash12.create
+call super::create
+end on
+
+on m_dash12.destroy
+call super::destroy
+end on
+
+type m_print from m_pfe_cst_master_menu`m_print within m_file
+end type
+
+on m_print.create
+call super::create
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Print"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 38
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printpreview from m_pfe_cst_master_menu`m_printpreview within m_file
+end type
+
+on m_printpreview.create
+call super::create
+end on
+
+on m_printpreview.destroy
+call super::destroy
+end on
+
+type m_pagesetup from m_pfe_cst_master_menu`m_pagesetup within m_file
+end type
+
+on m_pagesetup.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_pagesetup.destroy
+call super::destroy
+end on
+
+type m_dash13 from m_pfe_cst_master_menu`m_dash13 within m_file
+end type
+
+on m_dash13.create
+call super::create
+end on
+
+on m_dash13.destroy
+call super::destroy
+end on
+
+type m_properties from m_pfe_cst_master_menu`m_properties within m_file
+end type
+
+on m_properties.create
+call super::create
+end on
+
+on m_properties.destroy
+call super::destroy
+end on
+
+type m_dash14 from m_pfe_cst_master_menu`m_dash14 within m_file
+end type
+
+on m_dash14.create
+call super::create
+end on
+
+on m_dash14.destroy
+call super::destroy
+end on
+
+type m_exit from m_pfe_cst_master_menu`m_exit within m_file
+end type
+
+on m_exit.create
+call super::create
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_pfcmrudash1 from m_pfe_cst_master_menu`m_pfcmrudash1 within m_file
+end type
+
+on m_pfcmrudash1.create
+call super::create
+end on
+
+on m_pfcmrudash1.destroy
+call super::destroy
+end on
+
+type m_pfcmru2 from m_pfe_cst_master_menu`m_pfcmru2 within m_file
+end type
+
+on m_pfcmru2.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_pfcmru2.destroy
+call super::destroy
+end on
+
+type m_pfcmru3 from m_pfe_cst_master_menu`m_pfcmru3 within m_file
+end type
+
+on m_pfcmru3.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_pfcmru3.destroy
+call super::destroy
+end on
+
+type m_pfcmru4 from m_pfe_cst_master_menu`m_pfcmru4 within m_file
+end type
+
+on m_pfcmru4.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_pfcmru4.destroy
+call super::destroy
+end on
+
+type m_pfcmru5 from m_pfe_cst_master_menu`m_pfcmru5 within m_file
+end type
+
+on m_pfcmru5.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_pfcmru5.destroy
+call super::destroy
+end on
+
+type m_importdata from m_pfe_cst_master_menu`m_importdata within m_file
+end type
+
+on m_importdata.create
+call super::create
+end on
+
+on m_importdata.destroy
+call super::destroy
+end on
+
+type m_edit from m_pfe_cst_master_menu`m_edit within m_pfe_cst_app_audit
+end type
+
+on m_edit.create
+call super::create
+this.visible = false
+end on
+
+on m_edit.destroy
+call super::destroy
+end on
+
+type m_undo from m_pfe_cst_master_menu`m_undo within m_edit
+end type
+
+on m_undo.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_undo.destroy
+call super::destroy
+end on
+
+type m_dash21 from m_pfe_cst_master_menu`m_dash21 within m_edit
+end type
+
+on m_dash21.create
+call super::create
+end on
+
+on m_dash21.destroy
+call super::destroy
+end on
+
+type m_cut from m_pfe_cst_master_menu`m_cut within m_edit
+end type
+
+on m_cut.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_cut.destroy
+call super::destroy
+end on
+
+type m_copy from m_pfe_cst_master_menu`m_copy within m_edit
+end type
+
+on m_copy.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_paste from m_pfe_cst_master_menu`m_paste within m_edit
+end type
+
+on m_paste.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_paste.destroy
+call super::destroy
+end on
+
+type m_pastespecial from m_pfe_cst_master_menu`m_pastespecial within m_edit
+end type
+
+on m_pastespecial.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_pastespecial.destroy
+call super::destroy
+end on
+
+type m_clear from m_pfe_cst_master_menu`m_clear within m_edit
+end type
+
+on m_clear.create
+call super::create
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_dash22 from m_pfe_cst_master_menu`m_dash22 within m_edit
+end type
+
+on m_dash22.create
+call super::create
+end on
+
+on m_dash22.destroy
+call super::destroy
+end on
+
+type m_selectall from m_pfe_cst_master_menu`m_selectall within m_edit
+end type
+
+on m_selectall.create
+call super::create
+end on
+
+on m_selectall.destroy
+call super::destroy
+end on
+
+type m_dash23 from m_pfe_cst_master_menu`m_dash23 within m_edit
+end type
+
+on m_dash23.create
+call super::create
+end on
+
+on m_dash23.destroy
+call super::destroy
+end on
+
+type m_find from m_pfe_cst_master_menu`m_find within m_edit
+end type
+
+on m_find.create
+call super::create
+end on
+
+on m_find.destroy
+call super::destroy
+end on
+
+type m_replace from m_pfe_cst_master_menu`m_replace within m_edit
+end type
+
+on m_replace.create
+call super::create
+end on
+
+on m_replace.destroy
+call super::destroy
+end on
+
+type m_insert from m_pfe_cst_master_menu`m_insert within m_edit
+end type
+
+on m_insert.create
+call super::create
+this.enabled = false
+this.toolbaritembarindex = 2
+end on
+
+on m_insert.destroy
+call super::destroy
+end on
+
+type m_110 from m_pfe_cst_master_menu`m_110 within m_edit
+end type
+
+on m_110.create
+call super::create
+end on
+
+on m_110.destroy
+call super::destroy
+end on
+
+type m_delete1 from m_pfe_cst_master_menu`m_delete1 within m_edit
+end type
+
+on m_delete1.create
+call super::create
+this.toolbaritembarindex = 2
+end on
+
+on m_delete1.destroy
+call super::destroy
+end on
+
+type m_3 from m_pfe_cst_master_menu`m_3 within m_edit
+end type
+
+on m_3.create
+call super::create
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_restorerow from m_pfe_cst_master_menu`m_restorerow within m_edit
+end type
+
+on m_restorerow.create
+call super::create
+this.toolbaritemvisible = false
+end on
+
+on m_restorerow.destroy
+call super::destroy
+end on
+
+type m_view from m_pfe_cst_master_menu`m_view within m_pfe_cst_app_audit
+end type
+
+on m_view.create
+call super::create
+end on
+
+on m_view.destroy
+call super::destroy
+end on
+
+type m_ruler from m_pfe_cst_master_menu`m_ruler within m_view
+end type
+
+on m_ruler.create
+call super::create
+end on
+
+on m_ruler.destroy
+call super::destroy
+end on
+
+type m_dash31 from m_pfe_cst_master_menu`m_dash31 within m_view
+end type
+
+on m_dash31.create
+call super::create
+end on
+
+on m_dash31.destroy
+call super::destroy
+end on
+
+type m_largeicon from m_pfe_cst_master_menu`m_largeicon within m_view
+end type
+
+on m_largeicon.create
+call super::create
+end on
+
+on m_largeicon.destroy
+call super::destroy
+end on
+
+type m_smallicons from m_pfe_cst_master_menu`m_smallicons within m_view
+end type
+
+on m_smallicons.create
+call super::create
+end on
+
+on m_smallicons.destroy
+call super::destroy
+end on
+
+type m_list from m_pfe_cst_master_menu`m_list within m_view
+end type
+
+on m_list.create
+call super::create
+end on
+
+on m_list.destroy
+call super::destroy
+end on
+
+type m_details from m_pfe_cst_master_menu`m_details within m_view
+end type
+
+on m_details.create
+call super::create
+end on
+
+on m_details.destroy
+call super::destroy
+end on
+
+type m_dash32 from m_pfe_cst_master_menu`m_dash32 within m_view
+end type
+
+on m_dash32.create
+call super::create
+end on
+
+on m_dash32.destroy
+call super::destroy
+end on
+
+type m_arrangeicons from m_pfe_cst_master_menu`m_arrangeicons within m_view
+end type
+
+on m_arrangeicons.create
+call super::create
+end on
+
+on m_arrangeicons.destroy
+call super::destroy
+end on
+
+type m_by1 from m_pfe_cst_master_menu`m_by1 within m_arrangeicons
+end type
+
+on m_by1.create
+call super::create
+end on
+
+on m_by1.destroy
+call super::destroy
+end on
+
+type m_dash33 from m_pfe_cst_master_menu`m_dash33 within m_arrangeicons
+end type
+
+on m_dash33.create
+call super::create
+end on
+
+on m_dash33.destroy
+call super::destroy
+end on
+
+type m_autoarrange from m_pfe_cst_master_menu`m_autoarrange within m_arrangeicons
+end type
+
+on m_autoarrange.create
+call super::create
+end on
+
+on m_autoarrange.destroy
+call super::destroy
+end on
+
+type m_dash34 from m_pfe_cst_master_menu`m_dash34 within m_view
+end type
+
+on m_dash34.create
+call super::create
+end on
+
+on m_dash34.destroy
+call super::destroy
+end on
+
+type m_first from m_pfe_cst_master_menu`m_first within m_view
+end type
+
+on m_first.create
+call super::create
+end on
+
+on m_first.destroy
+call super::destroy
+end on
+
+type m_nextpage from m_pfe_cst_master_menu`m_nextpage within m_view
+end type
+
+on m_nextpage.create
+call super::create
+end on
+
+on m_nextpage.destroy
+call super::destroy
+end on
+
+type m_priorpage from m_pfe_cst_master_menu`m_priorpage within m_view
+end type
+
+on m_priorpage.create
+call super::create
+end on
+
+on m_priorpage.destroy
+call super::destroy
+end on
+
+type m_lastpage from m_pfe_cst_master_menu`m_lastpage within m_view
+end type
+
+on m_lastpage.create
+call super::create
+end on
+
+on m_lastpage.destroy
+call super::destroy
+end on
+
+type m_dash35 from m_pfe_cst_master_menu`m_dash35 within m_view
+end type
+
+on m_dash35.create
+call super::create
+end on
+
+on m_dash35.destroy
+call super::destroy
+end on
+
+type m_sort from m_pfe_cst_master_menu`m_sort within m_view
+end type
+
+on m_sort.create
+call super::create
+end on
+
+on m_sort.destroy
+call super::destroy
+end on
+
+type m_filter from m_pfe_cst_master_menu`m_filter within m_view
+end type
+
+on m_filter.create
+call super::create
+end on
+
+on m_filter.destroy
+call super::destroy
+end on
+
+type m_dash36 from m_pfe_cst_master_menu`m_dash36 within m_view
+end type
+
+on m_dash36.create
+call super::create
+end on
+
+on m_dash36.destroy
+call super::destroy
+end on
+
+type m_zoom from m_pfe_cst_master_menu`m_zoom within m_view
+end type
+
+on m_zoom.create
+call super::create
+end on
+
+on m_zoom.destroy
+call super::destroy
+end on
+
+type m_reports from m_pfe_cst_master_menu`m_reports within m_pfe_cst_app_audit
+end type
+
+on m_reports.create
+call super::create
+end on
+
+on m_reports.destroy
+call super::destroy
+end on
+
+type m_output from m_pfe_cst_master_menu`m_output within m_reports
+end type
+
+on m_output.create
+call super::create
+end on
+
+on m_output.destroy
+call super::destroy
+end on
+
+type m_intellireport from m_pfe_cst_master_menu`m_intellireport within m_reports
+end type
+
+on m_intellireport.create
+call super::create
+end on
+
+on m_intellireport.destroy
+call super::destroy
+end on
+
+type m_reportsgraphs from m_pfe_cst_master_menu`m_reportsgraphs within m_reports
+end type
+
+on m_reportsgraphs.create
+call super::create
+end on
+
+on m_reportsgraphs.destroy
+call super::destroy
+end on
+
+type m_letters from m_pfe_cst_master_menu`m_letters within m_reports
+end type
+
+on m_letters.create
+call super::create
+end on
+
+on m_letters.destroy
+call super::destroy
+end on
+
+type m_120 from m_pfe_cst_master_menu`m_120 within m_reports
+end type
+
+on m_120.create
+call super::create
+end on
+
+on m_120.destroy
+call super::destroy
+end on
+
+type m_applications from m_pfe_cst_master_menu`m_applications within m_reports
+end type
+
+on m_applications.create
+call super::create
+end on
+
+on m_applications.destroy
+call super::destroy
+end on
+
+type m_privilegelisting from m_pfe_cst_master_menu`m_privilegelisting within m_reports
+end type
+
+on m_privilegelisting.create
+call super::create
+end on
+
+on m_privilegelisting.destroy
+call super::destroy
+end on
+
+type m_npdbreports from m_pfe_cst_master_menu`m_npdbreports within m_reports
+end type
+
+on m_npdbreports.create
+call super::create
+end on
+
+on m_npdbreports.destroy
+call super::destroy
+end on
+
+type m_runexport from m_pfe_cst_master_menu`m_runexport within m_reports
+end type
+
+on m_runexport.create
+call super::create
+end on
+
+on m_runexport.destroy
+call super::destroy
+end on
+
+type m_system from m_pfe_cst_master_menu`m_system within m_pfe_cst_app_audit
+end type
+
+on m_system.create
+call super::create
+end on
+
+on m_system.destroy
+call super::destroy
+end on
+
+type m_painters from m_pfe_cst_master_menu`m_painters within m_system
+end type
+
+on m_painters.create
+call super::create
+end on
+
+on m_painters.destroy
+call super::destroy
+end on
+
+type m_applicationauditpainter from m_pfe_cst_master_menu`m_applicationauditpainter within m_painters
+end type
+
+on m_applicationauditpainter.create
+call super::create
+end on
+
+on m_applicationauditpainter.destroy
+call super::destroy
+end on
+
+type m_applicationmapping from m_pfe_cst_master_menu`m_applicationmapping within m_painters
+end type
+
+on m_applicationmapping.create
+call super::create
+end on
+
+on m_applicationmapping.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile from m_pfe_cst_master_menu`m_contractrequirementprofile within m_painters
+end type
+
+on m_contractrequirementprofile.create
+call super::create
+end on
+
+on m_contractrequirementprofile.destroy
+call super::destroy
+end on
+
+type m_contractrequirementprofile0 from m_pfe_cst_master_menu`m_contractrequirementprofile0 within m_contractrequirementprofile
+end type
+
+on m_contractrequirementprofile0.create
+call super::create
+end on
+
+on m_contractrequirementprofile0.destroy
+call super::destroy
+end on
+
+type m_cptcode from m_pfe_cst_master_menu`m_cptcode within m_contractrequirementprofile
+end type
+
+on m_cptcode.create
+call super::create
+end on
+
+on m_cptcode.destroy
+call super::destroy
+end on
+
+type m_emailpainter from m_pfe_cst_master_menu`m_emailpainter within m_painters
+end type
+
+on m_emailpainter.create
+call super::create
+end on
+
+on m_emailpainter.destroy
+call super::destroy
+end on
+
+type m_expiringlettersetting from m_pfe_cst_master_menu`m_expiringlettersetting within m_painters
+end type
+
+on m_expiringlettersetting.create
+call super::create
+end on
+
+on m_expiringlettersetting.destroy
+call super::destroy
+end on
+
+type m_outputpainter from m_pfe_cst_master_menu`m_outputpainter within m_painters
+end type
+
+on m_outputpainter.create
+call super::create
+end on
+
+on m_outputpainter.destroy
+call super::destroy
+end on
+
+type m_facilitypainter from m_pfe_cst_master_menu`m_facilitypainter within m_painters
+end type
+
+on m_facilitypainter.create
+call super::create
+end on
+
+on m_facilitypainter.destroy
+call super::destroy
+end on
+
+type m_faxemailtemplatepainter from m_pfe_cst_master_menu`m_faxemailtemplatepainter within m_painters
+end type
+
+on m_faxemailtemplatepainter.create
+call super::create
+end on
+
+on m_faxemailtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_imagetypepainter from m_pfe_cst_master_menu`m_imagetypepainter within m_painters
+end type
+
+on m_imagetypepainter.create
+call super::create
+end on
+
+on m_imagetypepainter.destroy
+call super::destroy
+end on
+
+type m_importpainter from m_pfe_cst_master_menu`m_importpainter within m_painters
+end type
+
+on m_importpainter.create
+call super::create
+end on
+
+on m_importpainter.destroy
+call super::destroy
+end on
+
+type m_intellibatchpainter from m_pfe_cst_master_menu`m_intellibatchpainter within m_painters
+end type
+
+on m_intellibatchpainter.create
+call super::create
+end on
+
+on m_intellibatchpainter.destroy
+call super::destroy
+end on
+
+type m_letterpainter from m_pfe_cst_master_menu`m_letterpainter within m_painters
+end type
+
+on m_letterpainter.create
+call super::create
+end on
+
+on m_letterpainter.destroy
+call super::destroy
+end on
+
+type m_letterstorageareapainter from m_pfe_cst_master_menu`m_letterstorageareapainter within m_painters
+end type
+
+on m_letterstorageareapainter.create
+call super::create
+end on
+
+on m_letterstorageareapainter.destroy
+call super::destroy
+end on
+
+type m_lookuppainter from m_pfe_cst_master_menu`m_lookuppainter within m_painters
+end type
+
+on m_lookuppainter.create
+call super::create
+end on
+
+on m_lookuppainter.destroy
+call super::destroy
+end on
+
+type m_multiapppainter from m_pfe_cst_master_menu`m_multiapppainter within m_painters
+end type
+
+on m_multiapppainter.create
+call super::create
+end on
+
+on m_multiapppainter.destroy
+call super::destroy
+end on
+
+type m_privilegepainter from m_pfe_cst_master_menu`m_privilegepainter within m_painters
+end type
+
+on m_privilegepainter.create
+call super::create
+end on
+
+on m_privilegepainter.destroy
+call super::destroy
+end on
+
+type m_profilepainter from m_pfe_cst_master_menu`m_profilepainter within m_painters
+end type
+
+on m_profilepainter.create
+call super::create
+end on
+
+on m_profilepainter.destroy
+call super::destroy
+end on
+
+type m_profilepainter1 from m_pfe_cst_master_menu`m_profilepainter1 within m_painters
+end type
+
+on m_profilepainter1.create
+call super::create
+end on
+
+on m_profilepainter1.destroy
+call super::destroy
+end on
+
+type m_reappointmentmeasurements from m_pfe_cst_master_menu`m_reappointmentmeasurements within m_painters
+end type
+
+on m_reappointmentmeasurements.create
+call super::create
+end on
+
+on m_reappointmentmeasurements.destroy
+call super::destroy
+end on
+
+type m_questionpainter from m_pfe_cst_master_menu`m_questionpainter within m_painters
+end type
+
+on m_questionpainter.create
+call super::create
+end on
+
+on m_questionpainter.destroy
+call super::destroy
+end on
+
+type m_rolepainter from m_pfe_cst_master_menu`m_rolepainter within m_painters
+end type
+
+on m_rolepainter.create
+call super::create
+end on
+
+on m_rolepainter.destroy
+call super::destroy
+end on
+
+type m_screenpainter from m_pfe_cst_master_menu`m_screenpainter within m_painters
+end type
+
+on m_screenpainter.create
+call super::create
+end on
+
+on m_screenpainter.destroy
+call super::destroy
+end on
+
+type m_contractdatascreenpainter from m_pfe_cst_master_menu`m_contractdatascreenpainter within m_painters
+end type
+
+on m_contractdatascreenpainter.create
+call super::create
+end on
+
+on m_contractdatascreenpainter.destroy
+call super::destroy
+end on
+
+type m_surveypainter from m_pfe_cst_master_menu`m_surveypainter within m_painters
+end type
+
+on m_surveypainter.create
+call super::create
+end on
+
+on m_surveypainter.destroy
+call super::destroy
+end on
+
+type m_todolistpainter from m_pfe_cst_master_menu`m_todolistpainter within m_painters
+end type
+
+on m_todolistpainter.create
+call super::create
+end on
+
+on m_todolistpainter.destroy
+call super::destroy
+end on
+
+type m_userpainter from m_pfe_cst_master_menu`m_userpainter within m_painters
+end type
+
+on m_userpainter.create
+call super::create
+end on
+
+on m_userpainter.destroy
+call super::destroy
+end on
+
+type m_viewpainter from m_pfe_cst_master_menu`m_viewpainter within m_painters
+end type
+
+on m_viewpainter.create
+call super::create
+end on
+
+on m_viewpainter.destroy
+call super::destroy
+end on
+
+type m_contractviewpainter from m_pfe_cst_master_menu`m_contractviewpainter within m_painters
+end type
+
+on m_contractviewpainter.create
+call super::create
+end on
+
+on m_contractviewpainter.destroy
+call super::destroy
+end on
+
+type m_webview from m_pfe_cst_master_menu`m_webview within m_painters
+end type
+
+on m_webview.create
+call super::create
+end on
+
+on m_webview.destroy
+call super::destroy
+end on
+
+type m_webviewtemplatepainter from m_pfe_cst_master_menu`m_webviewtemplatepainter within m_webview
+end type
+
+on m_webviewtemplatepainter.create
+call super::create
+end on
+
+on m_webviewtemplatepainter.destroy
+call super::destroy
+end on
+
+type m_workflowpainter from m_pfe_cst_master_menu`m_workflowpainter within m_painters
+end type
+
+on m_workflowpainter.create
+call super::create
+end on
+
+on m_workflowpainter.destroy
+call super::destroy
+end on
+
+type m_agreement from m_pfe_cst_master_menu`m_agreement within m_painters
+end type
+
+on m_agreement.create
+call super::create
+end on
+
+on m_agreement.destroy
+call super::destroy
+end on
+
+type m_clauselibrarypainter from m_pfe_cst_master_menu`m_clauselibrarypainter within m_agreement
+end type
+
+on m_clauselibrarypainter.create
+call super::create
+end on
+
+on m_clauselibrarypainter.destroy
+call super::destroy
+end on
+
+type m_templatelibrarypainter from m_pfe_cst_master_menu`m_templatelibrarypainter within m_agreement
+end type
+
+on m_templatelibrarypainter.create
+call super::create
+end on
+
+on m_templatelibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter from m_pfe_cst_master_menu`m_documentlibrarypainter within m_agreement
+end type
+
+on m_documentlibrarypainter.create
+call super::create
+end on
+
+on m_documentlibrarypainter.destroy
+call super::destroy
+end on
+
+type m_documentlibrarypainter_l2 from m_pfe_cst_master_menu`m_documentlibrarypainter_l2 within m_painters
+end type
+
+on m_documentlibrarypainter_l2.create
+call super::create
+end on
+
+on m_documentlibrarypainter_l2.destroy
+call super::destroy
+end on
+
+type m_2 from m_pfe_cst_master_menu`m_2 within m_system
+end type
+
+on m_2.create
+call super::create
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_audittrail from m_pfe_cst_master_menu`m_audittrail within m_system
+end type
+
+on m_audittrail.create
+call super::create
+end on
+
+on m_audittrail.destroy
+call super::destroy
+end on
+
+type m_deletepractitioner from m_pfe_cst_master_menu`m_deletepractitioner within m_system
+end type
+
+on m_deletepractitioner.create
+call super::create
+end on
+
+on m_deletepractitioner.destroy
+call super::destroy
+end on
+
+type m_utilities from m_pfe_cst_master_menu`m_utilities within m_system
+end type
+
+on m_utilities.create
+call super::create
+end on
+
+on m_utilities.destroy
+call super::destroy
+end on
+
+type m_batchupdate from m_pfe_cst_master_menu`m_batchupdate within m_system
+end type
+
+on m_batchupdate.create
+call super::create
+end on
+
+on m_batchupdate.destroy
+call super::destroy
+end on
+
+type m_updatebatch from m_pfe_cst_master_menu`m_updatebatch within m_batchupdate
+end type
+
+on m_updatebatch.create
+call super::create
+end on
+
+on m_updatebatch.destroy
+call super::destroy
+end on
+
+type m_addbatch from m_pfe_cst_master_menu`m_addbatch within m_batchupdate
+end type
+
+on m_addbatch.create
+call super::create
+end on
+
+on m_addbatch.destroy
+call super::destroy
+end on
+
+type m_privileges from m_pfe_cst_master_menu`m_privileges within m_batchupdate
+end type
+
+on m_privileges.create
+call super::create
+end on
+
+on m_privileges.destroy
+call super::destroy
+end on
+
+type m_staffcategory from m_pfe_cst_master_menu`m_staffcategory within m_batchupdate
+end type
+
+on m_staffcategory.create
+call super::create
+end on
+
+on m_staffcategory.destroy
+call super::destroy
+end on
+
+type m_updatepayorappl from m_pfe_cst_master_menu`m_updatepayorappl within m_batchupdate
+end type
+
+on m_updatepayorappl.create
+call super::create
+end on
+
+on m_updatepayorappl.destroy
+call super::destroy
+end on
+
+type m_batchoig from m_pfe_cst_master_menu`m_batchoig within m_system
+end type
+
+on m_batchoig.create
+call super::create
+end on
+
+on m_batchoig.destroy
+call super::destroy
+end on
+
+type m_importoigdata from m_pfe_cst_master_menu`m_importoigdata within m_system
+end type
+
+on m_importoigdata.create
+call super::create
+end on
+
+on m_importoigdata.destroy
+call super::destroy
+end on
+
+type m_1 from m_pfe_cst_master_menu`m_1 within m_system
+end type
+
+on m_1.create
+call super::create
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_batchaddapplications from m_pfe_cst_master_menu`m_batchaddapplications within m_system
+end type
+
+on m_batchaddapplications.create
+call super::create
+end on
+
+on m_batchaddapplications.destroy
+call super::destroy
+end on
+
+type m_intellibatch from m_pfe_cst_master_menu`m_intellibatch within m_system
+end type
+
+on m_intellibatch.create
+call super::create
+end on
+
+on m_intellibatch.destroy
+call super::destroy
+end on
+
+type m_browseweb from m_pfe_cst_master_menu`m_browseweb within m_system
+end type
+
+on m_browseweb.create
+call super::create
+end on
+
+on m_browseweb.destroy
+call super::destroy
+end on
+
+type m_useridbatchupdate from m_pfe_cst_master_menu`m_useridbatchupdate within m_system
+end type
+
+on m_useridbatchupdate.create
+call super::create
+end on
+
+on m_useridbatchupdate.destroy
+call super::destroy
+end on
+
+type m_window from m_pfe_cst_master_menu`m_window within m_pfe_cst_app_audit
+end type
+
+on m_window.create
+call super::create
+end on
+
+on m_window.destroy
+call super::destroy
+end on
+
+type m_cascade from m_pfe_cst_master_menu`m_cascade within m_window
+end type
+
+on m_cascade.create
+call super::create
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_tilehorizontal from m_pfe_cst_master_menu`m_tilehorizontal within m_window
+end type
+
+on m_tilehorizontal.create
+call super::create
+end on
+
+on m_tilehorizontal.destroy
+call super::destroy
+end on
+
+type m_tilevertical from m_pfe_cst_master_menu`m_tilevertical within m_window
+end type
+
+on m_tilevertical.create
+call super::create
+end on
+
+on m_tilevertical.destroy
+call super::destroy
+end on
+
+type m_layer from m_pfe_cst_master_menu`m_layer within m_window
+end type
+
+on m_layer.create
+call super::create
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_dash51 from m_pfe_cst_master_menu`m_dash51 within m_window
+end type
+
+on m_dash51.create
+call super::create
+end on
+
+on m_dash51.destroy
+call super::destroy
+end on
+
+type m_minimizeall from m_pfe_cst_master_menu`m_minimizeall within m_window
+end type
+
+on m_minimizeall.create
+call super::create
+end on
+
+on m_minimizeall.destroy
+call super::destroy
+end on
+
+type m_undoarrange from m_pfe_cst_master_menu`m_undoarrange within m_window
+end type
+
+on m_undoarrange.create
+call super::create
+end on
+
+on m_undoarrange.destroy
+call super::destroy
+end on
+
+type m_5555 from m_pfe_cst_master_menu`m_5555 within m_window
+end type
+
+on m_5555.create
+call super::create
+end on
+
+on m_5555.destroy
+call super::destroy
+end on
+
+type m_dashboard from m_pfe_cst_master_menu`m_dashboard within m_window
+end type
+
+on m_dashboard.create
+call super::create
+end on
+
+on m_dashboard.destroy
+call super::destroy
+end on
+
+type m_autoresize from m_pfe_cst_master_menu`m_autoresize within m_window
+end type
+
+on m_autoresize.create
+call super::create
+end on
+
+on m_autoresize.destroy
+call super::destroy
+end on
+
+type m_help from m_pfe_cst_master_menu`m_help within m_pfe_cst_app_audit
+end type
+
+on m_help.create
+call super::create
+end on
+
+on m_help.destroy
+call super::destroy
+end on
+
+type m_onlinehelp from m_pfe_cst_master_menu`m_onlinehelp within m_help
+end type
+
+on m_onlinehelp.create
+call super::create
+end on
+
+on m_onlinehelp.destroy
+call super::destroy
+end on
+
+type m_helptopics from m_pfe_cst_master_menu`m_helptopics within m_help
+end type
+
+on m_helptopics.create
+call super::create
+end on
+
+on m_helptopics.destroy
+call super::destroy
+end on
+
+type m_viewlets from m_pfe_cst_master_menu`m_viewlets within m_help
+end type
+
+on m_viewlets.create
+call super::create
+end on
+
+on m_viewlets.destroy
+call super::destroy
+end on
+
+type m_dash61 from m_pfe_cst_master_menu`m_dash61 within m_help
+end type
+
+on m_dash61.create
+call super::create
+end on
+
+on m_dash61.destroy
+call super::destroy
+end on
+
+type m_about from m_pfe_cst_master_menu`m_about within m_help
+end type
+
+on m_about.create
+call super::create
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+
+type m_iapply from m_pfe_cst_master_menu`m_iapply within m_help
+end type
+
+on m_iapply.create
+call super::create
+end on
+
+on m_iapply.destroy
+call super::destroy
+end on
+
+type m_newdevtesting from m_pfe_cst_master_menu`m_newdevtesting within m_help
+end type
+
+on m_newdevtesting.create
+call super::create
+end on
+
+on m_newdevtesting.destroy
+call super::destroy
+end on
+
+type m_currentobject from m_pfe_cst_master_menu`m_currentobject within m_help
+end type
+
+on m_currentobject.create
+call super::create
+end on
+
+on m_currentobject.destroy
+call super::destroy
+end on
+
+type m_curobj2 from m_pfe_cst_master_menu`m_curobj2 within m_help
+end type
+
+on m_curobj2.create
+call super::create
+end on
+
+on m_curobj2.destroy
+call super::destroy
+end on
+
+type m_updates from m_pfe_cst_master_menu`m_updates within m_help
+end type
+
+on m_updates.create
+call super::create
+end on
+
+on m_updates.destroy
+call super::destroy
+end on
+
+type m_action from menu within m_pfe_cst_app_audit
+m_faxmissinginforequest m_faxmissinginforequest
+m_callprac m_callprac
+m_11 m_11
+m_copyrequireddata m_copyrequireddata
+m_addmissingitems m_addmissingitems
+end type
+
+on m_action.create
+call super::create
+this.text = "&Action"
+this.m_faxmissinginforequest=create m_faxmissinginforequest
+this.m_callprac=create m_callprac
+this.m_11=create m_11
+this.m_copyrequireddata=create m_copyrequireddata
+this.m_addmissingitems=create m_addmissingitems
+this.Item[UpperBound(this.Item)+1]=this.m_faxmissinginforequest
+this.Item[UpperBound(this.Item)+1]=this.m_callprac
+this.Item[UpperBound(this.Item)+1]=this.m_11
+this.Item[UpperBound(this.Item)+1]=this.m_copyrequireddata
+this.Item[UpperBound(this.Item)+1]=this.m_addmissingitems
+end on
+
+on m_action.destroy
+call super::destroy
+destroy(this.m_faxmissinginforequest)
+destroy(this.m_callprac)
+destroy(this.m_11)
+destroy(this.m_copyrequireddata)
+destroy(this.m_addmissingitems)
+end on
+
+type m_faxmissinginforequest from menu within m_action
+end type
+
+on m_faxmissinginforequest.create
+call super::create
+this.text = "Compose Missing Info Request Letter"
+this.toolbaritemname = "Report5!"
+this.toolbaritemtext = "Miss~'g Letter,Compose Missing Info Request Letter"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 98
+end on
+
+event clicked;of_SendMessage("pfc_cst_compose_request")
+end event
+
+on m_faxmissinginforequest.destroy
+call super::destroy
+end on
+
+type m_callprac from menu within m_action
+end type
+
+on m_callprac.create
+call super::create
+this.visible = false
+this.text = "Call Practitioner to Request Information"
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom084!"
+this.toolbaritemtext = "Call Prac, Call Practitioner To Request Missing Information"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 99
+end on
+
+on m_callprac.destroy
+call super::destroy
+end on
+
+type m_11 from menu within m_action
+end type
+
+on m_11.create
+call super::create
+this.text = "-"
+end on
+
+on m_11.destroy
+call super::destroy
+end on
+
+type m_copyrequireddata from menu within m_action
+end type
+
+on m_copyrequireddata.create
+call super::create
+this.text = "Copy Required Data"
+this.toolbaritemname = "Horizontal!"
+this.toolbaritemtext = "Copy Row"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 120
+end on
+
+event clicked;of_SendMessage("pfc_cst_copy_row")
+end event
+
+on m_copyrequireddata.destroy
+call super::destroy
+end on
+
+type m_addmissingitems from menu within m_action
+end type
+
+event clicked;of_SendMessage("pfc_cst_add_missing_audit_items")
+end event
+
+on m_addmissingitems.create
+call super::create
+this.text = "Add Missing Items"
+this.toolbaritemname = "SetNextStatement!"
+this.toolbaritemtext = "Add Missing"
+this.toolbaritembarindex = 2
+this.toolbaritemorder = 130
+end on
+
+on m_addmissingitems.destroy
+call super::destroy
+end on
+

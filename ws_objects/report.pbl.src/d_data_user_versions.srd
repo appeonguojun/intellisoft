@@ -1,0 +1,29 @@
+﻿$PBExportHeader$d_data_user_versions.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=288 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(12) update=yes updatewhereclause=yes key=yes name=user_id dbname="sys_user_version.user_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=mod_date dbname="sys_user_version.mod_date" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=version_id dbname="sys_user_version.version_id" )
+ retrieve="  SELECT sys_user_version.user_id,   
+         sys_user_version.mod_date,   
+         sys_user_version.version_id  
+    FROM sys_user_version   
+" update="sys_user_version" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="User updates" border="0" color="0" x="1093" y="28" height="80" width="873" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="201" y="120" height="60" width="329" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="745" y1="284" x2="2144" y2="284"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="User Id" border="0" color="0" x="805" y="228" height="52" width="215" html.valueishtml="0"  name=user_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Version Id" border="0" color="0" x="1088" y="228" height="52" width="297" html.valueishtml="0"  name=version_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="773" y="4" height="64" width="297" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=12 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1088" y="4" height="64" width="727" format="[general]" html.valueishtml="0"  name=version_id visible="1" edit.limit=12 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1833" y="4" height="64" width="503" format="[shortdate]" html.valueishtml="0"  name=mod_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Change  Date" border="0" color="0" x="1833" y="228" height="52" width="398" html.valueishtml="0"  name=mod_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

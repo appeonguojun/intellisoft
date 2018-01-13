@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_crit_clin_area.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=720 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=clinical_area_description dbname="priv_clinical_area.clinical_area_description" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=clinical_area_id dbname="priv_clinical_area.clinical_area_id" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="priv_clinical_area.facility_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"priv_clinical_area~" ) COLUMN(NAME=~"priv_clinical_area.clinical_area_description~") COLUMN(NAME=~"priv_clinical_area.clinical_area_id~") COLUMN(NAME=~"priv_clinical_area.facility_id~")) ORDER(NAME=~"priv_clinical_area.clinical_area_description~" ASC=yes ) " update="priv_clinical_area" updatewhere=0 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="357" y="376" height="64" width="974" format="[general]"  name=clinical_area_description  tag="description of clinical area" dddw.name=d_clin_desc dddw.displaycolumn=clinical_area_description dddw.datacolumn=clinical_area_id dddw.percentwidth=100 dddw.lines=5 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1262" y="784" height="52" width="992" format="[general]"  name=clinical_area_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2281" y="784" height="52" width="992" format="[general]"  name=facility_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

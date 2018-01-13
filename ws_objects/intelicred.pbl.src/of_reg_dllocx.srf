@@ -1,0 +1,153 @@
+﻿$PBExportHeader$of_reg_dllocx.srf
+global type of_reg_dllocx from function_object
+end type
+
+forward prototypes
+global function integer of_reg_dllocx ()
+end prototypes
+
+global function integer of_reg_dllocx ();/* Ken.Guo 2008-11-06. Modification Log: 
+1. Register OCX when every login. 
+2. Unite return error info.
+*/
+//Added By Mark Lee 05/30/12
+IF appeongetclienttype() = 'WEB' THEN RETURN 0  
+//IF appeongetclienttype() = 'WEB' THEN RETURN 0  //Commented by Ken.Guo 2008-11-05
+
+//Registry dll & ocx files - Added by alfee 08.17.2007
+Integer i //Alfee 05.19.2008
+String ls_Key, ls_File, ls_Value, ls_run
+String ls_KeyImg[], ls_FileImg[], ls_valueImg[] //Alfee 06.26.2008
+String ls_error,ls_error_all,ls_module_name
+
+n_cst_systeminfo lnv_sysinfo 
+n_cst_AppeonDll	lnv_Appeon
+//n_cst_reg_control lnv_reg //Add by Evan 08/12/2008
+
+If gnv_reg_ocx.of_check_ocx( 1,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("OfficeControl.ocx", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[1] + ' & ' //1: Office Module
+		//ls_error_all += ls_error + '~r~n'
+		ls_error_all += ls_error + ', '
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 2,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emsmtp.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[2] + ' & ' //2: Email Module
+		ls_error_all += ls_error + ', '		
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 5,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("empop3.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[5] + ' & ' //5: Email Pop3 Module
+		ls_error_all += ls_error + ', '		
+	End If
+End If
+
+If gnv_reg_ocx.of_check_ocx( 6,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emmsg.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[6] + ' & ' //5: Email Pop3 Message Module
+		ls_error_all += ls_error + ', '		
+	End If
+End If
+
+//Added By Ken 09/23/2011. 
+If gnv_reg_ocx.of_check_ocx( 8,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emssl.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[8] + ' & ' //8: Email SSL
+		ls_error_all += ls_error + ', '		
+	End If
+End If
+//added by gavins 20121122
+If gnv_reg_ocx.of_check_ocx( 9,'', False) <> '' Then
+	ls_error = gnv_reg_ocx.of_Register("emimap4.dll", false)
+	If ls_error <> '' Then
+		ls_module_name += gnv_reg_ocx.is_module_name[9] + ' & ' //9: Email imap4
+		ls_error_all += ls_error + ', '		
+	End If
+End If
+
+//Sertifi reg //Added By Ken.Guo 2011-06-24. 
+String ls_es_ocx_names[]
+If gnv_reg_ocx.of_check_ocx( 7,'', False) <> '' Then
+	ls_es_ocx_names[1] = "MSSOAP30.dll"
+	ls_es_ocx_names[2] = "msxml4.dll"
+	ls_es_ocx_names[3] = "WHSC30.dll"
+	ls_es_ocx_names[4] = "WINHTTP5.dll" 
+	ls_es_ocx_names[5] = "WISC30.dll" 	
+	FOR i = 1 to UpperBound(ls_es_ocx_names[])
+		ls_error = gnv_reg_ocx.of_Register(ls_es_ocx_names[i], false)
+		If ls_error <> '' Then
+			If Pos(ls_module_name,gnv_reg_ocx.is_module_name[7],1) = 0 Then 
+				ls_module_name += gnv_reg_ocx.is_module_name[7] + ' & '  
+			End If
+			ls_error_all += ls_error + ', '
+		End If		
+	NEXT
+End If
+
+//--------------Begin Added by Alfee on 05.19.2008 -----------------------
+//Register New Image OCXs
+//BEGIN---Add by Evan 08/12/2008
+string ls_Controls[]
+ls_Controls[1] = "ImageViewer2.OCX"
+ls_Controls[2] = "ImageThumbnailCP.ocx"
+ls_Controls[3] = "Scanner.ocx"
+//END---Add by Evan 08/12/2008
+ls_FileImg[1] = Gs_Current_Directory + '\ImageViewer2.OCX'
+ls_FileImg[2] = Gs_Current_Directory + '\ImageThumbnailCP.ocx'
+ls_FileImg[3] = Gs_Current_Directory + '\Scanner.ocx'
+//Added By Mark Lee 05/30/12
+//ls_KeyImg[1] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{C9460280-3EED-11D0-A647-00A0C91EF7B9}\1.0\0\win32"
+//ls_KeyImg[2] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{51F37CDE-2D78-495D-8B30-D57ABDA60369}\1.0\0\win32"
+//ls_KeyImg[3] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{1BFDDBB8-710A-4BE0-9D39-B438014F4CEB}\1.0\0\win32"
+ls_KeyImg[1] = "HKEY_CLASSES_ROOT\TypeLib\{C9460280-3EED-11D0-A647-00A0C91EF7B9}\1.0\0\win32"
+ls_KeyImg[2] = "HKEY_CLASSES_ROOT\TypeLib\{51F37CDE-2D78-495D-8B30-D57ABDA60369}\1.0\0\win32"
+ls_KeyImg[3] = "HKEY_CLASSES_ROOT\CLSID\{20666F83-3F1D-4211-9DBF-2FF783A18E18}\InprocServer32"
+			
+//ls_KeyImg[3] = "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{20666F83-3F1D-4211-9DBF-2FF783A18E18}\InprocServer32"
+
+//for developer only - Alfee 06.26.2008
+ls_valueImg[1] = "C:\Program Files\Image Viewer CP Gold ActiveX Control\ImageViewer2.OCX"
+ls_valueImg[2] = "D:\Program Files\Image Thumbnail CP ActiveX Control\ImageThumbnailCP.ocx"
+ls_valueImg[3] = "D:\Program Files\Scanner ActiveX Control\Scanner.ocx"
+//ls_valueImg[3] = "C:\PROGRA~~1\SCANNE~~1\Scanner.ocx"
+If gnv_reg_ocx.of_check_ocx( 4,'', False) <> '' Then
+	FOR i = 1 to UpperBound(ls_FileImg)
+		lnv_Appeon.of_registryget(ls_KeyImg[i],"", RegString!, ls_Value)
+		//for developer only - Alfee 06.26.2008
+		IF lower(ls_Value) = lower(ls_valueImg[i]) AND FileExists(ls_valueImg[i]) THEN Continue
+		ls_error = gnv_reg_ocx.of_Register(ls_Controls[i], false)
+		If ls_error <> '' Then
+			If Pos(ls_module_name,gnv_reg_ocx.is_module_name[4],1) = 0 Then 
+				ls_module_name += gnv_reg_ocx.is_module_name[4] + ' & '  //4: New Imaging module
+			End If
+			ls_error_all += ls_error + ', '
+		End If		
+	NEXT
+End If
+//-------------End Added  ----------------------------------------------
+
+
+
+
+If ls_error_all <> '' Then
+	ls_module_name = Mid(ls_module_name,1,len(ls_module_name) - 3)
+	ls_error_all = Mid(ls_error_all,1,len(ls_error_all) - 2)
+	gnv_reg_ocx.of_show_message( ls_module_name,ls_error_all)
+	lnv_sysinfo = Create n_cst_systeminfo
+	lnv_sysinfo.of_auto_fix_settings( )
+End If
+
+If isvalid(lnv_sysinfo) Then Destroy lnv_sysinfo
+RETURN 1
+
+end function
+

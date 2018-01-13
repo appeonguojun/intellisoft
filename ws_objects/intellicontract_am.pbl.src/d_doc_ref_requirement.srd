@@ -1,0 +1,84 @@
+﻿$PBExportHeader$d_doc_ref_requirement.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=80 color="67108864" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_am_document_doc_id dbname="ctx_am_document.doc_id" )
+ column=(type=long updatewhereclause=yes name=ctx_am_document_ctx_id dbname="ctx_am_document.ctx_id" )
+ column=(type=char(200) updatewhereclause=yes name=ctx_am_document_doc_name dbname="ctx_am_document.doc_name" )
+ column=(type=decimal(1) updatewhereclause=yes name=ctx_am_document_revision dbname="ctx_am_document.revision" )
+ column=(type=char(10) updatewhereclause=yes name=ctx_am_document_doc_ext dbname="ctx_am_document.doc_ext" )
+ column=(type=long updatewhereclause=yes name=ctx_ref_requirement_doc_or_template_id dbname="ctx_ref_requirement.doc_or_template_id" )
+ column=(type=char(50) updatewhereclause=yes name=update_result dbname="update_result" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=long updatewhereclause=yes name=sub_contract dbname="sub_contract" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_am_document_status dbname="ctx_am_document.status" )
+ column=(type=char(1) updatewhereclause=yes name=ctx_am_document_checkout_status dbname="ctx_am_document.checkout_status" )
+ column=(type=char(1) updatewhereclause=yes name=ctx_am_document_revision_control dbname="ctx_am_document.revision_control" )
+ retrieve="SELECT DISTINCT ctx_am_document.doc_id,   
+		ctx_am_document.ctx_id,   
+		ctx_am_document.doc_name,   
+		ctx_am_document.revision,   
+		ctx_am_document.doc_ext,   
+		ctx_ref_requirement.doc_or_template_id,   
+		Space(50) as update_result,   
+		1 as selected,  
+		0 as sub_contract, 
+		ctx_am_document.status,   
+		ctx_am_document.checkout_status,   
+		ctx_am_document.revision_control  
+FROM ctx_am_document,   
+		ctx_ref_requirement  
+WHERE ( ctx_am_document.doc_id = ctx_ref_requirement.doc_or_template_id ) and  
+		( ( ctx_ref_requirement.reqmnt_type = 'D' ) AND  
+		( ctx_ref_requirement.get_parent_data = 0) And
+		( ctx_ref_requirement.reqmnt_element_id in ( :al_tmpl_elem_id ) ) AND  
+		( ctx_am_document.ctx_id = :al_ctx_id ) )  
+  
+Union
+
+Select  DISTINCT ctx_am_document.doc_id,   
+         ctx_am_document.ctx_id,   
+         ctx_am_document.doc_name,   
+         ctx_am_document.revision,   
+         ctx_am_document.doc_ext,   
+         ctx_ref_requirement.doc_or_template_id,   
+         Space(50) as update_result,  
+         1 as selected,   
+			1 as sub_contract,
+         ctx_am_document.status,   
+         ctx_am_document.checkout_status,   
+         ctx_am_document.revision_control 
+From 
+ctx_am_document,
+ctx_ref_requirement,
+ctx_basic_info
+where 	(ctx_am_document.ctx_id = ctx_basic_info.ctx_id ) and
+			(ctx_basic_info.is_template = 0 ) and
+			( ctx_am_document.doc_id = ctx_ref_requirement.doc_or_template_id ) and  
+         ( ctx_ref_requirement.reqmnt_type = 'D' ) AND  
+			( ctx_ref_requirement.get_parent_data = 1) And
+         ( ctx_ref_requirement.reqmnt_element_id in ( :al_tmpl_elem_id ))  AND  
+         ( ctx_basic_info.master_contract_id = :al_ctx_id ) 
+" arguments=(("al_ctx_id", number),("al_tmpl_elem_id", numberlist)) )
+text(band=header alignment="2" text="Selected" border="6" color="33554432" x="9" y="12" height="60" width="265" html.valueishtml="0"  name=selected_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Document Status" border="6" color="0" x="1527" y="12" height="60" width="421" html.valueishtml="0"  name=ctx_am_document_status_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Update Result" border="6" color="33554432" x="1957" y="12" height="60" width="699" html.valueishtml="0"  name=update_result_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Document Name" border="6" color="33554432" x="549" y="12" height="60" width="969" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Contract ID" border="6" color="33554432" x="283" y="12" height="60" width="256" html.valueishtml="0"  name=ctx_am_document_ctx_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="2" tabsequence=10 border="0" color="33554432" x="9" y="8" height="52" width="265" format="[general]" html.valueishtml="0"  name=selected visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="1957" y="8" height="52" width="699" format="[general]" html.valueishtml="0"  name=update_result visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+bitmap(band=detail filename="checkout_webup.gif" x="187" y="4" height="60" width="73" border="0"  name=p_3 visible="1~tif(  ctx_am_document_checkout_status  = ~"4~",1,0)" )
+bitmap(band=detail filename="checkout.bmp" x="187" y="0" height="56" width="59" border="0"  name=p_1 visible="1~tif(  ctx_am_document_checkout_status  = ~"1~",1,0)" )
+bitmap(band=detail filename="checkout_web.gif" x="187" y="4" height="60" width="73" border="0"  name=p_2 visible="1~tif(  ctx_am_document_checkout_status = ~"2~" or  ctx_am_document_checkout_status  = ~"3~" ,1,0)" )
+bitmap(band=detail filename="checkin.bmp" x="187" y="4" height="48" width="50" border="0"  name=p_0 visible="1~tif(  ctx_am_document_checkout_status  = ~"0~",1,0)" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="1527" y="8" height="52" width="421" format="[general]" html.valueishtml="0"  name=ctx_am_document_status  tag="Contract Document Status" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" ctx_am_document_doc_name  + ' ' + String(  ctx_am_document_doc_id  )+ '.' + String(  ctx_am_document_revision  ,'##0.0')+'.' + lower( ctx_am_document_doc_ext )"border="0" color="33554432" x="549" y="8" height="52" width="969" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="0" color="33554432" x="283" y="8" height="52" width="256" format="[general]" html.valueishtml="0"  name=ctx_am_document_ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

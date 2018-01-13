@@ -1,0 +1,30 @@
+﻿$PBExportHeader$d_priv_core_copy_forpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=priv_core_id dbname="priv_core.priv_core_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=clinical_area_id dbname="priv_core.clinical_area_id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=priv_core_description dbname="priv_core.priv_core_description" )
+ column=(type=long update=yes updatewhereclause=yes name=sort_order dbname="priv_core.sort_order" )
+ retrieve="  SELECT priv_core.priv_core_id,   
+         priv_core.clinical_area_id,   
+         priv_core.priv_core_description,   
+         priv_core.sort_order  
+    FROM priv_core  
+   WHERE priv_core.clinical_area_id in (:ai_clinarea_id)   
+ORDER BY priv_core.sort_order ASC,   
+         priv_core.priv_core_id ASC   
+" update="priv_core" updatewhere=1 updatekeyinplace=yes arguments=(("ai_clinarea_id", numberlist))  sort="sort_order A " )
+text(band=header alignment="2" text="Section Description" border="6" color="0" x="133" y="12" height="60" width="1088" html.valueishtml="0"  name=priv_core_description_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Sort Order" border="6" color="0" x="1239" y="12" height="60" width="233" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="255" x="2619" y="12" height="60" width="78" format="[general]" html.valueishtml="0"  name=priv_core_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="137" y="4" height="68" width="1083" format="[general]" html.valueishtml="0"  name=priv_core_description  tag="description of core priviledge" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="1248" y="8" height="64" width="215" format="[general]" html.valueishtml="0"  name=sort_order visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Microsoft Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

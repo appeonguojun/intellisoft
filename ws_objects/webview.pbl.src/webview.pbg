@@ -1,0 +1,15 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "webview.pbl" "";
+@end;
+@begin Objects 
+ "d_dddw_required_doc_template.srd" "webview.pbl";
+ "d_required_screens_selection.srd" "webview.pbl";
+ "d_required_template_images.srd" "webview.pbl";
+ "d_select_required_template.srd" "webview.pbl";
+ "d_wv_user_security_setting.srd" "webview.pbl";
+ "pfc_cst_u_user_import_wv.sru" "webview.pbl";
+ "w_get_template_name.srw" "webview.pbl";
+ "w_set_required_screens.srw" "webview.pbl";
+ "w_wv_required_template.srw" "webview.pbl";
+@end;

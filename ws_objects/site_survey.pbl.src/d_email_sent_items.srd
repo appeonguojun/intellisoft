@@ -1,0 +1,56 @@
+﻿$PBExportHeader$d_email_sent_items.srd
+$PBExportComments$Update: intellicontract_am.pbl
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=84 color="536870912" )
+summary(height=64 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="em_sent_items.id" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_id dbname="em_sent_items.user_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=sent_time dbname="em_sent_items.sent_time" )
+ column=(type=char(500) update=yes updatewhereclause=yes name=attach_name dbname="em_sent_items.attach_name" )
+ column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="em_sent_items.ctx_id" )
+ column=(type=long update=yes updatewhereclause=yes name=doc_id dbname="em_sent_items.doc_id" )
+ column=(type=long update=yes updatewhereclause=yes name=action_item_id dbname="em_sent_items.action_item_id" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=subject dbname="em_sent_items.subject" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=mail_from dbname="em_sent_items.mail_from" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=mail_bcc dbname="em_sent_items.mail_bcc" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=mail_cc dbname="em_sent_items.mail_cc" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=mail_to dbname="em_sent_items.mail_to" )
+ retrieve="  SELECT em_sent_items.id,   
+         em_sent_items.user_id,   
+         em_sent_items.sent_time,   
+         em_sent_items.attach_name,   
+         em_sent_items.ctx_id,   
+         em_sent_items.doc_id,   
+         em_sent_items.action_item_id,   
+         em_sent_items.subject,   
+         em_sent_items.mail_from,   
+         em_sent_items.mail_bcc,   
+         em_sent_items.mail_cc,   
+         em_sent_items.mail_to   
+    FROM em_sent_items   
+" update="em_sent_items" updatewhere=1 updatekeyinplace=no  sort="id D " )
+text(band=header alignment="2" text="To" border="6" color="33554432" x="9" y="4" height="80" width="814" html.valueishtml="0"  name=mail_to_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Cc" border="6" color="33554432" x="832" y="4" height="80" width="818" html.valueishtml="0"  name=mail_cc_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Subject" border="6" color="33554432" x="1659" y="4" height="80" width="1394" html.valueishtml="0"  name=subject_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Sent Time" border="6" color="33554432" x="3063" y="4" height="80" width="526" html.valueishtml="0"  name=sent_time_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Attachment Name" border="6" color="33554432" x="3598" y="4" height="80" width="1458" html.valueishtml="0"  name=attach_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Ctx Id" border="6" color="33554432" x="5065" y="4" height="80" width="334" html.valueishtml="0"  name=ctx_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Doc Id" border="6" color="33554432" x="5408" y="4" height="80" width="320" html.valueishtml="0"  name=doc_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Action Item Id" border="6" color="33554432" x="5737" y="4" height="80" width="370" html.valueishtml="0"  name=action_item_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=30 border="0" color="33554432" x="1659" y="8" height="64" width="1394" format="[general]" html.valueishtml="0"  name=subject visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=20 border="0" color="33554432" x="832" y="8" height="64" width="818" format="[general]" html.valueishtml="0"  name=mail_cc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=40 border="0" color="33554432" x="3063" y="8" height="64" width="526" format="[shortdate] [time]" html.valueishtml="0"  name=sent_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="0" color="33554432" x="3598" y="8" height="64" width="1458" format="[general]" html.valueishtml="0"  name=attach_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=60 border="0" color="33554432" x="5065" y="8" height="64" width="334" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=70 border="0" color="33554432" x="5408" y="8" height="64" width="320" format="[general]" html.valueishtml="0"  name=doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=80 border="0" color="33554432" x="5737" y="8" height="64" width="370" format="[general]" html.valueishtml="0"  name=action_item_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="814" format="[general]" html.valueishtml="0"  name=mail_to visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="'Count: ' + String(RowCount())"border="0" color="33554432" x="9" y="8" height="56" width="814" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

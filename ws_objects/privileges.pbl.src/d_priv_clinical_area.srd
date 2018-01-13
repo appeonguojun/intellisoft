@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_priv_clinical_area.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=76 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=clinical_area_id dbname="priv_clinical_area.clinical_area_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="priv_clinical_area.facility_id" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=priv_clinical_area_clinical_area_code dbname="priv_clinical_area.clinical_area_code" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=priv_clinical_area_clinical_area_descrip dbname="priv_clinical_area.clinical_area_description" )
+ column=(type=long update=yes updatewhereclause=yes name=common_core dbname="priv_clinical_area.common_core" values="	1/	0" )
+ retrieve="
+ SELECT priv_clinical_area.clinical_area_id,   
+         priv_clinical_area.facility_id,   
+         priv_clinical_area.clinical_area_code,   
+         priv_clinical_area.clinical_area_description,   
+         priv_clinical_area.common_core  
+    FROM priv_clinical_area  
+   WHERE priv_clinical_area.facility_id = :ai_facility_id   
+ORDER BY priv_clinical_area.clinical_area_description ASC   
+" update="priv_clinical_area" updatewhere=1 updatekeyinplace=no arguments=(("ai_facility_id", number)) )
+text(band=header alignment="2" text="Abbreviation" border="6" color="0" x="9" y="8" height="60" width="599" html.valueishtml="0"  name=priv_clinical_area_clinical_area_code_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Clinical Area/Department Description" border="6" color="0" x="626" y="8" height="60" width="969" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="CCP" border="6" color="0" x="1614" y="8" height="60" width="169" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="87" y="8" height="64" width="521" format="[general]" html.valueishtml="0"  name=priv_clinical_area_clinical_area_code  tag="name of clinical area" visible="1" editmask.mask="!!!!!!!!!!!!!!!" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="626" y="8" height="64" width="965" format="[general]" html.valueishtml="0"  name=priv_clinical_area_clinical_area_descrip  tag="description of clinical area" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+column(band=detail id=5 alignment="0" tabsequence=30 border="0" color="0" x="1632" y="12" height="76" width="105" format="[general]" html.valueishtml="0"  name=common_core visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+button(band=detail text="F" enabled=yes action="0" border="0" color="0" x="1728" y="8" height="72" width="64" vtextalign="0" htextalign="0"  name=b_facil visible="1~tif ( common_core  = 1, 1,0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2025" y="20" height="76" width="512" html.valueishtml="0"  name=clinical_area_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2629" y="4" height="76" width="443" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

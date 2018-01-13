@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_esign_docinfo.srs
+global type str_esign_docinfo from structure
+	string		documentid[]
+	string		name[]
+	string		url[]
+	string		numpages[]
+	string		mimetype[]
+end type
+

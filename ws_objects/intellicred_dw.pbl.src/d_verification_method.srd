@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_verification_method.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=record_id dbname="prac_data_verify_cred.record_id" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=verification_means dbname="prac_data_verify_cred.verification_means" initial="None" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"prac_data_verify_cred~" ) COLUMN(NAME=~"prac_data_verify_cred.record_id~") COLUMN(NAME=~"prac_data_verify_cred.verification_means~")WHERE(    EXP1 =~"( prac_data_verify_cred.record_id~"   OP =~"=~"    EXP2 =~":rec_id)~" ) ) ARG(NAME = ~"rec_id~" TYPE = number) " update="prac_data_verify_cred" updatewhere=1 updatekeyinplace=no arguments=(("rec_id", number)) )
+text(band=detail alignment="0" text="Verifyication Method"border="0" color="0" x="23" y="12" height="52" width="462"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=2 alignment="0" tabsequence=50 border="5" color="0" x="503" y="16" height="64" width="306" format="[general]"  name=verification_means dddw.name=d_dddw_verification_method dddw.displaycolumn=code dddw.datacolumn=code dddw.percentwidth=400 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

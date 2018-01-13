@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_form_clin_priv_request_master.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=1090519039 processing=5 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=424 color="536870912"  height.autosize=yes)
+table(column=(type=char(10) updatewhereclause=yes name=a dbname="a" )
+ unbound = "yes"arguments=(("ai_facil_id", number),("ai_clin_area", number)) )
+report(band=detail dataobject="d_form_priv_by_clin_area" x="50" y="8" height="120" width="3278" border="0"  height.autosize=yes criteria="" nest_arguments=(("ai_facil_id"),("ai_clin_area")) trail_footer = yes  slideup=directlyabove )
+report(band=detail dataobject="d_form_priv_clin_req" x="50" y="148" height="120" width="3278" border="0"  height.autosize=yes criteria="" nest_arguments=(("ai_facil_id"),("ai_clin_area")) newpage = yes trail_footer = yes  slideup=directlyabove )
+report(band=detail dataobject="d_form_priv_acknowledgement_col" x="50" y="288" height="120" width="3269" border="0"  height.autosize=yes criteria="" nest_arguments=(("ai_clin_area"),("ai_facil_id")) trail_footer = yes  slideup=directlyabove )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_facility_group_access.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=facility_id dbname="app_facility_group_access.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=group_id dbname="app_facility_group_access.group_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=access dbname="app_facility_group_access.access" values="Full Access	F/Read Only	R/No Access	N/" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=notes dbname="app_facility_group_access.notes" )
+ retrieve="SELECT  app_facility_group_access.facility_id ,
+           app_facility_group_access.group_id ,
+           app_facility_group_access.access ,
+           app_facility_group_access.notes     
+        FROM app_facility_group_access      
+        WHERE ( app_facility_group_access.facility_id = :al_facility_id )   " update="app_facility_group_access" updatewhere=1 updatekeyinplace=no arguments=(("al_facility_id", number)) )
+text(band=header alignment="2" text="Group" border="6" color="0" x="9" y="4" height="52" width="855" html.valueishtml="0"  name=group_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Access" border="6" color="0" x="873" y="4" height="52" width="1010" html.valueishtml="0"  name=access_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=header alignment="2" text="Notes" border="6" color="0" x="1893" y="4" height="52" width="1824" html.valueishtml="0"  name=notes_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="9" y="8" height="60" width="855" format="[general]" html.valueishtml="0"  name=group_id visible="1" dddw.name=d_dddw_groups_select dddw.displaycolumn=group_name dddw.datacolumn=id dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.required=yes dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="873" y="8" height="60" width="1010" format="[general]" html.valueishtml="0"  name=access visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="1893" y="8" height="60" width="1824" format="[general]" html.valueishtml="0"  name=notes visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,83 @@
+﻿$PBExportHeader$d_need_checkin_doc_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes name=ctx_id dbname="ctx_am_image_weblink.ctx_id" )
+ column=(type=char(150) updatewhereclause=yes name=company dbname="company" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=doc_id dbname="ctx_am_image_weblink.doc_id" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes key=yes name=revision dbname="ctx_am_image_weblink.revision" )
+ column=(type=long update=yes updatewhereclause=yes name=file_size dbname="ctx_am_image_weblink.file_size" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=file_name dbname="ctx_am_image_weblink.file_name" )
+ column=(type=char(300) update=yes updatewhereclause=yes name=file_path dbname="ctx_am_image_weblink.file_path" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=sender_user dbname="ctx_am_image_weblink.sender_user" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=sender_email dbname="ctx_am_image_weblink.sender_email" )
+ column=(type=datetime update=yes updatewhereclause=yes name=sent_time dbname="ctx_am_image_weblink.sent_time" )
+ column=(type=datetime update=yes updatewhereclause=yes name=download_time dbname="ctx_am_image_weblink.download_time" )
+ column=(type=datetime update=yes updatewhereclause=yes name=upload_time dbname="ctx_am_image_weblink.upload_time" )
+ column=(type=long update=yes updatewhereclause=yes name=replied_email dbname="ctx_am_image_weblink.replied_email" )
+ column=(type=long update=yes updatewhereclause=yes name=flag dbname="ctx_am_image_weblink.flag" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=web_link_name dbname="ctx_am_image_weblink.web_link_name" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=ctx_link_name dbname="ctx_am_image_weblink.ctx_link_name" )
+ retrieve="  SELECT ctx_am_image_weblink.ctx_id,   
+			company = app_facility.facility_name,
+         ctx_am_image_weblink.doc_id,   
+         ctx_am_image_weblink.revision,   
+         ctx_am_image_weblink.file_size,   
+         ctx_am_image_weblink.file_name,   
+         ctx_am_image_weblink.file_path,   
+         ctx_am_image_weblink.sender_user,   
+         ctx_am_image_weblink.sender_email,   
+         ctx_am_image_weblink.sent_time,   
+         ctx_am_image_weblink.download_time,   
+         ctx_am_image_weblink.upload_time,   
+         ctx_am_image_weblink.replied_email,   
+         ctx_am_image_weblink.flag,   
+         ctx_am_image_weblink.web_link_name,
+  			ctx_am_image_weblink.ctx_link_name
+    FROM ctx_am_image_weblink,ctx_basic_info
+	Left Outer Join app_facility On ctx_basic_info.app_facility = app_facility.facility_id
+	WHERE
+	 ctx_am_image_weblink.ctx_id = ctx_basic_info.ctx_id and
+	 ctx_basic_info.is_template = 0 and
+	( DATALENGTH(ctx_am_image_weblink.new_image_file) > 0 ) AND  
+         ( ctx_am_image_weblink.replied_email = 0 )    " update="ctx_am_image_weblink" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="Ctx Id" border="0" color="33554432" x="9" y="8" height="52" width="274" html.valueishtml="0"  name=ctx_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Doc Id" border="0" color="33554432" x="293" y="8" height="52" width="274" html.valueishtml="0"  name=doc_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Revision" border="0" color="33554432" x="576" y="8" height="52" width="274" html.valueishtml="0"  name=revision_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="File Size" border="0" color="33554432" x="859" y="8" height="52" width="274" html.valueishtml="0"  name=file_size_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="File Name" border="0" color="33554432" x="1143" y="8" height="52" width="2309" html.valueishtml="0"  name=file_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="File Path" border="0" color="33554432" x="3461" y="8" height="52" width="3511" html.valueishtml="0"  name=file_path_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Sender User" border="0" color="33554432" x="6981" y="8" height="52" width="1166" html.valueishtml="0"  name=sender_user_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Sender Email" border="0" color="33554432" x="8155" y="8" height="52" width="2309" html.valueishtml="0"  name=sender_email_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Sent Time" border="0" color="33554432" x="10473" y="8" height="52" width="503" html.valueishtml="0"  name=sent_time_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Download Time" border="0" color="33554432" x="10985" y="8" height="52" width="503" html.valueishtml="0"  name=download_time_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Upload Time" border="0" color="33554432" x="11497" y="8" height="52" width="503" html.valueishtml="0"  name=upload_time_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Replied Email" border="0" color="33554432" x="12009" y="8" height="52" width="293" html.valueishtml="0"  name=replied_email_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Flag" border="0" color="33554432" x="12311" y="8" height="52" width="274" html.valueishtml="0"  name=flag_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Web Link Name" border="0" color="33554432" x="12594" y="8" height="52" width="3511" html.valueishtml="0"  name=web_link_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Company" border="0" color="0" x="16114" y="4" height="52" width="3442" html.valueishtml="0"  name=company_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Ctx Am Image Weblink Ctx Link Name" border="0" color="0" x="19566" y="4" height="52" width="3502" html.valueishtml="0"  name=ctx_link_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="33554432" x="9" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=20 border="0" color="33554432" x="293" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="1" tabsequence=30 border="0" color="33554432" x="576" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=revision visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="1" tabsequence=40 border="0" color="33554432" x="859" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=file_size visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="0" color="33554432" x="1143" y="8" height="64" width="2309" format="[general]" html.valueishtml="0"  name=file_name visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=60 border="0" color="33554432" x="3461" y="8" height="64" width="3511" format="[general]" html.valueishtml="0"  name=file_path visible="1" edit.limit=300 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=70 border="0" color="33554432" x="6981" y="8" height="64" width="1166" format="[general]" html.valueishtml="0"  name=sender_user visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=80 border="0" color="33554432" x="8155" y="8" height="64" width="2309" format="[general]" html.valueishtml="0"  name=sender_email visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=90 border="0" color="33554432" x="10473" y="8" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=sent_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=100 border="0" color="33554432" x="10985" y="8" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=download_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=110 border="0" color="33554432" x="11497" y="8" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=upload_time visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="1" tabsequence=120 border="0" color="33554432" x="12009" y="8" height="64" width="293" format="[general]" html.valueishtml="0"  name=replied_email visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="1" tabsequence=130 border="0" color="33554432" x="12311" y="8" height="64" width="274" format="[general]" html.valueishtml="0"  name=flag visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=140 border="0" color="33554432" x="12594" y="8" height="64" width="3511" format="[general]" html.valueishtml="0"  name=web_link_name visible="1" edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=150 border="0" color="33554432" x="16114" y="0" height="52" width="3442" format="[general]" html.valueishtml="0"  name=company visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="0" color="33554432" x="19566" y="0" height="52" width="3502" format="[general]" html.valueishtml="0"  name=ctx_link_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,47 @@
+﻿$PBExportHeader$gf_validate_required_rows.srf
+global type gf_validate_required_rows from function_object
+end type
+
+forward prototypes
+global function integer gf_validate_required_rows (long al_viewid, long al_screenid, long al_rowcount)
+end prototypes
+
+global function integer gf_validate_required_rows (long al_viewid, long al_screenid, long al_rowcount);//====================================================================
+// Function: gf_validate_required_rows
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    long    al_viewid
+// 	value    long    al_screenid
+// 	value    long    al_rowcount
+//--------------------------------------------------------------------
+// Returns:  integer
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 07-13-2015
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2014 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+string ls_string,ls_required_rows_flag,ls_screen_name
+
+select screen_name into :ls_screen_name from ctx_screen where data_view_id = :al_viewid and screen_id = :al_screenid; //Added By Jay Chen 07-13-2015
+ls_string = string(al_viewid) + '-' + string(al_screenid)
+ls_required_rows_flag = gnv_user_option.of_get_option_value('requiredrows' + ls_string, "required_rows")
+if isnull(ls_required_rows_flag) or ls_required_rows_flag = '' then ls_required_rows_flag = '0'
+if ls_required_rows_flag = '1' then
+	if al_rowcount < 1 then
+		messagebox('Contractlogix','You must enter at least one line of data for screen [' + ls_screen_name + '].' )
+		return -1
+	else
+		return 1
+	end if
+else
+	return 1
+end if
+
+end function
+

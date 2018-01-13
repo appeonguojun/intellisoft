@@ -1,0 +1,51 @@
+﻿$PBExportHeader$d_pd_notes_browse.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=68 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=76 color="536870912" )
+detail(height=144 color="553648127"  height.autosize=yes)
+table(column=(type=decimal(0) updatewhereclause=yes name=pd_notes_record_id dbname="pd_notes.record_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_notes_prac_id dbname="pd_notes.prac_id" )
+ column=(type=long updatewhereclause=yes name=pd_notes_facility_id dbname="pd_notes.facility_id" )
+ column=(type=datetime updatewhereclause=yes name=pd_notes_ent_date dbname="pd_notes.ent_date" )
+ column=(type=char(10) updatewhereclause=yes name=pd_notes_user_id dbname="pd_notes.user_id" )
+ column=(type=char(4099) updatewhereclause=yes name=pd_notes_note dbname="pd_notes.note" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ retrieve="    SELECT pd_notes.record_id,   
+         pd_notes.prac_id,   
+         pd_notes.facility_id,   
+         pd_notes.ent_date,   
+         pd_notes.user_id,   
+         pd_notes.note,   
+         facility.facility_name  
+    FROM pd_notes,facility,security_user_facilities   
+   WHERE  ( security_user_facilities.user_id = :userid) and
+          ( pd_notes.prac_id = :pracid ) and
+          ( pd_notes.facility_id = facility.facility_id ) and  
+          ( pd_notes.facility_id = security_user_facilities.facility_id) and
+     		 ( security_user_facilities.access_rights = 1) 
+UNION ALL
+SELECT  pd_notes.record_id,   
+         pd_notes.prac_id,   
+         pd_notes.facility_id,   
+         pd_notes.ent_date,   
+         pd_notes.user_id,   
+         pd_notes.note,   
+         facility.facility_name  
+    FROM pd_notes LEFT OUTER JOIN facility  ON pd_notes.facility_id = facility.facility_id
+   WHERE ( pd_notes.prac_id = :pracid ) AND 
+         (pd_notes.facility_id = 0)    " arguments=(("pracid", number),("userid", string))  sort="pd_notes_ent_date D " )
+text(band=header alignment="0" text="Entered " border="6" color="0" x="155" y="8" height="52" width="498" html.valueishtml="0"  name=pd_notes_ent_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="User" border="6" color="0" x="672" y="8" height="52" width="283" html.valueishtml="0"  name=pd_notes_user_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Facility" border="6" color="0" x="974" y="8" height="52" width="466" html.valueishtml="0"  name=pd_notes_facility_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="count(pd_notes_record_id for all) + ' Entries'"border="0" color="0" x="18" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="2" color="0" x="160" y="4" height="64" width="494" format="[shortdate] [time]" html.valueishtml="0"  name=pd_notes_ent_date visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="2" color="0" x="667" y="4" height="64" width="288" format="[general]" html.valueishtml="0"  name=pd_notes_user_id visible="1"  slideup=allabove edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if( pd_notes_facility_id  = 0,'Global', facility_facility_name )"border="2" color="0" x="969" y="4" height="64" width="2267" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  slideup=allabove  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="2" color="0" x="160" y="72" height="64" width="3077" format="[general]" html.valueishtml="0"  name=pd_notes_note visible="1"  slideup=allabove height.autosize=yes edit.limit=32000 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

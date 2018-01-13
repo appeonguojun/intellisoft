@@ -1,0 +1,12 @@
+﻿$PBExportHeader$str_sflogin_response.srs
+global type str_sflogin_response from structure
+	string		s_user
+	string		s_pwd
+	string		s_result
+	string		s_fields
+	string		s_oname
+	long		s_import_id
+	long		s_sync_salesforce
+	string		s_sfurl
+end type
+

@@ -1,0 +1,63 @@
+﻿$PBExportHeader$gf_get_view_screen.srf
+global type gf_get_view_screen from function_object
+end type
+
+forward prototypes
+global function string gf_get_view_screen (long al_view_id, long al_screen_id)
+end prototypes
+
+global function string gf_get_view_screen (long al_view_id, long al_screen_id);//====================================================================
+// Function: gf_get_view_screen
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    long    al_view_id
+// 	value    long    al_screen_id
+//--------------------------------------------------------------------
+// Returns:  string
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 12-01-2015
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2014 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+Long ll_SQLLen
+n_ds lds_Screen
+string ls_DetailSyntax
+
+lds_Screen = Create n_ds
+lds_Screen.dataobject = "ds_contract_data_view_screen"
+lds_Screen.settransobject(SQLCA)
+If lds_Screen.Retrieve(al_view_id, al_screen_id) <=0 Then
+	Messagebox('','Failed to get the syntaxt. View ID = ' + String(al_view_id) + ', Screen ID = ' + String(al_screen_id) + '.' )
+     Destroy lds_screen
+     Return ''
+End If
+
+Choose Case al_screen_id 
+	Case 1 //Freeform
+     	ls_DetailSyntax = lds_Screen.GetitemString(1, "dw_sql")
+         IF appeongetclienttype() = 'PB' THEN
+			ll_SQLLen = lds_Screen.GetItemNumber(1, "dw_sql_len")
+             IF ll_SQLLen > 32765 THEN
+                 ls_DetailSyntax = f_get_screen_sql(al_view_id,al_screen_id,false)  //add false argu - jervis 10.11.2011
+             END IF
+         END IF                   
+               
+	Case 6,7 //Grid
+         ls_DetailSyntax = lds_Screen.GetitemString(1, "grid_sql")
+       	IF appeongetclienttype() = 'PB' THEN
+             ll_SQLLen = lds_Screen.GetItemNumber(1, "grid_sql_len")
+             IF ll_SQLLen > 32765 THEN
+                 ls_DetailSyntax = f_get_screen_gridsql(al_view_id,al_screen_id,false)  //add false argu - jervis 10.11.2011
+             END IF
+        END IF
+		  
+End Choose
+
+return ls_DetailSyntax
+end function
+

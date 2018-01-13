@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_test_prf.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=256 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=first_name dbname="pd_basic.first_name" )
+ column=(type=char(100) updatewhereclause=yes name=last_name dbname="pd_basic.last_name" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pd_basic~" ) COLUMN(NAME=~"pd_basic.first_name~") COLUMN(NAME=~"pd_basic.last_name~")) " )
+text(band=detail alignment="1" text="First Name:"border="0" color="0" x="37" y="4" height="52" width="247"  name=first_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="1" color="0" x="302" y="4" height="64" width="366" format="[general]"  name=first_name edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Last Name:"border="0" color="0" x="37" y="128" height="52" width="247"  name=last_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="1" color="0" x="302" y="128" height="64" width="2309" format="[general]"  name=last_name edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

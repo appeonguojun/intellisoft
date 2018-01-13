@@ -1,0 +1,371 @@
+1	1	d_crit_org_facility	N	Select Facility	Y	Y
+1	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+2	1	d_crit_profile_view	N	Select a Profile View	Y	N
+2	2	d_crit_screen_view	N	Select a Screen View	Y	N
+2	3	d_crit_org_facility	N	Select Facility	Y	N
+2	4	d_crit_pracs	Y	Select Practitioners 	N	N
+3	1	d_crit_org_facility	N	Select Facility	Y	Y
+3	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+4	1	d_crit_appt_date_range	N	Select a Date Range	Y	N
+4	2	d_crit_org_facility	N	Select Facility	Y	Y
+4	3	d_crit_assigned_user	Y	Select Assigned User	Y	N
+6	1	d_crit_org_facility	N	Select Facility	Y	Y
+6	2	d_crit_department	N	Select Department	Y	Y
+6	3	d_crit_section	N	Select Section	Y	Y
+6	4	d_crit_division	N	Select Division	Y	Y
+6	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+6	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+6	7	d_crit_address_type	N	Select Address Type	Y	Y
+7	1	d_crit_org_facility	N	Select Facility	Y	Y
+7	2	d_crit_assigned_user	N	Select Assigned User	Y	N
+7	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+8	1	d_crit_org_facility	N	Select Facility	Y	Y
+8	2	d_crit_specialties	N	Select Specialty	Y	Y
+8	3	d_crit_address_type	N	Select Address Type	Y	Y
+8	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+9	1	d_crit_org_facility	N	Select Facility	Y	Y
+9	2	d_crit_specialties	N	Select Specialty	Y	Y
+9	3	d_crit_address_type	N	Select Address Type	Y	Y
+9	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+11	1	d_crit_org_facility	N	Select Facility	Y	Y
+11	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+12	1	d_crit_org_facility	N	Select Facility	Y	Y
+12	2	d_crit_pracs	Y	Select Practitioners 	N	N
+13	1	d_crit_org_facility	N	Select Facility	Y	Y
+13	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+14	1	d_crit_org_facility	Y	Select Facility	Y	N
+15	1	d_crit_org_facility	N	Select Facility	Y	Y
+15	2	d_crit_specialties	N	Select Specialty	Y	Y
+15	3	d_crit_address_type	N	Select Address Type	Y	Y
+15	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+16	1	d_crit_org_facility	N	Select Facility	Y	Y
+16	2	d_crit_specialties	N	Select Specialty	Y	Y
+16	3	d_crit_address_type	N	Select Address Type	Y	Y
+16	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+17	1	d_crit_org_facility	Y	Select Facility	Y	N
+18	1	d_crit_org_facility	N	Select Facility	Y	Y
+18	2	d_crit_date_range	Y	Select a Date Range	Y	N
+19	1	d_crit_org_facility	N	Select Facility	Y	N
+19	2	d_crit_date_range	Y	Select a Date Range	Y	N
+20	1	d_crit_date_range	Y	Select a Date Range	Y	N
+21	1	d_crit_org_facility	N	Select Facility	Y	Y
+21	2	d_crit_department	N	Select Department	Y	Y
+21	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+22	1	d_crit_org_facility	N	Select Facility	Y	Y
+22	2	d_crit_specialties	N	Select Specialty	Y	Y
+22	3	d_crit_address_type	N	Select Address Type	Y	Y
+22	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+23	1	d_crit_org_facility	N	Select Facility	Y	Y
+23	2	d_crit_specialties	N	Select Specialty	Y	Y
+23	3	d_crit_address_type	N	Select Address Type	Y	Y
+23	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+24	1	d_crit_org_facility	N	Select Facility	Y	Y
+24	2	d_crit_provider_type	N	Select Provider Type	Y	N
+24	3	d_crit_specialties	N	Select Specialty	Y	Y
+24	4	d_crit_address_type	Y	Select Address Type	Y	Y
+24	5	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+25	1	d_crit_org_facility	N	Select Facility	Y	Y
+25	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+30	1	d_crit_org_facility	N	Select Facility	Y	Y
+30	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+31	1	d_crit_org_facility	N	Select Facility	Y	Y
+31	2	d_crit_address_type	N	Select Address Type	Y	Y
+31	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+32	1	d_crit_org_facility	Y	Select Facility	Y	Y
+35	1	d_crit_org_facility	N	Select Facility	Y	Y
+35	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+36	1	d_crit_org_facility	N	Select Facility	Y	Y
+36	2	d_crit_num_days	N	Select Number of days to Expiration	Y	N
+36	3	d_crit_assigned_user	N	Select Assigned User	Y	N
+36	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+37	1	d_crit_org_facility	N	Select Facility	Y	Y
+37	2	d_crit_assigned_user	N	Select Assigned User	Y	N
+37	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+38	1	d_crit_date_range	N	Select a Date Range	Y	N
+38	2	d_crit_org_facility	N	Select Facility	Y	Y
+38	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+39	1	d_crit_org_facility	N	Select Facility	Y	Y
+39	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+40	1	d_crit_none	Y	Click Run	Y	N
+41	1	d_crit_none	Y	Click Run	Y	N
+42	1	d_crit_none	Y	Click Run	Y	N
+43	1	d_crit_none	Y	Click Run	Y	Y
+44	1	d_crit_none	Y	Click Run	Y	Y
+45	1	d_crit_none	Y	Click Run	Y	N
+46	1	d_crit_none	Y	Click Run	Y	N
+50	1	d_crit_org_facility	Y	Select Facility	Y	N
+51	1	d_crit_org_facility	N	Select Facility	Y	Y
+51	2	d_crit_pracs	Y	Select Practitioners 	N	N
+52	1	d_crit_org_facility	N	Select Facility	Y	N
+52	2	d_crit_clin_area	N	Select Clinical Area	Y	N
+52	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+53	1	d_crit_org_facility	N	Select Facility	Y	Y
+53	2	d_crit_clin_area	Y	Select Clinical Area	Y	N
+54	1	d_crit_org_facility	N	Select Facility	Y	Y
+54	2	d_crit_pracs	Y	Select Practitioners 	N	N
+55	1	d_crit_org_facility	N	Select Facility	Y	N
+55	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+60	1	d_crit_org_facility	N	Select Facility	Y	Y
+60	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+61	1	d_crit_org_facility	N	Select Facility	Y	Y
+61	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+62	1	d_crit_org_facility	N	Select Facility	Y	Y
+62	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+70	1	d_crit_group_pract	N	Select Practice	Y	N
+70	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+71	1	d_crit_multi_group	N	Select Group	Y	N
+71	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+72	1	d_crit_none	N	Click Run	Y	N
+72	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+73	1	d_crit_org_facility	Y	Select Facility	Y	Y
+74	1	d_crit_org_facility	Y	Select Facility	Y	Y
+75	1	d_crit_org_facility	Y	Select Facility	Y	Y
+76	1	d_crit_org_facility	N	Select Facility	Y	Y
+76	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+77	1	d_crit_org_facility	N	Select Facility	Y	Y
+77	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+78	1	d_crit_org_facility	N	Select Facility	Y	Y
+78	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+79	1	d_crit_org_facility	Y	Select Facility	Y	Y
+80	1	d_crit_org_facility	N	Select Facility	Y	Y
+80	2	d_crit_net_dev_type	N	Select Status	Y	Y
+80	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+81	1	d_crit_org_facility	N	Select Facility	Y	Y
+81	2	d_crit_net_dev_type	N	Select Status	Y	Y
+81	3	d_crit_pracs	N	Select Practitioner	N	Y
+81	4	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+85	1	d_crit_org_facility	N	Select Facility	Y	Y
+85	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+86	1	d_crit_org_facility	N	Select Facility	Y	Y
+86	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+87	1	d_crit_org_facility	N	Select Facility	Y	Y
+87	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+88	1	d_crit_org_facility	N	Select Facility	Y	Y
+88	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+89	1	d_crit_org_facility	N	Select Facility	Y	Y
+89	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+90	1	d_crit_org_facility	N	Select Facility	Y	Y
+90	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+91	1	d_crit_org_facility	N	Select Facility	Y	Y
+91	2	d_crit_department	N	Select Department	Y	Y
+91	3	d_crit_section	N	Select Section	Y	Y
+91	4	d_crit_division	N	Select Division	Y	Y
+91	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+91	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+92	1	d_crit_org_facility	N	Select Facility	Y	Y
+92	2	d_crit_department	N	Select Department	Y	Y
+92	3	d_crit_section	N	Select Section	Y	Y
+92	4	d_crit_division	N	Select Division	Y	Y
+92	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+92	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+92	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+93	1	d_crit_appt_date_range	N	Select a Date Range	Y	N
+93	2	d_crit_org_facility	N	Select Facility	Y	Y
+93	3	d_crit_department	N	Select Department	Y	Y
+93	4	d_crit_section	N	Select Section	Y	Y
+93	5	d_crit_division	N	Select Division	Y	Y
+93	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+93	7	d_crit_appmnt_status	N	Select Appointment Status	Y	Y
+93	8	d_crit_assigned_user	Y	Select Assigned User	Y	N
+94	1	d_crit_org_facility	N	Select Facility	Y	Y
+94	2	d_crit_department	N	Select Department	Y	Y
+94	3	d_crit_section	N	Select Section	Y	Y
+94	4	d_crit_division	N	Select Division	Y	Y
+94	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+94	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+95	1	d_crit_org_facility	N	Select Facility	Y	Y
+95	2	d_crit_department	N	Select Department	Y	Y
+95	3	d_crit_section	N	Select Section	Y	Y
+95	4	d_crit_division	N	Select Division	Y	Y
+95	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+95	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+96	1	d_crit_org_facility	N	Select Facility	Y	Y
+96	2	d_crit_department	N	Select Department	Y	Y
+96	3	d_crit_section	N	Select Section	Y	Y
+96	4	d_crit_division	N	Select Division	Y	Y
+96	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+96	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+97	1	d_crit_org_facility	N	Select Facility	Y	Y
+97	2	d_crit_department	N	Select Department	Y	Y
+97	3	d_crit_section	N	Select Section	Y	Y
+97	4	d_crit_division	N	Select Division	Y	Y
+97	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+97	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+97	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+97	8	d_crit_address_type	N	Select Address Type	Y	Y
+98	1	d_crit_org_facility	N	Select Facility	Y	Y
+98	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+99	1	d_crit_org_facility	N	Select Facility	Y	Y
+99	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+100	1	d_crit_org_facility	N	Select Facility	Y	Y
+100	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+130	1	d_crit_org_facility	N	Select Facility	Y	Y
+130	2	d_crit_meeting_date_range	Y	Select a Date Range	Y	N
+131	1	d_crit_org_facility	N	Select Facility	Y	Y
+131	2	d_crit_department	N	Select Department	Y	Y
+131	3	d_crit_meeting_date_range	Y	Select a Date Range	Y	N
+132	1	d_crit_org_facility	N	Select Facility	Y	Y
+132	2	d_crit_meeting_date_range	Y	Select a Date Range	Y	N
+133	1	d_crit_org_facility	N	Select Facility	Y	Y
+133	2	d_crit_section	N	Select Section	Y	Y
+133	3	d_crit_meeting_date_range	Y	Select a Date Range	Y	N
+134	1	d_crit_appt_date_range	N	Select a Date Range	Y	N
+134	2	d_crit_org_facility	N	Select Facility	Y	Y
+134	3	d_crit_department	N	Select Department	Y	Y
+134	4	d_crit_section	N	Select Section	Y	Y
+134	5	d_crit_division	N	Select Division	Y	Y
+134	6	d_crit_staff_cat	N	Select Staff Category	Y	Y
+134	7	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+134	8	d_crit_appmnt_status	N	Select Appointment Status	Y	Y
+134	9	d_crit_assigned_user	Y	Select Assigned User	Y	N
+135	1	d_crit_org_facility	N	Select Facility	Y	Y
+135	2	d_crit_department	N	Select Department	Y	Y
+135	3	d_crit_section	N	Select Section	Y	Y
+135	4	d_crit_division	N	Select Division	Y	Y
+135	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+135	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+136	1	d_crit_appt_date_range	N	Select a Date Range	Y	N
+136	2	d_crit_org_facility	N	Select Facility	Y	N
+136	3	d_crit_assigned_user	Y	Select Assigned User	Y	N
+137	1	d_crit_org_facility	N	Select Facility	Y	Y
+137	2	d_crit_net_dev_type	N	Select Status	Y	Y
+137	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+138	1	d_crit_none	Y	Click Run	Y	Y
+139	1	d_crit_org_facility	N	Select Facility	Y	Y
+139	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+140	1	d_crit_org_facility	N	Select Facility	Y	Y
+140	2	d_crit_department	N	Select Department	Y	Y
+140	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+141	1	d_crit_org_facility	N	Select Facility	Y	Y
+141	2	d_crit_specialties	N	Select Specialty	Y	Y
+141	3	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+142	2	d_crit_pracs	Y	Select Practitioners 	N	N
+143	2	d_crit_pracs	Y	Select Practitioners 	N	N
+144	1	d_crit_org_facility	N	Select Facility	Y	Y
+144	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+145	1	d_crit_org_facility	N	Select Facility	Y	Y
+145	2	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+146	1	d_crit_org_facility	N	Select Facility	Y	Y
+146	2	d_crit_department	N	Select Department	Y	Y
+146	3	d_crit_section	N	Select Section	Y	Y
+146	4	d_crit_division	N	Select Division	Y	Y
+146	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+146	6	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+147	1	d_crit_org_facility	N	Select Facility	Y	Y
+147	2	d_crit_department	N	Select Department	Y	Y
+147	3	d_crit_section	N	Select Section	Y	Y
+147	4	d_crit_division	N	Select Division	Y	Y
+147	5	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+147	6	d_crit_appmnt_status	N	Select Appointment Status	Y	Y
+147	7	d_crit_address_type	Y	Select Address Type	Y	Y
+148	1	d_crit_appt_date_range	N	Select a Date Range	Y	N
+148	2	d_crit_org_facility	N	Select Facility	Y	Y
+148	3	d_crit_department	N	Select Department	Y	Y
+148	4	d_crit_section	N	Select Section	Y	Y
+148	5	d_crit_division	N	Select Division	Y	Y
+148	6	d_crit_staff_cat	N	Select Staff Category	Y	Y
+148	7	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+148	8	d_crit_appmnt_status	N	Select Appointment Status	Y	Y
+148	9	d_crit_assigned_user	Y	Select Assigned User	Y	N
+149	1	d_crit_org_facility	N	Select Facility	Y	Y
+149	2	d_crit_department	N	Select Department	Y	Y
+149	3	d_crit_section	N	Select Section	Y	Y
+149	4	d_crit_division	N	Select Division	Y	Y
+149	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+149	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+149	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+150	1	d_crit_org_facility	N	Select Facility	Y	Y
+150	2	d_crit_department	N	Select Department	Y	Y
+150	3	d_crit_section	N	Select Section	Y	Y
+150	4	d_crit_division	N	Select Division	Y	Y
+150	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+150	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+150	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+151	1	d_crit_org_facility	N	Select Facility	Y	Y
+151	2	d_crit_department	N	Select Department	Y	Y
+151	3	d_crit_section	N	Select Section	Y	Y
+151	4	d_crit_division	N	Select Division	Y	Y
+151	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+151	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+151	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+152	1	d_crit_org_facility	N	Select Facility	Y	Y
+152	2	d_crit_department	N	Select Department	Y	Y
+152	3	d_crit_section	N	Select Section	Y	Y
+152	4	d_crit_division	N	Select Division	Y	Y
+152	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+152	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+152	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+153	1	d_crit_org_facility	N	Select Facility	Y	Y
+153	2	d_crit_department	N	Select Department	Y	Y
+153	3	d_crit_section	N	Select Section	Y	Y
+153	4	d_crit_division	N	Select Division	Y	Y
+153	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+153	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+153	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+154	1	d_crit_org_facility	N	Select Facility	Y	Y
+154	2	d_crit_department	N	Select Department	Y	Y
+154	3	d_crit_section	N	Select Section	Y	Y
+154	4	d_crit_division	N	Select Division	Y	Y
+154	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+154	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+154	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+154	8	d_crit_address_type	N	Select Address Type	Y	Y
+155	1	d_crit_org_facility	N	Select Facility	Y	Y
+155	2	d_crit_department	N	Select Department	Y	Y
+155	3	d_crit_section	N	Select Section	Y	Y
+155	4	d_crit_division	N	Select Division	Y	Y
+155	5	d_crit_staff_cat	N	Select Staff Category	Y	Y
+155	6	d_crit_affil_status	N	Select Affiliation Status	Y	Y
+155	7	d_crit_appmnt_status	Y	Select Appointment Status	Y	Y
+156	1	d_rpt_ctx_wiz_grouping1	N	Specify Grouping Way	N	N
+156	2	d_rpt_ctx_wiz_status1	N	Select Contract Status	Y	Y
+156	3	d_rpt_ctx_wiz_owner1	Y	Select Contract Owner	Y	Y
+157	1	d_rpt_ctx_wiz_grouping2	N	Specify Grouping Way	N	N
+157	2	d_rpt_ctx_wiz_status1	N	Select Contract Status	Y	Y
+157	3	d_rpt_ctx_wiz_owner1	N	Select Contract Owner	Y	Y
+157	4	d_rpt_ctx_wiz_days	Y	Days Until Review	N	N
+158	1	d_rpt_ctx_wiz_grouping2	N	Specify Grouping Way	N	N
+158	2	d_rpt_ctx_wiz_status1	N	Select Contract Status	Y	Y
+158	3	d_rpt_ctx_wiz_owner1	N	Select Contract Owner	Y	Y
+158	4	d_rpt_ctx_wiz_days	Y	Days Until Review	N	N
+159	1	d_crit_date_range	N	Select a Date Range	Y	N
+159	2	d_rpt_ctx_wiz_category1	N	Select Contract Category	Y	Y
+159	3	d_rpt_ctx_wiz_service1	N	Select Service Item	Y	Y
+159	4	d_rpt_ctx_wiz_status1	Y	Select Contract Status	Y	Y
+160	1	d_crit_contract_det_contact	N	Select User	Y	Y
+160	2	d_crit_contract_status	N	Select Contract Status	Y	Y
+161	1	d_rpt_ctx_wiz_select	N	Select Contract(s)	N	Y
+161	2	d_rpt_ctx_wiz_select_cptcode	N	Select CPT Code(s)	N	Y
+161	3	d_crit_date_range	Y	Select a Date Range	Y	N
+162	1	d_rpt_ctx_wiz_startyear	N	Specify Start Year	Y	Y
+162	2	d_rpt_ctx_wiz_category1	Y	Select Contract Category	Y	Y
+163	1	d_rpt_ctx_wiz_category1	N	Select Contract Category	Y	Y
+163	2	d_rpt_ctx_wiz_status1	N	Select Contract Current Status	Y	Y
+163	3	d_rpt_ctx_wiz_status2	N	Select Contract Track Status	Y	Y
+163	4	d_rpt_ctx_wiz_type1	N	Select Contract Type	Y	Y
+163	5	d_rpt_ctx_wiz_user	N	Select user	Y	Y
+163	6	d_crit_date_range	Y	Select a Date Range	Y	N
+164	1	d_rpt_ctx_wiz_category1	N	Select Contract Category	Y	Y
+164	2	d_rpt_ctx_wiz_status1	N	Select Contract Current Status	Y	Y
+164	3	d_rpt_ctx_wiz_status2	N	Select Contract Track Status	Y	Y
+164	4	d_rpt_ctx_wiz_type1	N	Select Contract Type	Y	Y
+164	5	d_rpt_ctx_wiz_user	N	Select user	Y	Y
+164	6	d_crit_date_range	Y	Select a Date Range	Y	N
+165	1	d_rpt_ctx_wiz_category1	N	Select Contract Category	Y	Y
+165	2	d_rpt_ctx_wiz_status1	N	Select Contract Current Status	Y	Y
+165	3	d_rpt_ctx_wiz_status2	N	Select Contract Track Status	Y	Y
+165	4	d_rpt_ctx_wiz_type1	N	Select Contract Type	Y	Y
+165	5	d_rpt_ctx_wiz_owner1	N	Select Contract Owner	Y	Y
+165	6	d_crit_date_range	Y	Select a Date Range	Y	N
+166	1	d_rpt_ctx_wiz_category1	N	Select Contract Category	Y	Y
+166	2	d_rpt_ctx_wiz_status_select	N	Select Contract Status	Y	Y
+166	3	d_rpt_ctx_wiz_type1	N	Select Contract Type	Y	Y
+166	4	d_rpt_ctx_wiz_user	N	Select user	Y	Y
+166	5	d_crit_date_range	Y	Select a Date Range	Y	N
+167	1	d_rpt_ctx_wiz_category1	N	Select Contract Category	Y	Y
+167	2	d_rpt_ctx_wiz_multi_status_select	N	Select Contract Status	Y	Y
+167	3	d_rpt_ctx_wiz_type1	N	Select Contract Type	Y	Y
+167	4	d_rpt_ctx_wiz_owner1	N	Select Contract Owner	Y	Y
+167	5	d_crit_date_range	Y	Select a Date Range	Y	N
+168	1	d_crit_org_facility	N	Select Facility	Y	Y
+168	2	d_crit_date_range	Y	Select a Date Range	Y	N

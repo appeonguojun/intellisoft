@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_prf_usc_personal.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=108 color="536870912"  height.autosize=yes)
+table(column=(type=long updatewhereclause=yes name=pd_basic_married dbname="married" )
+ column=(type=char(30) updatewhereclause=yes name=pd_basic_spouse_name dbname="spouse_name" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_date_of_birth dbname="date_of_birth" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_sex dbname="sex" )
+ column=(type=char(11) updatewhereclause=yes name=pd_basic_ssn dbname="ssn" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prac_category dbname="prac_category" )
+ column=(type=char(50) updatewhereclause=yes name=pd_basic_maiden_other_name dbname="maiden_other_name" )
+ column=(type=char(25) updatewhereclause=yes name=pd_basic_pob_city dbname="pob_city" )
+ column=(type=char(25) updatewhereclause=yes name=cphone dbname="phone" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_beeper_1 dbname="beeper_1" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_beeper_2 dbname="beeper_2" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_personal_pager dbname="personal_pager" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_hospital_pager dbname="hospital_pager" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_car_phone_1 dbname="car_phone_1" )
+ column=(type=char(14) updatewhereclause=yes name=pd_basic_car_phone_2 dbname="car_phone_2" )
+ column=(type=char(15) updatewhereclause=yes name=cpob_state dbname="pob_state" )
+ column=(type=char(75) updatewhereclause=yes name=cpob_country dbname="pob_country" )
+ retrieve="  SELECT DISTINCT pd_basic.married,   
+         pd_basic.spouse_name,   
+         pd_basic.date_of_birth,   
+         pd_basic.sex,   
+         pd_basic.ssn,   
+         pd_basic.prac_category,   
+         pd_basic.maiden_other_name,   
+         pd_basic.pob_city,   
+         pd_basic.phone,   
+         pd_basic.beeper_1,   
+         pd_basic.beeper_2,   
+         pd_basic.personal_pager,   
+         pd_basic.hospital_pager,   
+         pd_basic.car_phone_1,   
+         pd_basic.car_phone_2,   
+			code_lookup_a.code pob_state,   
+         code_lookup_b.description pob_country
+    FROM {oj {oj pd_basic  LEFT OUTER JOIN code_lookup code_lookup_a  ON pd_basic.pob_state = code_lookup_a.lookup_code} LEFT OUTER JOIN code_lookup code_lookup_b  ON pd_basic.pob_country = code_lookup_b.lookup_code}  
+   WHERE ( pd_basic.prac_id = :prac_id )
+" arguments=(("prac_id", number)) )
+text(band=header alignment="2" text="Personal Information"border="0" color="0" x="0" y="0" height="84" width="3333"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="Date of Birth:"border="0" color="0" x="46" y="32" height="64" width="352"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="416" y="32" height="64" width="375" format="MM/DD/YYYY"  name=pd_basic_date_of_birth edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Gender:"border="0" color="0" x="837" y="32" height="64" width="206"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1061" y="32" height="64" width="338" format="[general]"  name=pd_basic_sex dddw.name=d_dddw_code_lookup_all dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

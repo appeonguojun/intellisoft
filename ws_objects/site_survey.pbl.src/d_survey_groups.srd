@@ -1,0 +1,28 @@
+﻿$PBExportHeader$d_survey_groups.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=128 color="536870912" )
+summary(height=64 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=review_id dbname="review_question_groups.review_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=group_id dbname="review_question_groups.group_id" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=group_name dbname="review_question_groups.group_name" )
+ column=(type=long update=yes updatewhereclause=yes name=group_order dbname="review_question_groups.group_order" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=group_subgroup dbname="review_question_groups.group_subgroup" initial="G" values="Subsection	S/Subsection	G" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=group_total_points dbname="review_question_groups.group_total_points" )
+ column=(type=decimal(1) update=yes updatewhereclause=yes name=group_passing_score dbname="review_question_groups.group_passing_score" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"review_question_groups~" ) COLUMN(NAME=~"review_question_groups.review_id~") COLUMN(NAME=~"review_question_groups.group_id~") COLUMN(NAME=~"review_question_groups.group_name~") COLUMN(NAME=~"review_question_groups.group_order~") COLUMN(NAME=~"review_question_groups.group_subgroup~") COLUMN(NAME=~"review_question_groups.group_total_points~") COLUMN(NAME=~"review_question_groups.group_passing_score~")WHERE(    EXP1 =~"review_question_groups.review_id~"   OP =~"=~"    EXP2 =~":review_id~" ) ) ARG(NAME = ~"review_id~" TYPE = number) " update="review_question_groups" updatewhere=1 updatekeyinplace=no arguments=(("review_id", number))  sort="group_subgroup A group_name A " )
+text(band=header alignment="2" text="Section/Subsection
+Name"border="6" color="0" x="9" y="12" height="104" width="1339"  name=group_name_t  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Total Points
+Possible"border="6" color="0" x="1367" y="12" height="104" width="279"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Passing
+ Score "border="6" color="0" x="1664" y="12" height="104" width="279"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="14" y="4" height="60" width="1330" format="[general]"  name=group_name edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=20 border="5" color="0" x="1367" y="4" height="60" width="261" format="[General]"  name=group_total_points editmask.spin=yes editmask.mask="###" editmask.spinrange="1~~1000" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=30 border="5" color="0" x="1682" y="4" height="60" width="265" format="[General]"  name=group_passing_score editmask.spin=yes editmask.mask="###" editmask.spinrange="1~~1000" editmask.spinincr=1 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="0" color="0" x="2025" y="12" height="52" width="718" format="[general]"  name=group_subgroup checkbox.text="Subsection" checkbox.on="S" checkbox.off="G" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79680469" )
+compute(band=summary alignment="0" expression="sum( group_total_points )"border="0" color="0" x="1362" y="8" height="52" width="251"  name=tot_points  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79680469" )
+compute(band=summary alignment="0" expression="sum(  group_passing_score  )"border="0" color="0" x="1678" y="4" height="52" width="265"  name=tot_pass  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79680469" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

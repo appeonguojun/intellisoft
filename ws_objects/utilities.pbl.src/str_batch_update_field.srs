@@ -1,0 +1,15 @@
+﻿$PBExportHeader$str_batch_update_field.srs
+global type str_batch_update_field from structure
+	long		al_viewid
+	long		al_screenid
+	string		as_fieldname
+	string		as_fielddatatype
+	string		as_fieldlookuptype
+	string		as_fieldname_alias
+	string		as_fieldformat
+	string		as_syntax_field
+	long		al_fieldid
+	string		as_fieldvalue
+	datetime		adt_fieldvalue
+end type
+

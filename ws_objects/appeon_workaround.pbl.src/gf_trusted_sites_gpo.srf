@@ -1,0 +1,79 @@
+﻿$PBExportHeader$gf_trusted_sites_gpo.srf
+global type gf_trusted_sites_gpo from function_object
+end type
+
+forward prototypes
+global function boolean gf_trusted_sites_gpo (string as_prefix, string as_truste_site, string as_fullurl)
+end prototypes
+
+global function boolean gf_trusted_sites_gpo (string as_prefix, string as_truste_site, string as_fullurl);//====================================================================
+// Function: gf_trusted_sites_gpo
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+//                as_url
+//--------------------------------------------------------------------
+// Returns:  integer
+//--------------------------------------------------------------------
+// Author:         Ken.Guo 2016-10-20
+//--------------------------------------------------------------------
+//Copyright (c) 2008-2016 Contract Logix, Inc. All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+
+
+Int         li_rtn
+string    ls_array[], ls_url_temp, ls_value,ls_url_temp2, ls_fullurl
+Long     ll_upperbound, i, ll_pos
+ulong    ul_num
+Boolean   lbn_rtn = false
+
+ls_url_temp = Trim(as_prefix) + '://' + Trim(as_truste_site)
+
+ll_pos = pos(as_truste_site,'.')
+If ll_pos > 0 Then
+	ls_url_temp2 = Trim(as_prefix) + '://' + '*' + trim(Mid(as_truste_site, ll_pos))
+End If
+
+If right(as_fullurl, 1) = '/' Then
+	ls_fullurl = left(as_fullurl, len(as_fullurl) - 1)
+End If
+
+li_rtn = gnv_appeondll.of_RegistryKeys(  "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects",  ls_array)
+
+If li_rtn = 1 Then 
+         ll_upperbound = UpperBound(ls_array) 
+         If ll_upperbound > 0 and not isnull(ll_upperbound) Then
+                   For i = 1 to ll_upperbound
+                            gnv_appeondll.of_RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\"+ls_array[i] + "\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMapKey", ls_url_temp,  RegString! , ls_value)
+                            If ls_value = '2' Then
+                                     lbn_rtn = True 
+                                     Exit
+                            End If
+                            gnv_appeondll.of_RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\"+ls_array[i] + "\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMapKey", ls_url_temp2,  RegString! , ls_value)
+                            If ls_value = '2' Then
+                                     lbn_rtn = True 
+                                     Exit
+                            End If		
+						gnv_appeondll.of_RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\"+ls_array[i] + "\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMapKey", as_fullurl,  RegString! , ls_value)
+                            If ls_value = '2' Then
+                                     lbn_rtn = True 
+                                     Exit
+                            End If	
+						gnv_appeondll.of_RegistryGet( "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\"+ls_array[i] + "\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMapKey", ls_fullurl,  RegString! , ls_value)
+                            If ls_value = '2' Then
+                                     lbn_rtn = True 
+                                     Exit
+                            End If						 
+                   Next
+         End If
+End If
+
+Return lbn_rtn
+
+end function
+

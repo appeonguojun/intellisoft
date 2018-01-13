@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_image_path.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(150) update=yes updatewhereclause=yes name=imaging_path dbname="ids.imaging_path" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=lookup_code_id dbname="ids.lookup_code_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ids~" ) COLUMN(NAME=~"ids.imaging_path~") COLUMN(NAME=~"ids.lookup_code_id~")) " update="ids" updatewhere=0 updatekeyinplace=yes )
+text(band=detail alignment="0" text="Image Path:"border="0" color="0" x="18" y="16" height="60" width="311"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="361" y="16" height="64" width="1669" format="[general]"  name=imaging_path edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

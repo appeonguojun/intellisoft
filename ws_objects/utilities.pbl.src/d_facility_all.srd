@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_facility_all.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(100) update=yes updatewhereclause=yes name=facility_name dbname="facility.facility_name" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=facility_id dbname="facility.facility_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"facility~" ) COLUMN(NAME=~"facility.facility_name~") COLUMN(NAME=~"facility.facility_id~")) " update="facility" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="0" x="14" y="8" height="64" width="1189" format="[general]"  name=facility_id dddw.name=d_dddw_facility_all dddw.displaycolumn=facility_name dddw.datacolumn=facility_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="1861" y="0" height="64" width="1344" format="[general]"  name=facility_name edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

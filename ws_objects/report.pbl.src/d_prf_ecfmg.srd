@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_prf_ecfmg.srd
+$PBExportComments$Replaced DDDW with Left Outer Join at 05/07/2007 by Ken
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=176 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(12) updatewhereclause=yes name=ecfmg_number dbname="pd_ecfmg.ecfmg_number" )
+ column=(type=datetime updatewhereclause=yes name=date_issued dbname="pd_ecfmg.date_issued" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_ecfmg~" ) COLUMN(NAME=~"pd_ecfmg.ecfmg_number~") COLUMN(NAME=~"pd_ecfmg.date_issued~")WHERE(    EXP1 =~"pd_ecfmg.prac_id~"   OP =~"=~"    EXP2 =~":prac_id~" ) ) ARG(NAME = ~"prac_id~" TYPE = number) " arguments=(("prac_id", number)) )
+text(band=header alignment="2" text="ECFMG" border="0" color="0" x="9" y="0" height="80" width="3282" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=header alignment="0" text="ECFMG Number" border="0" color="0" x="1184" y="104" height="64" width="471" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Date Issued" border="0" color="0" x="1957" y="104" height="64" width="357" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1198" y="8" height="76" width="384" format="[general]" html.valueishtml="0"  name=ecfmg_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1966" y="12" height="76" width="928" format="[shortdate] [time]" html.valueishtml="0"  name=date_issued visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

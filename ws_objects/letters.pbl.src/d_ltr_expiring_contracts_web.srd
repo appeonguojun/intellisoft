@@ -1,0 +1,303 @@
+﻿$PBExportHeader$d_ltr_expiring_contracts_web.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=verif_info_rec_id dbname="verif_info.rec_id" )
+ column=(type=long updatewhereclause=yes name=verif_info_facility_id dbname="verif_info.facility_id" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_first_sent dbname="verif_info.first_sent" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_last_sent dbname="verif_info.last_sent" )
+ column=(type=char(20) updatewhereclause=yes name=verif_info_doc_id dbname="verif_info.doc_id" )
+ column=(type=long updatewhereclause=yes name=number_sent dbname="number_sent" )
+ column=(type=datetime updatewhereclause=yes name=pd_contract_start_date dbname="pd_contract.start_date" )
+ column=(type=datetime updatewhereclause=yes name=pd_contract_end_date dbname="pd_contract.end_date" )
+ column=(type=char(25) updatewhereclause=yes name=pd_contract_mco_provider_id dbname="pd_contract.mco_provider_id" )
+ column=(type=char(100) updatewhereclause=yes name=address_lookup_group_name dbname="address_lookup.group_name" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_sub_group dbname="code_lookup.sub_group" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_category dbname="code_lookup.category" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_end_reason dbname="code_lookup.end_reason" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_1 dbname="pd_contract.cust_1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_2 dbname="pd_contract.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_3 dbname="pd_contract.cust_3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_4 dbname="pd_contract.cust_4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_5 dbname="pd_contract.cust_5" )
+ column=(type=datetime updatewhereclause=yes name=pd_contract_cust_d1 dbname="pd_contract.cust_d1" )
+ column=(type=datetime updatewhereclause=yes name=pd_contract_cust_d2 dbname="pd_contract.cust_d2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_6 dbname="pd_contract.cust_6" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_7 dbname="pd_contract.cust_7" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_8 dbname="pd_contract.cust_8" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_9 dbname="pd_contract.cust_9" )
+ column=(type=char(150) updatewhereclause=yes name=pd_contract_cust_10 dbname="pd_contract.cust_10" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_state dbname="code_lookup.state" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_country dbname="code_lookup.country" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust1 dbname="pd_address.addr_cust1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust2 dbname="pd_address.addr_cust2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust3 dbname="pd_address.addr_cust3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust4 dbname="pd_address.addr_cust4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust5 dbname="pd_address.addr_cust5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust6 dbname="pd_address.addr_cust6" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust7 dbname="pd_address.addr_cust7" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust8 dbname="pd_address.addr_cust8" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust9 dbname="pd_address.addr_cust9" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust10 dbname="pd_address.addr_cust10" )
+ column=(type=datetime updatewhereclause=yes name=pd_address_addr_custd1 dbname="pd_address.addr_custd1" )
+ column=(type=datetime updatewhereclause=yes name=pd_address_addr_custd2 dbname="pd_address.addr_custd2" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="v_full_name.prac_id" )
+ column=(type=char(183) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=datetime updatewhereclause=yes name=v_full_name_date_of_birth dbname="v_full_name.date_of_birth" )
+ column=(type=char(11) updatewhereclause=yes name=v_full_name_ssn dbname="v_full_name.ssn" )
+ column=(type=char(30) updatewhereclause=yes name=v_full_name_title dbname="v_full_name.title" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_first_name dbname="v_full_name.first_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_middle_name dbname="v_full_name.middle_name" )
+ column=(type=char(100) updatewhereclause=yes name=v_full_name_last_name dbname="v_full_name.last_name" )
+ column=(type=char(30) updatewhereclause=yes name=v_full_name_prof_suffix dbname="v_full_name.prof_suffix" )
+ column=(type=char(100) updatewhereclause=yes name=address_lookup_company_street1 dbname="address_lookup.company_street1" )
+ column=(type=char(100) updatewhereclause=yes name=address_lookup_company_street2 dbname="address_lookup.company_street2" )
+ column=(type=char(35) updatewhereclause=yes name=address_lookup_company_city dbname="address_lookup.company_city" )
+ column=(type=char(2) updatewhereclause=yes name=address_lookup_company_state dbname="address_lookup.company_state" )
+ column=(type=char(12) updatewhereclause=yes name=address_lookup_company_zip dbname="address_lookup.company_zip" )
+ column=(type=char(13) updatewhereclause=yes name=address_lookup_company_phone dbname="address_lookup.company_phone" )
+ column=(type=char(13) updatewhereclause=yes name=address_lookup_company_fax dbname="address_lookup.company_fax" )
+ column=(type=char(100) updatewhereclause=yes name=facility_return_facility_name dbname="facility.return_facility_name" )
+ column=(type=char(75) updatewhereclause=yes name=facility_return_street dbname="facility.return_street" )
+ column=(type=char(75) updatewhereclause=yes name=facility_return_street_2 dbname="facility.return_street_2" )
+ column=(type=char(35) updatewhereclause=yes name=facility_return_city dbname="facility.return_city" )
+ column=(type=char(2) updatewhereclause=yes name=facility_return_state dbname="facility.return_state" )
+ column=(type=char(25) updatewhereclause=yes name=facility_return_phone dbname="facility.return_phone" )
+ column=(type=char(10) updatewhereclause=yes name=facility_return_ext dbname="facility.return_ext" )
+ column=(type=char(25) updatewhereclause=yes name=facility_return_fax dbname="facility.return_fax" )
+ column=(type=char(12) updatewhereclause=yes name=facility_return_zip dbname="facility.return_zip" )
+ column=(type=char(30) updatewhereclause=yes name=facility_credentialing_contact_name dbname="facility.credentialing_contact_name" )
+ column=(type=char(30) updatewhereclause=yes name=facility_credentialing_contact_title dbname="facility.credentialing_contact_title" )
+ column=(type=char(0) updatewhereclause=yes name=parent_facility_name dbname="parent_facility_name" )
+ retrieve="  SELECT distinct verif_info.rec_id,   
+         verif_info.facility_id,   
+         verif_info.first_sent,   
+         verif_info.last_sent,   
+         verif_info.doc_id,
+			number_sent = verif_info.number_sent + 1,   
+			pd_contract.start_date,   
+         pd_contract.end_date,   
+         pd_contract.mco_provider_id,
+			address_lookup.entity_name Group_name, 
+         code_lookup_a.description sub_group,   
+         code_lookup_b.description category,   
+         code_lookup_c.description end_reason,   
+         pd_contract.cust_1,   
+         pd_contract.cust_2,   
+         pd_contract.cust_3,   
+         pd_contract.cust_4,   
+         pd_contract.cust_5,   
+         pd_contract.cust_d1,   
+         pd_contract.cust_d2,   
+         pd_contract.cust_6,   
+         pd_contract.cust_7,   
+         pd_contract.cust_8,   
+         pd_contract.cust_9,   
+         pd_contract.cust_10,
+			pd_address.zip,
+         pd_address.street, 
+         pd_address.street_2,  
+         pd_address.city,   
+         code_lookup_d.code state,   
+         pd_address.zip,   
+			pd_address.fax,
+         code_lookup_e.code country, 
+			pd_address.cust_1 addr_cust1,
+			pd_address.cust_2 addr_cust2,
+			pd_address.cust_3 addr_cust3,
+			pd_address.cust_4 addr_cust4,
+			pd_address.cust_5 addr_cust5,
+			pd_address.cust_6 addr_cust6,
+			pd_address.cust_7 addr_cust7,
+			pd_address.cust_8 addr_cust8,
+			pd_address.cust_9 addr_cust9,
+			pd_address.cust_10 addr_cust10,
+			pd_address.cust_d1 addr_custd1,
+			pd_address.cust_d2 addr_custd2, 
+         v_full_name.prac_id,   
+         v_full_name.full_name,   
+         v_full_name.date_of_birth,   
+         v_full_name.ssn,   
+         v_full_name.title,   
+         v_full_name.first_name,   
+         v_full_name.middle_name,   
+         v_full_name.last_name,   
+         v_full_name.prof_suffix,        
+			address_lookup.street1 company_street1,
+			address_lookup.street2 company_street2,
+			address_lookup.city company_city,
+			address_lookup.state company_state,
+			address_lookup.zip company_zip,
+			address_lookup.phone company_phone,
+			address_lookup.fax company_fax,
+         facility.return_facility_name,
+         facility.return_street,   
+         facility.return_street_2,   
+         facility.return_city,
+         facility.return_state,   
+         facility.return_phone,   
+         facility.return_ext,   
+         facility.return_fax,   
+         facility.return_zip,   
+         facility.credentialing_contact_name,   
+         facility.credentialing_contact_title,
+			parent_facility_name = ''
+    FROM {oj pd_contract LEFT OUTER JOIN code_lookup code_lookup_a ON pd_contract.sub_group_plan = code_lookup_a.lookup_code LEFT OUTER JOIN code_lookup code_lookup_b ON pd_contract.category = code_lookup_b.lookup_code LEFT OUTER JOIN code_lookup code_lookup_c ON pd_contract.reason = code_lookup_c.lookup_code},   
+			{oj pd_address LEFT OUTER JOIN code_lookup code_lookup_d ON pd_address.state = code_lookup_d.lookup_code LEFT OUTER JOIN code_lookup code_lookup_e ON pd_address.country = code_lookup_e.lookup_code },
+         address_lookup,   
+         verif_info,
+			facility,
+         pd_affil_stat,   
+         pd_address_link,   
+         v_full_name  ,
+v_ic_client_data_vchar
+   WHERE ( pd_contract.group_plan = address_lookup.lookup_code ) and 
+			( verif_info.facility_id = facility.facility_id ) and
+			( pd_affil_stat.parent_facility_id = pd_address_link.facility_id ) and
+			( pd_affil_stat.verifying_facility = verif_info.facility_id ) and 
+         ( pd_address.rec_id = pd_address_link.address_id ) and  
+         ( verif_info.prac_id = pd_address.prac_id ) and  
+         ( pd_contract.prac_id = v_full_name.prac_id ) and  
+         ( pd_contract.rec_id = verif_info.rec_id ) and  
+         ( pd_contract.prac_id = verif_info.prac_id ) and
+			( verif_info.exp_credential_flag = 1 ) AND  
+         ( verif_info.active_status =  1  ) AND
+			( pd_affil_stat.active_status in ( 1,4 ) ) AND
+			( pd_address_link.exp_letters = 1 ) and
+			((verif_info.doc_id = v_ic_client_data_vchar.data_vchar and v_ic_client_data_vchar.client_id = :as_client_id ));   
+" arguments=(("as_client_id", string)) )
+text(band=header alignment="2" text="Pd Contract
+Start Date" border="6" color="33554432" x="18" y="16" height="104" width="503" html.valueishtml="0"  name=pd_contract_start_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+End Date" border="6" color="33554432" x="539" y="16" height="104" width="503" html.valueishtml="0"  name=pd_contract_end_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Mco Provider Id" border="6" color="33554432" x="1061" y="16" height="104" width="594" html.valueishtml="0"  name=pd_contract_mco_provider_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 1" border="6" color="33554432" x="1673" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_1_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 2" border="6" color="33554432" x="5143" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_2_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 3" border="6" color="33554432" x="8608" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_3_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 4" border="6" color="33554432" x="12078" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_4_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 5" border="6" color="33554432" x="15547" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_5_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust D1" border="6" color="33554432" x="19017" y="16" height="104" width="503" html.valueishtml="0"  name=pd_contract_cust_d1_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust D2" border="6" color="33554432" x="19538" y="16" height="104" width="503" html.valueishtml="0"  name=pd_contract_cust_d2_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 6" border="6" color="33554432" x="20059" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_6_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 7" border="6" color="33554432" x="23529" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_7_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 8" border="6" color="33554432" x="26999" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_8_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 9" border="6" color="33554432" x="30464" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_9_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Contract
+Cust 10" border="6" color="33554432" x="33934" y="16" height="104" width="3451" html.valueishtml="0"  name=pd_contract_cust_10_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+First Sent" border="6" color="33554432" x="37403" y="16" height="104" width="503" html.valueishtml="0"  name=verif_info_first_sent_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Last Sent" border="6" color="33554432" x="37925" y="16" height="104" width="503" html.valueishtml="0"  name=verif_info_last_sent_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Number Sent" border="6" color="33554432" x="38446" y="16" height="104" width="283" html.valueishtml="0"  name=verif_info_number_sent_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Verif Info
+Date Recieved" border="6" color="33554432" x="38747" y="16" height="104" width="503" html.valueishtml="0"  name=verif_info_date_recieved_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="V Full Name
+Full Name" border="6" color="33554432" x="39269" y="16" height="104" width="3520" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Address Lookup
+Entity Name" border="6" color="33554432" x="42807" y="16" height="104" width="2309" html.valueishtml="0"  name=address_lookup_entity_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Lookup
+Sub Group" border="6" color="33554432" x="45134" y="16" height="104" width="1737" html.valueishtml="0"  name=code_lookup_sub_group_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Lookup
+Category" border="6" color="33554432" x="46889" y="16" height="104" width="1737" html.valueishtml="0"  name=code_lookup_category_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Lookup
+End Reason" border="6" color="33554432" x="48645" y="16" height="104" width="1737" html.valueishtml="0"  name=code_lookup_end_reason_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="33554432" x="18" y="16" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=pd_contract_start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="5" color="33554432" x="539" y="16" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=pd_contract_end_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="5" color="33554432" x="1061" y="16" height="64" width="594" format="[general]" html.valueishtml="0"  name=pd_contract_mco_provider_id visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="5" color="33554432" x="1673" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_1 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="5" color="33554432" x="5143" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_2 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="5" color="33554432" x="8608" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_3 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="5" color="33554432" x="12078" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_4 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="5" color="33554432" x="15547" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_5 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="5" color="33554432" x="19017" y="16" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=pd_contract_cust_d1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="5" color="33554432" x="19538" y="16" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=pd_contract_cust_d2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="5" color="33554432" x="20059" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_6 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="5" color="33554432" x="23529" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_7 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="5" color="33554432" x="26999" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_8 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="5" color="33554432" x="30464" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_9 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="5" color="33554432" x="33934" y="16" height="64" width="3451" format="[general]" html.valueishtml="0"  name=pd_contract_cust_10 visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554432" x="37403" y="16" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=verif_info_first_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="37925" y="16" height="64" width="503" format="[shortdate] [time]" html.valueishtml="0"  name=verif_info_last_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=47 alignment="0" tabsequence=32766 border="5" color="33554432" x="39269" y="16" height="64" width="3520" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=153 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="5" color="33554432" x="45134" y="16" height="64" width="1737" format="[general]" html.valueishtml="0"  name=code_lookup_sub_group visible="1" edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="5" color="33554432" x="46889" y="16" height="64" width="1737" format="[general]" html.valueishtml="0"  name=code_lookup_category visible="1" edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="5" color="33554432" x="48645" y="16" height="64" width="1737" format="[general]" html.valueishtml="0"  name=code_lookup_end_reason visible="1" edit.limit=75 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="50382" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=verif_info_rec_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="51374" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=verif_info_facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="52366" y="0" height="52" width="462" format="[general]" html.valueishtml="0"  name=verif_info_doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=46 alignment="0" tabsequence=32766 border="0" color="33554432" x="52827" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=v_full_name_prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=48 alignment="0" tabsequence=32766 border="0" color="33554432" x="53819" y="0" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=v_full_name_date_of_birth visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=49 alignment="0" tabsequence=32766 border="0" color="33554432" x="54487" y="0" height="52" width="251" format="[general]" html.valueishtml="0"  name=v_full_name_ssn visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=50 alignment="0" tabsequence=32766 border="0" color="33554432" x="54738" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_title visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=51 alignment="0" tabsequence=32766 border="0" color="33554432" x="55086" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_first_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=52 alignment="0" tabsequence=32766 border="0" color="33554432" x="55433" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_middle_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=53 alignment="0" tabsequence=32766 border="0" color="33554432" x="55781" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=v_full_name_last_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=54 alignment="0" tabsequence=32766 border="0" color="33554432" x="58080" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_prof_suffix visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="33554432" x="58427" y="0" height="52" width="251" format="[general]" html.valueishtml="0"  name=pd_address_zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="60978" y="0" height="52" width="992" format="[general]" html.valueishtml="0"  name=number_sent visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="33554432" x="61970" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=code_lookup_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="33554432" x="62318" y="0" height="52" width="347" format="[general]" html.valueishtml="0"  name=code_lookup_country visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="33554432" x="62665" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="33554432" x="66117" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street_2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="33554432" x="69568" y="0" height="52" width="576" format="[general]" html.valueishtml="0"  name=pd_address_city visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="33554432" x="70144" y="0" height="52" width="256" format="[general]" html.valueishtml="0"  name=pd_address_zip_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="33554432" x="70400" y="0" height="52" width="325" format="[general]" html.valueishtml="0"  name=pd_address_fax visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="33554432" x="70725" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="33554432" x="74176" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="33554432" x="77627" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust3 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="33554432" x="81079" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust4 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="33554432" x="84530" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust5 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="33554432" x="87982" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust6 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="33554432" x="91433" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust7 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=41 alignment="0" tabsequence=32766 border="0" color="33554432" x="94885" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust8 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=42 alignment="0" tabsequence=32766 border="0" color="33554432" x="98336" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust9 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=43 alignment="0" tabsequence=32766 border="0" color="33554432" x="101787" y="0" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust10 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=44 alignment="0" tabsequence=32766 border="0" color="33554432" x="105239" y="0" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_address_addr_custd1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=45 alignment="0" tabsequence=32766 border="0" color="33554432" x="105906" y="0" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_address_addr_custd2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="106574" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=address_lookup_group_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=55 alignment="0" tabsequence=32766 border="0" color="33554432" x="108873" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=address_lookup_company_street1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=56 alignment="0" tabsequence=32766 border="0" color="33554432" x="111173" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=address_lookup_company_street2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=57 alignment="0" tabsequence=32766 border="0" color="33554432" x="113472" y="0" height="52" width="805" format="[general]" html.valueishtml="0"  name=address_lookup_company_city visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=58 alignment="0" tabsequence=32766 border="0" color="33554432" x="114277" y="0" height="52" width="46" format="[general]" html.valueishtml="0"  name=address_lookup_company_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=59 alignment="0" tabsequence=32766 border="0" color="33554432" x="114322" y="0" height="52" width="279" format="[general]" html.valueishtml="0"  name=address_lookup_company_zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=60 alignment="0" tabsequence=32766 border="0" color="33554432" x="114601" y="0" height="52" width="302" format="[general]" html.valueishtml="0"  name=address_lookup_company_phone visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=61 alignment="0" tabsequence=32766 border="0" color="33554432" x="114903" y="0" height="52" width="302" format="[general]" html.valueishtml="0"  name=address_lookup_company_fax visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=62 alignment="0" tabsequence=32766 border="0" color="33554432" x="121797" y="0" height="52" width="2299" format="[general]" html.valueishtml="0"  name=facility_return_facility_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=63 alignment="0" tabsequence=32766 border="0" color="33554432" x="124096" y="0" height="52" width="1728" format="[general]" html.valueishtml="0"  name=facility_return_street visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=64 alignment="0" tabsequence=32766 border="0" color="33554432" x="125824" y="0" height="52" width="1728" format="[general]" html.valueishtml="0"  name=facility_return_street_2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=65 alignment="0" tabsequence=32766 border="0" color="33554432" x="127552" y="0" height="52" width="805" format="[general]" html.valueishtml="0"  name=facility_return_city visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=66 alignment="0" tabsequence=32766 border="0" color="33554432" x="128357" y="0" height="52" width="46" format="[general]" html.valueishtml="0"  name=facility_return_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=67 alignment="0" tabsequence=32766 border="0" color="33554432" x="128402" y="0" height="52" width="370" format="[general]" html.valueishtml="0"  name=facility_return_phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=68 alignment="0" tabsequence=32766 border="0" color="33554432" x="128773" y="0" height="52" width="229" format="[general]" html.valueishtml="0"  name=facility_return_ext visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=69 alignment="0" tabsequence=32766 border="0" color="33554432" x="129001" y="0" height="52" width="370" format="[general]" html.valueishtml="0"  name=facility_return_fax visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=70 alignment="0" tabsequence=32766 border="0" color="33554432" x="129371" y="0" height="52" width="279" format="[general]" html.valueishtml="0"  name=facility_return_zip visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=71 alignment="0" tabsequence=32766 border="0" color="33554432" x="129650" y="0" height="52" width="690" format="[general]" html.valueishtml="0"  name=facility_credentialing_contact_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=72 alignment="0" tabsequence=32766 border="0" color="33554432" x="130341" y="0" height="52" width="690" format="[general]" html.valueishtml="0"  name=facility_credentialing_contact_title visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=73 alignment="0" tabsequence=32766 border="0" color="33554432" x="131031" y="0" height="52" width="23" format="[general]" html.valueishtml="0"  name=parent_facility_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

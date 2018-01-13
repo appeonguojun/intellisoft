@@ -1,0 +1,66 @@
+﻿$PBExportHeader$d_resend_letters.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes key=yes name=verif_info_prac_id dbname="verif_info.prac_id" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes name=verif_info_rec_id dbname="verif_info.rec_id" )
+ column=(type=long updatewhereclause=yes key=yes name=verif_info_seq_no dbname="verif_info.seq_no" )
+ column=(type=long updatewhereclause=yes key=yes name=verif_info_facility_id dbname="verif_info.facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=print_flag dbname="verif_info.print_flag" )
+ column=(type=long updatewhereclause=yes name=facility_ver_rules_ver_letter_resend_day dbname="facility_ver_rules.ver_letter_resend_days" )
+ column=(type=datetime updatewhereclause=yes name=verif_info_last_sent dbname="verif_info.last_sent" )
+ column=(type=datetime updatewhereclause=yes name=compute_0008 dbname="compute_0008" )
+ retrieve="  SELECT verif_info.prac_id,   
+         verif_info.rec_id,   
+         verif_info.seq_no,   
+         verif_info.facility_id,   
+         verif_info.print_flag,   
+         facility_ver_rules.ver_letter_resend_days,   
+         verif_info.last_sent,   
+         verif_info.last_sent + facility_ver_rules.ver_letter_resend_days  
+    FROM facility_ver_rules,   
+         verif_info  
+   WHERE ( verif_info.screen_id = facility_ver_rules.screen_id ) and  
+         ( verif_info.facility_id = facility_ver_rules.facility_id ) and  
+         ( verif_info.response_code IS NULL ) AND  
+         ( verif_info.print_flag = 0 ) AND  
+         (isnull(verif_info.number_sent,0) < facility_ver_rules.ver_letter_max_sends) AND  
+         ( verif_info.last_sent + facility_ver_rules.ver_letter_resend_days < getdate()) and
+			verif_info.wf_id is null  
+union all
+  SELECT verif_info.prac_id,   
+         verif_info.rec_id,   
+         verif_info.seq_no,   
+         verif_info.facility_id,   
+         verif_info.print_flag,   
+         wf_action_status.day_interval,   
+         verif_info.last_sent,   
+         verif_info.last_sent + wf_action_status.day_interval  
+    FROM wf_action_status,   
+         verif_info  
+   WHERE ( verif_info.wf_id = wf_action_status.wf_id ) and  
+			( verif_info.wf_action_type_id = wf_action_status.step_id ) and  
+         ( verif_info.response_code = wf_action_status.action_status_id ) and  
+         ( verif_info.print_flag <= 0 ) AND
+         ( wf_action_status.process_flag = 1 ) AND
+         ( wf_action_status.letter_id is not null ) AND
+         (isnull(verif_info.number_sent,0) < wf_action_status.resend_times) AND  
+         ( verif_info.last_sent + wf_action_status.day_interval < getdate() )   
+    
+" update="verif_info" updatewhere=0 updatekeyinplace=no )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="0" x="59" y="120" height="52" width="206" format="[General]" html.valueishtml="0"  name=print_flag visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="283" y="8" height="52" width="992" format="[general]" html.valueishtml="0"  name=verif_info_prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1275" y="8" height="52" width="987" format="[general]" html.valueishtml="0"  name=verif_info_rec_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2263" y="8" height="52" width="987" format="[general]" html.valueishtml="0"  name=verif_info_seq_no visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="3250" y="8" height="52" width="992" format="[general]" html.valueishtml="0"  name=verif_info_facility_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="5902" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=verif_info_last_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="6569" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=compute_0008 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="7237" y="8" height="52" width="987" format="[general]" html.valueishtml="0"  name=facility_ver_rules_ver_letter_resend_day visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

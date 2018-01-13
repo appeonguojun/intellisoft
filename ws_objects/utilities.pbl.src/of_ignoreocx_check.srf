@@ -1,0 +1,41 @@
+﻿$PBExportHeader$of_ignoreocx_check.srf
+global type of_ignoreocx_check from function_object
+end type
+
+forward prototypes
+global function boolean of_ignoreocx_check (string as_ocxname)
+end prototypes
+
+global function boolean of_ignoreocx_check (string as_ocxname);//====================================================================
+// Function: of_ignoreocx_check
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_ocxname
+//--------------------------------------------------------------------
+// Returns:  boolean
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 07-17-2014
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2013 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+string ls_check
+
+ls_check = gnv_user_option.of_Get_option_value(  "contractlogix-super-master", "ignoreocx-" + lower(as_ocxname))
+if isnull(ls_check) or ls_check = '' then
+	ls_check = '0'
+end if
+
+if ls_check = '1' then 
+	return true
+else
+	return false
+end if
+	
+end function
+

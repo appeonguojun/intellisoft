@@ -1,0 +1,208 @@
+﻿$PBExportHeader$d_ltr_general_corros_act_items092804.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=112 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=prac_id dbname="v_full_name.prac_id" )
+ column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=datetime updatewhereclause=yes name=v_full_name_date_of_birth dbname="v_full_name.date_of_birth" )
+ column=(type=char(11) updatewhereclause=yes name=v_full_name_ssn dbname="v_full_name.ssn" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_title dbname="v_full_name.title" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_first_name dbname="v_full_name.first_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_middle_name dbname="v_full_name.middle_name" )
+ column=(type=char(100) updatewhereclause=yes name=v_full_name_last_name dbname="v_full_name.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=v_full_name_prof_suffix dbname="v_full_name.prof_suffix" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_date_app_audit_completed dbname="pd_affil_stat.date_app_audit_completed" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_date_data_entry_completed dbname="pd_affil_stat.date_data_entry_completed" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_date_verif_completed dbname="pd_affil_stat.date_verif_completed" )
+ column=(type=char(1) updatewhereclause=yes name=pd_affil_stat_apptmnt_type dbname="pd_affil_stat.apptmnt_type" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_init_prov_period_from dbname="pd_affil_stat.init_prov_period_from" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_init_prov_period_to dbname="pd_affil_stat.init_prov_period_to" )
+ column=(type=char(32766) updatewhereclause=no name=pd_affil_stat_appt_note dbname="pd_affil_stat.appt_note" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_state dbname="code_lookup.state" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_pager_number dbname="pd_address.pager_number" )
+ column=(type=char(75) updatewhereclause=yes name=pd_address_e_mail_address dbname="pd_address.e_mail_address" )
+ column=(type=char(30) updatewhereclause=yes name=pd_address_contact_person dbname="pd_address.contact_person" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_date_rls_form_exp dbname="pd_affil_stat.date_rls_form_exp" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust1 dbname="pd_address.addr_cust1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust2 dbname="pd_address.addr_cust2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust3 dbname="pd_address.addr_cust3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust4 dbname="pd_address.addr_cust4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust5 dbname="pd_address.addr_cust5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_2 dbname="pd_basic.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_3 dbname="pd_basic.cust_3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_5 dbname="pd_basic.cust_5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_4 dbname="pd_basic.cust_4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_1 dbname="pd_basic.cust_1" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_specialty_name dbname="code_lookup.specialty_name" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_staff_cat dbname="code_lookup.staff_cat" )
+ column=(type=char(20) updatewhereclause=yes name=doc_id dbname="verif_info.doc_id" )
+ column=(type=char(75) updatewhereclause=yes name=sex dbname="sex" )
+ column=(type=char(50) updatewhereclause=yes name=maiden_other_name dbname="maiden_other_name" )
+ column=(type=char(50) updatewhereclause=yes name=suite_apart dbname="suite_apart" )
+ retrieve=" SELECT v_full_name.prac_id,   
+        v_full_name.full_name,   
+         v_full_name.date_of_birth,   
+         v_full_name.ssn,   
+         v_full_name.title,   
+         v_full_name.first_name,   
+         v_full_name.middle_name,   
+         v_full_name.last_name,   
+         v_full_name.prof_suffix,   
+         pd_affil_stat.date_app_audit_completed,   
+         pd_affil_stat.date_data_entry_completed,   
+         pd_affil_stat.date_verif_completed,   
+         pd_affil_stat.apptmnt_type,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_end_date,   
+         pd_affil_stat.init_prov_period_from,   
+         pd_affil_stat.init_prov_period_to,
+         pd_affil_stat.appt_note,   
+         pd_address.street,   
+         pd_address.street_2,   
+         pd_address.city,   
+         code_lookup_a.code state,
+         pd_address.pager_number,   			
+         pd_address.e_mail_address,   
+         pd_address.contact_person,   
+         pd_affil_stat.date_rls_form_exp,   
+         pd_address.zip,
+			pd_address.fax,
+ 			pd_address.cust_1 addr_cust1,
+			pd_address.cust_2 addr_cust2,
+			pd_address.cust_3 addr_cust3,
+			pd_address.cust_4 addr_cust4,
+			pd_address.cust_5 addr_cust5,  
+         pd_basic.cust_2,   
+         pd_basic.cust_3,   
+         pd_basic.cust_5,   
+         pd_basic.cust_4,   
+         pd_basic.cust_1,   
+   
+         code_lookup_b.description specialty_name,   
+         code_lookup_d.description staff_cat,   
+         verif_info.doc_id,
+         sex = code_lookup_e.description, 
+         maiden_other_name = pd_basic.maiden_other_name, 
+         suite_apart = pd_address.suite_apart   
+    FROM 
+			pd_affil_stat,
+         pd_basic  LEFT OUTER JOIN pd_board_specialty  ON pd_basic.prac_id = pd_board_specialty.prac_id, 
+         pd_affil_staff_cat pd_affil_staff_cat1 LEFT OUTER JOIN code_lookup code_lookup_d  ON pd_affil_staff_cat1.staff_category = code_lookup_d.lookup_code,  
+         pd_address,   
+         pd_address_link,   
+         v_full_name,
+  
+         code_lookup code_lookup_a,   
+         code_lookup code_lookup_b,   
+         code_lookup code_lookup_c,
+			code_lookup code_lookup_e, 
+         verif_info  
+   WHERE ( pd_address.rec_id = pd_address_link.address_id ) and  
+         ( pd_address.prac_id = pd_address_link.prac_id ) and  
+         ( pd_address_link.prac_id = pd_affil_stat.prac_id ) and  
+         ( pd_address_link.facility_id = pd_affil_stat.parent_facility_id ) and  
+         ( pd_affil_stat.prac_id = v_full_name.prac_id ) and  
+         ( pd_address.prac_id = pd_basic.prac_id ) and  
+         ( pd_address.state = code_lookup_a.lookup_code ) and  
+         ( pd_board_specialty.specialty = code_lookup_b.lookup_code ) and  
+         ( pd_board_specialty.specialty_order = code_lookup_c.lookup_code ) and  
+
+         ( v_full_name.prac_id = verif_info.prac_id ) and  
+         ( verif_info.facility_id = pd_affil_stat.parent_facility_id ) and 
+			( pd_basic.sex = code_lookup_e.lookup_code ) and  
+         ( pd_address_link.mailing = 1 ) AND  
+         ( pd_affil_stat.active_status in (1,4)) AND  
+         ( pd_address.active_status = 1 ) AND  
+         ( code_lookup_c.code = 'Primary') AND  
+         verif_info.doc_id in ( :docid )    
+" arguments=(("docid", stringlist))  sort="v_full_name_full_name A " )
+text(band=header alignment="2" text="V Full Name
+Full Name" border="0" color="0" x="5" y="4" height="104" width="1920" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="V Full Name
+Ssn" border="0" color="0" x="1929" y="4" height="104" width="274" html.valueishtml="0"  name=v_full_name_ssn_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="V Full Name
+Date Of Birth" border="0" color="0" x="2208" y="4" height="104" width="503" html.valueishtml="0"  name=v_full_name_date_of_birth_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date Rqst Rcvd" border="0" color="0" x="2715" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_date_rqst_rcvd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date App Sent" border="0" color="0" x="3223" y="4" height="104" width="507" html.valueishtml="0"  name=pd_affil_stat_date_app_sent_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date App Signed" border="0" color="0" x="3735" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_date_app_signed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date App Rcvd" border="0" color="0" x="4242" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_date_app_rcvd_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date App Audit Completed" border="0" color="0" x="4750" y="4" height="104" width="571" html.valueishtml="0"  name=pd_affil_stat_date_app_audit_completed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date Data Entry Completed" border="0" color="0" x="5326" y="4" height="104" width="590" html.valueishtml="0"  name=pd_affil_stat_date_data_entry_completed_ visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Date Verif Completed" border="0" color="0" x="5920" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_date_verif_completed_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Apptmnt Type" border="0" color="0" x="6427" y="4" height="104" width="302" html.valueishtml="0"  name=pd_affil_stat_apptmnt_type_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Apptmnt Start Date" border="0" color="0" x="6734" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_apptmnt_start_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Apptmnt End Date" border="0" color="0" x="7241" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_apptmnt_end_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Init Prov Period From" border="0" color="0" x="7753" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_init_prov_period_from_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pd Affil Stat
+Init Prov Period To" border="0" color="0" x="8261" y="4" height="104" width="503" html.valueishtml="0"  name=pd_affil_stat_init_prov_period_to_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="389" y="8" height="60" width="512" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="32" y="16" height="52" width="987" format="[general]" html.valueishtml="0"  name=v_full_name_prac_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="3383" y="8" height="52" width="3511" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="6894" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=v_full_name_date_of_birth visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="7561" y="8" height="52" width="251" format="[general]" html.valueishtml="0"  name=v_full_name_ssn visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="7813" y="8" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_title visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="8160" y="8" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_first_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="8507" y="8" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_middle_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="8855" y="8" height="52" width="2299" format="[general]" html.valueishtml="0"  name=v_full_name_last_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="11154" y="8" height="52" width="347" format="[general]" html.valueishtml="0"  name=v_full_name_prof_suffix visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="11502" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_date_app_audit_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="12169" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_date_data_entry_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="12837" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_date_verif_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="13504" y="8" height="52" width="23" format="[general]" html.valueishtml="0"  name=pd_affil_stat_apptmnt_type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="13527" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_apptmnt_start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="14194" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_apptmnt_end_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="14862" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_init_prov_period_from visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="15529" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_init_prov_period_to visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="16197" y="8" height="52" width="3511" format="[general]" html.valueishtml="0"  name=pd_affil_stat_appt_note visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="19707" y="8" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="23159" y="8" height="52" width="3451" format="[general]" html.valueishtml="0"  name=pd_address_street_2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="26610" y="8" height="52" width="576" format="[general]" html.valueishtml="0"  name=pd_address_city visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="27534" y="8" height="52" width="325" format="[general]" html.valueishtml="0"  name=pd_address_pager_number visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="27858" y="8" height="52" width="1728" format="[general]" html.valueishtml="0"  name=pd_address_e_mail_address visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="29586" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_address_contact_person visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="30277" y="8" height="52" width="667" format="[shortdate] [time]" html.valueishtml="0"  name=pd_affil_stat_date_rls_form_exp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="30944" y="8" height="52" width="256" format="[general]" html.valueishtml="0"  name=pd_address_zip visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="31200" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="0" x="31890" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="0" x="32581" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust3 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="0" x="33271" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust4 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="0" x="35113" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_basic_cust_2 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="35803" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_basic_cust_3 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="36494" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_basic_cust_5 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="0" x="37184" y="8" height="52" width="2299" format="[general]" html.valueishtml="0"  name=pd_basic_cust_4 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="0" x="39483" y="8" height="52" width="690" format="[general]" html.valueishtml="0"  name=pd_basic_cust_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=41 alignment="0" tabsequence=32766 border="0" color="0" x="43630" y="8" height="52" width="462" format="[general]" html.valueishtml="0"  name=doc_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="44091" y="0" height="60" width="325" format="[general]" html.valueishtml="0"  name=pd_address_fax visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="0" x="44416" y="0" height="60" width="2299" format="[general]" html.valueishtml="0"  name=pd_address_addr_cust5 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="46715" y="0" height="60" width="347" format="[general]" html.valueishtml="0"  name=code_lookup_state visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="47063" y="0" height="60" width="1723" format="[general]" html.valueishtml="0"  name=code_lookup_specialty_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="48786" y="0" height="60" width="1728" format="[general]" html.valueishtml="0"  name=code_lookup_staff_cat visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=42 alignment="0" tabsequence=0 border="0" color="0" x="50514" y="0" height="60" width="1728" html.valueishtml="0"  name=sex visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=43 alignment="0" tabsequence=0 border="0" color="0" x="52242" y="0" height="60" width="1152" html.valueishtml="0"  name=maiden_other_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=44 alignment="0" tabsequence=0 border="0" color="0" x="53394" y="0" height="60" width="1152" html.valueishtml="0"  name=suite_apart visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

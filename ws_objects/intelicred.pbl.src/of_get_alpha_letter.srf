@@ -1,0 +1,109 @@
+﻿$PBExportHeader$of_get_alpha_letter.srf
+global type of_get_alpha_letter from function_object
+end type
+
+forward prototypes
+global function string of_get_alpha_letter (integer ai_num)
+end prototypes
+
+global function string of_get_alpha_letter (integer ai_num);//Start Code Change --- created for use with random password generation
+string s
+
+//if ai_num > 26 then ai_num = mod(ai_num,26)
+if ai_num > 37 then ai_num = mod(ai_num,37)
+
+choose case ai_num
+	case 0
+		s = "a"
+	case 1
+		s = "z"
+	case 2
+		s = "i"
+	case 3
+		s = "q"
+	case 4
+		s = "y"
+	case 5
+		s = "h"
+	case 6
+		s = "o"
+	case 7
+		s = "x"	
+	case 8
+		s = "g"
+	case 9
+		s = "p"																		
+	case 10
+		s = "w"									
+	case 11
+		s = "f"											
+	case 12
+		s = "n"
+	case 13
+		s = "v"
+	case 14
+		s = "e"
+	case 15
+		s = "r"
+	case 16
+		s = "m"
+	case 17
+		s = "d"	
+	case 18
+		s = "s"
+	case 19
+		s = "l"																		
+	case 20
+		s = "c"								
+	case 21
+		s = "t"											
+	case 22		
+		s = "k"
+	case 23
+		s = "b"
+	case 24
+		s = "u"
+	case 25
+		s = "j"
+	case 26
+		s = "m"			
+	case 27
+		s = '1'
+	case 28
+		s = '7'
+	case 29
+		s = '3'		
+	case 30
+		s = '6'		
+	case 31
+		s = '0'		
+	case 32
+		s = '5'		
+	case 33
+		s = '9'		
+	case 34
+		s = '2'		
+	case 35
+		s = '4'	
+	case 36
+		s = '8'	
+	case 37
+		s = '1'			
+end choose
+	
+return s
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+end function
+

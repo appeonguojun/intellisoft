@@ -1,0 +1,90 @@
+﻿$PBExportHeader$d_pd_prac_folder_meetings.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no row.resize=1 grid.lines=0 )
+header(height=64 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=76 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="attendence.code" )
+ column=(type=datetime updatewhereclause=yes name=meetings_start_date dbname="meetings.start_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_start_time dbname="meetings.start_time" )
+ column=(type=datetime updatewhereclause=yes name=meetings_end_date dbname="meetings.end_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_end_time dbname="meetings.end_time" )
+ column=(type=char(100) updatewhereclause=yes name=subject dbname="meetings.subject" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code_1 dbname="attendence.code" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_location dbname="meetings.location" )
+ column=(type=long updatewhereclause=yes name=committee dbname="meetings.committee" )
+ column=(type=char(255) updatewhereclause=yes name=meetings_comments dbname="meetings.comments" )
+ column=(type=decimal(2) updatewhereclause=yes name=meetings_cme_credits dbname="meetings.cme_credits" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_cme_category dbname="meetings.cme_category" )
+ column=(type=char(35) updatewhereclause=yes name=meetings_cme_presenter dbname="meetings.cme_presenter" )
+ column=(type=char(35) updatewhereclause=yes name=meetings_cme_affiliation dbname="meetings.cme_affiliation" )
+ column=(type=long updatewhereclause=yes name=meetings_facility dbname="meetings.facility" )
+ column=(type=long update=yes updatewhereclause=yes name=attendence_status dbname="attendence.attendence_status" )
+ column=(type=long updatewhereclause=yes name=meeting_id dbname="meetings.meeting_id" )
+ column=(type=long updatewhereclause=yes key=yes name=attendence_meeting_id dbname="attendence.meeting_id" )
+ column=(type=long updatewhereclause=yes key=yes name=attendence_prac_id dbname="attendence.prac_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=department dbname="meetings.department" )
+ column=(type=decimal(0) updatewhereclause=yes name=section dbname="meetings.section" )
+ column=(type=long updatewhereclause=yes name=active_status dbname="attendence.active_status" values="H	0/C	1/" )
+ column=(type=decimal(0) updatewhereclause=yes name=meeting_type dbname="meetings.meeting_type" )
+ retrieve="  SELECT code_lookup_a.code,   
+         meetings.start_date,   
+         meetings.start_time,   
+         meetings.end_date,   
+         meetings.end_time,   
+         meetings.subject,   
+         code_lookup_b.code,   
+         meetings.location,   
+         meetings.committee,   
+         meetings.comments,   
+         meetings.cme_credits,   
+         meetings.cme_category,   
+         meetings.cme_presenter,   
+         meetings.cme_affiliation,   
+         meetings.facility,   
+         attendence.attendence_status,   
+         meetings.meeting_id,   
+         attendence.meeting_id,   
+         attendence.prac_id,   
+         meetings.department,   
+         meetings.section,   
+         attendence.active_status,   
+         meetings.meeting_type  
+    FROM meetings LEFT OUTER JOIN code_lookup code_lookup_a ON meetings.meeting_type = code_lookup_a.lookup_code LEFT OUTER JOIN code_lookup code_lookup_b ON meetings.location = code_lookup_b.lookup_code,   
+         attendence  
+   WHERE ( attendence.meeting_id = meetings.meeting_id ) and  
+         ( ( attendence.prac_id = :prac_id ) )   
+ORDER BY code_lookup_a.code ASC,   
+         meetings.start_date ASC   
+" update="attendence" updatewhere=0 updatekeyinplace=no arguments=(("prac_id", number)) )
+text(band=header alignment="0" text="Status" border="6" color="0" x="9" y="8" height="52" width="146" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="0" text="Attendence" border="6" color="0" x="165" y="8" height="52" width="375" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Type" border="6" color="0" x="549" y="8" height="52" width="631" html.valueishtml="0"  name=code_lookup_code_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Date" border="6" color="0" x="1189" y="8" height="52" width="576" html.valueishtml="0"  name=dates_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Subject" border="6" color="0" x="1774" y="8" height="52" width="434" html.valueishtml="0"  name=meetings_subject_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Location" border="6" color="0" x="2217" y="8" height="52" width="366" html.valueishtml="0"  name=code_lookup_code_1_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Committee" border="6" color="0" x="2592" y="8" height="52" width="379" html.valueishtml="0"  name=meetings_committee_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Department" border="6" color="0" x="2981" y="8" height="52" width="411" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Section" border="6" color="0" x="3401" y="8" height="52" width="375" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="CME Category" border="6" color="0" x="3785" y="8" height="52" width="315" html.valueishtml="0"  name=t_5 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="CME Category" border="6" color="0" x="3785" y="8" height="52" width="315" html.valueishtml="0"  name=meetings_cme_category_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=header alignment="2" text="Credits" border="6" color="0" x="4110" y="8" height="52" width="279" html.valueishtml="0"  name=t_6 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=22 alignment="2" tabsequence=32766 border="0" color="0" x="9" y="8" height="56" width="146" format="[general]" html.valueishtml="0"  name=active_status visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=16 alignment="0" tabsequence=10 border="5" color="0" x="165" y="8" height="60" width="375" format="[general]" html.valueishtml="0"  name=attendence_status visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=125 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="549" y="8" height="60" width="631" format="[general]" html.valueishtml="0"  name=code_lookup_code visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+compute(band=detail alignment="0" expression="String( meetings_start_date ,'mm/dd/yyyy') + ~" - ~" + String( meetings_end_date ,'mm/dd/yyyy')"border="0" color="0" x="1189" y="8" height="60" width="576" format="" html.valueishtml="0"  name=dates visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1774" y="8" height="60" width="434" format="[general]" html.valueishtml="0"  name=subject visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2217" y="8" height="60" width="366" format="[general]" html.valueishtml="0"  name=code_lookup_code_1 visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="2592" y="8" height="60" width="379" format="[general]" html.valueishtml="0"  name=committee visible="1" dddw.name=d_dddw_credentialing_committees dddw.displaycolumn=committee_name dddw.datacolumn=committee_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="2981" y="8" height="60" width="411" format="[general]" html.valueishtml="0"  name=department visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="3401" y="8" height="60" width="375" format="[general]" html.valueishtml="0"  name=section visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.autoretrieve=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="0" color="0" x="3785" y="8" height="60" width="315" format="[general]" html.valueishtml="0"  name=meetings_cme_category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+compute(band=detail alignment="0" expression="if(  attendence_status = 626,  meetings_cme_credits , 0 )"border="0" color="0" x="4110" y="8" height="60" width="279" format="[general]" html.valueishtml="0"  name=credits visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=footer alignment="1" text="Total CME Credits: " border="0" color="255" x="549" y="8" height="52" width="631" html.valueishtml="0"  name=t_7 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+compute(band=footer alignment="0" expression="sum( credits for all)"border="0" color="255" x="1189" y="8" height="52" width="576" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,115 @@
+﻿$PBExportHeader$d_net_dev_action_items_report_by_payer_m.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=348 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=88 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="net_dev_action_items.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="net_dev_action_items.prac_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=action_type dbname="net_dev_action_items.action_type" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_action_type_desc dbname="code_lookup.action_type_desc" )
+ column=(type=datetime update=yes updatewhereclause=yes name=action_date dbname="net_dev_action_items.action_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=action_dept dbname="net_dev_action_items.action_dept" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_action_dept_desc dbname="code_lookup.action_dept_desc" )
+ column=(type=datetime update=yes updatewhereclause=yes name=next_action_date dbname="net_dev_action_items.next_action_date" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=action_contact dbname="net_dev_action_items.action_contact" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=action_status dbname="net_dev_action_items.action_status" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_action_status_desc dbname="code_lookup.action_status_desc" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=action_user dbname="net_dev_action_items.action_user" )
+ column=(type=char(183) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=long updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="net_dev_action_items.facility_id" )
+ column=(type=char(100) updatewhereclause=yes name=facility_name1 dbname="facility.facility_name" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=app_id dbname="net_dev_action_items.app_id" )
+ column=(type=char(100) updatewhereclause=yes name=app_hdr_application_name dbname="app_hdr.application_name" )
+ column=(type=long update=yes updatewhereclause=yes name=seq_no dbname="net_dev_action_items.seq_no" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="net_dev_action_items.active_status" initial="1" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=app_type dbname="net_dev_action_items.app_type" values="Initial	I/Reapp	R/" )
+ column=(type=date updatewhereclause=yes name=net_dev_action_items_due_date dbname="net_dev_action_items.due_date" )
+ column=(type=char(32766) update=yes updatewhereclause=yes name=notes dbname="net_dev_action_items.notes" )
+ column=(type=long updatewhereclause=yes name=net_dev_action_items_wf_step dbname="net_dev_action_items.wf_step" )
+ column=(type=long updatewhereclause=yes name=net_dev_action_items_letter_id dbname="net_dev_action_items.letter_id" )
+ column=(type=long updatewhereclause=yes name=net_dev_action_items_wf_id dbname="net_dev_action_items.wf_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=net_dev_action_items_wf_action_type_id dbname="net_dev_action_items.wf_action_type_id" )
+ column=(type=char(20) updatewhereclause=yes name=net_dev_action_items_wf_assigned_by dbname="net_dev_action_items.wf_assigned_by" )
+ column=(type=char(1) updatewhereclause=yes name=net_dev_action_items_wf_complete_flag dbname="net_dev_action_items.wf_complete_flag" )
+ column=(type=long updatewhereclause=yes name=data_len dbname="data_len" )
+ retrieve="  SELECT ~"net_dev_action_items~".~"rec_id~",   
+         ~"net_dev_action_items~".~"prac_id~", 
+         ~"net_dev_action_items~".~"action_type~",  
+	 code_lookup_a.description as action_type_desc,   
+         ~"net_dev_action_items~".~"action_date~",
+         ~"net_dev_action_items~".~"action_dept~",    
+         code_lookup_c.description as action_dept_desc,
+        ~"net_dev_action_items~".~"next_action_date~",   
+         ~"net_dev_action_items~".~"action_contact~", 
+           ~"net_dev_action_items~".~"action_status~",  
+	 code_lookup_b.description as action_status_desc,  
+         ~"net_dev_action_items~".~"action_user~",   
+         ~"v_full_name~".~"full_name~",   
+         selected=0,   
+         ~"net_dev_action_items~".~"facility_id~",   
+         ~"facility~".~"facility_name~",   
+         ~"net_dev_action_items~".~"app_id~",   
+	   ~"app_hdr~".~"application_name~",
+         ~"net_dev_action_items~".~"seq_no~",   
+         ~"net_dev_action_items~".~"active_status~",   
+         ~"net_dev_action_items~".~"app_type~",   
+         ~"net_dev_action_items~".~"due_date~",   
+         ~"net_dev_action_items~".~"notes~" ,
+           net_dev_action_items.wf_step ,
+           net_dev_action_items.letter_id ,
+           net_dev_action_items.wf_id ,
+           net_dev_action_items.Wf_action_type_id ,
+           net_dev_action_items.wf_assigned_by  ,
+           net_dev_action_items.wf_complete_flag  ,
+		data_len = 0    
+    FROM   ~"net_dev_action_items~" 
+LEFT OUTER JOIN ~"code_lookup~" ~"code_lookup_b~" ON ~"net_dev_action_items~".~"action_status~" = ~"code_lookup_b~".~"lookup_code~" 
+LEFT OUTER JOIN ~"code_lookup~" ~"code_lookup_c~" ON ~"net_dev_action_items~".~"action_dept~" = ~"code_lookup_c~".~"lookup_code~" 
+LEFT OUTER JOIN ~"code_lookup~" ~"code_lookup_a~" ON ~"net_dev_action_items~".~"action_type~" = ~"code_lookup_a~".~"lookup_code~",   
+   ~"v_full_name~",   
+         ~"facility~",   
+         ~"pd_affil_stat~",  
+	  ~"app_hdr~"
+   WHERE ( ~"net_dev_action_items~".~"prac_id~" = ~"v_full_name~".~"prac_id~" ) and  
+         ( ~"net_dev_action_items~".~"facility_id~" = ~"facility~".~"facility_id~" ) and  
+         ( ~"net_dev_action_items~".~"prac_id~" = ~"pd_affil_stat~".~"prac_id~" ) and  
+         ( ~"net_dev_action_items~".~"facility_id~" = ~"pd_affil_stat~".~"parent_facility_id~" ) and  
+	  ( ~"net_dev_action_items~".~"app_id~" = ~"app_hdr~".~"app_id~" ) and 
+         ( ( net_dev_action_items.active_status = 1 ) AND  
+         ( pd_affil_stat.active_status in (1,4) ) ) 
+"  sort="facility_name1 A app_hdr_application_name A v_full_name_full_name A action_date D " )
+group(level=1 header.height=80 trailer.height=48 by=("facility_name1" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=88 trailer.height=0 by=("app_id" ) header.color="536870912" trailer.color="536870912" )
+group(level=3 header.height=192 trailer.height=0 by=("prac_id" ) header.color="536870912" trailer.color="536870912" )
+line(band=header x1="64" y1="44" x2="4549" y2="44"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="4549" y2="80"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="82" y="92" height="76" width="407" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="" border="0" color="0" x="82" y="188" height="76" width="4453" html.valueishtml="0"  name=criteria_t visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="268" x2="4549" y2="268"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="304" x2="4549" y2="304"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="Application Status Action Items By Payor" border="0" color="0" x="1115" y="96" height="80" width="1262" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="3095" y="96" height="76" width="453" format="[general]" html.valueishtml="0"  name=page visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=16 alignment="0" tabsequence=32766 border="0" color="0" x="82" y="16" height="52" width="2299" format="[general]" html.valueishtml="0"  name=facility_name1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.2 id=17 alignment="0" tabsequence=32766 border="0" color="0" x="201" y="12" height="56" width="1454" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0  or active_status = 3,1, 0 )"  name=app_id visible="1" dddw.name=d_dddw_apps dddw.displaycolumn=app_hdr_application_name dddw.datacolumn=app_hdr_app_id dddw.percentwidth=250 dddw.lines=15 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0  or active_status = 3,12632256, 16777215 )" )
+column(band=header.3 id=13 alignment="0" tabsequence=32766 border="0" color="0" x="311" y="44" height="52" width="3255" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.3 alignment="0" text="Action Type" border="0" color="0" x="315" y="124" height="52" width="343" html.valueishtml="0"  name=action_type_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header.3 alignment="0" text="Action Date" border="0" color="0" x="937" y="124" height="52" width="334" html.valueishtml="0"  name=action_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header.3 alignment="0" text="Action Dept" border="0" color="0" x="1358" y="124" height="52" width="334" html.valueishtml="0"  name=action_dept_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header.3 alignment="0" text="Action User" border="0" color="0" x="1929" y="124" height="52" width="274" html.valueishtml="0"  name=action_user_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header.3 alignment="0" text="Action Status" border="0" color="0" x="2249" y="124" height="52" width="306" html.valueishtml="0"  name=action_status_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header.3 alignment="0" text="App Type" border="0" color="0" x="2592" y="124" height="52" width="274" html.valueishtml="0"  name=next_action_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" facility_name1 +  '  -  '  +  v_full_name_full_name "border="0" color="0" x="165" y="12" height="4" width="5" format="[general]" html.valueishtml="0"  name=facility_name visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="311" y="12" height="60" width="581" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0 or active_status = 3 ,1, 0 )"  name=action_type visible="1" dddw.name=d_dddw_action_type dddw.displaycolumn=custom_1 dddw.datacolumn=lookup_code dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 or active_status = 3 ,12632256, 16777215 )" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="923" y="12" height="60" width="389" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0  or active_status = 3,1, 0 )"  name=action_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0  or active_status = 3,12632256, 16777215 )" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1335" y="12" height="60" width="567" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0  or active_status = 3,1, 0 )"  name=action_dept visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0  or active_status = 3,12632256, 16777215 )" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="1925" y="12" height="60" width="297" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0  or active_status = 3,1, 0 )"  name=action_user visible="1" dddw.name=d_dddw_users dddw.displaycolumn=user_id dddw.datacolumn=user_id dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0  or active_status = 3,12632256, 16777215 )" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2245" y="12" height="60" width="302" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0  or active_status = 3,1, 0 )"  name=action_status visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0  or active_status = 3,12632256, 16777215 )" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="2583" y="12" height="60" width="343" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0  or active_status = 3,1, 0 )"  name=app_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0  or active_status = 3,12632256, 16777215 )" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

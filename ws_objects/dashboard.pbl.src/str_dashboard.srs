@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_dashboard.srs
+global type str_dashboard from structure
+	long		data_id
+	long		data_ext_id
+	string		data_name
+end type
+

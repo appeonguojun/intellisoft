@@ -1,0 +1,36 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "intellicred_comp.pbl" "";
+@end;
+@begin Objects 
+ "d_affil_list_for_prac.srd" "intellicred_comp.pbl";
+ "d_audit_update_batch.srd" "intellicred_comp.pbl";
+ "d_ezflow_field_data.srd" "intellicred_comp.pbl";
+ "d_ezmenu_list.srd" "intellicred_comp.pbl";
+ "d_ezmenu_list_modern.srd" "intellicred_comp.pbl";
+ "d_ezmenu_personal_setting.srd" "intellicred_comp.pbl";
+ "d_ezmenu_setting.srd" "intellicred_comp.pbl";
+ "d_mdi_statusbar_ext.srd" "intellicred_comp.pbl";
+ "d_pd_affil_status_cvo_data_org.srd" "intellicred_comp.pbl";
+ "d_pd_app_audit_tracker.srd" "intellicred_comp.pbl";
+ "d_test.srd" "intellicred_comp.pbl";
+ "m_menu_create_item_child.srm" "intellicred_comp.pbl";
+ "m_pfe_cst_data_entry.srm" "intellicred_comp.pbl";
+ "m_pfe_cst_master_menu.srm" "intellicred_comp.pbl";
+ "m_search_screen_browse.srm" "intellicred_comp.pbl";
+ "n_cst_resize_prac.sru" "intellicred_comp.pbl";
+ "pfc_cst_u_application_audit.sru" "intellicred_comp.pbl";
+ "pfc_cst_u_data_entry.sru" "intellicred_comp.pbl";
+ "pfc_cst_u_generate_miss_info_rqst.sru" "intellicred_comp.pbl";
+ "uo_listbar.sru" "intellicred_comp.pbl";
+ "uo_statusbar.sru" "intellicred_comp.pbl";
+ "w_currentobject.srw" "intellicred_comp.pbl";
+ "w_ezflow.srw" "intellicred_comp.pbl";
+ "w_ezmenu_painter.srw" "intellicred_comp.pbl";
+ "w_get_ssn.srw" "intellicred_comp.pbl";
+ "w_image_display.srw" "intellicred_comp.pbl";
+ "w_mdi.srw" "intellicred_comp.pbl";
+ "w_prac_data_1.srw" "intellicred_comp.pbl";
+ "w_prac_data_intelliapp.srw" "intellicred_comp.pbl";
+ "w_test.srw" "intellicred_comp.pbl";
+@end;

@@ -1,0 +1,92 @@
+﻿$PBExportHeader$f_show_email_result.srf
+global type f_show_email_result from function_object
+end type
+
+forward prototypes
+global subroutine f_show_email_result (long al_pre_id)
+end prototypes
+
+global subroutine f_show_email_result (long al_pre_id);//////////////////////////////////////////////////////////////////////
+// Function: f_show_email_result()
+// Arguments:
+// 	value    long    al_pre_id
+//--------------------------------------------------------------------
+// Return:  (none)
+//--------------------------------------------------------------------
+// Author:	Ken.Guo		Date: 2010-12-14
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////
+Long ll_em_cnt,ll_failed_cnt, ll_success_cnt, ll_Row
+n_cst_easymail_smtp 	lnv_Mail
+String ls_sendonoff,ls_to,ls_compute_info,ls_message,ls_subject
+Datetime ldt_now, ldt_min, ldt_max
+n_ds		lds_alarmlog
+
+If isnull(al_pre_id) Then al_pre_id = 0
+
+gnv_appeondb.of_startqueue( )
+	Select min( mail_date),max(mail_date)  into :ldt_min,:ldt_max From em_mail_audit Where id > :al_pre_id and user_id = :gs_user_id;
+	Select Count(1)  into :ll_em_cnt From em_mail_audit Where id > :al_pre_id and user_id = :gs_user_id;
+	Select Count(1)  into :ll_failed_cnt From em_mail_audit Where id > :al_pre_id and send_result = -1 and user_id = :gs_user_id;
+	Select Count(1)  into :ll_success_cnt From em_mail_audit Where id > :al_pre_id and send_result = 0 and user_id = :gs_user_id;
+	Select GetDate() into :ldt_now From icred_settings;
+gnv_appeondb.of_commitqueue( )
+//added by gavins 20130905
+If gnv_data.of_getitem( 'icred_settings', 'use_web_email', False) <> '1' Then
+	lds_alarmlog = create n_ds
+	lds_alarmlog.dataobject = 'd_email_audit_alarmlog'
+	lds_alarmlog.settransobject( sqlca )
+	
+	ll_Row = lds_alarmlog.insertrow( 0 )
+	lds_alarmlog.SetItem( ll_Row, 'sender', gs_user_id )
+	if(isnull(ldt_min ) ) then ldt_min = ldt_now;
+	lds_alarmlog.SetItem( ll_Row, 'begintime', ldt_min )
+	if(isnull(ldt_max ) ) then ldt_max = ldt_now;
+	lds_alarmlog.SetItem( ll_Row, 'endtime', ldt_max )
+	lds_alarmlog.SetItem( ll_Row, 'total', ll_em_cnt )
+	lds_alarmlog.SetItem( ll_Row, 'success', ll_success_cnt )
+	lds_alarmlog.SetItem( ll_Row, 'failure', ll_failed_cnt )
+	lds_alarmlog.SetItem( ll_Row, 'category', 'pb' )
+	lds_alarmlog.update( )
+End If
+str_pass lstr_pass
+lstr_pass.s_long[1] = ll_em_cnt
+lstr_pass.s_long[2] = ll_failed_cnt
+lstr_pass.s_long[3] = ll_success_cnt
+lstr_pass.l_facility_id = al_pre_id
+
+If ll_em_cnt > 0 Then
+	ls_sendonoff = gnv_data.of_getitem( 'icred_settings', 'send_email_log', false)
+	ls_to = Trim(gnv_data.of_getitem( 'icred_settings', 'send_email_log_to', false))
+	If ls_sendonoff = '1' and Len(ls_to) > 0 Then 
+		If lnv_Mail.of_CreateObject() = 1 Then
+			ls_compute_info = lnv_Mail.of_get_compute_info( )
+			ls_subject = 'Email Alerts Summary on ' + String(ldt_now,'mm/dd/yyyy hh:mm:ss')
+			ls_message = String(ll_em_cnt) + ' email alert(s) has been sent out by '+gs_user_id+' from client ' + ls_compute_info + '.~r~n' + & 
+							 String(ll_success_cnt) + ' email(s) has been sent out successfully, and ' + String(ll_failed_cnt) + ' email(s) has failed.~r~n'  + &
+							 '~r~nTo view more detailed information in the Sent Emails log window, please login Contract Logix system, then click System -> Utilities menu and click Sent Emails Log button.'
+			lnv_Mail.of_sendtext( gs_user_id, ls_to, '', '', ls_subject, ls_message, '')				 
+		End If
+	End If
+End If
+If gnv_data.of_getitem( 'icred_settings', 'use_web_email', False) <> '1' Then
+	OpenWithParm(w_send_email_summary,lstr_pass)
+
+	If Message.DoubleParm = 1 Then
+		OpenWithParm(w_email_audit,lstr_pass)
+	End If
+Else
+	OpenWithParm(w_send_email_summary,lstr_pass)
+
+	If Message.DoubleParm = 1 Then
+		OpenWithParm(w_email_audit,lstr_pass)
+	End If
+
+End If
+
+
+Return 
+end subroutine
+

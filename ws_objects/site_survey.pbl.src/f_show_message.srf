@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_show_message.srf
+global type f_show_message from function_object
+end type
+
+forward prototypes
+global subroutine f_show_message (string as_msg_id, string as_msg_replace, string as_repl1, string as_repl2, string as_repl3)
+end prototypes
+
+global subroutine f_show_message (string as_msg_id, string as_msg_replace, string as_repl1, string as_repl2, string as_repl3);//Modified By Ken.Guo 2010-11-12. Use Global Object
+//n_cst_message lnvo_message
+//lnvo_message = Create n_cst_message
+////get message file
+//lnvo_message.of_get_messagexml()
+////get message 
+//lnvo_message.of_get_error_message(as_msg_id,as_msg_replace,as_repl1,as_repl2,as_repl3)
+//Destroy lds_xmlmessage
+//Destroy lnvo_message
+
+gnv_message.of_get_error_message(as_msg_id,as_msg_replace,as_repl1,as_repl2,as_repl3)
+end subroutine
+

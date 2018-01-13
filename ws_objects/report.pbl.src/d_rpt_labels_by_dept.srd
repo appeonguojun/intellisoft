@@ -1,0 +1,149 @@
+﻿$PBExportHeader$d_rpt_labels_by_dept.srd
+$PBExportComments$LIJ
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 60 print.margin.right = 60 print.margin.top = 60 print.margin.bottom = 60 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=yes print.buttons=yes print.preview.buttons=yes print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no print.columns=3 print.columns.width=1200 )
+header(height=24 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=388 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=pd_basic_last_name dbname="pd_basic.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="pd_basic.middle_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="pd_basic.first_name" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_1 dbname="pd_basic.cust_1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_2 dbname="pd_basic.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_3 dbname="pd_basic.cust_3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_4 dbname="pd_basic.cust_4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_5 dbname="pd_basic.cust_5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_6 dbname="pd_basic.cust_6" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_2 dbname="pd_basic.cust_2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_8 dbname="pd_basic.cust_8" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_9 dbname="pd_basic.cust_9" )
+ column=(type=char(150) updatewhereclause=yes name=pd_basic_cust_10 dbname="pd_basic.cust_10" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_cust_d1 dbname="pd_basic.cust_d1" )
+ column=(type=datetime updatewhereclause=yes name=pd_basic_cust_d2 dbname="pd_basic.cust_d2" )
+ column=(type=char(150) updatewhereclause=yes name=street_1 dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_state dbname="pd_address.state" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(50) updatewhereclause=yes name=pd_address_suite_apart dbname="pd_address.suite_apart" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust1 dbname="pd_address.addr_cust1" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust2 dbname="pd_address.addr_cust2" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust3 dbname="pd_address.addr_cust3" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust4 dbname="pd_address.addr_cust4" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust5 dbname="pd_address.addr_cust5" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust6 dbname="pd_address.addr_cust6" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust7 dbname="pd_address.addr_cust7" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust8 dbname="pd_address.addr_cust8" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust9 dbname="pd_address.addr_cust9" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_addr_cust10 dbname="pd_address.addr_cust10" )
+ column=(type=datetime updatewhereclause=yes name=pd_address_addr_custd1 dbname="pd_address.addr_custd1" )
+ column=(type=datetime updatewhereclause=yes name=pd_address_addr_custd2 dbname="pd_address.addr_custd2" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_specialty dbname="specialty" )
+ column=(type=char(25) updatewhereclause=yes name=phone dbname="pd_address.phone" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(75) updatewhereclause=yes name=pd_address_web_address dbname="pd_address.web_address" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_dep dbname="code_lookup.dep" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_practicing dbname="code_lookup.practicing" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_states dbname="code_lookup.states" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_state_full_name dbname="code_lookup.state_full_name" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_prof_suffix dbname="code_lookup.prof_suffix" )
+ column=(type=char(57) updatewhereclause=yes name=ccity_state dbname="city_state" )
+ column=(type=char(69) updatewhereclause=yes name=ccity_state_zip dbname="city_state_zip" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_name_suffix dbname="code_lookup.name_suffix" )
+ column=(type=char(20) updatewhereclause=yes name=provider_number dbname="pd_basic.provider_number" )
+ retrieve=" SELECT DISTINCT 
+	 pd_basic.last_name,   
+    pd_basic.middle_name,   
+    pd_basic.first_name,   
+	 pd_basic.cust_1,   
+	 pd_basic.cust_2,   
+	 pd_basic.cust_3,   
+	 pd_basic.cust_4,   
+	 pd_basic.cust_5, 
+	 pd_basic.cust_6,   
+	 pd_basic.cust_2,   
+	 pd_basic.cust_8,   
+	 pd_basic.cust_9,   
+	 pd_basic.cust_10, 
+	 pd_basic.cust_d1,   
+	 pd_basic.cust_d2,       
+	 pd_address.street,
+	 pd_address.street_2,
+    pd_address.city,   
+    pd_address.state,   
+    pd_address.zip,
+	 pd_address.suite_apart,
+ 	 pd_address.cust_1 addr_cust1,
+	 pd_address.cust_2 addr_cust2,
+	 pd_address.cust_3 addr_cust3,
+	 pd_address.cust_4 addr_cust4,
+	 pd_address.cust_5 addr_cust5,
+	 pd_address.cust_6 addr_cust6,
+	 pd_address.cust_7 addr_cust7,
+	 pd_address.cust_8 addr_cust8,
+	 pd_address.cust_9 addr_cust9,
+	 pd_address.cust_10 addr_cust10,
+	 pd_address.cust_d1 addr_custd1,
+	 pd_address.cust_d2 addr_custd2,     
+    (select code_lookup_a.description 
+       from code_lookup code_lookup_a    
+       where  pd_board_specialty.specialty = code_lookup_a.lookup_code )specialty,   
+    pd_address.phone,  
+	 pd_address.fax,
+	 pd_address.web_address,
+    code_lookup_j.code dep, 
+    code_lookup_b.code practicing,   
+    code_lookup_d.code states,
+    code_lookup_d.description state_full_name,
+    code_lookup_e.code prof_suffix,
+	 city_state = pd_address.city + ', ' + code_lookup_d.code,
+    city_state_zip = pd_address.city + ', ' + code_lookup_d.code + ' ' + pd_address.zip,
+    code_lookup_f.code name_suffix,
+	 provider_number = pd_basic.provider_id
+    FROM {oj pd_basic  LEFT OUTER JOIN code_lookup code_lookup_f  ON pd_basic.name_suffix = code_lookup_f.lookup_code
+                       left outer join code_lookup code_lookup_e on  pd_basic.prof_suffix = code_lookup_e.lookup_code },   
+         {oj pd_spec_facility_link left outer join  code_lookup code_lookup_b on pd_spec_facility_link.practicing = code_lookup_b.lookup_code}, 
+         {oj pd_address left outer join code_lookup code_lookup_d on pd_address.state = code_lookup_d.lookup_code },   
+		   {oj pd_board_specialty left outer join code_lookup code_lookup_g on pd_board_specialty.specialty_order = code_lookup_g.lookup_code},
+          pd_affil_stat,
+          pd_affil_dept,
+	       pd_address_link,
+          code_lookup code_lookup_j,	
+	       facility
+   WHERE ( pd_address.prac_id = pd_basic.prac_id ) and
+	 ( pd_address.prac_id = pd_address_link.prac_id) and
+	 ( pd_address.rec_id = pd_address_link.address_id) and
+	 ( pd_address_link.facility_id = pd_affil_stat.parent_facility_id ) and
+	 ( pd_address_link.facility_id = facility.facility_id ) and
+	 ( pd_affil_stat.prac_id = pd_basic.prac_id ) and
+    ( pd_board_specialty.prac_id = pd_basic.prac_id ) and
+	 ( pd_board_specialty.rec_id = pd_spec_facility_link.specialty_id ) and 
+    ( pd_spec_facility_link.facility_id =  pd_affil_stat.parent_facility_id ) and
+	 ( pd_address_link.facility_id =  pd_affil_stat.parent_facility_id ) and 
+    ( pd_affil_dept.rec_id = pd_affil_stat.rec_id ) and
+	 ( pd_affil_dept.department = code_lookup_j.lookup_code ) and
+    (( pd_affil_stat.active_status = 1 ) and
+	 ( pd_address.active_status = 1 ) and
+    ( code_lookup_b.code = 'YES' ) AND
+	 ( code_lookup_g.code = 'Primary'))
+"  sort="pd_address_zip A " )
+compute(band=detail alignment="0" expression="  pd_basic_first_name +
+ IF( isnull( pd_basic_middle_name ), ~"~",~" ~" + Left( pd_basic_middle_name,1 ) + ~".~") + ~" ~" +
+ pd_basic_last_name + ~" ~" +
+ IF( isnull(  code_lookup_name_suffix ), ~"~",  code_lookup_name_suffix + ~", ~") "border="0" color="0" x="18" y="4" height="56" width="1024" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=44 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="184" height="56" width="1029" format="[general]" html.valueishtml="0"  name=ccity_state_zip visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="244" height="56" width="1029" format="[general]" html.valueishtml="0"  name=phone visible="1"  slideup=allabove edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="0" x="3301" y="0" height="56" width="270" format="[general]" html.valueishtml="0"  name=code_lookup_dep visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="3570" y="0" height="56" width="270" format="[general]" html.valueishtml="0"  name=code_lookup_practicing visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="3840" y="0" height="56" width="270" format="[general]" html.valueishtml="0"  name=code_lookup_states visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=41 alignment="0" tabsequence=32766 border="0" color="0" x="4110" y="0" height="56" width="1353" format="[general]" html.valueishtml="0"  name=code_lookup_state_full_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=42 alignment="0" tabsequence=32766 border="0" color="0" x="5463" y="0" height="56" width="270" format="[general]" html.valueishtml="0"  name=code_lookup_prof_suffix visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=45 alignment="0" tabsequence=32766 border="0" color="0" x="5733" y="0" height="56" width="270" format="[general]" html.valueishtml="0"  name=code_lookup_name_suffix visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="64" height="56" width="1029" format="[general]" html.valueishtml="0"  name=street_1 visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" if ( isnull( pd_address_suite_apart ),street_2 ,  street_2 + '  ' +  pd_address_suite_apart )"border="0" color="0" x="18" y="132" height="56" width="1029" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

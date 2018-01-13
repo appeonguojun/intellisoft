@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_all_clause_attribute_value_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=ctx_acp_clause_id dbname="ctx_acp_clause.ctx_acp_clause_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_clause_attribute_id dbname="ctx_acp_clause_attribute.clause_attribute_id" )
+ column=(type=char(30) updatewhereclause=yes name=ctx_acp_clause_attribute_name dbname="code_lookup.code" )
+ column=(type=char(255) updatewhereclause=yes name=ctx_acp_clause_attribute_alias dbname="alias" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_acp_clause_attribute_value_id dbname="ctx_acp_clause_attr_value.clause_attribute_value_id" )
+ column=(type=char(30) updatewhereclause=yes name=ctx_acp_clause_attribute_value_name dbname="code_lookup.value_name" )
+ retrieve="SELECT ctx_acp_clause.ctx_acp_clause_id,
+       ctx_acp_clause_attribute.clause_attribute_id,
+       code_lookup_A.code,
+       IsNull(ctx_acp_clause_attribute.clause_attribute_alias,code_lookup_A.description) AS alias,
+       ctx_acp_clause_attr_value.clause_attribute_value_id,
+       code_lookup_B.code AS value_name
+  FROM ctx_acp_clause,ctx_acp_clause_attribute,ctx_acp_clause_attr_value,code_lookup code_lookup_A,code_lookup code_lookup_B
+ WHERE ctx_acp_clause.ctx_acp_clause_id = ctx_acp_clause_attribute.ctx_acp_clause_id AND
+       ctx_acp_clause_attribute.ctx_acp_clause_id = ctx_acp_clause_attr_value.ctx_acp_clause_id AND 
+       ctx_acp_clause_attribute.clause_attribute_id = ctx_acp_clause_attr_value.clause_attribute_id AND
+       ctx_acp_clause_attribute.clause_attribute_id = code_lookup_A.lookup_code AND
+       ctx_acp_clause_attr_value.clause_attribute_value_id = code_lookup_B.lookup_code
+ORDER BY ctx_acp_clause.ctx_acp_clause_id,ctx_acp_clause_attribute.clause_attribute_id,ctx_acp_clause_attr_value.clause_attribute_value_id
+" )
+text(band=header alignment="0" text="Ctx Acp Clause Id" border="0" color="0" x="5" y="4" height="52" width="507" html.valueishtml="0"  name=ctx_acp_clause_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Ctx Clause Attribute Id" border="0" color="0" x="521" y="4" height="52" width="507" html.valueishtml="0"  name=ctx_clause_attribute_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Ctx Acp Clause Attribute Name" border="0" color="0" x="1038" y="4" height="52" width="558" html.valueishtml="0"  name=ctx_acp_clause_attribute_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Ctx Acp Clause Attribute Alias" border="0" color="0" x="1605" y="4" height="52" width="718" html.valueishtml="0"  name=ctx_acp_clause_attribute_alias_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Ctx Acp Clause Attribute Value Id" border="0" color="0" x="2331" y="4" height="52" width="507" html.valueishtml="0"  name=ctx_acp_clause_attribute_value_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Ctx Acp Clause Attribute Value Name" border="0" color="0" x="2848" y="4" height="52" width="553" html.valueishtml="0"  name=ctx_acp_clause_attribute_value_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="9" y="4" height="56" width="503" html.valueishtml="0"  name=ctx_acp_clause_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="526" y="4" height="56" width="503" html.valueishtml="0"  name=ctx_clause_attribute_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="1042" y="4" height="56" width="553" html.valueishtml="0"  name=ctx_acp_clause_attribute_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="1609" y="4" height="56" width="713" html.valueishtml="0"  name=ctx_acp_clause_attribute_alias visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="0" x="2336" y="4" height="56" width="503" html.valueishtml="0"  name=ctx_acp_clause_attribute_value_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=0 border="0" color="0" x="2853" y="4" height="56" width="549" html.valueishtml="0"  name=ctx_acp_clause_attribute_value_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

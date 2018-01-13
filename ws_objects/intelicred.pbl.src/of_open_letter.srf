@@ -1,0 +1,79 @@
+﻿$PBExportHeader$of_open_letter.srf
+global type of_open_letter from function_object
+end type
+
+forward prototypes
+global function integer of_open_letter (string as_doc, string as_merge, string as_from)
+end prototypes
+
+global function integer of_open_letter (string as_doc, string as_merge, string as_from);/******************************************************************************************************************
+**  [PUBLIC]   : 
+**==================================================================================================================
+**  Purpose   	: 
+**==================================================================================================================
+**  Arguments 	: [none] 
+**==================================================================================================================
+**  Returns   	: [none]   
+**==================================================================================================================
+**  Notes     	: 	   
+**==================================================================================================================
+**  Created By	: MAha
+**==================================================================================================================
+**  Modification Log
+**   Changed By             Change Date                                               Reason
+** ------------------------------------------------------------------------------------------------------------------
+      msskinner              11 May 2005                                       added addition mail merge functionality
+********************************************************************************************************************/
+setpointer(hourglass!)
+debugbreak()
+if not f_validstr(as_doc) then
+	return -1
+end if
+
+if not f_validstr(as_merge) then
+	return -1
+end if
+
+if not f_validstr(as_from) then
+	return -1
+end if
+
+oleobject iole_word
+iole_word = CREATE oleobject
+
+app_filler.of_set_word_safemode(false, 1) //Added By Ken.Guo 2015-07-30
+if iole_word.Connecttonewobject("word.application") <> 0 then
+	app_filler.of_set_word_safemode(false, 0) //Added By Ken.Guo 2015-07-30
+	messagebox('Client Error', 'This application could not connect to Microsoft Word. Please make sure it is properly installed.')
+	return -1
+end if
+app_filler.of_set_word_safemode(false, 0) //Added By Ken.Guo 2015-07-30
+
+if not fileexists(as_doc) then
+	messagebox("Open letter failure","Could not find " +  as_from + " document: '" + as_doc + "'")
+	return -1
+end if
+//Start Code Change ---- 03.15.2006 #327 maha
+if not fileexists(as_merge) then
+	messagebox("Open letter failure","Could not find " +  as_from + " merge file: '" + as_merge + "'")
+	return -1
+end if
+//End Code Change---03.15.2006
+
+//need a try catch on the open and on the data source
+iole_word.Application.NormalTemplate.Saved = TRUE //Added By Ken.Guo 2008-07-22
+iole_word.Application.Documents.Open(as_doc)
+gnv_shell.of_delete_recent( as_doc, true) //Added By Ken.Guo 2010-05-25. Delete Windows Recent Document.
+gnv_word_utility.of_modify_word_property( iole_word.Activedocument)	//Added By Mark Lee 06/20/2013 change for office 2013.
+
+iole_word.ActiveDocument.MailMerge.OpenDataSource(as_merge)//,0,false,false,false,false,"","",false) 
+gnv_shell.of_delete_recent( as_merge, true) //Added By Ken.Guo 2010-05-25. Delete Windows Recent Document.
+iole_word.ActiveDocument.MailMerge.SuppressBlankLines = True
+iole_word.Visible = True
+
+setpointer(arrow!)
+
+
+return 1
+end function
+

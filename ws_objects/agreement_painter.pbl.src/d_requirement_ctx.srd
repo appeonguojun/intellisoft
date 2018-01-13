@@ -1,0 +1,42 @@
+﻿$PBExportHeader$d_requirement_ctx.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=ctx_req_profile_hdr_ctx_id dbname="ctx_req_profile_hdr.ctx_id" )
+ column=(type=long updatewhereclause=yes name=ctx_elements_reqmnt_id dbname="ctx_elements.reqmnt_id" )
+ column=(type=long updatewhereclause=yes name=ctx_req_tmplt_element_element_id dbname="ctx_req_tmplt_element.element_id" )
+ column=(type=char(150) updatewhereclause=yes name=ctx_req_tmplt_element_element_name dbname="ctx_req_tmplt_element.element_name" )
+ column=(type=long updatewhereclause=yes name=image_length dbname="image_length" )
+ retrieve="Select 
+ctx_req_profile_hdr.ctx_id, 
+ctx_elements.ctx_elements_id as reqmnt_id,
+ctx_req_tmplt_element.ctx_req_tmplt_element_id as element_id,
+ctx_req_tmplt_element.element_name as element_name,
+datalength(image_file) image_length
+From ctx_req_tmplt_element,ctx_req_profile_hdr,ctx_elements
+Where 
+ctx_req_tmplt_element.ctx_req_profile_id = ctx_req_profile_hdr.ctx_req_profile_id
+And ctx_req_profile_hdr.ctx_req_profile_hdr_id = ctx_elements.ctx_req_profile_hdr_id
+And ctx_req_tmplt_element.ctx_req_tmplt_element_id = ctx_elements.ctx_req_tmplt_element_id
+And ctx_req_profile_hdr.ctx_id = :al_ctx_id" arguments=(("al_ctx_id", number)) )
+text(band=header alignment="2" text="Ctx Req Profile Hdr
+Ctx Id" border="0" color="33554432" x="9" y="8" height="104" width="411" html.valueishtml="0"  name=ctx_req_profile_hdr_ctx_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Elements
+Reqmnt Id" border="0" color="33554432" x="430" y="8" height="104" width="279" html.valueishtml="0"  name=ctx_elements_reqmnt_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ctx Req Tmplt Element
+Element Id" border="0" color="33554432" x="718" y="8" height="104" width="494" html.valueishtml="0"  name=ctx_req_tmplt_element_element_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Image Length" border="0" color="33554432" x="1221" y="8" height="52" width="297" html.valueishtml="0"  name=image_length_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="64" width="411" format="[general]" html.valueishtml="0"  name=ctx_req_profile_hdr_ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="430" y="8" height="64" width="279" format="[general]" html.valueishtml="0"  name=ctx_elements_reqmnt_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="718" y="8" height="64" width="494" format="[general]" html.valueishtml="0"  name=ctx_req_tmplt_element_element_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="33554432" x="1221" y="8" height="64" width="297" format="[general]" html.valueishtml="0"  name=image_length visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="33554432" x="1531" y="0" height="52" width="3442" html.valueishtml="0"  name=ctx_req_tmplt_element_element_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Ctx Req Tmplt Element Element Name" border="0" color="33554432" x="1527" y="4" height="52" width="3447" html.valueishtml="0"  name=ctx_req_tmplt_element_element_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

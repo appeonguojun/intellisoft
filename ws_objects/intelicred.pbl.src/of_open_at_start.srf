@@ -1,0 +1,82 @@
+﻿$PBExportHeader$of_open_at_start.srf
+global type of_open_at_start from function_object
+end type
+
+forward prototypes
+global function integer of_open_at_start ()
+end prototypes
+
+global function integer of_open_at_start ();//Start Code Change ----11.15.2008 #V8 maha -- new function opens selected window at app_fill open event (end)
+//Start Code Change ----12.19.2008 #V8 maha -- added security
+//Ken.Guo 2008-12-05. Use POST to open window. for Maximized opened window.
+integer i,ii_getting_started
+integer sec_1
+integer sec_2
+integer sec_3
+
+gnv_appeondb.of_startqueue( )
+select set_go_on_open into :i from security_users where user_id = :gs_user_id;
+Select getting_started into :ii_getting_started From security_users where user_id = :gs_user_id;
+gnv_appeondb.of_commitqueue( )
+
+choose case i
+	case 1 ///prac folder
+		if gb_contract_version = false and  w_mdi.of_security_access( 40 ) > 0 then
+			w_mdi.Post triggerevent("pfc_cst_practitioner")
+		end if
+	case 2  //contract
+		if gb_contract_version = True or of_get_app_setting("set_cont","I") = 1 then
+			//--------------------------- APPEON BEGIN ---------------------------
+			//$<modify> 11.12.2008 By: Ken.Guo
+			//$<reason> use new function to open w_contract.
+			//OpenSheet(w_contract, w_mdi, 4, original!) 
+			PowerObject lpo_NullParm
+			Post gf_OpenContractFolder(lpo_NullParm)			
+			//---------------------------- APPEON END ----------------------------
+		end if
+	case 3 //action items
+		if w_mdi.of_security_access( 240 ) > 0 then //AND gb_contract_version then //Start Code Change ----04.21.2008 #V8 maha - removed contract test
+			w_mdi.Post triggerevent("pfc_cst_action_items")
+		end if	
+	case 4 //Reports
+		if w_mdi.of_security_access( 700 ) > 0 then
+			w_mdi.Post Triggerevent("pfc_cst_reports")
+		end if
+	case 5 //intellireport
+		if w_mdi.of_security_access( 1470 ) > 0 and gi_ireport_on = 1 then
+			Post OpenSheet( w_custom_report, w_mdi, 4, Original!)
+		end if
+	case 6  //App mapping
+		IF w_mdi.of_security_access( 1460 ) > 0 and gi_iapp_on = 1 then
+			Post OpenSheet( w_train_app, w_mdi, 4, layered!)
+		end if
+	case 7 //Export Painter
+		IF w_mdi.of_security_access( 550 ) > 0 and of_get_app_setting("set_iauto","I") = 1 THEN //Start Code Change ----04.21.2008 #V8 maha - added module check
+			w_mdi.Post triggerevent("pfc_cst_export_painter")
+		end if
+	case 8 //import Painter --//Start Code Change ----12.19.2008 #V8 maha
+		IF  of_get_app_setting("set_import","I") = 1 and  w_mdi.of_security_access( 6928 ) > 0 THEN
+			Post OpenSheet(w_import_painter, w_mdi, 4, Original!)
+		end if
+end choose
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$< Add  > 2009-03-06 By: Scofield
+//$<Reason> Auto open contract folder and select the corresponding tab.
+
+if AppeonGetClientType() = 'WEB' then
+	if gl_MoveToCtxID > 0 and gs_MoveToTabNo <> "" then
+		gf_OpenContractFolder(lpo_NullParm)
+		Post gf_GoTo_Contract(gl_MoveToCtxID,gs_MoveToTabNo,gl_MoveToDocID, 0, 0, '' )
+	end if
+end if
+//---------------------------- APPEON END ----------------------------
+
+If w_mdi.of_security_access( 6980 ) = 1 and (isnull(ii_getting_started) or ii_getting_started = 1 and Not gb_IsDocMode and not gb_DocQuickView) Then
+	Post of_postopen_getting_started()
+End If
+
+return 1
+
+end function
+

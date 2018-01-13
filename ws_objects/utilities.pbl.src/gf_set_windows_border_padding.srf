@@ -1,0 +1,57 @@
+﻿$PBExportHeader$gf_set_windows_border_padding.srf
+global type gf_set_windows_border_padding from function_object
+end type
+
+forward prototypes
+global function integer gf_set_windows_border_padding (string as_value)
+end prototypes
+
+global function integer gf_set_windows_border_padding (string as_value);//====================================================================
+// Function: gf_set_windows_border_padding
+//--------------------------------------------------------------------
+// Description: Modify the Windows border padding to workarround APB Bug
+//              toolbar text cut off
+//--------------------------------------------------------------------
+// Arguments:
+//                ai_value
+//--------------------------------------------------------------------
+// Returns:  (None)
+//--------------------------------------------------------------------
+// Author:         Ken.Guo           Date: 11/03/2014
+//--------------------------------------------------------------------
+//Copyright (c) 2008-2013 Contract Logix, Inc. All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+
+Long ll_ret
+String ls_getvalue
+
+n_cst_systeminfo lnv_systeminfo
+lnv_systeminfo = Create n_cst_systeminfo
+
+If appeongetclienttype() = 'WEB' Then //Vista or above //Modified By Ken.Guo 2016-09-27. deleted "Left(lnv_systeminfo.of_get_os_version( ),3) >= '6.0' and "
+	gnv_appeondll.of_registryget("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics","PaddedBorderWidth",RegString!,ls_getvalue)
+	If ls_getvalue = as_value Then Return 0
+	ls_getvalue = ''
+	ll_ret = gnv_appeondll.of_registryset("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics","PaddedBorderWidth", RegString!,as_value ) 
+	gnv_appeondll.of_registryget("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics","PaddedBorderWidth",RegString!,ls_getvalue)
+	If as_value <> ls_getvalue Then
+		gnv_debug.of_output(True, 'Failed to write the registry.HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics\PaddedBorderWidth = ' + as_value )
+		Return -1
+	End If
+	
+	//Added By Ken.Guo 2016-09-27. for win 10
+	gnv_appeondll.of_registryset("HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics","BorderWidth", RegString!,as_value ) 		
+	
+Else 
+	Return 0
+End If
+
+Return 1
+
+If isvalid(lnv_systeminfo) Then Destroy lnv_systeminfo
+end function
+

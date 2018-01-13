@@ -1,0 +1,62 @@
+﻿$PBExportHeader$contractlogix.srj
+$PBExportComments$Generated Application Executable Project
+EXE:E:\Contractlogix\Code\Version90\Contractlogix.exe,E:\Contractlogix\Code\Version90\res.pbr,0,1,1
+CMP:0,0,0,2,0,0
+COM:Contractlogix, Inc.
+DES:Contractlogix, Inc. IntelliContract
+CPY:1999-2009 Contractlogix Inc.
+PRD:IntelliContract for Windows
+PVS:9.0.0318.01
+PVN:9,0,318,1
+FVS:9.0.0318.01
+FVN:9,0,318,1
+PBD:E:\Contractlogix\Code\Version90\aa_new_dev.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\aa_version_fixes.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\action_items.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\addhoc.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\agreement_painter.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\appeon_contract.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\appeon_word2db.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\appeon_workaround.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\auto_export.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\dashboard.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\data_entry.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\data_entry_dw.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\group_practice.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\imaging.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\import.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intelicred.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intelliapp.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intelliappmods.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicontract.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicontract_am.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicontract_rpt.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicontract_tab.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicontract_w.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicred_comp.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\intellicred_dw.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\letters.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\meet_priv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\npdb.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\painters.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfcapsrv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfcdwsrv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfcmain.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfcutil.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfcwnsrv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfeapsrv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfedwsrv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfemain.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfeutil.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\pfewnsrv.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\premium_cust.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\privileges.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\qa.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\report.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\security.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\site_survey.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\update.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\utilities.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\webcrawler.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\webview.pbl,,1
+PBD:E:\Contractlogix\Code\Version90\work_flow.pbl,,1

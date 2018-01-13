@@ -1,0 +1,51 @@
+﻿$PBExportHeader$f_create_contract_ds.srf
+global type f_create_contract_ds from function_object
+end type
+
+forward prototypes
+global subroutine f_create_contract_ds (long al_view_id, long al_screen_id, ref datastore ads_table)
+end prototypes
+
+global subroutine f_create_contract_ds (long al_view_id, long al_screen_id, ref datastore ads_table);//====================================================================
+// Function:of_get_view_fields_alias()
+//--------------------------------------------------------------------
+// Description: Dynamic to create datastore from screen
+//--------------------------------------------------------------------
+// Arguments:
+// 	value	long     	al_view_id            	
+// 	value	long     	al_screen_id      	       	
+// 	ref		datastore	ads_table	
+//--------------------------------------------------------------------
+// Returns:  (none)
+//--------------------------------------------------------------------
+// Author:	Harry		Date: 20170620
+//--------------------------------------------------------------------
+// Modify History:
+//====================================================================
+String ls_dwsyntax
+String ls_ScreenStyle
+String ls_ERRORS 
+
+IF AppeonGetClientType() = "WEB" THEN			
+	SELECT (case when screen_style = 'G' then grid_sql else dw_sql end  )
+	INTO :ls_dwsyntax
+	FROM ctx_screen 
+	WHERE data_view_id = :al_view_id 
+	AND screen_id = :al_screen_id;
+ELSE
+	SELECT screen_style INTO:ls_ScreenStyle 	FROM ctx_screen 
+	WHERE data_view_id = :al_view_id 
+	AND screen_id = :al_screen_id;
+	If ls_ScreenStyle = 'G' Then
+		ls_dwsyntax = f_get_screen_gridsql(al_view_id,al_screen_id,false)
+	Else
+		ls_dwsyntax = f_get_screen_sql(al_view_id,al_screen_id,false) 
+	End If
+END IF
+
+IF Len(ls_dwsyntax) > 0 THEN 
+	ads_table.Create( ls_dwsyntax, ls_ERRORS)
+	ads_table.SetTransObject(SQLCA)
+END IF
+end subroutine
+

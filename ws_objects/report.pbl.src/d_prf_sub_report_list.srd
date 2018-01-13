@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_prf_sub_report_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=long updatewhereclause=yes key=yes name=profile_report_id dbname="profile_reports.profile_report_id" )
+ column=(type=char(50) updatewhereclause=yes name=profile_report_name dbname="profile_reports.profile_report_name" )
+ column=(type=char(100) updatewhereclause=yes name=profile_report_description dbname="profile_reports.profile_report_description" )
+ column=(type=char(50) updatewhereclause=yes name=profile_report_dw dbname="profile_reports.profile_report_dw" )
+ column=(type=long updatewhereclause=yes name=profile_report_sort_order dbname="profile_reports.profile_report_sort_order" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"profile_reports~" ) COLUMN(NAME=~"profile_reports.profile_report_id~") COLUMN(NAME=~"profile_reports.profile_report_name~") COLUMN(NAME=~"profile_reports.profile_report_description~") COLUMN(NAME=~"profile_reports.profile_report_dw~") COLUMN(NAME=~"profile_reports.profile_report_sort_order~")) " update="profile_reports" updatewhere=1 updatekeyinplace=no  sort="profile_report_name A " )
+bitmap(band=detail filename="section.bmp" x="5" y="4" height="60" width="73" border="0" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="96" y="4" height="60" width="923" format="[general]"  name=profile_report_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

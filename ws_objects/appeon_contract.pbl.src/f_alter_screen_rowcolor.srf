@@ -1,0 +1,105 @@
+﻿$PBExportHeader$f_alter_screen_rowcolor.srf
+global type f_alter_screen_rowcolor from function_object
+end type
+
+forward prototypes
+global subroutine f_alter_screen_rowcolor (integer al_view, integer al_screen, datawindow adw)
+end prototypes
+
+global subroutine f_alter_screen_rowcolor (integer al_view, integer al_screen, datawindow adw);//====================================================================
+// Function: f_alter_screen_rowcolor
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    integer       al_view
+// 	value    integer       al_screen
+// 	value    datawindow    adw
+//--------------------------------------------------------------------
+// Returns:  (None)
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 01-16-2014
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2013 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+string ls_obj,ls_type,ls_col,ls_objects[],ls_visible
+int li_pos,i
+long ll_view,ll_screen
+string ls_syntax,ls_x,ls_width,ls_lastwidth = '0',ls_lastx = '0',ls_str,ls_expression,ls_modify,ls_add_object,ls_lastpos_colname
+string ls_newwidth,ls_newheight,ls_color,ls_singlerow_color,ls_doublerow_color,ls_alter_screenrow_flag,ls_string,ls_dwstyle
+
+ls_string = string(al_view) + '-' + string(al_screen)
+ls_alter_screenrow_flag = gnv_user_option.of_get_option_value('screenrowcolor' + ls_string, "alter_screenrow_color_flag")
+if isnull(ls_alter_screenrow_flag) or ls_alter_screenrow_flag = '' then ls_alter_screenrow_flag='0'
+if ls_alter_screenrow_flag='0' then return
+
+// get the last visible object 's position(contain x and width)
+ls_obj = adw.describe('datawindow.objects') + "~t"
+if len(ls_obj) < 2 then return
+
+do
+	li_pos = pos(ls_obj, "~t") - 1
+	ls_col = mid(ls_obj, 1, li_pos)
+	ls_visible = adw.describe(ls_col + ".visible")
+	if ls_visible <> '0' then 
+		i++
+		ls_objects[i] = ls_col
+		adw.modify(ls_col + ".background.color='536870912'")
+		ls_str = adw.Describe(ls_col + ".x")
+		ls_expression = ""
+		If Pos( ls_str, '~t' ) > 0 Then 
+			ls_expression = Mid( ls_str, Pos( ls_str, '~t' ) + 1 )
+			ls_expression = Left( ls_expression, Len( ls_expression ) - 1 )
+			ls_str = Mid( ls_str, 2, Pos( ls_str, '~t' ) - 2 )
+		End If
+		ls_x = ls_str
+		if isnull(ls_x) or ls_x = '' then ls_x = '0'
+		if long(ls_x) > long(ls_lastx) then 
+			ls_lastx = ls_x
+			ls_lastpos_colname = ls_col
+		end if
+		ls_obj = mid(ls_obj, li_pos + len("~t") + 1)
+	else
+		ls_obj = mid(ls_obj, li_pos + len("~t") + 1)
+	end if
+loop until pos(ls_obj, "~t") = 0
+
+ls_str = adw.Describe(ls_lastpos_colname + ".width")
+ls_expression = ""
+If Pos( ls_str, '~t' ) > 0 Then 
+	ls_expression = Mid( ls_str, Pos( ls_str, '~t' ) + 1 )
+	ls_expression = Left( ls_expression, Len( ls_expression ) - 1 )
+	ls_str = Mid( ls_str, 2, Pos( ls_str, '~t' ) - 2 )
+End If
+ls_lastwidth = ls_str
+ls_newwidth = string(long(ls_lastx) + long(ls_lastwidth) + 50)
+ls_newheight = adw.describe('dataWindow.detail.height')
+ls_newheight = ""+ls_newheight+"~trowheight()" //Added By Jay Chen 01-20-2014
+
+// get the setting display color value from database and modify the contratc datawindow 's screen 
+if ls_alter_screenrow_flag = '1' then
+	ls_singlerow_color = gnv_user_option.of_get_option_value('screenrowcolor' + ls_string, "screen_singlerow_color")
+	ls_doublerow_color = gnv_user_option.of_get_option_value('screenrowcolor' + ls_string, "screen_doublerow_color")
+	if isnull(ls_singlerow_color) or ls_singlerow_color = '' then ls_singlerow_color='16709598'
+	if isnull(ls_doublerow_color) or ls_doublerow_color = '' then ls_doublerow_color='67108864'
+	ls_color = "12639424~tif(mod(getrow(),2) = 1,"+ls_singlerow_color+","+ls_doublerow_color+")"
+	ls_syntax = adw.describe("dataWindow.syntax")
+	if Pos(ls_syntax,"processing=0") > 0 then
+		ls_modify = " create text(band=detail text='' visible='1' x='0'  y='0' height='"+ls_newheight+"' width='"+ls_newwidth+"'  background.color='"+ls_color+"' name=t_row_color) "
+	else //Added By Jay Chen 01-17-2014
+		ls_modify = " create rectangle(band=detail  visible='1' x='0'  y='0' height='"+ls_newheight+"' width='"+ls_newwidth+"'  brush.color='"+ls_color+"' name=t_row_color brush.hatch='6' pen.style='0' pen.width='5' pen.color='12639424'  background.mode='2' background.color='0' background.transparency='0' background.gradient.color='8421504' background.gradient.transparency='0' background.gradient.angle='0' background.brushmode='0' background.gradient.repetition.mode='0' background.gradient.repetition.count='0' background.gradient.repetition.length='100' background.gradient.focus='0' background.gradient.scale='100' background.gradient.spread='100' tooltip.backcolor='134217752' tooltip.delay.initial='0' tooltip.delay.visible='32000' tooltip.enabled='0' tooltip.hasclosebutton='0' tooltip.icon='0' tooltip.isbubble='0' tooltip.maxwidth='0' tooltip.textcolor='134217751' tooltip.transparency='0' ) "
+	end if
+	adw.modify(ls_Modify)
+	adw.SetPosition("t_row_color", "detail", false)
+end if
+
+return
+
+
+
+end subroutine
+

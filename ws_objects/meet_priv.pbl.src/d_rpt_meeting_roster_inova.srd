@@ -1,0 +1,144 @@
+﻿$PBExportHeader$d_rpt_meeting_roster_inova.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=544 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=datetime updatewhereclause=yes name=meetings_start_date dbname="meetings.start_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_start_time dbname="meetings.start_time" )
+ column=(type=datetime updatewhereclause=yes name=meetings_end_date dbname="meetings.end_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_end_time dbname="meetings.end_time" )
+ column=(type=char(100) updatewhereclause=yes name=meetings_subject dbname="meetings.subject" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_location dbname="meetings.location" )
+ column=(type=long updatewhereclause=yes name=meetings_committee dbname="meetings.committee" )
+ column=(type=char(255) updatewhereclause=yes name=meetings_comments dbname="meetings.comments" )
+ column=(type=decimal(2) updatewhereclause=yes name=meetings_cme_credits dbname="meetings.cme_credits" )
+ column=(type=decimal(0) updatewhereclause=yes name=meetings_cme_category dbname="meetings.cme_category" )
+ column=(type=char(35) updatewhereclause=yes name=meetings_cme_presenter dbname="meetings.cme_presenter" )
+ column=(type=char(35) updatewhereclause=yes name=meetings_cme_affiliation dbname="meetings.cme_affiliation" )
+ column=(type=long updatewhereclause=yes name=meetings_facility dbname="meetings.facility" )
+ column=(type=long updatewhereclause=yes name=attendence_attendence_status dbname="attendence.attendence_status" )
+ column=(type=long updatewhereclause=yes name=meetings_meeting_id dbname="meetings.meeting_id" )
+ column=(type=long updatewhereclause=yes name=attendence_meeting_id dbname="attendence.meeting_id" )
+ column=(type=long updatewhereclause=yes name=attendence_prac_id dbname="attendence.prac_id" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="pd_basic.first_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="pd_basic.middle_name" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_starttime dbname="starttime" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_endtime dbname="endtime" )
+ column=(type=char(100) updatewhereclause=yes name=pd_basic_last_name dbname="pd_basic.last_name" )
+ column=(type=char(150) updatewhereclause=yes name=v_affil_staff_cat_active_staff_cat dbname="v_affil_staff_cat_active.staff_cat" )
+ retrieve="  SELECT ~"code_lookup_a~".~"code~",   
+         ~"meetings~".~"start_date~",   
+         ~"meetings~".~"start_time~",   
+         ~"meetings~".~"end_date~",   
+         ~"meetings~".~"end_time~",   
+         ~"meetings~".~"subject~",   
+         ~"code_lookup_b~".~"code~",   
+         ~"meetings~".~"location~",   
+         ~"meetings~".~"committee~",   
+         ~"meetings~".~"comments~",   
+         ~"meetings~".~"cme_credits~",   
+         ~"meetings~".~"cme_category~",   
+         ~"meetings~".~"cme_presenter~",   
+         ~"meetings~".~"cme_affiliation~",   
+         ~"meetings~".~"facility~",   
+         ~"attendence~".~"attendence_status~",   
+         ~"meetings~".~"meeting_id~",   
+         ~"attendence~".~"meeting_id~",   
+         ~"attendence~".~"prac_id~",   
+         ~"pd_basic~".~"first_name~",   
+         ~"pd_basic~".~"middle_name~",   
+         ~"code_lookup_c~".~"code~",   
+         ~"code_lookup_d~".~"code~",   
+         starttime = code_lookup_c.code,   
+         endtime = code_lookup_d.code,   
+         ~"pd_basic~".~"last_name~",   
+         ~"v_affil_staff_cat_active~".~"staff_cat~"  
+    FROM {oj ~"v_affil_staff_cat_active~" RIGHT OUTER JOIN ~"meetings~" ON ~"v_affil_staff_cat_active~".~"facility_id~" = ~"meetings~".~"facility~" RIGHT OUTER JOIN ~"attendence~" ON ~"v_affil_staff_cat_active~".~"prac_id~" = ~"attendence~".~"prac_id~"},   
+         ~"code_lookup~" ~"code_lookup_a~",   
+         ~"code_lookup~" ~"code_lookup_b~",   
+         ~"pd_basic~",   
+         ~"code_lookup~" ~"code_lookup_c~",   
+         ~"code_lookup~" ~"code_lookup_d~"  
+   WHERE ( ~"attendence~".~"meeting_id~" = ~"meetings~".~"meeting_id~" ) and  
+         ( ~"meetings~".~"meeting_type~" = ~"code_lookup_a~".~"lookup_code~" ) and  
+         ( ~"meetings~".~"location~" = ~"code_lookup_b~".~"lookup_code~" ) and  
+         ( ~"attendence~".~"prac_id~" = ~"pd_basic~".~"prac_id~" ) and  
+         ( ~"meetings~".~"start_time~" = ~"code_lookup_c~".~"lookup_code~" ) and  
+         ( ~"meetings~".~"end_time~" = ~"code_lookup_d~".~"lookup_code~" ) and 
+			( ~"attendence~".~"prac_id~"  > 0)  and
+         ( ( attendence.meeting_id = :meeting_id ) )    
+
+
+union
+
+  SELECT ~"code_lookup_a~".~"code~",   
+         ~"meetings~".~"start_date~",   
+         ~"meetings~".~"start_time~",   
+         ~"meetings~".~"end_date~",   
+         ~"meetings~".~"end_time~",   
+         ~"meetings~".~"subject~",   
+         ~"code_lookup_b~".~"code~",   
+         ~"meetings~".~"location~",   
+         ~"meetings~".~"committee~",   
+         ~"meetings~".~"comments~",   
+         ~"meetings~".~"cme_credits~",   
+         ~"meetings~".~"cme_category~",   
+         ~"meetings~".~"cme_presenter~",   
+         ~"meetings~".~"cme_affiliation~",   
+         ~"meetings~".~"facility~",   
+         ~"attendence~".~"attendence_status~",   
+         ~"meetings~".~"meeting_id~",   
+         ~"attendence~".~"meeting_id~",   
+         ~"attendence~".~"prac_id~",   
+         ~"pd_basic~".~"first_name~",   
+         ~"pd_basic~".~"middle_name~",   
+         ~"code_lookup_c~".~"code~",   
+         ~"code_lookup_d~".~"code~",   
+         starttime = code_lookup_c.code,   
+         endtime = code_lookup_d.code,   
+         ~"pd_basic~".~"last_name~",   
+         ~"pd_basic~".~"cust_7~" 
+    FROM ~"meetings~",
+			~"attendence~", 
+         ~"code_lookup~" ~"code_lookup_a~",   
+         ~"code_lookup~" ~"code_lookup_b~",   
+         ~"pd_basic~",   
+         ~"code_lookup~" ~"code_lookup_c~",   
+         ~"code_lookup~" ~"code_lookup_d~"  
+   WHERE ( ~"attendence~".~"meeting_id~" = ~"meetings~".~"meeting_id~" ) and  
+         ( ~"meetings~".~"meeting_type~" = ~"code_lookup_a~".~"lookup_code~" ) and  
+         ( ~"meetings~".~"location~" = ~"code_lookup_b~".~"lookup_code~" ) and  
+         ( ~"attendence~".~"prac_id~" = ~"pd_basic~".~"prac_id~" ) and  
+         ( ~"meetings~".~"start_time~" = ~"code_lookup_c~".~"lookup_code~" ) and  
+         ( ~"meetings~".~"end_time~" = ~"code_lookup_d~".~"lookup_code~" ) and
+			( ~"attendence~".~"prac_id~" < 0)  and  
+         ( ( attendence.meeting_id = :meeting_id ) )
+
+" arguments=(("meeting_id", number))  sort="name A " )
+line(band=header x1="14" y1="448" x2="3506" y2="448"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Name" border="0" color="0" x="73" y="472" height="64" width="174" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Signature" border="0" color="0" x="1783" y="468" height="64" width="251" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="14" y1="540" x2="3506" y2="540"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression=" code_lookup_code + ~" Meeting Roster~""border="0" color="0" x="1143" y="88" height="100" width="1746" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Meeting Dates:" border="0" color="0" x="1166" y="288" height="64" width="398" html.valueishtml="0"  name=t_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="String( meetings_start_date ,'mm/dd/yyyy') + ~" - ~" +String( meetings_end_date ,'mm/dd/yyyy')"border="0" color="0" x="1554" y="288" height="64" width="690" format="[general]" html.valueishtml="0"  name=dates visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Meeting Time:" border="0" color="0" x="1166" y="368" height="64" width="370" html.valueishtml="0"  name=t_7 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="   code_lookup_starttime + ~" - ~" +   code_lookup_endtime "border="0" color="0" x="1554" y="368" height="64" width="704" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Subject:" border="0" color="0" x="1161" y="204" height="72" width="238" html.valueishtml="0"  name=t_8 visible="1"  font.face="Times New Roman" font.height="-11" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1417" y="204" height="72" width="1751" format="[general]" html.valueishtml="0"  name=meetings_subject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-11" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="27" y="348" height="72" width="590" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Staff Category" border="0" color="0" x="1115" y="464" height="64" width="366" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=detail x1="1792" y1="84" x2="3479" y2="84"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" pd_basic_last_name + ~", ~" +  pd_basic_first_name +  ~" ~" + If( isnull(  pd_basic_middle_name ),'',  pd_basic_middle_name )"border="0" color="0" x="41" y="16" height="64" width="1029" format="[general]" html.valueishtml="0"  name=name visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="1106" y="12" height="72" width="626" format="[general]" html.valueishtml="0"  name=v_affil_staff_cat_active_staff_cat visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

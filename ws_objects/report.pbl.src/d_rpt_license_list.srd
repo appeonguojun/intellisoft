@@ -1,0 +1,52 @@
+﻿$PBExportHeader$d_rpt_license_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=496 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(183) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=char(30) updatewhereclause=yes name=cstate dbname="state" )
+ column=(type=char(100) updatewhereclause=yes name=v_full_name_last_name dbname="v_full_name.last_name" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_description dbname="code_lookup.description" )
+ column=(type=datetime updatewhereclause=yes name=pd_license_expiration_date dbname="pd_license.expiration_date" )
+ column=(type=char(40) updatewhereclause=yes name=pd_license_license_number dbname="pd_license.license_number" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="v_full_name.prac_id" )
+ retrieve="  SELECT DISTINCT v_full_name.full_name,   
+         state = code_lookup.code,   
+         v_full_name.last_name,   
+         code_lookup.description,   
+         pd_license.expiration_date,   
+         pd_license.license_number,   
+         v_full_name.prac_id  
+    FROM {oj  pd_license left outer join  code_lookup  on pd_license.state = code_lookup.lookup_code  },
+         v_full_name,   
+         pd_affil_stat  
+   WHERE ( v_full_name.prac_id = pd_affil_stat.prac_id ) and  
+         ( pd_license.prac_id = pd_affil_stat.prac_id ) and  
+         (pd_license.active_status = 1 OR  
+         pd_license.active_status is NULL)    
+"  sort="v_full_name_last_name A cstate A " )
+group(level=1 header.height=0 trailer.height=0 by=("v_full_name_full_name" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="82" y="92" height="76" width="407" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Name" border="0" color="0" x="69" y="416" height="64" width="174" html.valueishtml="0"  name=v_full_name_full_name_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="State" border="0" color="0" x="1175" y="416" height="64" width="151" html.valueishtml="0"  name=cstate_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2834" y="96" height="76" width="453" format="[general]" html.valueishtml="0"  name=page visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="License Number" border="0" color="0" x="1915" y="420" height="64" width="485" html.valueishtml="0"  name=pd_dea_state_csr_license_number_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Expiration Date" border="0" color="0" x="2546" y="416" height="64" width="457" html.valueishtml="0"  name=pd_dea_state_csr_expiration_date_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="License Report " border="0" color="0" x="1371" y="96" height="80" width="681" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="" border="0" color="0" x="581" y="184" height="76" width="2304" html.valueishtml="0"  name=selected_facility_t visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="44" x2="3301" y2="44"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="3301" y2="80"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="268" x2="3301" y2="268"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="304" x2="3301" y2="304"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="488" x2="3301" y2="488"  name=l_5 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="69" y="8" height="64" width="1074" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=152 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1161" y="8" height="64" width="690" format="[general]" html.valueishtml="0"  name=code_lookup_description visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1902" y="8" height="64" width="549" format="[general]" html.valueishtml="0"  name=pd_license_license_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2528" y="8" height="64" width="667" format="mm/dd/yyyy" html.valueishtml="0"  name=pd_license_expiration_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

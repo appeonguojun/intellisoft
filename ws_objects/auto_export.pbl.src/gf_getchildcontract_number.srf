@@ -1,0 +1,41 @@
+﻿$PBExportHeader$gf_getchildcontract_number.srf
+global type gf_getchildcontract_number from function_object
+end type
+
+forward prototypes
+global function string gf_getchildcontract_number (long ll_master_contract_id, long ll_ctx_id)
+end prototypes
+
+global function string gf_getchildcontract_number (long ll_master_contract_id, long ll_ctx_id);//added by gavins 20141017
+
+Long		ll_Cnt
+string		ls_Return
+
+
+//SELECT count(1) into:ll_cnt
+// 			FROM ctx_basic_info   
+// 			WHERE  4 = :ll_master_contract_id  and ctx_id <= :ll_ctx_id;
+
+	
+If IsValid( gw_contract ) Then
+	
+	If IsValid( gw_contract.tab_contract_details ) Then
+		If ll_Master_contract_id > 0 Then
+//			ll_cnt = gw_contract.tab_contract_details.tabpage_search.of_GetChild_SortNum( ll_Master_contract_id, ll_ctx_id )
+			if gw_contract.tab_contract_details.tabpage_search.ib_get_masterchild then //Added By Jay Chen 11-04-2014
+				ll_cnt = gw_contract.tab_contract_details.tabpage_search.of_GetChild_SortNum( ll_Master_contract_id, ll_ctx_id )
+			else
+				if gw_contract.tab_contract_details.tabpage_search.istr_master_child.al_ctx_id = ll_ctx_id then
+					ll_cnt = gw_contract.tab_contract_details.tabpage_search.istr_master_child.al_child_sort_index
+				end if
+			end if
+			If ll_cnt > 0 Then	ls_Return = string( ll_cnt )
+		End If
+	End If	
+End If
+	
+	
+			 
+Return ls_Return
+end function
+

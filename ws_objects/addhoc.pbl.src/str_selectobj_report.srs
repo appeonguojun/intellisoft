@@ -1,0 +1,6 @@
+﻿$PBExportHeader$str_selectobj_report.srs
+global type str_selectobj_report from structure
+	pfc_cst_u_band_report		fband
+	string		fname
+end type
+

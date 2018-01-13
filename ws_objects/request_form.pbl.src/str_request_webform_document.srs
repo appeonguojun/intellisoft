@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_request_webform_document.srs
+global type str_request_webform_document from structure
+	long		al_rwf_id
+	long		al_document_id
+	long		al_request_id
+	string		as_ext
+	string		as_fullpath_name
+	string		as_document_name
+end type
+

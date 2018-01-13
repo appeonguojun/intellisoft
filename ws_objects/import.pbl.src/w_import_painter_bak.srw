@@ -1,0 +1,5615 @@
+﻿$PBExportHeader$w_import_painter_bak.srw
+forward
+global type w_import_painter_bak from w_response
+end type
+type tab_1 from tab within w_import_painter_bak
+end type
+type tabpage_hdr from userobject within tab_1
+end type
+type dw_browse from u_dw within tabpage_hdr
+end type
+type dw_imp_sql from u_dw within tabpage_hdr
+end type
+type dw_imp_hdr from u_dw within tabpage_hdr
+end type
+type tabpage_hdr from userobject within tab_1
+dw_browse dw_browse
+dw_imp_sql dw_imp_sql
+dw_imp_hdr dw_imp_hdr
+end type
+type tabpage_field_data from userobject within tab_1
+end type
+type cb_create_value_list from commandbutton within tabpage_field_data
+end type
+type cb_com_wizard from commandbutton within tabpage_field_data
+end type
+type cb_edit_map from commandbutton within tabpage_field_data
+end type
+type dw_detail from u_dw within tabpage_field_data
+end type
+type dw_map_fields from u_dw within tabpage_field_data
+end type
+type dw_records from u_dw within tabpage_field_data
+end type
+type dw_fields from u_dw within tabpage_field_data
+end type
+type dw_tables from u_dw within tabpage_field_data
+end type
+type ln_1 from line within tabpage_field_data
+end type
+type ln_2 from line within tabpage_field_data
+end type
+type ln_4 from line within tabpage_field_data
+end type
+type ln_5 from line within tabpage_field_data
+end type
+type ln_3 from line within tabpage_field_data
+end type
+type dw_imp_field_detail from u_dw within tabpage_field_data
+end type
+type dw_field_list from u_dw within tabpage_field_data
+end type
+type dw_compute_verify from datawindow within tabpage_field_data
+end type
+type dw_prac_cont_id from u_dw within tabpage_field_data
+end type
+type tabpage_field_data from userobject within tab_1
+cb_create_value_list cb_create_value_list
+cb_com_wizard cb_com_wizard
+cb_edit_map cb_edit_map
+dw_detail dw_detail
+dw_map_fields dw_map_fields
+dw_records dw_records
+dw_fields dw_fields
+dw_tables dw_tables
+ln_1 ln_1
+ln_2 ln_2
+ln_4 ln_4
+ln_5 ln_5
+ln_3 ln_3
+dw_imp_field_detail dw_imp_field_detail
+dw_field_list dw_field_list
+dw_compute_verify dw_compute_verify
+dw_prac_cont_id dw_prac_cont_id
+end type
+type tabpage_data from userobject within tab_1
+end type
+type dw_imp_data from u_dw within tabpage_data
+end type
+type gb_operation from groupbox within tabpage_data
+end type
+type cb_imp_data from commandbutton within tabpage_data
+end type
+type cb_imp_pro from commandbutton within tabpage_data
+end type
+type cb_savedata from commandbutton within tabpage_data
+end type
+type cb_get_saved from commandbutton within tabpage_data
+end type
+type cb_sort from commandbutton within tabpage_data
+end type
+type cb_filter from commandbutton within tabpage_data
+end type
+type tabpage_data from userobject within tab_1
+dw_imp_data dw_imp_data
+gb_operation gb_operation
+cb_imp_data cb_imp_data
+cb_imp_pro cb_imp_pro
+cb_savedata cb_savedata
+cb_get_saved cb_get_saved
+cb_sort cb_sort
+cb_filter cb_filter
+end type
+type tabpage_log from userobject within tab_1
+end type
+type dw_imp_table from u_dw within tabpage_log
+end type
+type dw_imp_proc from u_dw within tabpage_log
+end type
+type dw_imp_err from u_dw within tabpage_log
+end type
+type tabpage_log from userobject within tab_1
+dw_imp_table dw_imp_table
+dw_imp_proc dw_imp_proc
+dw_imp_err dw_imp_err
+end type
+type tab_1 from tab within w_import_painter_bak
+tabpage_hdr tabpage_hdr
+tabpage_field_data tabpage_field_data
+tabpage_data tabpage_data
+tabpage_log tabpage_log
+end type
+type cb_preprocess from commandbutton within w_import_painter_bak
+end type
+end forward
+
+global type w_import_painter_bak from w_response
+integer x = 5
+integer y = 4
+integer width = 4375
+integer height = 2224
+string title = "Import Painter"
+boolean minbox = true
+boolean maxbox = true
+boolean resizable = true
+windowtype windowtype = main!
+long backcolor = 79680469
+boolean center = false
+event pfc_cst_edit_projects ( )
+event pfc_cst_add ( )
+event pfc_cst_delete ( )
+event pfc_cst_copy ( )
+event pfc_cst_lookup_mapping ( )
+event pfc_cst_run_import ( )
+event pfc_cst_check_mapping ( )
+event pfc_cst_createimportfields ( )
+event pfc_cst_auto_import ( )
+event pfc_cst_copymap ( )
+tab_1 tab_1
+cb_preprocess cb_preprocess
+end type
+global w_import_painter_bak w_import_painter_bak
+
+type prototypes
+
+end prototypes
+
+type variables
+// Error information variables
+string is_hdr_errinfo
+string is_mapfield_errinfo
+
+// Control drag variables
+long il_DragRow
+boolean ib_LockFile
+
+// Import ID variables
+long il_curr_import_id
+long il_page2_import_id
+long il_page3_import_id
+long il_page4_import_id
+
+// Import Type
+integer ii_curr_isoft_module
+integer ii_preprocess
+
+// Import table
+string is_curr_table_name
+
+// Lookup table
+DataStore ids_LookUpTableDDDW[2]
+
+// Current mapped DW
+integer ii_CurrMappedDW = 2
+
+// Selected rows
+long il_DragValue[]
+long il_SelectedCount
+
+// Control variables
+boolean ib_PromptCreateImportField = true
+boolean ib_IsIntelliCredApp = true
+boolean ib_IsIntelliContract = true
+
+boolean ib_isCopy = false
+long il_pre_import_id
+
+string	is_ImportType
+string	is_sfuser, is_sfpwd, is_Result
+str_sflogin_response   istr_SFResponse
+Boolean	ib_ChangeData
+
+
+end variables
+
+forward prototypes
+public function blob of_readfile (string as_file)
+public subroutine of_createimportfield ()
+public function integer of_getfieldfromtxt (string as_file, ref string as_fields[])
+public function integer of_getfieldfromcsv (string as_file, ref string as_fields[])
+public function integer of_getfieldfromformattxt (string as_file, string as_record_delimiter, string as_field_delimiter, ref string as_fields[])
+public function integer of_getfieldfromodbc (string as_file, string as_odbc_name, string as_odbc_login, string as_odbc_password, string as_import_sql, ref string as_fields[])
+public function integer of_begindrag (datawindow adw_data)
+public subroutine of_completetrans (boolean ab_iscommit)
+public function integer of_checkimportfieldname (long al_fieldcount, string as_importfields[])
+public function integer of_getimportfields (ref string as_fields[])
+public function integer of_setmenu (integer ai_index)
+public function integer of_setmappeddwtitle (integer al_current)
+public function string of_replaceblank (string as_string, string as_new)
+public function string of_getcontractfieldfilter (datawindow adw_tables)
+public function integer of_selectvalue (ref string as_value)
+public function long of_getinsertrow (datawindow adw_table, long al_parent_table_id)
+public function long of_getinsertrow (long al_table_id)
+public function integer of_preprocess_data (integer li_process, string as_file_from, string as_file_to)
+public function string of_correcttablename (string as_name)
+public subroutine of_copy_field_data (long al_ori_import_id, long al_new_import_id)
+public subroutine wf_importtype_control (string as_data)
+public function boolean of_field_name_check (string as_fieldname)
+public subroutine wf_setmapfielddefaultvalue (datawindow adw_field, integer ai_row)
+end prototypes
+
+event pfc_cst_edit_projects();long ll_project_id
+long ll_CurrentRow
+DataWindowChild ldwc_Child1
+DataWindowChild ldwc_Child2
+
+ll_CurrentRow = tab_1.tabpage_hdr.dw_browse.GetRow()
+if ll_CurrentRow > 0 then
+	ll_project_id = tab_1.tabpage_hdr.dw_browse.object.project_id[ll_CurrentRow]
+else
+	ll_project_id = 0
+end if
+OpenWithParm(w_import_project, ll_project_id)
+
+if Message.StringParm <> "nochanged!" then
+	tab_1.tabpage_hdr.dw_browse.GetChild("project_id", ldwc_Child1)
+	tab_1.tabpage_hdr.dw_imp_hdr.GetChild("project_id", ldwc_Child2)
+	ldwc_Child1.SetTransObject(SQLCA)
+	ldwc_Child2.SetTransObject(SQLCA)
+	gnv_appeondb.of_StartQueue()
+	ldwc_Child1.Retrieve()
+	ldwc_Child2.Retrieve()
+	gnv_appeondb.of_CommitQueue()	
+	tab_1.tabpage_hdr.dw_browse.SetRedraw(true)
+	tab_1.tabpage_hdr.dw_imp_hdr.SetRedraw(true)
+end if
+end event
+
+event pfc_cst_add();choose case tab_1.SelectedTab
+	case 1
+		tab_1.tabpage_hdr.Event ue_add()
+	case 2
+		tab_1.tabpage_field_data.Event ue_addimportfield()
+end choose
+end event
+
+event pfc_cst_delete();choose case tab_1.SelectedTab
+	case 1
+		tab_1.tabpage_hdr.Event ue_delete()
+	case 2
+		tab_1.tabpage_field_data.Event ue_deleteimportfield()
+end choose
+end event
+
+event pfc_cst_copy();//Modify By Jervis 12.18.2009
+//tab_1.tabpage_hdr.Event ue_copyadd()
+if this.event pfc_save() < 0 then return
+this.ib_iscopy = true
+tab_1.tabpage_hdr.Event ue_copyadd()
+this.event pfc_save()
+this.ib_iscopy = false
+end event
+
+event pfc_cst_lookup_mapping();string ls_IsChange
+DataWindowChild ldwc_Child
+
+Open(w_import_lookup_mapping)
+ls_IsChange = Message.StringParm
+
+if ls_IsChange = "YES!" then
+	tab_1.tabpage_field_data.dw_detail.GetChild("lu_template", ldwc_Child)
+	ldwc_Child.SetTransObject(SQLCA)
+	ldwc_Child.Retrieve()
+	ldwc_Child.InsertRow(1)
+end if
+end event
+
+event pfc_cst_run_import();long ll_LastRow
+n_cst_import_credapp lnv_import_credapp
+n_cst_import_contract lnv_import_contract
+
+if MessageBox("Run Import", "Are you sure you want to run the selected import?", Question!, YesNo!) = 2 then Return
+SetPointer(HourGlass!)
+
+// Import data
+if ii_curr_isoft_module = 1 then
+	lnv_import_credapp = Create n_cst_import_credapp
+	lnv_import_credapp.of_Execute(il_curr_import_id, true)
+	Destroy lnv_import_credapp
+else
+	lnv_import_contract = Create n_cst_import_contract
+	lnv_import_contract.of_Execute(il_curr_import_id, true)
+	Destroy lnv_import_contract
+end if
+
+// Display log
+il_page4_import_id = -1
+tab_1.SelectTab(4)
+ll_LastRow = tab_1.tabpage_log.dw_imp_proc.RowCount()
+tab_1.tabpage_log.dw_imp_proc.ScrollToRow(ll_LastRow)
+
+SetPointer(Arrow!)
+end event
+
+event pfc_cst_check_mapping();tab_1.tabpage_field_data.Event ue_CheckMapping()
+end event
+
+event pfc_cst_createimportfields();ib_PromptCreateImportField = false
+of_CreateImportField()
+ib_PromptCreateImportField = true
+end event
+
+event pfc_cst_auto_import();Open(w_auto_import)
+end event
+
+event pfc_cst_copymap();tab_1.tabpage_field_data.Event ue_copymap()
+end event
+
+public function blob of_readfile (string as_file);blob lblb_Data
+blob lblb_Buf
+long ll_Byte
+integer li_FileNum
+
+li_FileNum = FileOpen(as_File, StreamMode!, Read!, Shared!)
+if li_FileNum = -1 then 
+	SetNull(lblb_Data)
+	Return lblb_Data
+end if
+
+do
+	ll_Byte = FileRead(li_FileNum, lblb_Buf)
+	if ll_Byte > 0 then
+		lblb_Data += lblb_Buf
+	else
+		Exit
+	end if
+loop while true
+FileClose(li_FileNum)
+
+Return lblb_Data
+end function
+
+public subroutine of_createimportfield ();long i, j
+long ll_FieldCount
+long ll_CurrentRow
+long ll_InsertRow
+long ll_ImportID
+long ll_Null
+string ls_imp_file
+string ls_imp_format
+string ls_odbc_name
+string ls_odbc_login
+string ls_odbc_password
+string ls_import_sql
+string ls_record_delimiter
+string ls_field_delimiter
+string ls_ImportFields[]
+integer li_Return
+DataWindow ldw_Field
+DataWindow ldw_mapping
+gs_variable_array lst_fields //maha 121807
+
+// Save import records
+ll_FieldCount = tab_1.tabpage_hdr.Event ue_save()
+if ll_FieldCount = -1 then
+	MessageBox("Error", is_hdr_errinfo, StopSign!)
+	Return
+end if
+
+// Get import information
+ll_CurrentRow = tab_1.tabpage_hdr.dw_imp_hdr.GetRow()
+if ll_CurrentRow <= 0 then Return
+if tab_1.tabpage_hdr.dw_imp_hdr.object.lock_file[ll_CurrentRow] = 1 then
+	MessageBox("Prompt", "Create field function is disabled when the import is Locked.")
+	Return
+end if
+ls_imp_file = tab_1.tabpage_hdr.dw_imp_hdr.object.imp_file[ll_CurrentRow]
+ls_imp_format = tab_1.tabpage_hdr.dw_imp_hdr.object.imp_format[ll_CurrentRow]
+ls_odbc_name = tab_1.tabpage_hdr.dw_imp_hdr.object.odbc_name[ll_CurrentRow]
+ls_odbc_login = tab_1.tabpage_hdr.dw_imp_hdr.object.odbc_login[ll_CurrentRow]
+ls_odbc_password = tab_1.tabpage_hdr.dw_imp_hdr.object.odbc_password[ll_CurrentRow]
+ls_import_sql = tab_1.tabpage_hdr.dw_imp_hdr.object.import_sql[ll_CurrentRow]
+ls_record_delimiter = tab_1.tabpage_hdr.dw_imp_hdr.object.record_delimiter[ll_CurrentRow]
+ls_field_delimiter = tab_1.tabpage_hdr.dw_imp_hdr.object.field_delimiter[ll_CurrentRow]
+
+if IsNull(ls_imp_format) then ls_imp_format = ""
+if IsNull(ls_odbc_name) then ls_odbc_name = ""
+if IsNull(ls_odbc_login) then ls_odbc_login = ""
+if IsNull(ls_odbc_password) then ls_odbc_password = ""
+if IsNull(ls_import_sql) then ls_import_sql = ""
+if IsNull(ls_record_delimiter) then ls_record_delimiter = ""
+if IsNull(ls_field_delimiter) then ls_field_delimiter = ""
+
+// Get import field list
+choose case ls_imp_format
+	case "1" //Tab Delimited
+		ll_FieldCount = of_GetFieldFromTxt(ls_imp_file, ls_ImportFields)
+	case "2" //CSV
+		ll_FieldCount = of_GetFieldFromCSV(ls_imp_file, ls_ImportFields)
+	case "3" //ODBC		
+		ll_FieldCount = of_GetFieldFromODBC(ls_imp_file, ls_odbc_name, ls_odbc_login, ls_odbc_password, ls_import_sql, ls_ImportFields)
+	case "4"	//Formatted text	
+		ll_FieldCount = of_GetFieldFromFormatTxt(ls_imp_file, ls_record_delimiter, ls_field_delimiter, ls_ImportFields)
+end choose
+if ll_FieldCount = -1 then Return
+
+//Start Code Change ----12.18.2007 #V8 maha
+//changed code to open w_database_field_verify which will allow the user to modify and verify field names
+//if of_CheckImportFieldName(ll_FieldCount, ls_ImportFields[]) = -1 then Return
+lst_fields.as_string[] = ls_ImportFields[]
+openwithparm(w_database_field_verify,lst_fields) //pass the field list
+if message.doubleparm = -1 then return
+lst_fields = message.powerobjectparm
+ ls_ImportFields[] = lst_fields.as_string[] //set the modified field list
+//End Code Change---12.18.2007
+
+// Select field setup page
+ldw_Field = tab_1.tabpage_field_data.dw_imp_field_detail
+ldw_Field.AcceptText()
+ll_ImportID = tab_1.tabpage_hdr.dw_browse.object.import_id[ll_CurrentRow]
+tab_1.tabpage_hdr.dw_browse.Event RowFocusChanged(ll_CurrentRow)
+if tab_1.SelectedTab <> 2 then tab_1.SelectTab(2)
+
+// Delete import fields
+if ldw_Field.RowCount() > 0 then
+	ldw_Field.SetSort("field_order A")
+	ldw_Field.Sort()
+	li_Return = MessageBox("Prompt", "Import fields have already been defined. Do you want to replace them?", Question!, YesNoCancel!)
+	if li_Return = 1 then
+		// Delete corresponding import ID in mapping relationship
+		SetNull(ll_Null)
+		for i = 1 to tab_1.tabpage_field_data.dw_records.RowCount()
+			tab_1.tabpage_field_data.dw_records.ScrollToRow(i)
+			ldw_mapping = tab_1.tabpage_field_data.dw_map_fields
+			for j = 1 to ldw_mapping.RowCount()
+				ldw_mapping.object.import_field_id[j] = ll_Null
+			next	
+			ldw_mapping = tab_1.tabpage_field_data.dw_prac_cont_id
+			for j = 1 to ldw_mapping.RowCount()
+				ldw_mapping.object.import_field_id[j] = ll_Null
+			next
+		next
+		// Delete import fields
+		ldw_Field.RowsMove(1, ldw_Field.RowCount(), Primary!, ldw_Field, 1, Delete!)		
+	elseif li_Return = 3 then
+		Return
+	end if
+end if
+
+// Insert import field into dw_field_list
+for i = 1 to ll_FieldCount
+	ll_InsertRow = ldw_Field.InsertRow(0)
+	ldw_Field.object.import_id[ll_InsertRow] = ll_ImportID
+	if ll_InsertRow = 1 then
+		ldw_Field.object.field_order[ll_InsertRow] = 10
+	else
+		ldw_Field.object.field_order[ll_InsertRow] = ldw_Field.object.field_order[ll_InsertRow - 1] + 10
+	end if
+	ldw_Field.object.imp_field_name[ll_InsertRow] = ls_ImportFields[i]	
+	ldw_Field.object.field_length[ll_InsertRow] = 100		
+next
+ldw_Field.ScrollToRow(1)
+ldw_Field.SetColumn("imp_field_name")
+ldw_Field.SetFocus()
+
+// Save data
+Event pfc_save()
+end subroutine
+
+public function integer of_getfieldfromtxt (string as_file, ref string as_fields[]);integer li_FileNum
+integer i, li_Pos
+string ls_HeaderRow
+
+// Check import file name if null
+if IsNull(as_File) or Len(as_File) <= 0 then
+	MessageBox("Create import Fields", "Failed to get import field. Import file name can not be null.")
+	Return -1
+end if
+if not FileExists(as_File) then
+	MessageBox("Create import Fields", "Failed to find import file ," + as_file + ".")
+	Return -1
+end if
+
+// Open file
+li_FileNum = FileOpen(as_File, LineMode!, Read!, Shared!)
+if li_FileNum = -1 then
+	MessageBox("Create import Fields", "Failed to get import file ," + as_file + ". The import file cannot be opened.")
+	Return -1
+end if
+FileRead(li_FileNum, ls_HeaderRow)
+FileClose(li_FileNum)
+
+// Get import field name
+do
+	li_Pos = Pos(ls_HeaderRow, "~t")
+	if li_Pos > 0 then		
+		i ++
+		as_Fields[i] = Trim(Left(ls_HeaderRow, li_Pos - 1))
+		ls_HeaderRow = Right(ls_HeaderRow, Len(ls_HeaderRow) - li_Pos)
+	else
+		Exit
+	end if
+loop while true
+if Len(ls_HeaderRow) > 0 then
+	i ++
+	as_Fields[i] = Trim(ls_HeaderRow)
+end if
+if i = 0 then
+	MessageBox("Prompt", "Failed to get import field. Please check content of import file.")
+	Return -1
+end if
+
+// Return count of import field
+Return UpperBound(as_Fields)
+end function
+
+public function integer of_getfieldfromcsv (string as_file, ref string as_fields[]);integer li_FileNum
+integer i, li_Pos
+string ls_HeaderRow
+
+// Check import file name if null
+if IsNull(as_File) or Len(as_File) <= 0 then
+	MessageBox("Prompt", "Failed to get import field. Import file name can not be null.")
+	Return -1
+end if
+if not FileExists(as_File) then
+	MessageBox("Prompt", "Failed to get import field. Import file (" + as_file + ") does not exists.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return -1
+end if
+
+// Open file
+li_FileNum = FileOpen(as_File, LineMode!, Read!, Shared!)
+if li_FileNum = -1 then	
+	MessageBox("Prompt", "Failed to get import field. Unable to open the  import file (" + as_file + ").") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return -1
+end if
+FileRead (li_FileNum, ls_HeaderRow)
+FileClose(li_FileNum)
+
+// Get import field name
+do
+	li_Pos = Pos(ls_HeaderRow, ",")
+	if li_Pos > 0 then		
+		i ++
+		as_Fields[i] = Trim(Left(ls_HeaderRow, li_Pos - 1))
+		ls_HeaderRow = Right(ls_HeaderRow, Len(ls_HeaderRow) - li_Pos)		
+	else
+		Exit
+	end if
+loop while true
+if Len(ls_HeaderRow) > 0 then
+	i ++
+	as_Fields[i] = Trim(ls_HeaderRow)
+end if
+if i = 0 then
+	MessageBox("Prompt", "Failed to get import field. Please check content of import file.")
+	Return -1
+end if
+
+// Return count of import field
+Return UpperBound(as_Fields)
+end function
+
+public function integer of_getfieldfromformattxt (string as_file, string as_record_delimiter, string as_field_delimiter, ref string as_fields[]);integer i, li_Pos
+integer li_DelimiterLen
+string  ls_HeaderRow
+string  ls_Data
+blob    lblb_Data
+long ll_len
+integer li_test
+
+// Check import file name if null
+if IsNull(as_File) or Len(as_File) <= 0 then
+	MessageBox("Create Fields Error", "Failed to get import field. Import file name can not be null.")
+	Return -1
+end if
+if not FileExists(as_File) then
+	MessageBox("Create Fields Error", "Failed to get import field. Import file does not exist.")
+	Return -1
+end if
+
+// Get header row content
+lblb_Data = of_ReadFile(as_File)
+ls_Data = String(lblb_Data)
+if Lower(as_record_delimiter) = "enter" then
+	as_record_delimiter = "~r~n"
+elseif Lower(as_record_delimiter) = "tab" then
+	as_record_delimiter = "~t"
+end if
+
+
+if as_record_delimiter = "" then as_record_delimiter = "~r"  //Start Code Change ----12.17.2007 #V8 maha -- set default if no value selected
+li_Pos = Pos(ls_Data, as_record_delimiter)
+if li_Pos > 0 then
+	ls_HeaderRow = Left(ls_Data, li_Pos - 1)
+	//MessageBox("ls_HeaderRow ",ls_HeaderRow )
+else
+//maha test code 121707
+//	for i = 1 to len(ls_data)
+//		li_test  = asc(mid(ls_data,i,1))
+//		if li_test = 13 then
+//			messagebox("","found it")
+//			messagebox("",char(13))
+//			return -1
+//		end if
+//	next
+		
+	//Start Code Change ----12.17.2007 #V8 maha -- added trap for missing/invalid record delimiter
+	MessageBox("Create Fields Error", "Failed to find record delimiter (" + as_record_delimiter + ") in file. Please check import setup data.")
+	return -1
+	//End Code Change---12.17.2007
+	ls_HeaderRow = ls_Data
+end if
+
+if Lower(as_field_delimiter) = "enter" then
+	as_field_delimiter = "~r~n"
+elseif Lower(as_field_delimiter) = "tab" then
+	as_field_delimiter = "~t"
+end if
+li_DelimiterLen = Len(as_field_delimiter)
+
+//Start Code Change ----12.17.2007 #V8 maha -- added trap for missing/invalid field delimiter
+li_Pos = Pos(ls_HeaderRow, as_field_delimiter)
+if li_Pos = 0 then 
+	MessageBox("Create Fields Error", "Failed to find field delimiter (" + as_field_delimiter + ") in file. Please check import setup data.")
+end if
+//End Code Change---12.17.2007
+
+// Get import field name
+do
+	li_Pos = Pos(ls_HeaderRow, as_field_delimiter)
+	if li_Pos > 0 then		
+		i ++
+		as_Fields[i] = Trim(Left(ls_HeaderRow, li_Pos - 1))
+		if as_Fields[i] = "" or IsNull(as_Fields[i]) then
+			as_Fields[i] = "field" + String(i)
+		end if
+		ls_HeaderRow = Right(ls_HeaderRow, Len(ls_HeaderRow) - li_Pos - li_DelimiterLen + 1)
+	else
+		Exit
+	end if
+loop while true
+if i = 0 then
+	MessageBox("Create Fields Error", "Failed to get import field. Please check content of import file.")
+	Return -1
+end if
+
+if Len(ls_HeaderRow) > 0 then
+	i ++
+	as_Fields[i] = Trim(ls_HeaderRow)
+	if as_Fields[i] = "" or IsNull(as_Fields[i]) then
+		as_Fields[i] = "field" + String(i)
+	end if
+end if
+
+// Return import field count
+Return UpperBound(as_Fields)
+end function
+
+public function integer of_getfieldfromodbc (string as_file, string as_odbc_name, string as_odbc_login, string as_odbc_password, string as_import_sql, ref string as_fields[]);string ls_Error
+string ls_Syntax
+integer i, li_ColCount
+DataStore lds_data
+Transaction ltr_trans
+
+// Check information if null
+if IsNull(as_import_sql) or as_import_sql = "" then
+	MessageBox("Prompt", "Failed to get import field. Import SQL can not be null.")
+	Return -1
+end if
+if AppeonGetClientType() = "PB" then
+	if IsNull(as_odbc_name) or as_odbc_name = "" then
+		MessageBox("Prompt", "Failed to get import field. ODBC name can not be null.")
+		Return -1
+	end if
+	if IsNull(as_odbc_login) or as_odbc_login = "" then
+		MessageBox("Prompt", "Failed to get import field. ODBC login can not be null.")
+		Return -1
+	end if
+else
+	if IsNull(as_odbc_name) or as_odbc_name = "" then
+		MessageBox("Prompt", "Failed to get import field. Cache name can not be null.")
+		Return -1
+	end if
+end if
+
+// Connect to DB
+ltr_trans = Create Transaction
+if gs_dbtype = "ASA" then
+	ltr_trans.DBMS = "ODB-ASA"
+else
+	ltr_trans.DBMS = "ODB-MSS"
+end if
+ltr_trans.AutoCommit = False
+ltr_trans.DBParm = "ConnectString='DSN=" + as_odbc_name + ";UID=" + as_odbc_login + ";PWD=" + as_odbc_password + "',CacheName='" + as_odbc_name + "',ConnectOption='SQL_DRIVER_CONNECT,SQL_DRIVER_NOPROMPT',DelimitIdentifier='Yes'"
+Connect using ltr_trans;
+if ltr_trans.SQLCode <> 0 then
+	Destroy ltr_trans
+	MessageBox("Prompt", "Failed to get import fields. Unable to connect to the database vis ODBC " + as_odbc_name + " .  Check your settings.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return -1
+end if
+
+// Dynamic create DW
+ls_Syntax = ltr_trans.SyntaxFromSQL(as_import_sql, "", ls_Error)
+if Len(ls_Error) > 0 then
+	Destroy ltr_trans
+	MessageBox("Prompt", "Failed to get import field. Import SQL syntax is invalid. ~r~r" + ls_error)	 //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return -1
+end if
+lds_data = Create DataStore
+lds_data.Create(ls_Syntax, ls_Error)
+
+// Get import field name
+li_ColCount = Long(lds_data.object.datawindow.column.count)
+for i =  1 to li_ColCount
+	as_Fields[i] = lds_data.Describe("#" + String(i) + ".name")
+next
+Destroy ltr_trans
+Destroy lds_data
+if li_ColCount = 0 then
+	MessageBox("Prompt", "Failed to get import field.")
+	Return -1
+end if
+
+// Return count of import field
+Return li_ColCount
+end function
+
+public function integer of_begindrag (datawindow adw_data);if KeyDown(KeyLeftButton!) and il_DragRow > 0 and not ib_LockFile then
+	adw_data.Drag(Begin!)
+end if
+
+Return 1
+end function
+
+public subroutine of_completetrans (boolean ab_iscommit);if SQLCA.AutoCommit = true then Return
+
+if ab_IsCommit then
+	Commit;
+else
+	Rollback;
+end if
+end subroutine
+
+public function integer of_checkimportfieldname (long al_fieldcount, string as_importfields[]);long i, j
+
+for i = 1 to al_FieldCount
+	for j = 1 to al_FieldCount
+		if i <> j then
+			if Trim(Lower(as_ImportFields[i])) = Trim(Lower(as_ImportFields[j])) then
+				MessageBox("Prompt", "Import field name '" + as_ImportFields[i] + "' is a duplicated name.")  //Start Code Change ----02.07.2008 #V8 maha - modified message
+				Return -1
+			end if
+		end if
+	next
+next
+
+Return 1
+end function
+
+public function integer of_getimportfields (ref string as_fields[]);long   i, ll_FieldCount
+long   ll_CurrentRow
+string ls_imp_file
+string ls_imp_format
+string ls_odbc_name
+string ls_odbc_login
+string ls_odbc_password
+string ls_import_sql
+string ls_record_delimiter
+string ls_field_delimiter
+
+// Get import information
+ll_CurrentRow = tab_1.tabpage_hdr.dw_imp_hdr.GetRow()
+ls_imp_file = tab_1.tabpage_hdr.dw_imp_hdr.object.imp_file[ll_CurrentRow]
+ls_imp_format = tab_1.tabpage_hdr.dw_imp_hdr.object.imp_format[ll_CurrentRow]
+ls_odbc_name = tab_1.tabpage_hdr.dw_imp_hdr.object.odbc_name[ll_CurrentRow]
+ls_odbc_login = tab_1.tabpage_hdr.dw_imp_hdr.object.odbc_login[ll_CurrentRow]
+ls_odbc_password = tab_1.tabpage_hdr.dw_imp_hdr.object.odbc_password[ll_CurrentRow]
+ls_import_sql = tab_1.tabpage_hdr.dw_imp_hdr.object.import_sql[ll_CurrentRow]
+ls_record_delimiter = tab_1.tabpage_hdr.dw_imp_hdr.object.record_delimiter[ll_CurrentRow]
+ls_field_delimiter = tab_1.tabpage_hdr.dw_imp_hdr.object.field_delimiter[ll_CurrentRow]
+
+if IsNull(ls_imp_format) then ls_imp_format = ""
+if IsNull(ls_odbc_name) then ls_odbc_name = ""
+if IsNull(ls_odbc_login) then ls_odbc_login = ""
+if IsNull(ls_odbc_password) then ls_odbc_password = ""
+if IsNull(ls_import_sql) then ls_import_sql = ""
+if IsNull(ls_record_delimiter) then ls_record_delimiter = ""
+if IsNull(ls_field_delimiter) then ls_field_delimiter = ""
+
+// Get import field list
+choose case ls_imp_format
+	case "1" //Tab Delimited
+		ll_FieldCount = of_GetFieldFromTxt(ls_imp_file, as_Fields[])
+	case "2" //CSV
+		ll_FieldCount = of_GetFieldFromCSV(ls_imp_file, as_Fields[])
+	case "3" //ODBC		
+		ll_FieldCount = of_GetFieldFromODBC(ls_imp_file, ls_odbc_name, ls_odbc_login, ls_odbc_password, ls_import_sql, as_Fields[])
+	case "4"	//Formatted text	
+		ll_FieldCount = of_GetFieldFromFormatTxt(ls_imp_file, ls_record_delimiter, ls_field_delimiter, as_Fields[])
+	case else
+end choose
+
+Return ll_FieldCount
+end function
+
+public function integer of_setmenu (integer ai_index);if ai_Index <> 1 then
+	// Default menu item
+	m_pfe_cst_import_painter.m_edit.visible = false
+	m_pfe_cst_import_painter.m_file.m_save.visible = false
+	
+	// Default button
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_edit.m_insert,'toolbaritemvisible', false)
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_edit.m_delete1,'toolbaritemvisible', false)
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_edit.m_copy,'toolbaritemvisible', false)
+	
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_save,'toolbaritemvisible', false)
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_createimportfields,'toolbaritemvisible', false)
+end if
+
+gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_copymap,'toolbaritemvisible', false)
+//m_pfe_cst_import_painter.m_file.m_editprojects.toolbaritemvisible = false
+//m_pfe_cst_import_painter.m_file.m_lookupmapping.toolbaritemvisible = false
+gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_checkmapping,'toolbaritemvisible', false)
+//m_pfe_cst_import_painter.m_file.m_runimport.toolbaritemvisible = false
+
+// Reset
+choose case ai_Index
+	case 1 //Imports
+		m_pfe_cst_import_painter.m_edit.visible = true		
+		m_pfe_cst_import_painter.m_file.m_save.visible = true		
+		
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_edit.m_insert,'toolbaritemvisible', true)
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_edit.m_delete1,'toolbaritemvisible', true)
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_edit.m_copy,'toolbaritemvisible', true)
+				
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_save,'toolbaritemvisible', true)
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_createimportfields,'toolbaritemvisible', true)
+		
+	case 2 //Field Setup
+		m_pfe_cst_import_painter.m_file.m_save.visible = true
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_copymap,'toolbaritemvisible', true)		
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_save,'toolbaritemvisible', true)
+		gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_checkmapping,'toolbaritemvisible', true)
+		
+	case 3 //Data
+		
+	case 4 //Error Logs
+		
+	case else
+end choose
+
+Return 1
+end function
+
+public function integer of_setmappeddwtitle (integer al_current);ii_CurrMappedDW = al_Current
+
+if ii_CurrMappedDW = 1 then
+	if ii_curr_isoft_module = 1 then
+		//Added By Mark Lee 03/22/2013
+//		tab_1.tabpage_field_data.dw_prac_cont_id.Title = ">>> Provider Identification Fields (must be mapped from Basic Information table) <<<"
+		tab_1.tabpage_field_data.dw_prac_cont_id.Title = gs_left_title_sign +"Provider Identification Fields (must be mapped from Basic Information table)"+gs_right_title_sign
+	else
+		//Added By Mark Lee 03/22/2013
+//		tab_1.tabpage_field_data.dw_prac_cont_id.Title = ">>> Contract Identification Fields (must be mapped from Basic Information table) <<<"
+		tab_1.tabpage_field_data.dw_prac_cont_id.Title = gs_left_title_sign+"Contract Identification Fields (must be mapped from Basic Information table)"+gs_right_title_sign
+	end if
+	tab_1.tabpage_field_data.dw_map_fields.Title = "Mapped Record Fields"
+else
+	if ii_curr_isoft_module = 1 then
+		tab_1.tabpage_field_data.dw_prac_cont_id.Title = "Provider Identification Fields (must be mapped from Basic Information table)"
+	else
+		tab_1.tabpage_field_data.dw_prac_cont_id.Title = "Contract Identification Fields (must be mapped from Basic Information table)"
+	end if	
+	//Added By Mark Lee 03/22/2013
+//	tab_1.tabpage_field_data.dw_map_fields.Title = ">>> Mapped Record Fields <<<"
+	tab_1.tabpage_field_data.dw_map_fields.Title = gs_left_title_sign+"Mapped Record Fields"+gs_right_title_sign
+end if
+
+Return 1
+end function
+
+public function string of_replaceblank (string as_string, string as_new);integer li_NewPos
+integer li_StartPos
+integer li_BlankLen
+string ls_Return
+
+li_BlankLen = 1
+li_StartPos = 1
+as_String = Trim(as_String)
+li_NewPos = Pos(as_String, " ")
+
+do		
+	if li_NewPos > 0 then
+		ls_Return += Mid(as_String, li_StartPos, li_NewPos - li_StartPos) + as_New
+		li_StartPos = li_NewPos + li_BlankLen
+	else
+		ls_Return += Right(as_String, Len(as_String) - li_StartPos + 1)
+		Exit
+	end if
+	
+	li_BlankLen = 1
+	li_NewPos = Pos(as_String, " ", li_StartPos)	
+	do
+		if Mid(as_String, li_NewPos + li_BlankLen, 1) = " " then
+			li_BlankLen ++
+		else
+			Exit
+		end if
+	loop while true
+loop while true
+
+Return ls_Return
+end function
+
+public function string of_getcontractfieldfilter (datawindow adw_tables);long ll_Row
+string ls_Filter
+string ls_NotInList
+string ls_table_name
+
+// Set common filter
+ll_Row = adw_tables.GetRow()
+ls_Filter = "table_id = " + String(adw_tables.object.table_id[ll_Row])
+
+// Set particular filter
+ls_table_name = Lower(adw_tables.object.table_name[ll_Row])
+choose case ls_table_name
+	case "ctx_basic_info"
+		ls_NotInList = "'ctx_id','record_id','version_number','version_date','master_contract_id'"
+		if is_ImportType = '2' Then	ls_NotInList += ",'salesforce_id'" //modified by gavins 20140723
+	case "ctx_products"
+		if is_ImportType = '2' Then//modified by gavins 20140505
+			ls_NotInList = "'record_id','salesforce_id'" //modified by gavins 20140723
+		Else
+			ls_NotInList = "'ctx_id','record_id'"
+		End If
+	case "ctx_contract_contacts"
+		ls_NotInList = "'ctx_id','contact_id','record_id','id_forcatalog'"
+		//Added By Mark 06/17/2014
+		If is_ImportType = '2' Then
+			ls_NotInList = ls_NotInList + ",'ic_area','association','notes','default_email','inserted_by_user','inserted_at_date_time'" + &
+				",'updated_by_user','updated_at_date_time','owner','access','custom_n1','custom_n2','custom_n3','custom_percent_1'" + &
+				",'custom_percent_2','custom_1','custom_2','custom_3','association2','association3','association4','association5','association6'" + &
+				",'association7','association8','association9','association10' "
+		End If
+	case "ctx_fee_sched_nm"
+		if is_ImportType = '2' Then//modified by gavins 20140505
+			ls_NotInList = "'fee_sched_nm_id','record_id','salesforce_id'" //modified by gavins 20140723			
+		Else
+			ls_NotInList = "'ctx_id','fee_sched_nm_id','record_id'"
+		End If
+	case "ctx_contacts"
+		if is_ImportType = '2' Then
+			ls_NotInList = "'contact_id','record_id','user_d','salesforce_id'" //modified by gavins 20140723
+		Else
+			ls_NotInList = "'contact_id','facility_id','record_id','user_d'"			
+		End If
+	case "app_facility"
+		ls_NotInList = "'facility_id','salesforce_id'" //modified by gavins 20140723
+	case "ctx_contacts_numbers"
+		ls_NotInList = "'contact_id','record_id','contact_num_id'"
+		//Added By Mark 06/17/2014
+		If is_ImportType = '2' Then
+			ls_NotInList = ls_NotInList + ",'via','type','inserted_by_user','inserted_at_date_time','updated_by_user','updated_at_date_time'"
+		End If
+	case "ctx_custom"
+		if is_ImportType = '2' Then
+			ls_NotInList = "'salesforce_id'" //modified by gavins 20140723"
+		Else
+			ls_NotInList = "'ctx_id'"
+		End If
+	case 'ctx_custom_multi_hdr' //added by gavins 20130222
+		if is_ImportType = '2' Then
+			ls_NotInList = "'hdr_id', 'id_forcatalog','salesforce_id'"//modified by gavins 20140723"
+		Else
+			ls_NotInList = "'ctx_id', 'hdr_id', 'id_forcatalog'"
+		End If		
+	case 'ctx_custom_multi_detail' //added by gavins 20130222
+		if is_ImportType = '2' Then
+			ls_NotInList = "'detail_id', 'id_forcatalog'"	
+		Else
+			ls_NotInList = "'ctx_id', 'hdr_id','detail_id', 'id_forcatalog'"	
+		End If
+	case 'security_users' 	//Added By Mark Lee 04/16/2014
+		ls_NotInList = "'user_password','image_flag','email_id','iverify_temp_id','default_search_facility','version_build','prac_id','pref_win_left','pref_win_top','last_pass_update' " +&
+			" ,'de_status','audit_type','wv_role_id','tdl_rights','tdl_other_user','wv_ldap_user','lock_until' " + &
+			" ,'ic_ldap_user','npdb_user_id','set_task','open_tdl','set_1','set_2','set_3','set_4'" +  &
+			" ,'npdb_password','domain_name','image_prompt_flag','lic_agr_img','lic_agr_asa','set_prelod_ctx' " + &
+			" ,'custom_colors','req_expand_status','refresh_sertifi_time','refresh_approve_time'   "			
+	case 'idp_users'	//Added By Mark Lee 04/22/2014
+		ls_NotInList = " 'sno','app_name','map_user_id','cachename','app_verifycode','idpuser_createtime','idpuser_validetime' "
+	case else
+		Return ""
+end choose
+ls_Filter = ls_Filter + " AND Lower(field_name) not in (" + ls_NotInList + ")"
+
+Return ls_Filter
+end function
+
+public function integer of_selectvalue (ref string as_value);string ls_Return
+
+Open(w_import_selectcode)
+ls_Return = Left(Message.StringParm, 3)
+if ls_Return = "OK!" then
+	as_Value = Right(Message.StringParm, Len(Message.StringParm) - 3)
+	Return 1
+end if
+
+Return -1
+end function
+
+public function long of_getinsertrow (datawindow adw_table, long al_parent_table_id);long ll_FindRow
+long ll_InsertRow
+long ll_RowCount
+
+ll_FindRow = 1
+ll_RowCount = adw_table.RowCount()
+
+do
+	ll_FindRow = adw_table.Find("isoft_table_id=" + String(al_parent_table_id), ll_FindRow, ll_RowCount)
+	if ll_FindRow > 0 then
+		ll_InsertRow = ll_FindRow + 1
+		ll_FindRow ++
+		if ll_FindRow > ll_RowCount then Exit
+	else
+		Exit
+	end if
+loop until false
+if ll_InsertRow = 0 then ll_InsertRow = 1
+
+Return ll_InsertRow
+end function
+
+public function long of_getinsertrow (long al_table_id);long ll_InsertRow
+datawindow ldw_table
+
+ldw_table = tab_1.tabpage_field_data.dw_records
+
+if ii_curr_isoft_module = 1 then
+	choose case al_table_id
+		case 25 //pd_basic
+			ll_InsertRow = 1
+		case else
+			ll_InsertRow = 0
+	end choose
+else
+	choose case al_table_id
+		case 1006 //app_facility
+			ll_InsertRow = 1
+		case 1003 //ctx_contacts
+			ll_InsertRow = of_GetInsertRow(ldw_table, 1012)
+			if ll_InsertRow = 1 then ll_InsertRow = of_GetInsertRow(ldw_table, 1011)
+			if ll_InsertRow = 1 then ll_InsertRow = of_GetInsertRow(ldw_table, 1006)
+		case 1001 //ctx_basic_info
+			ll_InsertRow = of_GetInsertRow(ldw_table, 1003)
+			if ll_InsertRow = 1 then ll_InsertRow = of_GetInsertRow(ldw_table, 1006)
+		Case 1009	//ctx_custom_multi_detail  //added  by gavins 20130222
+			ll_InsertRow = of_GetInsertRow(ldw_table, 1010)
+			ll_insertRow = ll_insertrow - 1
+		Case 1010	//ctx_custom_multi_detail  //added  by gavins 20130222
+			ll_InsertRow = of_GetInsertRow(ldw_table, 1009)
+			if ll_InsertRow = 1 then ll_InsertRow = 0
+		case 1011	//security_users		//Added By Mark Lee 04/17/2014
+			ll_InsertRow = of_GetInsertRow(ldw_table, 1012)
+			if ll_InsertRow = 1 then ll_InsertRow = of_GetInsertRow(ldw_table, 1003)
+			if ll_InsertRow = 1 then 
+				ll_InsertRow = of_GetInsertRow(ldw_table, 1006)
+			else
+				ll_insertRow = ll_insertrow - 1
+			end if 
+		case 1012	//idp_users		//Added By Mark Lee 04/22/2014
+			ll_InsertRow = of_GetInsertRow(ldw_table, 1011)
+			if ll_InsertRow = 1 then ll_InsertRow = of_GetInsertRow(ldw_table, 1006)
+			if ll_InsertRow = 1 then 
+				ll_InsertRow = of_GetInsertRow(ldw_table, 1003)
+				if ll_InsertRow > 1 then ll_insertRow = ll_insertrow - 1
+			end if 
+		case else
+			ll_InsertRow = 0
+	end choose
+end if
+
+Return ll_InsertRow
+end function
+
+public function integer of_preprocess_data (integer li_process, string as_file_from, string as_file_to);//Start Code Change ----06.27.2008 #V81 maha -function added for preprocessing a file before importing
+
+CHOOSE CASE li_process
+	case 1 //Indy PIC
+		string sfile
+		string ls_val
+		string skipval
+		string docpath, docname
+		string ls_transdate
+		integer ck
+		string rtype
+		string ls_trans_type //maha 073108
+		integer skip = 0
+		integer li_t_skip = 0 //maha 073108
+		long r
+		long rc
+		long datarow = 0
+		datastore ds_file
+		datastore ds_data
+		
+		ds_file = create datastore
+		ds_data = create datastore
+		
+		ds_file.dataobject = "d_indy_pre_process"
+		ds_data.dataobject = "d_indy_pre_process"
+		
+		ds_file.settransobject(sqlca)
+		ds_data.settransobject(sqlca)
+		
+//		if isnull(as_file_from) or as_file_from = "" then
+//			GetFileOpenName("Select File",    docpath, docname,  "All Files (*.*), *.*",    gs_dir_path +gs_DefDirName + "\", 18)
+		
+		if  not fileexists(as_file_from) then 
+			messagebox("Preprocess file error","File does not exist: " + as_file_from )
+			return -1
+		end if
+		
+		sfile = as_file_from
+		
+		rc = ds_file.importfile(csv!,sfile)
+		if  rc < 1  then 
+			messagebox("Preprocess import error","Error importing file for preprocess: " + as_file_from  + " Error:" + string(rc))
+			return -1
+		end if
+		//messagebox("",rc)
+		
+		ck = 0
+		debugbreak()
+		for r = 2 to rc  //skip lines 1 
+			//on row 3 the value should be 2 then 3 then 2 then 3 ect.
+			//rtype = integer(ds_file.getitemstring(r,1))
+			rtype = ds_file.getitemstring(r,1)
+			
+			//if the transaction type is not purchase skip over all the records until you find that trans type
+			if integer(rtype) > 1 and li_t_skip = 1 then continue //Start Code Change ----07.31.2008 #V85 maha - change to bypass some transactions
+			
+			choose case rtype
+				case '1' //trans date
+					if ck = 2 then //a 1 should not follow a 2
+						messagebox("Process error","Check value failed at line " + string(r))
+						return -1 
+					end if
+					//Start Code Change ----07.31.2008 #V85 maha - change to bypass some transactions
+					ls_trans_type = ds_file.getitemstring(r,2)
+					if ls_trans_type <> "PURCH" then
+						li_t_skip = 1
+						continue
+					end if
+					li_t_skip = 0 //Start Code Change ----10.06.2009 #V10 maha
+					//End Code Change---07.31.2008
+					ls_transdate = ds_file.getitemstring(r,3)
+					ck = 1
+				case '2'
+					if ck = 2 then //a 2 should not follow a 2
+						messagebox("Process error","Check value failed at line " + string(r))
+						return -1 
+					end if
+					ck = 2
+					ls_val = trim(ds_file.getitemstring(r,2))
+					skipval = trim(mid(ls_val, len(ls_val) - 4))
+					
+					if skipval = "2001" or skipval = "2999" then //skip this row and the next
+						skip = 1
+						continue
+					else
+						datarow = ds_data.insertrow(0)
+						ds_data.setitem(datarow,1,ls_val)
+					end if
+				case '3'
+					if ck <> 2 then //a 3 should always follow a 2
+						messagebox("Process error","Check value failed at line " + string(r))
+						return -1 
+					end if
+					ck = 3
+					if skip = 1 then
+						skip = 0
+						continue
+					end if
+					
+					ls_val = ds_file.getitemstring(r,2)
+					ds_data.setitem(datarow,2,trim(ds_file.getitemstring(r,2)))
+					ds_data.setitem(datarow,3,trim(ds_file.getitemstring(r,3)))
+					ds_data.setitem(datarow,4,trim(ds_file.getitemstring(r,4)))
+					ds_data.setitem(datarow,5,trim(ds_file.getitemstring(r,5)))
+					ds_data.setitem(datarow,6,trim(ds_file.getitemstring(r,6)))
+					ds_data.setitem(datarow,10,ls_transdate)
+				case else
+					messagebox("Unexpected data in file",rtype)
+			end choose
+					
+					
+					
+//					
+//			if ck = 3 then 
+//				ck = 2
+//			elseif ck = 2 then
+//				ck = 3
+//			end if
+//			if ck <> integer(ds_file.getitemstring(r,1))  then
+//				messagebox("Process error","Check value failed at line " + string(r))
+//				return -1 
+//			end if
+//			//debugbreak()	
+//			if ck = 2 then 
+//				ls_val = trim(ds_file.getitemstring(r,2))
+//				skipval = trim(mid(ls_val, len(ls_val) - 4))
+//				if skipval = "2001" or skipval = "2999" then //skip this row and the next
+//					r++
+//					ck = 3
+//					continue
+//				else
+//					datarow = ds_data.insertrow(0)
+//					ds_data.setitem(datarow,1,ls_val)
+//				end if
+//			else //3
+//				ls_val = ds_file.getitemstring(r,2)
+//				ds_data.setitem(datarow,2,trim(ds_file.getitemstring(r,2)))
+//				ds_data.setitem(datarow,3,trim(ds_file.getitemstring(r,3)))
+//				ds_data.setitem(datarow,4,trim(ds_file.getitemstring(r,4)))
+//				ds_data.setitem(datarow,5,trim(ds_file.getitemstring(r,5)))
+//				ds_data.setitem(datarow,6,trim(ds_file.getitemstring(r,6)))
+//			end if
+		next		
+		gnv_rights.of_check_dir_right( as_file_to, true, 'Import Save')
+		ds_data.saveas( as_file_to , text!, true)
+		
+		destroy ds_data
+		destroy ds_file
+		
+		
+		
+end choose
+
+return 1
+end function
+
+public function string of_correcttablename (string as_name);integer i, li_Len
+string  ls_Char
+string  ls_TableName
+string  ls_AlphaNumeric = "qwertyuiopasdfghjklzxcvbnm0123456789"
+
+li_Len = Len(as_Name)
+for i = 1 to li_Len
+	ls_Char = Lower(Mid(as_Name, i, 1))
+	if ls_Char = " " then
+		ls_TableName += "_"
+	else
+		if Pos(ls_AlphaNumeric, ls_Char) > 0 then
+			ls_TableName += ls_Char
+		end if
+	end if
+next
+ls_TableName = "impt_" + ls_TableName
+
+Return ls_TableName
+end function
+
+public subroutine of_copy_field_data (long al_ori_import_id, long al_new_import_id);//Add by jervis 12.18.2009
+//Copy Field mapping data
+string ls_CopySql
+
+if al_ori_import_id <=0 or al_new_import_id <=0 then return 
+
+//Copy Import_file_fields
+ls_CopySql = 	"insert into Import_file_fields(import_id,field_order,imp_field_name,field_length,field_format,case_type,strip_type,comp_def,default_value) " + &
+					"select " + string(al_new_import_id)+ ",field_order,imp_field_name,field_length,field_format,case_type,strip_type,comp_def,default_value " + &
+					"from Import_file_fields where import_id = " + string(al_ori_import_id) + "; ~r~n "
+EXECUTE IMMEDIATE :ls_CopySql;
+//Copy Import_table_records
+ls_CopySQl = 	"insert into Import_table_records(import_id,isoft_table_id,sort_no) " + &
+					"select " + string(al_new_import_id)+ ",isoft_table_id,sort_no " + &
+					"from Import_table_records where import_id = " + string(al_ori_import_id)+ "; ~r~n"
+EXECUTE IMMEDIATE :ls_CopySql;
+//Copy import_mapping_fields
+ls_CopySql = 	"insert into import_mapping_fields(table_records_id,import_field_id,case_type,strip_type,field_format,isoft_field_id,key_field,id_field,null_type,null_value,link_value,facility_id,no_match_procd,lu_template,lu_type,lu_table,lu_field_name,sort_no) " + &
+					"select t_new_Import_table_records.new_table_records_id,t_new_import_file_fields.new_rec_id,import_mapping_fields.case_type,import_mapping_fields.strip_type,import_mapping_fields.field_format,import_mapping_fields.isoft_field_id,import_mapping_fields.key_field,import_mapping_fields.id_field,import_mapping_fields.null_type,import_mapping_fields.null_value,import_mapping_fields.link_value,import_mapping_fields.facility_id,import_mapping_fields.no_match_procd,import_mapping_fields.lu_template,import_mapping_fields.lu_type,import_mapping_fields.lu_table,import_mapping_fields.lu_field_name,import_mapping_fields.sort_no " + &
+					"from import_mapping_fields, " + &
+							"(	select t_new.table_records_id new_table_records_id,t_old.* " + &
+								"from Import_table_records t_old,Import_table_records t_new " + &
+								"where t_old.import_id = " + string(al_ori_import_id) + " and t_new.import_id = " + string(al_new_import_id)+ " and t_old.isoft_table_id = t_new.isoft_table_id and t_old.sort_no = t_new.sort_no) t_new_Import_table_records," + &
+							"(select t_new.rec_id new_rec_id,t_old.* " + &
+								"from Import_file_fields t_old,Import_file_fields t_new " + &
+								"where t_old.import_id = " + string(al_ori_import_id) + " and t_new.import_id = " + string(al_new_import_id)+ " and t_old.imp_field_name = t_new.imp_field_name and t_old.field_order = t_new.field_order) t_new_Import_file_fields " + &
+					"where import_mapping_fields.table_records_id = t_new_Import_table_records.table_records_id and import_mapping_fields.import_field_id = t_new_import_file_fields.rec_id"
+
+EXECUTE IMMEDIATE :ls_CopySql;
+commit;
+ib_IsCopy = false
+
+//Refresh data
+tab_1.tabpage_field_data.event ue_init( )
+
+
+	
+end subroutine
+
+public subroutine wf_importtype_control (string as_data);//added by gavins 20140505
+//argument "import_type" value
+
+string  ls_Column[] = { 'err_process',  'add_protocol', 'err_notify', 'err_file', 'notify_addr1', 'notify_addr2', &
+							'imp_format',  'flat_multi','imp_file'  }  
+int i
+string ls_column2[] = {  'copy_file',  'ignore_header_row' }
+
+
+is_ImportType = as_data
+If isnull(is_ImportType ) or trim( is_ImportType ) = ""  Then is_ImportType = "1"
+
+if as_data = "1" Then //File
+	tab_1.tabpage_data.enabled = true
+	tab_1.tabpage_log.enabled = true
+	For i = 1 To Upperbound( ls_Column )
+		tab_1.tabpage_hdr.dw_imp_hdr.Modify( ls_Column[i] + ".background.color=16777210  " + ls_Column[i] + ".protect =0" )
+	Next
+	For i = 1 To Upperbound( ls_Column2 )
+		tab_1.tabpage_hdr.dw_imp_hdr.Modify( ls_Column2[i] + ".CheckBox.ThreeD	= 'yes'  " + ls_Column2[i] + ".protect =0" )
+	Next
+	tab_1.tabpage_hdr.dw_imp_hdr.Modify( "cb_browse.enabled = true" )
+	tab_1.tabpage_hdr.dw_imp_hdr.Post Event ue_setenabled( tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ))
+	
+ElseIf as_data = '2' Then//salesforce
+	tab_1.tabpage_data.enabled = false
+	tab_1.tabpage_log.enabled = false
+	For i = 1 To Upperbound( ls_Column )
+		tab_1.tabpage_hdr.dw_imp_hdr.Modify( ls_Column[i] + ".background.color=536870912  " + ls_Column[i] + ".protect =1" )
+	Next
+	tab_1.tabpage_hdr.dw_imp_hdr.Modify( "update_verifications.protect = 1  update_verifications.background.color=536870912" )
+	For i = 1 To Upperbound( ls_Column2 )
+		tab_1.tabpage_hdr.dw_imp_hdr.Modify( ls_Column2[i] + ".CheckBox.ThreeD	= 'no'  " + ls_Column2[i] + ".protect =1" )
+	Next
+	tab_1.tabpage_hdr.dw_imp_hdr.Modify( "cb_browse.enabled = false" )
+		
+End If	
+
+
+
+end subroutine
+
+public function boolean of_field_name_check (string as_fieldname);//====================================================================
+// Function: of_field_name_check
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_FieldName
+//--------------------------------------------------------------------
+// Returns:  boolean
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 07-16-2014
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2013 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+Char	lc_First,lc_Other
+long	ll_Cycle,ll_Length
+
+lc_First = Char(as_FieldName)
+if Not (lc_First >= 'a' and lc_First <= 'z' or lc_First >= 'A' and lc_First <= 'Z') then Return false
+
+ll_Length = Len(as_FieldName)
+for ll_Cycle = 2 to ll_Length
+	lc_Other = Char(Mid(as_FieldName,ll_Cycle,1))
+	if Not (lc_Other >= 'a' and lc_Other <= 'z' or lc_Other >= 'A' and lc_Other <= 'Z' or lc_Other >= '0' and lc_Other <= '9' or lc_Other = '_') then Return false
+next
+
+Return true
+
+end function
+
+public subroutine wf_setmapfielddefaultvalue (datawindow adw_field, integer ai_row);//adw_Field
+String			ls_FieldName
+Long			ll_SysFieldID , ll_FRow
+
+If ai_Row <=0 Then Return
+
+ll_SysFieldID  = adw_Field.GetItemNumber( ai_Row, 'isoft_field_id' )
+ll_FRow = tab_1.tabpage_field_data.dw_Fields.Find( "field_id = " + string( ll_SysFieldID ) , 1, tab_1.tabpage_field_data.dw_Fields.RowCount( ) )
+If ll_FRow > 0 Then
+	ls_FieldName = tab_1.tabpage_field_data.dw_Fields.GetItemString( ll_FRow, 'field_name' ) 
+Else
+	Return
+End If
+
+Choose Case Lower(ls_FieldName)
+	Case 'ctx_id'
+		If isnull( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) Or Trim( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) = "" Then
+			adw_Field.SetItem( ai_Row, 'lu_type' , 'J' )	
+			adw_Field.SetItem( ai_Row, 'lu_table' , 'Contract' )				
+			
+			adw_Field.SetItem( ai_Row, 'lu_field_name' , 'salesforce_id' )
+		End If
+	case 'facility_id', 'app_facility'
+		If isnull( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) Or Trim( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) = "" Then
+			adw_Field.SetItem( ai_Row, 'lu_type' , 'I' )	
+			adw_Field.SetItem( ai_Row, 'lu_table' , 'Company' )				
+			
+			adw_Field.SetItem( ai_Row, 'lu_field_name' , 'salesforce_id' )
+		End If
+//	case 'country' 
+//		If isnull( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) Or Trim( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) = "" Then
+//			adw_Field.SetItem( ai_Row, 'lu_type' , 'I' )	
+//			adw_Field.SetItem( ai_Row, 'lu_table' , 'Company' )				
+//			
+//			
+//			adw_Field.SetItem( ai_Row, 'lu_field_name' , 'salesforce_id' )
+//		End If
+//		If lb_Exists Then Return '"' +as_columnname + '" column’s Lu Type must be set to "country" and its Lu Field cannot be empty.'
+//	case 'state' 
+//		If isnull( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) Or Trim( adw_Field.GetItemString( ai_Row, 'lu_Type' ) ) = "" Then
+//			adw_Field.SetItem( ai_Row, 'lu_type' , 'I' )	
+//			adw_Field.SetItem( ai_Row, 'lu_table' , 'Company' )				
+//			
+//			
+//			adw_Field.SetItem( ai_Row, 'lu_field_name' , 'salesforce_id' )
+//		End If
+	
+//		If lb_Exists Then Return  '"' +as_columnname + '" column’s Lu Type must be set to "state" and its Lu Field cannot be empty.'
+//	case 'contact_department' 
+//		
+//		If lb_Exists Then Return  '"' +as_columnname + '" column’s Lu Type must be set to "'+ ls_Tag + '" and its Lu Field cannot be empty.'
+//	case 'contact_title'
+//		
+//		If lb_Exists Then Return '"' +as_columnname + '" column’s Lu Type must be set to "'+ ls_Tag + '" and its Lu Field cannot be empty.'
+//	case 'contact_type'
+//	
+//		If lb_Exists Then Return '"' +as_columnname + '" column’s Lu Type must be set to "'+ ls_Tag + '" and its Lu Field cannot be empty.'
+//	case 'corp_office_link'
+//	
+//		If lb_Exists Then Return '"' +as_columnname + '" column’s Lu Type must be set to "company" and its Lu Field cannot be empty.'
+End Choose	
+end subroutine
+
+on w_import_painter_bak.create
+int iCurrent
+call super::create
+this.tab_1=create tab_1
+this.cb_preprocess=create cb_preprocess
+iCurrent=UpperBound(this.Control)
+this.Control[iCurrent+1]=this.tab_1
+this.Control[iCurrent+2]=this.cb_preprocess
+end on
+
+on w_import_painter_bak.destroy
+call super::destroy
+destroy(this.tab_1)
+destroy(this.cb_preprocess)
+end on
+
+event closequery;//override
+boolean lb_Prompt = false
+
+tab_1.tabpage_hdr.dw_imp_hdr.AcceptText()
+tab_1.tabpage_hdr.dw_imp_sql.AcceptText()
+if tab_1.tabpage_hdr.dw_browse.ModifiedCount() + tab_1.tabpage_hdr.dw_browse.DeletedCount() > 0 then
+	lb_Prompt = true
+end if
+
+tab_1.tabpage_field_data.dw_imp_field_detail.AcceptText()
+if tab_1.tabpage_field_data.dw_field_list.ModifiedCount() + tab_1.tabpage_field_data.dw_field_list.DeletedCount() > 0 then
+	lb_Prompt = true
+end if
+
+tab_1.tabpage_field_data.dw_detail.AcceptText()
+if tab_1.tabpage_field_data.dw_map_fields.ModifiedCount() + tab_1.tabpage_field_data.dw_map_fields.DeletedCount() > 0 then
+	lb_Prompt = true
+end if
+
+if lb_Prompt then
+	if MessageBox("Save data", "Close without saving changes?", Question!, YesNo!) = 2 then
+		Return 1
+	end if	
+end if
+end event
+
+event close;call super::close;//inherit
+w_mdi.ChangeMenu(m_pfe_cst_mdi_menu)
+w_mdi.of_menu_security(w_mdi.MenuName)
+
+if IsValid(ids_LookUpTableDDDW[1]) then Destroy ids_LookUpTableDDDW[1]
+if IsValid(ids_LookUpTableDDDW[2]) then Destroy ids_LookUpTableDDDW[2]
+end event
+
+event pfc_preopen;call super::pfc_preopen;//inherit
+this.Move(1, 1)
+//this.Resize(4055,2100)
+
+//Register controls
+this.of_SetResize(True)
+inv_resize.of_SetMinSize(This.WorkSpaceWidth(),This.WorkSpaceHeight())
+inv_resize.of_SetOrigSize(This.WorkSpaceWidth(),This.WorkSpaceHeight())
+inv_resize.of_Register(tab_1, "Scale")
+
+//Resize tabpage_hdr
+inv_resize.of_Register(tab_1.tabpage_hdr.dw_browse, 0, 0, 100, 100)
+inv_resize.of_Register(tab_1.tabpage_hdr.dw_imp_hdr, 0, 100, 100, 0)
+inv_resize.of_Register(tab_1.tabpage_hdr.dw_imp_sql, 0, 100, 100, 0)
+
+/*
+//Resize tabpage_field_data
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_fields, 0, 0, 0, 100)
+
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_field_list, 100, 0, 0, 100)
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_imp_field_detail, 100, 100, 0, 0)
+inv_resize.of_Register(tab_1.tabpage_field_data.cb_com_wizard, 100, 100, 0, 0)
+inv_resize.of_Register(tab_1.tabpage_field_data.cb_create_value_list, 100, 100, 0, 0)
+
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_records, 50, 0, 0, 0)
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_prac_cont_id, 50, 0, 0, 0)
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_map_fields, 50, 0, 0, 100)
+inv_resize.of_Register(tab_1.tabpage_field_data.dw_detail, 50, 100, 0, 0)
+
+//Resize tabpage_data
+inv_resize.of_Register(tab_1.tabpage_data.dw_imp_data, 0, 0, 100, 100)
+
+//Resize tabpage_log
+inv_resize.of_Register(tab_1.tabpage_log.dw_log_master, 0, 0, 100, 100)
+inv_resize.of_Register(tab_1.tabpage_log.dw_log_detail, 0, 100, 100, 100)
+*/
+end event
+
+event activate;call super::activate;//Inherit
+long ll_Handle
+
+if w_mdi.menuname <> 'm_pfe_cst_import_painter' then
+	ll_Handle = handle(w_mdi)
+	w_mdi.ChangeMenu(m_pfe_cst_import_painter)
+	w_mdi.SetToolbarPos(2, 1, 200, false)	
+	w_mdi.of_menu_security(w_mdi.MenuName)
+	gnv_appeondll.of_settoolbarpos(ll_Handle)
+	
+	of_SetMenu(tab_1.SelectedTab)
+end if
+end event
+
+event pfc_save;//override
+ib_ChangeData = false
+tab_1.tabpage_hdr.Event ue_save()
+tab_1.tabpage_field_data.Event ue_save()
+//pfc_cst_save_check
+If ib_ChangeData or tab_1.SelectedTab = 2 Then
+	tab_1.tabpage_field_data.event pfc_cst_save_check( ) //added by gavins 20140505
+End If
+Return 1
+end event
+
+event resize;call super::resize;//inherit
+tab_1.tabpage_field_data.Event ue_Resize()
+tab_1.tabpage_data.Event ue_Resize()
+tab_1.tabpage_log.Event ue_Resize()
+end event
+
+event open;call super::open;//Start Code Change ----07.03.2008 #V81 maha
+integer i
+
+i = of_get_app_setting("set_54","I") 
+ii_preprocess = i  //Start Code Change ----07.31.2008 #V81 maha
+if  i > 0 then 
+	cb_preprocess.visible = true	
+else //Start Code Change ----09.18.2008 #V85 maha
+	cb_preprocess.visible = false
+end if
+
+//BEGIN---Add by Evan 09/18/2008
+if of_get_app_setting("set_9", "I") = 4 then ib_IsIntelliCredApp = false
+if of_get_app_setting("set_cont", "I") = 0 then ib_IsIntelliContract = false
+//END---Add by Evan 09/18/2008
+end event
+
+type tab_1 from tab within w_import_painter_bak
+event create ( )
+event destroy ( )
+integer x = 9
+integer y = 16
+integer width = 4297
+integer height = 2100
+integer taborder = 10
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long backcolor = 79680469
+boolean fixedwidth = true
+boolean raggedright = true
+boolean createondemand = true
+alignment alignment = center!
+integer selectedtab = 1
+tabpage_hdr tabpage_hdr
+tabpage_field_data tabpage_field_data
+tabpage_data tabpage_data
+tabpage_log tabpage_log
+end type
+
+on tab_1.create
+this.tabpage_hdr=create tabpage_hdr
+this.tabpage_field_data=create tabpage_field_data
+this.tabpage_data=create tabpage_data
+this.tabpage_log=create tabpage_log
+this.Control[]={this.tabpage_hdr,&
+this.tabpage_field_data,&
+this.tabpage_data,&
+this.tabpage_log}
+end on
+
+on tab_1.destroy
+destroy(this.tabpage_hdr)
+destroy(this.tabpage_field_data)
+destroy(this.tabpage_data)
+destroy(this.tabpage_log)
+end on
+
+event selectionchanged;long ll_Row
+long ll_LockFile
+
+of_SetMenu(NewIndex)
+
+choose case NewIndex
+	case 1 // Imports (tabpage_hdr)
+		
+	case 2 // Field Setup (tabpage_field_data)
+		 tab_1.tabpage_hdr.dw_imp_hdr.Accepttext( )
+		//added by gavins 20140505
+		If is_ImportType = "1" Then
+			
+			tabpage_field_data.dw_field_list.Modify( "imp_field_label_t.visible=0   imp_field_name_t.x=183 imp_field_name_t.width=709" )
+			tabpage_field_data.dw_field_list.Modify( "imp_field_label.visible=0  imp_field_name.x=183 imp_field_name.width=709" )	
+			tab_1.tabpage_field_data.dw_field_list.Modify( "b_compare.text='&Compare...'")	
+			tabpage_field_data.dw_imp_field_detail.Modify( "comp_def_t.Text='Compute Def:'  comp_def.Visible=1  imp_field_type.visible=0" )
+		ElseIf is_ImportType = "2" Then
+			tabpage_field_data.dw_field_list.Modify( "imp_field_label_t.visible=1  imp_field_label_t.x=183 imp_field_label_t.width=425 imp_field_name_t.x=626 imp_field_name_t.width=400" )
+			tabpage_field_data.dw_field_list.Modify( "imp_field_label.visible=1  imp_field_label.x=183 imp_field_label.width=425 imp_field_name.x=626 imp_field_name.width=400" )	//325
+			tab_1.tabpage_field_data.dw_field_list.Modify( "b_compare.text='&Refresh Fields...'")
+			tabpage_field_data.dw_imp_field_detail.Modify( "comp_def_t.Text='Field Type:'  comp_def.Visible=0  imp_field_type.visible=1" )
+			If  tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ) > 0 Then wf_importtype_control(  tab_1.tabpage_hdr.dw_imp_hdr.getItemString(  tab_1.tabpage_hdr.dw_imp_hdr.Getrow( ), 'import_type' ) )
+		End If
+		
+		
+		// Display records of each DW
+		tab_1.tabpage_field_data.Event ue_DisplayData()
+		
+		// Change the title of dw_prac_cont_id
+		//tab_1.tabpage_field_data.dw_prac_cont_id.Event GetFocus()
+		
+		// Lock DataWindow
+		ll_Row = tab_1.tabpage_hdr.dw_browse.GetRow()
+		if ll_Row > 0 then
+			ll_LockFile = tab_1.tabpage_hdr.dw_browse.object.lock_file[ll_Row]
+			if ll_LockFile = 1 then
+				tab_1.tabpage_field_data.Event ue_LockDW(false)
+			else
+				tab_1.tabpage_field_data.Event ue_LockDW(true)
+			end if
+		else
+			tab_1.tabpage_field_data.Event ue_LockDW(true)
+		end if
+		if IsNull(ll_LockFile) then ll_LockFile = 0
+		
+		// Create import fields if no import field in Import Fields DW
+		if ib_PromptCreateImportField and ll_LockFile = 0 and tabpage_field_data.dw_field_list.RowCount() = 0 and is_ImportType = "1" then //modified by gavins 20140505
+			MessageBox("Prompt", "Before you can do the Field Setup for the Import you need to create your Import Fields.")
+			of_CreateImportField()
+		end if
+		if ib_PromptCreateImportField and ll_LockFile = 0 and tabpage_field_data.dw_field_list.RowCount() = 0 and is_ImportType = "2" then //modified by gavins 20140505
+			MessageBox("Prompt", "Before you can do the Field Setup for the Import you need to create your Import Fields.")
+			tabpage_field_data.dw_field_list.event buttonclicked(  0, 0, tabpage_field_data.dw_field_list.object.b_compare ) 
+		end if
+		If is_ImportType = '2' Then
+			If ib_LockFile Then//added by gavins 20140505
+				tab_1.tabpage_field_data.dw_field_list.object.b_compare.enabled = "no"	
+			Else
+				tab_1.tabpage_field_data.dw_field_list.object.b_compare.enabled = "yes"	
+			End If
+			tabpage_field_data.cb_com_wizard.enabled = false
+			tabpage_field_data.cb_create_value_list.enabled = false
+		Else
+			tab_1.tabpage_field_data.dw_field_list.object.b_compare.enabled = "yes"	
+			If ib_LockFile Then
+				tabpage_field_data.cb_com_wizard.enabled = false
+				tabpage_field_data.cb_create_value_list.enabled = false
+			Else
+				tabpage_field_data.cb_com_wizard.enabled = true
+				tabpage_field_data.cb_create_value_list.enabled = true
+			End If
+		End If
+		
+		DataWindowChild		ldwc_Child
+		If is_ImportType = '1' Then
+			If tabpage_field_data.dw_detail.getchild(  'lu_type',ldwc_Child  ) = 1 Then
+				ldwc_Child.SetFilter( " not(data_value = 'J') " )
+				ldwc_Child.Filter( )
+			End If	
+		Else
+			If tabpage_field_data.dw_detail.GetChild(  'lu_type',ldwc_Child  ) = 1 Then
+				tabpage_field_data.dw_detail.SetRedraw( false )
+				ldwc_Child.SetFilter( "" )
+				ldwc_Child.Filter( )
+				tabpage_field_data.dw_detail.SetRedraw( true )
+			End If	
+		End If
+		
+	case 3 // Data (tabpage_data)
+		if il_curr_import_id <> il_page3_import_id then
+			il_page3_import_id = il_curr_import_id
+			tab_1.tabpage_data.dw_imp_data.DataObject = ""
+			tab_1.tabpage_data.dw_imp_data.Event ue_SetTitle(0)
+		end if
+
+	case 4 // Error Logs (tabpage_log)
+		tab_1.tabpage_log.Event ue_Retrieve()
+end choose
+end event
+
+event selectionchanging;integer li_Return
+
+choose case OldIndex
+	case 1 // Update import record		
+		li_Return = tab_1.tabpage_hdr.Event ue_save()
+		if li_Return = -1 then Return 1
+		
+	case 2 // Update mapped field		
+		li_Return = tab_1.tabpage_field_data.Event ue_save()
+		if li_Return = -1 then Return 1				
+end choose
+
+Return 0
+end event
+
+type tabpage_hdr from userobject within tab_1
+event ue_init ( )
+event ue_add ( )
+event type integer ue_save ( )
+event ue_delete ( )
+event ue_copyadd ( )
+integer x = 18
+integer y = 112
+integer width = 4261
+integer height = 1972
+long backcolor = 79680469
+string text = "Imports"
+long tabbackcolor = 79680469
+string picturename = "DataPipeline!"
+long picturemaskcolor = 12632256
+dw_browse dw_browse
+dw_imp_sql dw_imp_sql
+dw_imp_hdr dw_imp_hdr
+end type
+
+event ue_init();string ls_Expression
+
+//BEGIN---Add by Evan 09/18/2008
+if ib_IsIntelliCredApp and ib_IsIntelliContract then
+elseif ib_IsIntelliCredApp then
+	dw_browse.SetFilter("isoft_module = 1")
+	dw_imp_hdr.SetTabOrder("isoft_module", 0)
+	dw_imp_hdr.object.isoft_module.background.color = 67108864
+else
+	dw_browse.SetFilter("isoft_module = 2")
+	dw_imp_hdr.SetTabOrder("isoft_module", 0)
+	dw_imp_hdr.object.isoft_module.background.color = 67108864
+end if
+//END---Add by Evan 09/18/2008
+
+dw_browse.SetTransObject(SQLCA)
+dw_browse.Retrieve()
+dw_browse.Modify("DataWindow.ReadOnly='yes'")
+
+
+dw_browse.ShareData(dw_imp_hdr)
+dw_browse.ShareData(dw_imp_sql)
+
+If dw_browse.GetRow( ) > 0 and dw_browse.RowCount( ) > 0 Then //added by gavins 20140505
+	wf_importtype_control( dw_browse.getItemString( dw_browse.getrow(), 'import_type' ) )
+End If
+dw_imp_hdr.Event ue_SetEnabled(dw_browse.GetRow())
+
+if AppeonGetClientType() = 'PB' Then
+	ls_Expression = "sectiongreen.bmp~tif(isnull(doc_name), '" + gs_current_path + "\section.bmp', '" + gs_current_path + "\sectiongreen.bmp')"
+	dw_imp_sql.object.b_view.filename = ls_Expression
+end if
+end event
+
+event ue_add();long ll_InsertRow
+
+dw_imp_hdr.AcceptText()
+dw_imp_sql.AcceptText()
+
+ll_InsertRow = dw_browse.InsertRow(0)
+dw_browse.ScrollToRow(ll_InsertRow)
+dw_imp_hdr.ScrollToRow(ll_InsertRow)
+dw_imp_sql.ScrollToRow(ll_InsertRow)
+
+dw_imp_hdr.SetColumn("import_name")
+dw_imp_hdr.SetFocus()
+
+//BEGIN---Add by Evan 09/18/2008
+if ib_IsIntelliCredApp then
+	dw_browse.SetItem(ll_InsertRow, "isoft_module", 1)
+else
+	dw_browse.SetItem(ll_InsertRow, "isoft_module", 2)
+end if
+//END---Add by Evan 09/18/2008
+end event
+
+event type integer ue_save();long ll_CurrentRow
+long ll_DeleteRowCount
+string ls_ImportID
+string ls_DeleteSQL
+string ls_DropTable
+string ls_import_name
+string ls_TableName
+boolean lb_OldAutoCommit
+DWItemStatus ldis_Status
+
+dw_imp_hdr.AcceptText()
+dw_imp_sql.AcceptText()
+
+ll_DeleteRowCount = dw_browse.DeletedCount()
+if dw_browse.ModifiedCount() + ll_DeleteRowCount <= 0 then Return 1
+
+//Delete records of reference table
+if ll_DeleteRowCount > 0 then
+	for ll_CurrentRow = 1 to ll_DeleteRowCount
+		if Len(ls_ImportID) > 0 then ls_ImportID += ","
+		ls_ImportID += String(dw_browse.object.import_id.delete[ll_CurrentRow])
+
+		ls_import_name = Trim(dw_browse.object.import_name.delete[ll_CurrentRow])
+		if IsNull(ls_import_name) or ls_import_name = "" then Continue
+		if Len(ls_DropTable) > 0 then ls_DropTable += ";~r~n"
+		//BEGIN---Modify by Evan 09/18/2008
+		//ls_DropTable += "DROP TABLE impt_" + ls_import_name
+		ls_TableName = of_CorrectTableName(ls_import_name)
+		ls_DropTable += "DROP TABLE " + ls_TableName
+		//END---Modify by Evan 09/18/2008
+	next
+	
+	//import_file_fields
+	ls_DeleteSQL = "DELETE FROM import_file_fields WHERE import_id IN (" + ls_ImportID + ");~r~n"
+	
+	//import_mapping_fields
+	ls_DeleteSQL += "DELETE FROM import_mapping_fields WHERE table_records_id IN (select table_records_id from import_table_records where import_id in (" + ls_ImportID + "));~r~n"	
+	//import_table_records
+	ls_DeleteSQL += "DELETE FROM import_table_records WHERE import_id IN (" + ls_ImportID + ");~r~n"
+	
+	//import_process_errors
+	ls_DeleteSQL += "DELETE FROM import_process_errors WHERE process_tables_id IN (select process_tables_id from import_process_tables where process_id IN (select process_id from import_process where import_id IN (" + ls_ImportID + ")));~r~n"
+	//import_process_tables
+	ls_DeleteSQL += "DELETE FROM import_process_tables WHERE process_id IN (select process_id from import_process where import_id IN (" + ls_ImportID + "));~r~n"
+	//import_process
+	ls_DeleteSQL += "DELETE FROM import_process WHERE import_id IN (" + ls_ImportID + ")"
+	
+	EXECUTE IMMEDIATE :ls_DeleteSQL;
+	if SQLCA.SQLCode <> 0 then
+		is_hdr_errinfo = SQLCA.SQLErrText
+		of_CompleteTrans(false)
+		MessageBox("Error", is_hdr_errinfo, StopSign!)		
+		Return -1
+	end if
+	lb_OldAutoCommit = SQLCA.AutoCommit
+	if lb_OldAutoCommit = false then SQLCA.AutoCommit = true		
+	EXECUTE IMMEDIATE :ls_DropTable;
+	if SQLCA.AutoCommit <> lb_OldAutoCommit then SQLCA.AutoCommit = lb_OldAutoCommit
+end if
+
+//Set date and modify user
+for ll_CurrentRow = 1 to dw_browse.RowCount()
+	ldis_Status = dw_browse.GetItemStatus(ll_CurrentRow, 0, Primary!)
+	if ldis_Status = NewModified! then
+		dw_browse.object.create_date[ll_CurrentRow] = DateTime(Today(), Now())
+		dw_browse.object.mod_user[ll_CurrentRow] = gs_user_id
+	elseif ldis_Status = DataModified! then
+		dw_browse.object.mod_date[ll_CurrentRow] = DateTime(Today(), Now())
+		dw_browse.object.mod_user[ll_CurrentRow] = gs_user_id
+	end if	
+next
+
+//Update import record
+if dw_browse.Update() = 1 then
+	of_CompleteTrans(true)
+	//Get current import ID
+	if dw_browse.GetRow() > 0 then
+		il_curr_import_id = dw_browse.object.import_id[dw_browse.GetRow()]
+		//Copy field mapping data - jervis 12.18.2009
+		if ib_IsCopy then	of_copy_field_data(il_pre_import_id,il_curr_import_id)
+	else
+		il_curr_import_id = -1
+	end if
+	dw_browse.Event RowFocusChanged(dw_browse.GetRow())
+		
+	Return 1
+else
+	of_CompleteTrans(false)
+	MessageBox("Error", is_hdr_errinfo, StopSign!)
+	Return -1
+end if
+
+
+end event
+
+event ue_delete();long ll_CurrentRow
+DWItemStatus ldws_Status
+
+ll_CurrentRow = dw_browse.GetRow()
+if ll_CurrentRow <= 0 then Return
+
+ldws_Status = dw_browse.GetItemStatus(ll_CurrentRow, 0, Primary!)
+if ldws_Status = DataModified! or ldws_Status = NotModified! then	
+//	if MessageBox("Delete", "Are you sure you want to delete the selected import file?", &
+//		Question!, YesNo!,2) = 2 then
+//		Return
+//	end if
+	
+	if MessageBox("Delete", "Are you sure you want to delete the selected import file, " + &
+		"and all setup fields?", Question!, YesNo!, 2) = 2 then
+		Return
+	end if
+end if
+dw_browse.DeleteRow(ll_CurrentRow)
+ll_CurrentRow = dw_browse.GetRow()
+dw_browse.Event RowFocusChanged(ll_CurrentRow)
+dw_imp_hdr.ScrollToRow(ll_CurrentRow)
+dw_imp_sql.ScrollToRow(ll_CurrentRow)
+	
+//Get current import ID
+if dw_browse.GetRow() > 0 then
+	il_curr_import_id = dw_browse.object.import_id[ll_CurrentRow]
+else
+	il_curr_import_id = -1
+	w_import_painter.Title = "Import Painter"
+end if
+end event
+
+event ue_copyadd();long ll_Null
+long ll_CopyRow
+long ll_InsertRow
+string ls_Null
+
+SetNull(ll_Null)
+SetNull(ls_Null)
+
+If is_ImportType = '2' Then //Added by gavins 20140708     salesforce don't copy
+	MessageBox( 'Tips', 'Copy function is not applicable with Salesforce type import. ' )
+	Return
+End If
+
+dw_imp_hdr.AcceptText()
+dw_imp_sql.AcceptText()
+
+ll_CopyRow = dw_browse.GetRow()
+if ll_CopyRow > 0 then
+	il_pre_import_id = dw_browse.GetItemNumber( ll_copyRow,"import_id")	//Jervis 12.18.2009
+	ll_InsertRow = dw_browse.RowCount() + 1
+	dw_browse.object.data[ll_InsertRow] = dw_browse.object.data[ll_CopyRow]
+	dw_browse.SetItem(ll_InsertRow, "import_id", ll_Null)
+	dw_browse.SetItem(ll_InsertRow, "doc_name", ls_Null)
+	dw_browse.ScrollToRow(ll_InsertRow)
+	dw_imp_hdr.ScrollToRow(ll_InsertRow)
+	dw_imp_sql.ScrollToRow(ll_InsertRow)
+	dw_imp_hdr.SetColumn("import_name")
+	dw_imp_hdr.SetFocus()
+end if
+
+
+
+end event
+
+on tabpage_hdr.create
+this.dw_browse=create dw_browse
+this.dw_imp_sql=create dw_imp_sql
+this.dw_imp_hdr=create dw_imp_hdr
+this.Control[]={this.dw_browse,&
+this.dw_imp_sql,&
+this.dw_imp_hdr}
+end on
+
+on tabpage_hdr.destroy
+destroy(this.dw_browse)
+destroy(this.dw_imp_sql)
+destroy(this.dw_imp_hdr)
+end on
+
+event constructor;this.Event ue_init()
+end event
+
+type dw_browse from u_dw within tabpage_hdr
+integer y = 4
+integer width = 4247
+integer height = 704
+integer taborder = 21
+boolean bringtotop = true
+boolean titlebar = true
+string title = "Imports List"
+string dataobject = "d_import_browse"
+boolean hscrollbar = true
+borderstyle borderstyle = stylebox!
+end type
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+string ls_import_name
+DWItemStatus ldwi_Status
+
+this.SelectRow(0, false)
+this.SelectRow(CurrentRow, true)
+
+dw_imp_hdr.ScrollToRow(CurrentRow)
+dw_imp_sql.ScrollToRow(CurrentRow)
+
+if CurrentRow > 0 then ldwi_Status = GetItemStatus(CurrentRow, 0, Primary!)
+if CurrentRow = 0 or ldwi_Status = New! or ldwi_Status = NewModified! then
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_runimport,'enabled', false)
+	tab_1.tabpage_field_data.enabled = false
+	tab_1.tabpage_data.enabled = false
+	tab_1.tabpage_log.enabled = false	
+else
+	gnv_app.of_modify_menu_attr( m_pfe_cst_import_painter.m_file.m_runimport,'enabled', true)
+	tab_1.tabpage_field_data.enabled = true
+	tab_1.tabpage_data.enabled = true
+	tab_1.tabpage_log.enabled = true	
+	
+	// Get current import ID
+	il_curr_import_id = this.object.import_id[CurrentRow]
+end if
+
+// Get current isoft_module and import name
+if CurrentRow > 0 then
+	ii_curr_isoft_module = this.object.isoft_module[CurrentRow]
+	ls_import_name = this.object.import_name[CurrentRow]
+else
+	ls_import_name = ""
+end if
+
+// Set title text of window
+if IsNull(ls_import_name) or Len(ls_import_name) <= 0 then
+	ls_import_name = "Unknown"
+end if
+if ii_curr_isoft_module = 1 then
+	w_import_painter.Title = "Import Painter : " + ls_import_name + " of IntelliCred/App"
+else
+	w_import_painter.Title = "Import Painter : " + ls_import_name + " of Contract"
+end if
+
+If currentrow > 0 and RowCount( ) > 0 Then //added by gavins 20140505
+	wf_importtype_control( getItemString( currentrow, 'import_type' ) )
+	
+End If
+end event
+
+event dberror;//override
+is_hdr_errinfo = SQLErrText
+
+Return 1
+end event
+
+event doubleclicked;call super::doubleclicked;if tab_1.tabpage_field_data.enabled then
+	tab_1.SelectTab(2)
+end if
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event clicked;call super::clicked;this.SetRow(Row)
+dw_imp_hdr.ScrollToRow(Row)
+dw_imp_sql.ScrollToRow(Row)
+
+
+end event
+
+type dw_imp_sql from u_dw within tabpage_hdr
+event ue_keydown pbm_dwnkey
+integer y = 1612
+integer width = 4247
+integer height = 356
+integer taborder = 21
+boolean bringtotop = true
+string title = "Import Notes"
+string dataobject = "d_import_docs"
+boolean hscrollbar = true
+boolean vscrollbar = false
+boolean livescroll = false
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_keydown;if Key = KeyDownArrow! or Key = KeyUpArrow! or Key = KeyPageUp! or Key = KeyPageDown! then 
+	Return 1
+else
+	Return 0
+end if
+end event
+
+event buttonclicked;call super::buttonclicked;integer li_Return
+string  ls_DocPath
+string  ls_DocName
+long    ll_ImportID
+blob    lblb_Data
+string  ls_Parm
+n_getfilename ln_getfilename //Added By Jay Chen 08-15-2014
+choose case dwo.name
+	case "b_view"
+		ls_DocName = dw_imp_hdr.object.doc_name[Row]
+		if ls_DocName="" or IsNull(ls_DocName) then
+			MessageBox("Prompt", "There is no document.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+		else
+			ll_ImportID = dw_imp_hdr.object.import_id[Row]
+			ls_Parm = String(ll_ImportID) + "|" + ls_DocName
+			OpenWithParm(w_import_viewdoc, ls_Parm)
+		end if
+		
+	case "b_update"
+		gf_load_dir_path() //Added by Ken.Guo on 2009-03-10
+//		li_Return = GetFileOpenName("Select File", ls_DocPath, ls_DocName, "DOC", &
+//											 "Word Files (*.DOC),*.DOC,Excel Files (*.XLS),*.XLS,Text Files (*.TXT),*.TXT" )
+		li_Return = ln_getfilename.of_getopenfilename("Select File", ls_DocPath, ls_DocName, "DOC", &
+											 "Word Files (*.DOC),*.DOC,Excel Files (*.XLS),*.XLS,Text Files (*.TXT),*.TXT" )
+		gf_save_dir_path(ls_DocPath) //Added by Ken.Guo on 2009-03-10
+		//ChangeDirectory(gs_current_path)
+		if li_Return <> 1 then Return
+		
+		dw_imp_hdr.object.doc_name[Row] = ls_DocName
+		dw_imp_hdr.object.doc_updated[Row] = DateTime(Today(), Now())
+		li_Return = tab_1.tabpage_hdr.Event ue_save()
+		if li_Return = -1 then Return
+
+		ll_ImportID = dw_imp_hdr.object.import_id[Row]
+		lblb_Data = of_ReadFile(ls_DocPath)
+		UPDATEBLOB import_hdr SET import_doc = :lblb_Data WHERE import_id = :ll_ImportID;		
+		if SQLCA.SQLCode = 0 then
+			of_CompleteTrans(true)
+		else
+			is_hdr_errinfo = SQLCA.SQLErrText
+			of_CompleteTrans(false)
+			MessageBox("Error", is_hdr_errinfo, StopSign!)
+		end if
+		
+	case else		
+end choose
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0	
+end if
+
+if Message.Number = 522 then
+	Return 1
+end if
+end event
+
+event losefocus;call super::losefocus;//Inherit
+this.AcceptText()
+end event
+
+type dw_imp_hdr from u_dw within tabpage_hdr
+event ue_setenabled ( long al_row )
+event ue_keydown pbm_dwnkey
+integer y = 712
+integer width = 4247
+integer height = 892
+integer taborder = 11
+boolean titlebar = true
+string title = "Import Detail"
+string dataobject = "d_import_hdr"
+boolean hscrollbar = true
+boolean vscrollbar = false
+boolean livescroll = false
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_setenabled(long al_row);long ll_lock_file
+string ls_imp_format
+
+if not al_Row > 0 then Return
+
+this.AcceptText()
+ll_lock_file = this.object.lock_file[al_Row]
+
+//Start Code Change ----02.07.2008 #V8 maha - added lock protection
+if ll_lock_file = 1 then //lock everything
+	this.object.odbc_name.protect = 1
+	this.object.odbc_login.protect = 1	
+	this.object.odbc_password.protect = 1	
+	this.object.record_delimiter.protect = 1
+	this.object.field_delimiter.protect = 1
+	this.object.ignore_header_row.protect = 1
+	this.object.update_verifications.protect = 1
+	this.object.cb_browse.enabled = "no"
+	
+	this.object.import_name.protect = 1
+	this.object.project_id.protect = 1
+	this.object.isoft_module.protect = 1
+	this.object.err_process.protect = 1
+	this.object.add_protocol.protect = 1
+	this.object.update_verifications.protect = 1
+	this.object.err_notify.protect = 1
+	this.object.err_file.protect = 1
+	this.object.notify_addr1.protect = 1
+	this.object.notify_addr2.protect = 1
+	this.object.imp_format.protect = 1
+	this.object.flat_multi.protect = 1
+	this.object.imp_file.protect = 1
+	this.object.import_type.protect =1
+else
+	ls_imp_format = this.object.imp_format[al_Row]
+	//unprotect
+	this.object.import_name.protect = 0
+	this.object.project_id.protect = 0
+	this.object.import_type.protect =0
+	if is_ImportType= "2" Then Return//added by gavins 20140505
+	
+	this.object.isoft_module.protect = 0
+	this.object.err_process.protect = 0
+	this.object.add_protocol.protect = 0
+	this.object.update_verifications.protect = 0
+	this.object.err_notify.protect = 0
+	this.object.err_file.protect = 0
+	this.object.notify_addr1.protect = 0
+	this.object.notify_addr2.protect = 0
+	this.object.imp_format.protect = 0
+	this.object.flat_multi.protect = 0
+	this.object.imp_file.protect = 0
+	
+	//protect in prep for case statement
+	this.object.odbc_name.protect = 1
+	this.object.odbc_name.background.color = 67108864
+	this.object.odbc_login.protect = 1
+	this.object.odbc_login.background.color = 67108864
+	this.object.odbc_password.protect = 1
+	this.object.odbc_password.background.color = 67108864
+	this.object.record_delimiter.protect = 1
+	this.object.record_delimiter.background.color = 67108864	
+	this.object.field_delimiter.protect = 1
+	this.object.field_delimiter.background.color = 67108864
+	this.object.ignore_header_row.protect = 1
+	this.object.update_verifications.protect = 1
+	this.object.update_verifications.background.color = 67108864
+	this.object.cb_browse.enabled = "no"
+	
+	if this.object.isoft_module[al_Row] = 1 then
+		this.object.update_verifications.protect = 0
+		this.object.update_verifications.background.color = 16777215	
+	end if
+	
+	choose case ls_imp_format
+		case "1", "2" //Tab Delimited, CSV
+			this.object.ignore_header_row.protect = 0
+			this.object.cb_browse.enabled = "yes"
+		case "3"      //ODBC
+			this.object.ignore_header_row.protect = 1
+			this.object.odbc_name.protect = 0
+			this.object.odbc_name.background.color = 16777215
+			this.object.odbc_login.protect = 0
+			this.object.odbc_login.background.color = 16777215
+			this.object.odbc_password.protect = 0
+			this.object.odbc_password.background.color = 16777215
+		case "4"      //Formatted text
+			this.object.ignore_header_row.protect = 0
+			this.object.record_delimiter.protect = 0
+			this.object.record_delimiter.background.color = 16777215	
+			this.object.field_delimiter.protect = 0
+			this.object.field_delimiter.background.color = 16777215
+			this.object.cb_browse.enabled = "yes"
+	end choose
+end if
+//End Code Change---02.07.2008
+end event
+
+event ue_keydown;if Key = KeyDownArrow! or Key = KeyUpArrow! or Key = KeyPageUp! or Key = KeyPageDown! then 
+	Return 1
+else
+	Return 0
+end if
+end event
+
+event buttonclicked;call super::buttonclicked;string ls_DocPath
+string ls_DocName
+string ls_imp_format
+integer li_Return
+n_getfilename ln_getfilename //Added By Jay Chen 08-15-2014
+
+ln_getfilename.of_SetHandle( Handle( this ) )
+choose case dwo.name	
+	case "cb_browse"
+		gf_load_dir_path() //Added by Ken.Guo on 2009-03-10
+		ls_imp_format = this.object.imp_format[row]
+		if ls_imp_format = "1" then
+//			li_Return = GetFileOpenName("Select File", ls_DocPath, ls_DocName, "TXT", &
+//												 "Text Files (*.TXT),*.TXT")
+			li_Return = ln_getfilename.of_getopenfilename("Select File", ls_DocPath, ls_DocName, "TXT", &
+												 "Text Files (*.TXT),*.TXT")
+		elseif ls_imp_format = "2" then
+//			li_Return = GetFileOpenName("Select File", ls_DocPath, ls_DocName, "CSV", &
+//												 "CSV Files (*.CSV),*.CSV")
+			li_Return = ln_getfilename.of_getopenfilename("Select File", ls_DocPath, ls_DocName, "CSV", &
+												 "CSV Files (*.CSV),*.CSV")
+		else
+//			li_Return = GetFileOpenName("Select File", ls_DocPath, ls_DocName, "TXT", &
+//												 "All Files (*.*),*.*")			
+			li_Return = ln_getfilename.of_getopenfilename("Select File", ls_DocPath, ls_DocName, "TXT", &
+												 "All Files (*.*),*.*")	
+		end if
+		if li_Return = 1 then
+			dw_browse.SetItem(Row, "imp_file", ls_DocPath)
+		end if
+		
+	case else
+end choose
+gf_save_dir_path(ls_DocPath) //Added by Ken.Guo on 2009-03-10
+//ChangeDirectory(gs_current_path) //Add by Evan 12/11/2008
+
+end event
+
+event itemchanged;call super::itemchanged;//inherit
+long ll_Null
+long ll_Count
+long ll_import_id
+string ls_Null
+DataWindow ldw_records
+
+SetNull(ls_Null)
+SetNull(ll_Null)
+
+choose case dwo.name
+	case "imp_format"
+		this.Event ue_SetEnabled(Row)
+		this.SetItem(Row, "odbc_name", ls_Null)
+		this.SetItem(Row, "odbc_login", ls_Null)
+		this.SetItem(Row, "odbc_password", ls_Null)
+		this.SetItem(Row, "imp_file", ls_Null)
+		this.SetItem(Row, "record_delimiter", ls_Null)
+		this.SetItem(Row, "field_delimiter", ls_Null)
+		this.SetItem(Row, "import_sql", ls_Null)	
+		choose case Data
+			case "1", "2"
+				this.SetItem(Row, "ignore_header_row", 1)
+				this.SetColumn("imp_file")
+				this.Post SetFocus()
+			case "3"
+				this.SetItem(Row, "ignore_header_row", 0)
+				this.SetColumn("odbc_name")
+				this.Post SetFocus()
+			case "4"
+				this.SetItem(Row, "ignore_header_row", 0)
+				this.SetColumn("record_delimiter")
+				this.Post SetFocus()
+		end choose
+
+	case "record_delimiter"
+		if Data = this.object.field_delimiter[Row] then
+			this.Post SetItem(Row, "record_delimiter", ls_Null)
+		end if
+		
+	case "field_delimiter"
+		if Data = this.object.record_delimiter[Row] then
+			this.Post SetItem(Row, "field_delimiter", ls_Null)
+		end if
+		
+	case "isoft_module"
+		il_page2_import_id = -1
+		ii_curr_isoft_module = Integer(Data)
+		ll_import_id = this.object.import_id[Row]
+		// Clear field setup
+		SELECT count(*) INTO :ll_Count FROM import_table_records WHERE import_id = :ll_import_id;
+		if ll_Count > 0 then
+			if MessageBox("Delete", "Modify import type will delete all setup fields, are you sure you want to continue?", Question!, YesNo!) = 1 then				
+				gnv_appeondb.of_StartQueue()
+				DELETE FROM import_mapping_fields WHERE table_records_id IN (select table_records_id from import_table_records where import_id = :il_curr_import_id);
+				DELETE FROM import_table_records WHERE import_id = :il_curr_import_id;
+				COMMIT;
+				gnv_appeondb.of_CommitQueue()
+				ldw_records = tab_1.tabpage_field_data.dw_records
+				ldw_records.SetFilter("import_id = "  + String(il_curr_import_id))
+				ldw_records.Filter()
+				ldw_records.RowsMove(1, ldw_records.RowCount(), Primary!, ldw_records, 1, Delete!)
+				ldw_records.RowsDiscard(1, ldw_records.DeletedCount(), Delete!)
+			else
+				//BEGIN---Modify by Evan 08/18/2008
+				//ii_curr_isoft_module = this.GetItemNumber(Row, "isoft_module")
+				ii_curr_isoft_module = this.object.isoft_module.original[Row]
+				//END---Modify by Evan 08/18/2008
+				this.Post SetItem(Row, "isoft_module", ii_curr_isoft_module)
+			end if
+		end if
+		// Set others
+		if ii_curr_isoft_module = 1 then
+			this.object.update_verifications[row] = 1
+			this.object.update_verifications.protect = 0
+			this.object.update_verifications.background.color = 16777215			
+		else
+			this.object.update_verifications[row] = ll_Null
+			this.object.update_verifications.protect = 1
+			this.object.update_verifications.background.color = 67108864			
+		end if
+		dw_browse.Post Event RowFocusChanged(Row)
+	case "lock_file" //Start Code Change ----02.07.2008 #V8 maha
+		this.Post Event ue_setenabled( row)
+	case "import_type" //added by gavins 20140505
+		wf_importtype_control( data )
+		SetItem( row, 'import_sfobject', "" )
+end choose
+end event
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+if CurrentRow > 0 then
+	this.Event ue_SetEnabled(CurrentRow)
+end if
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0	
+end if
+
+if Message.Number = 522 then
+	Return 1
+end if
+end event
+
+event losefocus;call super::losefocus;//Inherit
+this.AcceptText()
+end event
+
+type tabpage_field_data from userobject within tab_1
+event create ( )
+event destroy ( )
+event ue_lockdw ( boolean ab_flag )
+event ue_init ( )
+event ue_displaydata ( )
+event type integer ue_save ( )
+event ue_checkmapping ( )
+event ue_deleteimportfield ( )
+event ue_addimportfield ( )
+event ue_resize ( )
+event ue_copymap ( )
+event pfc_cst_save_check ( )
+integer x = 18
+integer y = 112
+integer width = 4261
+integer height = 1972
+boolean enabled = false
+long backcolor = 79680469
+string text = "Field Setup"
+long tabtextcolor = 33554432
+long tabbackcolor = 79680469
+string picturename = "TabOrder!"
+long picturemaskcolor = 12632256
+cb_create_value_list cb_create_value_list
+cb_com_wizard cb_com_wizard
+cb_edit_map cb_edit_map
+dw_detail dw_detail
+dw_map_fields dw_map_fields
+dw_records dw_records
+dw_fields dw_fields
+dw_tables dw_tables
+ln_1 ln_1
+ln_2 ln_2
+ln_4 ln_4
+ln_5 ln_5
+ln_3 ln_3
+dw_imp_field_detail dw_imp_field_detail
+dw_field_list dw_field_list
+dw_compute_verify dw_compute_verify
+dw_prac_cont_id dw_prac_cont_id
+end type
+
+on tabpage_field_data.create
+this.cb_create_value_list=create cb_create_value_list
+this.cb_com_wizard=create cb_com_wizard
+this.cb_edit_map=create cb_edit_map
+this.dw_detail=create dw_detail
+this.dw_map_fields=create dw_map_fields
+this.dw_records=create dw_records
+this.dw_fields=create dw_fields
+this.dw_tables=create dw_tables
+this.ln_1=create ln_1
+this.ln_2=create ln_2
+this.ln_4=create ln_4
+this.ln_5=create ln_5
+this.ln_3=create ln_3
+this.dw_imp_field_detail=create dw_imp_field_detail
+this.dw_field_list=create dw_field_list
+this.dw_compute_verify=create dw_compute_verify
+this.dw_prac_cont_id=create dw_prac_cont_id
+this.Control[]={this.cb_create_value_list,&
+this.cb_com_wizard,&
+this.cb_edit_map,&
+this.dw_detail,&
+this.dw_map_fields,&
+this.dw_records,&
+this.dw_fields,&
+this.dw_tables,&
+this.ln_1,&
+this.ln_2,&
+this.ln_4,&
+this.ln_5,&
+this.ln_3,&
+this.dw_imp_field_detail,&
+this.dw_field_list,&
+this.dw_compute_verify,&
+this.dw_prac_cont_id}
+end on
+
+on tabpage_field_data.destroy
+destroy(this.cb_create_value_list)
+destroy(this.cb_com_wizard)
+destroy(this.cb_edit_map)
+destroy(this.dw_detail)
+destroy(this.dw_map_fields)
+destroy(this.dw_records)
+destroy(this.dw_fields)
+destroy(this.dw_tables)
+destroy(this.ln_1)
+destroy(this.ln_2)
+destroy(this.ln_4)
+destroy(this.ln_5)
+destroy(this.ln_3)
+destroy(this.dw_imp_field_detail)
+destroy(this.dw_field_list)
+destroy(this.dw_compute_verify)
+destroy(this.dw_prac_cont_id)
+end on
+
+event ue_lockdw(boolean ab_flag);dw_detail.Enabled = ab_flag
+dw_imp_field_detail.Enabled = ab_flag
+ib_LockFile = not ab_Flag
+
+cb_edit_map.Enabled = ab_flag
+cb_com_wizard.Enabled = ab_flag
+cb_create_value_list.Enabled = ab_flag
+
+if ib_LockFile then
+	dw_detail.object.b_viewlookups.enabled = "no"
+	dw_field_list.object.b_add.enabled = "no"
+	dw_field_list.object.b_delete.enabled = "no"
+	
+//	dw_field_list.object.b_compare.enabled = "no"	
+else
+	dw_detail.object.b_viewlookups.enabled = "yes"
+	dw_field_list.object.b_add.enabled = "yes"
+	dw_field_list.object.b_delete.enabled = "yes"
+
+//		dw_field_list.object.b_compare.enabled = "yes"	
+
+end if
+end event
+
+event ue_init();DataWindowChild ldwc_Child1
+DataWindowChild ldwc_Child2
+DataWindowChild ldwc_Child3
+
+// Retrieve data
+ids_LookUpTableDDDW[1] = Create DataStore
+ids_LookUpTableDDDW[2] = Create DataStore
+
+dw_tables.SetTransObject(SQLCA)
+dw_fields.SetTransObject(SQLCA)
+dw_records.SetTransObject(SQLCA)
+dw_map_fields.SetTransObject(SQLCA)
+dw_field_list.SetTransObject(SQLCA)
+ids_LookUpTableDDDW[1].DataObject = "d_import_lu_temp1"
+ids_LookUpTableDDDW[2].DataObject = "d_import_lu_temp2"
+ids_LookUpTableDDDW[1].SetTransObject(SQLCA)
+ids_LookUpTableDDDW[2].SetTransObject(SQLCA)
+
+gnv_appeondb.of_startqueue()
+dw_tables.Retrieve()
+dw_fields.Retrieve()
+dw_records.Retrieve()
+ids_LookUpTableDDDW[1].Retrieve()
+ids_LookUpTableDDDW[2].Retrieve()
+gnv_appeondb.of_commitqueue()
+
+// Share data
+dw_map_fields.ShareData(dw_detail)
+dw_field_list.ShareData(dw_imp_field_detail)
+
+//--------------------------- APPEON BEGIN ---------------------------
+//$< Add  > 2009-01-07 By: Scofield
+//$<Reason> IntelliSoft Field, Link Value DDDW of dw_detail pre-retrieve
+
+if AppeonGetClientType() = "WEB" then
+	dw_detail.GetChild("isoft_field_id", ldwc_Child1)
+	dw_detail.GetChild("link_value", ldwc_Child2)
+	ldwc_Child1.SetTransObject(SQLCA)
+	ldwc_Child2.SetTransObject(SQLCA)
+	
+	gnv_appeondb.of_startqueue()
+	ldwc_Child1.Retrieve()
+	ldwc_Child2.Retrieve()
+	gnv_appeondb.of_commitqueue()
+end if
+
+//---------------------------- APPEON END ----------------------------
+
+// null_value, lu_template and facility_id DDDW of dw_detail pre-retrieve
+dw_detail.GetChild("null_value", ldwc_Child1)
+dw_detail.GetChild("lu_template", ldwc_Child2)
+dw_detail.GetChild("facility_id", ldwc_Child3)
+ldwc_Child1.SetTransObject(SQLCA)
+ldwc_Child2.SetTransObject(SQLCA)
+ldwc_Child3.SetTransObject(SQLCA)
+
+gnv_appeondb.of_startqueue()
+ldwc_Child1.Retrieve()
+ldwc_Child2.Retrieve()
+ldwc_Child3.Retrieve()
+gnv_appeondb.of_commitqueue()
+
+ldwc_Child1.InsertRow(1)
+ldwc_Child1.InsertRow(1)
+ldwc_Child1.SetItem(1, "lookup_name", "* NULL *")
+ldwc_Child1.SetItem(2, "lookup_name", "* Select Value *")
+ldwc_Child1.SetItem(2, "description", "* Select Value *")
+
+ldwc_Child2.InsertRow(1)
+end event
+
+event ue_displaydata();DataWindowChild ldwc_Temp
+DataWindowChild ldwc_Child
+long i, ll_table_records_id[]
+
+if il_curr_import_id = il_page2_import_id then Return
+il_page2_import_id = il_curr_import_id
+this.SetRedraw(false)
+
+///////////////////////////[1.Filter]////////////////////////////////////////
+// Filter records of dw_tables
+If is_ImportType = '1' Then
+	dw_tables.SetFilter("isoft_module = " + String(ii_curr_isoft_module))
+Else
+	dw_tables.SetFilter("isoft_module = " + String(ii_curr_isoft_module) + " and table_name <> 'idp_users' and table_name <> 'security_users'  and table_name <> 'ctx_custom_multi_detail'" )
+End If
+dw_tables.Filter()
+dw_tables.Event RowFocusChanged(dw_tables.GetRow())
+
+// Filter records of dw_records
+dw_records.SetFilter("import_id = " + String(il_curr_import_id))
+dw_records.Filter()
+
+///////////////////////////[2.Retrieve]//////////////////////////////////////
+// Retrieve records of dw_map_fields and dw_field_list
+if dw_records.RowCount() > 0 then
+	for i = 1 to dw_records.RowCount()
+		ll_table_records_id[i] = dw_records.object.table_records_id[i]
+	next
+	
+	gnv_appeondb.of_StartQueue()
+	dw_map_fields.Retrieve(ll_table_records_id)	
+	dw_field_list.Retrieve(il_curr_import_id)	
+	gnv_appeondb.of_CommitQueue()
+		
+	dw_records.Event RowFocusChanged(dw_records.GetRow())
+else
+	dw_map_fields.Reset()
+	dw_prac_cont_id.Reset()
+	dw_field_list.Retrieve(il_curr_import_id)
+end if
+dw_field_list.SelectRow(1, true)
+
+///////////////////////////[3.Initialize DDDW]////////////////////////////////
+// import_field_id DDDW
+if dw_field_list.RowCount() > 0 then
+	// DDDW of dw_map_fields
+	dw_map_fields.GetChild("import_field_id", ldwc_Child)
+	ldwc_Child.Reset()
+	dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldwc_Child, 1, Primary!)
+	dw_map_fields.SetRedraw(true)
+	
+	// DDDW of dw_detail
+	dw_detail.GetChild("import_field_id", ldwc_Child)
+	ldwc_Child.Reset()
+	dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldwc_Child, 1, Primary!)
+	dw_detail.SetRedraw(true)	
+
+	// DDDW of dw_prac_cont_id
+	//dw_prac_cont_id.GetChild("import_field_id", ldwc_Child)
+	//ldwc_Child.Reset()
+	//dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldwc_Child, 1, Primary!)	
+end if
+//dw_map_fields.GetChild("isoft_field_id", ldwc_Temp)
+//dw_prac_cont_id.GetChild("isoft_field_id", ldwc_Child)
+//ldwc_Child.Reset()
+//ldwc_Temp.RowsCopy(1, ldwc_Temp.RowCount(), Primary!, ldwc_Child, 1, Primary!)
+//dw_prac_cont_id.SetRedraw(true)
+
+///////////////////////////[4.Others]////////////////////////////////////////
+dw_detail.object.t_import_id.text = String(il_curr_import_id)
+this.SetRedraw(true)
+end event
+
+event type integer ue_save();integer i, ll_SelectRow
+boolean lb_DoCommit = false
+DataWindowChild ldw_Child
+string ls_field_name //Added By Jay Chen 07-16-2014
+long ll_row //Added By Jay Chen 07-16-2014
+boolean lb_invalid_field = false
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Update import field
+if dw_imp_field_detail.AcceptText() = -1 then Return -1
+//Added By Jay Chen 07-16-2014 remark:check field name
+for ll_row = 1 to dw_field_list.rowcount()
+	ls_field_name = dw_field_list.getitemstring(ll_row,"imp_field_name")
+	if Not of_field_name_check(ls_field_name) then
+		dw_imp_field_detail.scrolltorow(ll_row)
+		dw_field_list.scrolltorow(ll_row)
+		dw_imp_field_detail.setfocus()
+		dw_imp_field_detail.setcolumn("imp_field_name")
+		lb_invalid_field = true
+		exit
+	end if
+next
+if lb_invalid_field then 
+	messagebox("Invalid Field Name","The field name " + ls_field_name + " is invalid. It must start with a letter and can include any combination of letters, numbers, and underscores.")
+	Return -1
+end if
+//end
+	
+if dw_field_list.ModifiedCount() + dw_field_list.DeletedCount() > 0 then
+	lb_DoCommit = true
+	
+	// Reset field order
+	dw_field_list.SetSort("field_order A")
+	dw_field_list.Sort()
+	for i = 1 to dw_field_list.RowCount()
+		dw_field_list.SetItem(i, "field_order", i * 10)
+	next
+	ll_SelectRow = dw_field_list.GetSelectedRow(0)
+	if ll_SelectRow <= 0 then ll_SelectRow = 1		
+	dw_field_list.ScrollToRow(ll_SelectRow)
+	dw_imp_field_detail.ScrollToRow(ll_SelectRow)
+		
+	// Update import field
+	if dw_field_list.Update() <> 1 then
+		of_CompleteTrans(false)
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+		Return -1
+	end if
+
+	// initialize DDDW
+	//dw_prac_cont_id.GetChild("import_field_id", ldw_Child)
+	//ldw_Child.Reset()
+	//dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldw_Child, 1, Primary!)
+		
+	dw_map_fields.GetChild("import_field_id", ldw_Child)
+	ldw_Child.Reset()
+	dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldw_Child, 1, Primary!)
+		
+	dw_detail.GetChild("import_field_id", ldw_Child)
+	ldw_Child.Reset()
+	dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldw_Child, 1, Primary!)
+	
+	//dw_prac_cont_id.SetRedraw(true)
+	dw_map_fields.SetRedraw(true)
+	dw_detail.SetRedraw(true)
+	ib_ChangeData = True
+end if
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// Update mapped field
+dw_detail.AcceptText()
+if dw_map_fields.ModifiedCount() + dw_map_fields.DeletedCount() > 0 then
+	lb_DoCommit = true
+		
+	if dw_map_fields.Update() <> 1 then
+		of_CompleteTrans(false)
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+		Return -1
+	end if
+	ib_ChangeData = True
+end if
+
+if lb_DoCommit then of_CompleteTrans(true)
+
+
+
+Return 1
+end event
+
+event ue_checkmapping();string ls_LogList
+string ls_Error
+string ls_Null[]
+string ls_ErrorText[]
+string ls_table_name
+string ls_table_name_allias
+string ls_projectid
+integer i, j, li_ErrorCount
+long ll_FindRow
+long ll_InsertRow
+long ll_table_id
+long ll_table_records_id[]
+long ll_projectid
+n_cst_import lnv_import
+DataStore lds_table_record
+DataStore lds_import_field
+DataStore lds_mapping_field
+
+lnv_import = Create n_cst_import
+lds_table_record = Create DataStore
+lds_import_field = Create DataStore
+lds_mapping_field = Create DataStore
+
+
+////////////////////////////////////////[1-Check Import Table]//////////////////////////////////////
+lds_table_record.DataObject = "d_import_ds_table"
+for i = 1 to dw_records.RowCount()
+	ll_table_id = dw_records.object.isoft_table_id[i]
+	ll_table_records_id[i] = dw_records.object.table_records_id[i]
+	ll_FindRow = dw_tables.Find("table_id=" + String(ll_table_id), 1, dw_tables.RowCount())
+	if ll_FindRow > 0 then
+		ll_InsertRow = lds_table_record.InsertRow(0)
+		lds_table_record.object.isoft_table_id[ll_InsertRow] = ll_table_id
+		lds_table_record.object.table_name[ll_InsertRow] = dw_tables.object.table_name[ll_FindRow]
+		lds_table_record.object.table_name_allias[ll_InsertRow] = dw_tables.object.table_name_allias[ll_FindRow]
+	end if
+next
+If is_ImportType = '1' Then
+	ls_Error = lnv_import.of_CheckImportTable(lds_table_record)
+Else
+	ls_Error = lnv_import.of_CheckImportTable(lds_table_record, is_ImportType )
+End If
+if Len(ls_Error) > 0 then	
+	Destroy lnv_import
+	Destroy lds_table_record
+	Destroy lds_import_field
+	Destroy lds_mapping_field
+	MessageBox("Prompt", ls_Error)
+	Return	
+end if
+	
+////////////////////////////////////////[2-Check Import File Fields]////////////////////////////////
+lds_import_field.DataObject = dw_field_list.DataObject
+dw_imp_field_detail.AcceptText()
+dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, lds_import_field, 1, Primary!)
+If is_ImportType = '1' Then ls_Error = lnv_import.of_VerifyImportField(lds_import_field)
+if Len(ls_Error) > 0 then
+	Destroy lnv_import
+	Destroy lds_table_record
+	Destroy lds_import_field
+	Destroy lds_mapping_field
+	MessageBox("Prompt", ls_Error)
+	Return
+end if
+
+////////////////////////////////////////[3-Check Mapping]//////////////////////////////////////////
+// Get imformation
+Destroy lnv_import
+if ii_curr_isoft_module = 1 then
+	lnv_import = Create n_cst_import_credapp	
+else
+	lnv_import = Create n_cst_import_contract
+end if
+lds_mapping_field.DataObject = "d_import_ds_mapfield"
+lds_mapping_field.SetTransObject(SQLCA)
+gnv_appeondb.of_StartQueue()
+//Event pfc_save() modified by gavins 20140505
+tab_1.tabpage_hdr.Event ue_save()
+tab_1.tabpage_field_data.Event ue_save()
+
+lnv_import.ids_dataview_screen.Retrieve(1)
+lds_mapping_field.Retrieve(ll_table_records_id[])
+gnv_appeondb.of_CommitQueue()
+
+If tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ) > 0 Then
+	ll_projectid = tab_1.tabpage_hdr.dw_imp_hdr.GetItemnumber( tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ), 'project_id' )	
+	if not isnull( ll_projectid  ) Then
+		ls_projectid = string( ll_projectid )
+	Else
+		ls_projectid = ""
+	End If
+End If
+
+// Check mapping
+for i = 1 to lds_table_record.RowCount()
+	ls_ErrorText [] = ls_Null[]
+	ll_table_id = lds_table_record.object.isoft_table_id[i]
+	ls_table_name = Lower(lds_table_record.object.table_name[i])
+	lds_mapping_field.SetFilter("table_records_id=" + String(ll_table_records_id[i]))
+	lds_mapping_field.Filter()
+	if is_ImportType = '2' Then 
+		li_ErrorCount = lnv_import.of_CheckMapping(false, ll_table_id, ls_table_name, lds_import_field, lds_mapping_field, ls_ErrorText[], ls_projectid, lds_table_record )//modified by gavins 20140505
+	Else
+		li_ErrorCount = lnv_import.of_CheckMapping(false, ll_table_id, ls_table_name, lds_import_field, lds_mapping_field, ls_ErrorText[] )
+	End If
+	if li_ErrorCount > 0 then
+		ls_table_name_allias = lds_table_record.object.table_name_allias[i]
+		ls_LogList += "[" + ls_table_name_allias + "]~r~n"
+		for j = 1 to li_ErrorCount
+			If j>upperbound( ls_ErrorText[] ) Then continue
+			ls_LogList += String(j) + "." + ls_ErrorText[j] + "~r~n"
+		next
+		ls_LogList += "~r~n"
+	end if	
+next
+Destroy lnv_import
+Destroy lds_table_record
+Destroy lds_import_field
+Destroy lds_mapping_field
+
+////////////////////////////////////////[4-Show check mapping result]//////////////////////////////
+// Show result
+if Len(ls_LogList) > 0 then
+	OpenWithParm(w_import_loglist, "MAP#" + ls_LogList)
+	If  tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ) > 0 and is_ImportType = '2' Then//added by gavins 20140505
+		tab_1.tabpage_hdr.dw_imp_hdr.SetItem( tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ), 'import_flag', '0' )
+		tab_1.tabpage_hdr.Event ue_save()
+	End If
+else
+	MessageBox("Prompt", "Mapping design is OK.")
+	If  tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ) > 0 and is_ImportType = '2' Then
+		tab_1.tabpage_hdr.dw_imp_hdr.SetItem( tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ), 'import_flag', '1' )
+		tab_1.tabpage_hdr.Event ue_save()
+	End If
+end if
+end event
+
+event ue_deleteimportfield();long ll_Null
+long ll_CurrentRow
+long ll_import_field_id
+
+SetNull(ll_Null)
+ll_CurrentRow = dw_field_list.GetRow()
+if ll_CurrentRow <= 0 then Return
+
+if MessageBox("Delete", "Are you sure you want to delete the selected import field?", &
+	Question!, YesNo!,2) = 2 then
+	Return
+end if
+
+ll_import_field_id = dw_field_list.object.rec_id[ll_CurrentRow]
+dw_field_list.DeleteRow(0)
+dw_imp_field_detail.ScrollToRow(dw_field_list.GetRow())
+
+//for ll_CurrentRow = 1 to dw_prac_cont_id.RowCount()
+//	if dw_prac_cont_id.object.import_field_id[ll_CurrentRow] = ll_import_field_id then
+//		dw_prac_cont_id.object.import_field_id[ll_CurrentRow] = ll_Null
+//	end if
+//next
+
+for ll_CurrentRow = 1 to dw_map_fields.RowCount()
+	if dw_map_fields.object.import_field_id[ll_CurrentRow] = ll_import_field_id then
+		dw_map_fields.object.import_field_id[ll_CurrentRow] = ll_Null
+	end if
+next
+end event
+
+event ue_addimportfield();long ll_InsertRow
+long ll_CurrentRow
+long ll_ImportID
+
+dw_imp_field_detail.AcceptText()
+
+ll_CurrentRow = tab_1.tabpage_hdr.dw_browse.GetRow()
+if ll_CurrentRow <= 0 then Return	
+ll_ImportID = tab_1.tabpage_hdr.dw_browse.object.import_id[ll_CurrentRow]
+
+dw_field_list.SetSort("field_order A")
+dw_field_list.Sort()
+dw_imp_field_detail.ScrollToRow(1)
+
+ll_InsertRow = dw_field_list.InsertRow(0)
+dw_imp_field_detail.object.import_id[ll_InsertRow] = ll_ImportID
+if ll_InsertRow = 1 then
+	dw_imp_field_detail.object.field_order[ll_InsertRow] = 10
+else
+	dw_imp_field_detail.object.field_order[ll_InsertRow] = dw_imp_field_detail.object.field_order[ll_InsertRow - 1] + 10
+end if
+dw_imp_field_detail.object.field_length[ll_InsertRow] = 100
+dw_field_list.ScrollToRow(ll_InsertRow)
+
+dw_imp_field_detail.SetColumn("imp_field_name")
+dw_imp_field_detail.SetFocus()
+end event
+
+event ue_resize();Long ll_left_fixed_width = 896,ll_right_fixed_width = 1030, ll_mid_x
+
+/////////////////////////////////////////////////////////////////
+//Resize right DW
+dw_field_list.X = this.Width - dw_field_list.Width - 10
+dw_imp_field_detail.X = dw_field_list.X
+cb_com_wizard.X = dw_field_list.X
+cb_create_value_list.X = cb_com_wizard.X + cb_com_wizard.Width + 40
+
+dw_field_list.Height = this.Height - dw_imp_field_detail.Height - 110
+dw_imp_field_detail.Y = dw_field_list.Y + dw_field_list.Height
+cb_com_wizard.Y = dw_imp_field_detail.Y + dw_imp_field_detail.Height + 10
+cb_create_value_list.Y = cb_com_wizard.Y
+//
+////Resize middle DW
+ll_mid_x= (dw_field_list.X - ll_left_fixed_width - dw_records.Width) / 2 + ll_left_fixed_width + 5
+//Added By Ken.Guo 06/05/2014
+If ll_mid_x < 955 Then ll_mid_x = 955
+dw_records.X = ll_mid_x
+
+//dw_prac_cont_id.X = dw_records.X
+dw_map_fields.X = dw_records.X
+dw_detail.X = dw_records.X
+
+dw_detail.Y = this.Height - dw_detail.Height - 5
+dw_map_fields.Height = dw_detail.Y - dw_map_fields.Y
+
+//Resize left DW
+dw_fields.Height = this.Height - dw_tables.Height - 12
+
+/////////////////////////////////////////////////////////////////
+//Resize line
+ln_1.EndX = dw_records.X + 50
+
+//ln_2.EndX = dw_prac_cont_id.X + 50
+//ln_2.EndY = dw_prac_cont_id.Y + 100
+
+ln_3.EndX = dw_records.X + 50 //ln_2.EndX
+ln_3.EndY = dw_map_fields.Y + 350
+
+//ln_4.BeginX = dw_prac_cont_id.X + dw_prac_cont_id.Width - 10
+//ln_4.EndX = dw_field_list.X + 50
+//ln_4.EndY = dw_field_list.Y + 150
+
+ln_5.BeginX = dw_map_fields.X + dw_map_fields.Width - 10
+ln_5.EndX = dw_field_list.X + 50
+ln_5.EndY = dw_field_list.Y + 550
+
+
+//Added By Ken.Guo 06/05/2014
+//Left DW Band
+long ll_xPos, ll_Left_max_width = 1200 , ll_left_width
+Long ll_Right_max_width = 1500,ll_right_width
+ll_left_width = dw_records.x - 70
+If ll_left_width > ll_Left_max_width Then ll_left_width = ll_Left_max_width
+If ll_left_width > ll_left_fixed_width Then //Default width
+	dw_tables.width = ll_left_width
+	dw_fields.width = dw_tables.width
+Else
+	dw_tables.width = ll_left_fixed_width
+	dw_fields.width = dw_tables.width
+End If
+
+//Right DW Band
+ll_right_width = This.Width - dw_records.width - dw_records.x - 70
+If ll_right_width > ll_Right_max_width Then ll_right_width = ll_Right_max_width
+If ll_right_width > ll_right_fixed_width Then //Default width
+	dw_field_list.x = This.Width - ll_right_width - 10
+	dw_field_list.width = ll_right_width
+	dw_imp_field_detail.width = dw_field_list.width
+	dw_imp_field_detail.x = dw_field_list.x
+Else
+	dw_field_list.x = This.Width - ll_right_fixed_width - 10
+	dw_field_list.width = ll_right_fixed_width
+	dw_imp_field_detail.width = dw_field_list.width
+	dw_imp_field_detail.x = dw_field_list.x	
+End If
+cb_com_wizard.X = dw_field_list.X
+cb_create_value_list.X = cb_com_wizard.X + cb_com_wizard.Width + 40
+
+
+
+	
+
+
+end event
+
+event ue_copymap();long ll_Null
+long ll_CopyRow
+long ll_InsertRow
+long i, ll_RowCount
+long ll_table_id
+long ll_table_records_id
+
+SetNull(ll_Null)
+if dw_detail.Enabled = false then Return
+ll_CopyRow = dw_records.GetRow()
+if ll_CopyRow <= 0 then
+	MessageBox("Prompt", "There is no Import to be copied.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return
+end if
+
+// Copy import table record
+ll_table_id = dw_records.object.isoft_table_id[ll_CopyRow]
+ll_InsertRow = of_GetInsertRow(ll_table_id)
+ll_InsertRow = dw_records.InsertRow(ll_InsertRow)
+dw_records.SetItem(ll_InsertRow, "isoft_table_id", ll_table_id)
+dw_records.SetItem(ll_InsertRow, "import_id", il_curr_import_id)
+for i = 1 to dw_records.RowCount()
+	dw_records.SetItem(i, "sort_no", i)
+next
+
+if dw_records.Update() <> 1 then
+	of_CompleteTrans(false)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	Return
+else
+	of_CompleteTrans(true)	
+end if
+ll_table_records_id = dw_records.object.table_records_id[ll_InsertRow]
+
+// Copy mapped records
+ll_RowCount = dw_map_fields.RowCount()
+if ll_RowCount <= 0 then
+	dw_records.SelectRow(0, false)
+	dw_records.SelectRow(ll_InsertRow, true)
+	dw_records.ScrollToRow(ll_InsertRow)
+	Return
+end if
+
+dw_map_fields.SetRedraw(false)
+dw_map_fields.RowsCopy(1, ll_RowCount, Primary!, dw_map_fields, 1, Primary!)
+for i = 1 to ll_RowCount
+	dw_map_fields.SetItem(i, "rec_id", ll_Null)
+	dw_map_fields.SetItem(i, "table_records_id", ll_table_records_id)
+next
+if dw_map_fields.Update() <> 1 then
+	of_CompleteTrans(false)
+	dw_map_fields.SetRedraw(true)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	Return
+else
+	of_CompleteTrans(true)
+end if
+
+// Refresh dw_map_fields
+dw_records.ScrollToRow(ll_InsertRow)
+dw_records.Event RowFocusChanged(ll_InsertRow)
+dw_map_fields.SetRedraw(true)
+end event
+
+event pfc_cst_save_check();//added by gavins 20140505
+If is_ImportType = '2'  Then tab_1.tabpage_field_data.Event ue_CheckMapping()
+
+end event
+
+event constructor;this.Event ue_init()
+end event
+
+type cb_create_value_list from commandbutton within tabpage_field_data
+integer x = 3717
+integer y = 1892
+integer width = 457
+integer height = 84
+integer taborder = 51
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Create &Value List..."
+end type
+
+event clicked;long ll_CurrentRow
+string ls_import_name
+string ls_imp_field_name
+string ls_Parm
+integer li_Return
+
+dw_imp_field_detail.AcceptText()
+if dw_field_list.RowCount() <= 0 then
+	MessageBox("Prompt", "Please add import field.")
+	Return
+end if
+li_Return = tab_1.tabpage_field_data.Event ue_save()
+if li_Return = -1 then Return
+
+ll_CurrentRow = tab_1.tabpage_hdr.dw_browse.GetRow()
+ls_import_name = tab_1.tabpage_hdr.dw_browse.object.import_name[ll_CurrentRow]
+
+ll_CurrentRow = dw_field_list.GetRow()
+ls_imp_field_name = dw_field_list.object.imp_field_name[ll_CurrentRow]
+if IsNull(ls_imp_field_name) then ls_imp_field_name = ""
+
+ls_Parm = String(il_curr_import_id) + "|" + ls_import_name + "|" + ls_imp_field_name
+OpenWithParm(w_import_valuelist, ls_Parm)
+end event
+
+type cb_com_wizard from commandbutton within tabpage_field_data
+integer x = 3232
+integer y = 1892
+integer width = 448
+integer height = 84
+integer taborder = 51
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Compute &Wizard..."
+end type
+
+event clicked;string ls_Error
+string ls_Syntax
+string ls_SQLSelect
+string ls_imp_field_name
+long  ll_InsertRow
+long  ll_CurrentRow
+long  i, ll_RowCount
+
+dw_imp_field_detail.AcceptText()
+ll_RowCount = dw_field_list.RowCount()
+if ll_RowCount <= 0 then
+	MessageBox("Prompt", "Please add import field.")
+	Return
+end if
+	
+for i = 1 to ll_RowCount
+	ls_imp_field_name = dw_field_list.object.imp_field_name[i]
+	if IsNull(ls_imp_field_name) or ls_imp_field_name = "" then Continue
+	if Len(ls_SQLSelect) > 0 then ls_SQLSelect += ","
+	ls_SQLSelect += "field_" + String(i) + " " + ls_imp_field_name
+next
+
+ls_SQLSelect = "SELECT " + ls_SQLSelect + " FROM import_table_gen"
+ls_Syntax = SQLCA.SyntaxFromSQL(ls_SQLSelect, "", ls_Error)
+dw_compute_verify.DataObject = ""
+dw_compute_verify.Create(ls_Syntax, ls_Error)
+dw_compute_verify.tag = dw_imp_field_detail.object.comp_def[dw_imp_field_detail.GetRow()]
+
+OpenWithParm(w_compute_wizard, dw_compute_verify)
+if Message.StringParm <> "cancel!" then	
+	ll_CurrentRow = dw_imp_field_detail.GetRow()
+	dw_imp_field_detail.object.comp_def[ll_CurrentRow] = Message.StringParm
+	if Len(Message.StringParm) > 0 then
+		dw_imp_field_detail.object.field_format[ll_CurrentRow] = ""
+		dw_imp_field_detail.object.case_type[ll_CurrentRow] = ""
+		dw_imp_field_detail.object.strip_type[ll_CurrentRow] = ""
+		dw_imp_field_detail.object.default_value[ll_CurrentRow] = ""		
+		cb_create_value_list.Enabled = false
+	else
+		cb_create_value_list.Enabled = true
+	end if	
+	/*
+	if dw_imp_field_detail.RowCount() = 1 or &
+	ll_CurrentRow = dw_imp_field_detail.RowCount() or &		
+	Len(String(dw_imp_field_detail.object.comp_def[ll_CurrentRow])) > 0 then
+		dw_imp_field_detail.object.comp_def[ll_CurrentRow] = Message.StringParm
+		dw_imp_field_detail.object.field_format[ll_CurrentRow] = ""
+		dw_imp_field_detail.object.case_type[ll_CurrentRow] = ""
+		dw_imp_field_detail.object.strip_type[ll_CurrentRow] = ""
+		dw_imp_field_detail.object.default_value[ll_CurrentRow] = ""
+	else				
+		ll_InsertRow = dw_imp_field_detail.InsertRow(0)	
+		dw_imp_field_detail.object.import_id[ll_InsertRow] = il_curr_import_id
+		dw_imp_field_detail.object.comp_def[ll_InsertRow] = Message.StringParm
+		dw_imp_field_detail.object.imp_field_name[ll_InsertRow] = dw_imp_field_detail.object.imp_field_name[ll_CurrentRow]
+		dw_imp_field_detail.object.field_length[ll_InsertRow] = 100
+		
+		if ll_InsertRow = 1 then
+			dw_imp_field_detail.object.field_order[ll_InsertRow] = 10
+		else
+			dw_imp_field_detail.object.field_order[ll_InsertRow] = dw_imp_field_detail.object.field_order[ll_InsertRow - 1] + 10
+		end if
+		
+		dw_field_list.ScrollToRow(ll_InsertRow)
+		dw_imp_field_detail.DeleteRow(ll_CurrentRow)
+	end if
+	*/
+end if
+end event
+
+type cb_edit_map from commandbutton within tabpage_field_data
+boolean visible = false
+integer x = 2734
+integer y = 20
+integer width = 402
+integer height = 84
+integer taborder = 31
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Edit Mappings"
+end type
+
+event clicked;//openwithparm(w_import_mapping_edit,il_import_id)
+end event
+
+type dw_detail from u_dw within tabpage_field_data
+event ue_keydown pbm_dwnkey
+integer x = 960
+integer y = 1240
+integer width = 2203
+integer height = 740
+integer taborder = 90
+boolean titlebar = true
+string title = "Mapped Field Detail"
+string dataobject = "d_import_map_detail"
+boolean vscrollbar = false
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_keydown;if Key = KeyDownArrow! or Key = KeyUpArrow! or Key = KeyPageUp! or Key = KeyPageDown! then 
+	Return 1
+else
+	Return 0
+end if
+end event
+
+event itemchanged;call super::itemchanged;//inherit
+long ll_rec_id
+long ll_FindRow
+long ll_InsertRow
+long ll_Null
+string ls_Null
+string ls_Value
+string ls_FiledName, displayvalue
+DataWindowChild ldwc_Child
+DataWindowChild ldwc_FieldChild
+
+SetNull(ls_Null)
+SetNull(ll_Null)
+this.AcceptText()
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Key field and ID field synchronization
+/*
+if (Lower(is_curr_table_name) = "pd_basic" or Lower(is_curr_table_name) = "ctx_basic_info") and (dwo.name = "key_field") then
+	ll_FindRow = dw_prac_cont_id.Find("rec_id=" + String(this.object.rec_id[Row]), 1, dw_prac_cont_id.RowCount())
+	if Data = "1" then
+		if ll_FindRow <= 0 then
+			ll_InsertRow = dw_prac_cont_id.InsertRow(0)
+			dw_prac_cont_id.object.rec_id[ll_InsertRow] = this.object.rec_id[Row]
+			dw_prac_cont_id.object.table_records_id[ll_InsertRow] = this.object.table_records_id[Row]
+			dw_prac_cont_id.object.isoft_field_id[ll_InsertRow] = this.object.isoft_field_id[Row]
+			dw_prac_cont_id.object.import_field_id[ll_InsertRow] = this.object.import_field_id[Row]
+			dw_prac_cont_id.object.id_field[ll_InsertRow] = 1
+			ll_FindRow = ll_InsertRow
+		end if
+		dw_prac_cont_id.ScrollToRow(ll_FindRow)
+		this.Post SetItem(Row, "id_field", 1)
+	else
+		if ll_FindRow > 0 then dw_prac_cont_id.DeleteRow(ll_FindRow)
+		this.Post SetItem(Row, "id_field", 0)
+	end if
+	Return 0
+end if
+*/
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Specify item change
+choose case dwo.name
+	case "null_type"
+		if Data = "2" then //Use text default
+			this.Post SetColumn("null_value")
+		else
+			this.SetItem(Row, "null_value", ls_Null)
+		end if
+		if Data = "3" then //Use column value
+			this.Post SetColumn("link_value")
+		else
+			this.SetItem(Row, "link_value", ll_Null)
+		end if
+		
+	case "null_value"	
+		if Lower(Trim(Data)) = "* select value *" then
+			if of_SelectValue(ls_Value) = 1 then
+				this.Post SetItem(Row, "null_value", ls_Value)
+			else
+				ls_Value = this.GetItemString(Row, "null_value", Primary!, true)
+				this.Post SetItem(Row, "null_value", ls_Value)
+			end if
+		end if
+		
+	case "lu_template"
+		if Len(Data) > 0 then
+			this.SetItem(Row, "lu_type", ls_Null)
+			this.SetItem(Row, "lu_table", ls_Null)
+			this.SetItem(Row, "lu_field_name", ls_Null)
+		else			
+			this.Post SetItem(Row, "lu_template", ll_Null)
+			this.SetColumn("lu_type")
+			this.Post SetFocus()
+		end if
+		
+	case "lu_type"
+		If is_ImportType = '2' Then
+			displayvalue = dw_map_fields.Describe( "Evaluate('LookUpDisplay(isoft_field_id) ', " + string(dw_map_fields.Getrow( )) + ")") ///added by gavins 20140804
+			if lower(displayvalue) = 'salesforce id' Then
+				MessageBox( 'Tips', 'Salesforce id column’s Lu Type cannot be modified.' )
+				SetItem( row, 'lu_type', ls_null )
+				this.SetItem(Row, "lu_table", ls_Null)
+				this.SetItem(Row, "lu_field_name", ls_Null)
+				Return 2
+			End If
+		End If
+		this.SetItem(Row, "lu_table", ls_Null)
+		this.SetItem(Row, "lu_field_name", ls_Null)
+		this.GetChild("lu_field_name", ldwc_FieldChild)
+		choose case Data
+			case "A" //Address
+				this.GetChild("lu_table_dddw", ldwc_Child)
+				ldwc_Child.Reset()
+				ids_LookUpTableDDDW[1].RowsCopy(1, ids_LookUpTableDDDW[1].RowCount(), Primary!, ldwc_Child, 1, Primary!)
+				ldwc_Child.InsertRow(1)
+				ldwc_FieldChild.SetFilter("(lookup_type='A' and id<>1) or id=0")
+			case "C" //Code
+				this.GetChild("lu_table_dddw", ldwc_Child)
+				ldwc_Child.Reset()
+				ids_LookUpTableDDDW[2].RowsCopy(1, ids_LookUpTableDDDW[2].RowCount(), Primary!, ldwc_Child, 1, Primary!)
+				ldwc_Child.InsertRow(1)
+				ldwc_FieldChild.SetFilter("(lookup_type='C' and id<>1) or id=0")
+			case "F" //Facility
+				this.SetItem(Row, "lu_table", "Facility")
+				ldwc_FieldChild.SetFilter("(lookup_type='F' and id<>1) or id=0")
+			case "M" //Committee
+				this.SetItem(Row, "lu_table", "Committee")
+				ldwc_FieldChild.SetFilter("(lookup_type='M' and id<>1) or id=0")
+			case "I"	//Company
+				this.SetItem(Row, "lu_table", "Company")
+				If is_ImportType = '2' Then//modified by gavins 20140505
+					ldwc_FieldChild.SetFilter("(lookup_type='I' and id<>1) or id=0")					
+				Else
+					ldwc_FieldChild.SetFilter("(lookup_type='I' and id<>1 and id <> 8 ) or id=0")					
+				End If
+			case "J"
+				this.SetItem(Row, "lu_table", "Contract")
+				ldwc_FieldChild.SetFilter("(lookup_type='I' and id = 8 ) or id=0")	
+		end choose
+		ldwc_FieldChild.Filter()
+		
+		If is_ImportType = '2' And Match( Data, "[A,F,M,I,J]" )  Then
+			this.SetItem(Row,'no_match_procd', 2 )
+		End If
+		
+	case "lu_table_dddw"
+		this.SetItem(Row, "lu_field_name", ls_Null)
+		
+	case "facility_id"
+		this.object.import_field_id[Row]	= ll_Null
+		//ll_rec_id = this.object.rec_id[Row]
+		//ll_FindRow = dw_prac_cont_id.Find("rec_id=" + String(ll_rec_id), 1, dw_prac_cont_id.RowCount())
+		//if ll_FindRow > 0 then
+		//	dw_prac_cont_id.object.import_field_id[ll_FindRow]	= ll_Null
+		//end if
+		
+	//case "key_field"
+		//if this.object.id_field[Row] = 1 and (is_curr_table_name <> "pd_basic" or is_curr_table_name <> "ctx_basic_info") then
+		//	ls_FiledName = this.Describe("Evaluate('LookUpDisplay(isoft_field_id)', " + String(Row) + ")")
+		//	MessageBox("Id Field", "The '" + ls_FiledName + "' field was not set as an Identification field, because it must belong to Basic Information table.")  //Start Code Change ----02.07.2008 #V8 maha - changed message
+			
+		//	this.Post SetItem(Row, "key_field", 0)
+		//end if
+	Case 'lu_field_name'
+		If 	this.GetItemString(Row, "lu_table" ) =  "Company" And  is_ImportType = '1'  Then //modified by gavins 20140505
+			If Data <> 'facility_name' Then
+				MessageBox( 'Tips', 'When the value for Lu Type is “company” and the Lu field value is not “company name”, 	the system will ignore “no match procd” option.~r~n' + &
+				'If the imported value does not match any value in company lookup, it will be written to the error log.' )
+				
+			End If			
+		End If
+	Case 'no_match_procd'//modified by gavins 20140505
+		If is_ImportType = '2' And Match( GetItemString( row, 'lu_type' ) ,  "[A,F,M,I,J]" ) And data <> '2' Then
+			MessageBox( 'Tips', 'Except importing the type (code) outside when there is no matching value approach can only be "Error"' )
+			SetItem( row, 'no_match_procd', 2 )
+			Return 2
+		End If
+end choose
+end event
+
+event clicked;call super::clicked;//inherit
+DataWindowChild ldwc_Child
+
+choose case dwo.name 
+	case "link_value"
+		this.GetChild("link_value", ldwc_Child)
+		ldwc_Child.Reset()
+		dw_field_list.RowsCopy(1, dw_field_list.RowCount(), Primary!, ldwc_Child, 1, Primary!)		
+		
+	case "lu_table_dddw"		
+		this.GetChild("lu_table_dddw", ldwc_Child)	
+		ldwc_Child.Reset()
+		if this.object.lu_type[Row] = 'A' then		
+			ids_LookUpTableDDDW[1].RowsCopy(1, ids_LookUpTableDDDW[1].RowCount(), Primary!, ldwc_Child, 1, Primary!)
+		else
+			ids_LookUpTableDDDW[2].RowsCopy(1, ids_LookUpTableDDDW[2].RowCount(), Primary!, ldwc_Child, 1, Primary!)
+		end if
+		ldwc_Child.InsertRow(1)				
+	
+end choose
+end event
+
+event rowfocuschanged;call super::rowfocuschanged;//Inherit
+DataWindowChild ldwc_Child
+
+if CurrentRow > 0 then
+	this.GetChild("lu_field_name", ldwc_Child)
+	choose case this.object.lu_type[CurrentRow]
+		case "A" //Address
+			ldwc_Child.SetFilter("(lookup_type='A' and id<>1) or id=0")
+		case "C" //Code
+			ldwc_Child.SetFilter("(lookup_type='C' and id<>1) or id=0")
+		case "F" //Facility
+			ldwc_Child.SetFilter("(lookup_type='F' and id<>1) or id=0")
+		case "M" //Committee
+			ldwc_Child.SetFilter("(lookup_type='M' and id<>1) or id=0")
+		case "I"	//Company
+			ldwc_Child.SetFilter("(lookup_type='I' and id<>1) or id=0")
+	end choose	
+	ldwc_Child.Filter()
+	this.SetRedraw(true)
+end if
+end event
+
+event constructor;call super::constructor;//inherit
+DataWindowChild ldwc_Child
+
+this.GetChild("lu_type", ldwc_Child)
+ldwc_Child.InsertRow(1)
+
+If ldwc_Child.Find( "data_value = 'J'", 1, ldwc_Child.RowCount( ) ) = 0 Then
+	ldwc_Child.InsertRow( 0 )
+	ldwc_Child.SetItem( ldwc_Child.Rowcount( ) , 'data_value', 'J' ) 
+	ldwc_Child.SetItem( ldwc_Child.Rowcount( ) , 'display_value', 'Contract' ) 			
+End If
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+
+if Message.Number = 522 then
+	Return 1
+end if
+end event
+
+event buttonclicked;call super::buttonclicked;long ll_lu_template
+
+ll_lu_template = this.object.lu_template[Row]
+if dwo.name = "b_viewlookups" then
+	OpenWithParm(w_import_lookup_mapping, ll_lu_template)
+end if
+end event
+
+type dw_map_fields from u_dw within tabpage_field_data
+event ue_sysfield_dragdrop ( long al_row )
+event ue_impfield_dragdrop ( long al_row )
+string tag = "dw_map_fields"
+integer x = 965
+integer y = 616
+integer width = 2203
+integer height = 624
+integer taborder = 80
+string dragicon = "row.ico"
+boolean titlebar = true
+string title = "Mapped Record Fields"
+string dataobject = "d_import_mapping_fields"
+boolean livescroll = false
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_sysfield_dragdrop(long al_row);long ll_InsertRow
+long ll_CurrentRow
+long i, ll_FindRow
+long ll_table_id
+long ll_isoft_table_id
+long ll_mapped_field_id
+long ll_table_records_id
+long ll_dv_field_id, ll_fieldsalesid, ll_Frow
+string displayvalue, ls_Filter
+
+// Get field ID and table ID
+ll_table_id = dw_tables.object.table_id[dw_tables.GetRow()]
+if dw_records.GetRow() > 0 then
+	ll_isoft_table_id = dw_records.object.isoft_table_id[dw_records.GetRow()]
+else
+	ll_isoft_table_id = -1
+end if
+
+// Check field of drag whether already exists
+if ll_table_id = ll_isoft_table_id then
+	for i = 1 to il_SelectedCount
+		ll_FindRow = dw_map_fields.Find("isoft_field_id=" + String(il_DragValue[i]), 1, dw_map_fields.RowCount())
+		if ll_FindRow > 0 then
+			dw_map_fields.ScrollToRow(ll_FindRow)
+			dw_map_fields.SelectRow(0, false)
+			dw_map_fields.SelectRow(ll_FindRow, true)
+			MessageBox("Prompt", "The ContractLogix Field already exists.")
+			Return
+		end if
+	next
+end if
+
+if ll_table_id = ll_isoft_table_id and al_Row > 0 then
+	If is_ImportType = '2' Then
+		//check salesforce id //added by gavins 20140804
+		displayvalue = dw_map_fields.Describe( "Evaluate('LookUpDisplay(isoft_field_id) ', " + string(al_Row) + ")")
+		if lower(displayvalue) = 'salesforce id' Then
+			MessageBox( 'Tips', 'Salesforce id column cannot be modified.' )
+			Return
+		End If
+		//
+	End If
+	
+	// Replace a mapped field record
+	ll_dv_field_id = dw_fields.object.field_id[il_DragRow]	
+	ll_mapped_field_id = dw_map_fields.object.rec_id[al_Row]
+	ll_FindRow = dw_prac_cont_id.Find("rec_id=" + String(ll_mapped_field_id), 1, dw_prac_cont_id.RowCount())
+	if ll_FindRow > 0 then 
+		dw_prac_cont_id.object.isoft_field_id[ll_FindRow] = ll_dv_field_id
+		dw_prac_cont_id.ScrollToRow(ll_FindRow)	
+	end if
+	dw_map_fields.object.isoft_field_id[al_Row] = ll_dv_field_id	
+	if dw_map_fields.Update() = 1 then
+		of_CompleteTrans(true)
+	else
+		of_CompleteTrans(false)
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	end if
+else
+	// Insert a import table record
+	if ll_table_id <> ll_isoft_table_id then
+		ll_InsertRow = of_GetInsertRow(ll_table_id)//added by gavins 20130222
+		ll_InsertRow = dw_records.InsertRow(ll_InsertRow)//modify by gavins 0->ll_InsertRow
+		ll_CurrentRow = tab_1.tabpage_hdr.dw_browse.GetRow()
+		dw_records.object.import_id[ll_InsertRow] = tab_1.tabpage_hdr.dw_browse.object.import_id[ll_CurrentRow]
+		dw_records.object.isoft_table_id[ll_InsertRow] = ll_table_id
+		dw_records.ScrollToRow(ll_InsertRow)
+		dw_prac_cont_id.Reset()
+		
+		// Set sort number (25:pd_basic, 1001:ctx_basic_info)
+		if ll_table_id = 25 or ll_table_id = 1001 then
+			for i = 1 to dw_records.RowCount()
+				dw_records.SetItem(i, "sort_no", i)
+			next
+			dw_records.SetItem(dw_records.GetRow(), "sort_no", 0)
+			dw_records.Sort()
+			dw_records.ScrollToRow(1)
+		elseif ll_InsertRow > 1 then
+			dw_records.SetItem(ll_InsertRow, "sort_no", dw_records.object.sort_no[ll_InsertRow - 1] + 1)
+			for i = 1 to dw_records.RowCount()//modify by gavins 20130222
+				dw_records.SetItem(i, "sort_no", i)
+			next
+			dw_records.Sort()
+			dw_records.ScrollToRow(ll_InsertRow)
+		else
+			dw_records.SetItem(ll_InsertRow, "sort_no", 1)
+		end if		
+		
+		// Update import table records
+		if dw_records.Update() <> 1 then
+			of_CompleteTrans(false)
+			MessageBox("Error", is_mapfield_errinfo, StopSign!)
+			Return
+		end if
+	end if
+	ll_table_records_id = dw_records.object.table_records_id[dw_records.GetRow()]
+	If is_ImportType = '2' Then
+		//check salesforce id //added by gavins 20140804
+		ls_Filter = dw_fields.Describe( "datawindow.table.Filter" )
+		If Pos( lower(ls_Filter ), 'salesforce_id' ) > 0 Then
+			For i = 1 To dw_fields.FilteredCount()
+				if ll_table_id = dw_fields.GetItemNumber( i, 'table_id', filter!, false ) and  'salesforce_id' = dw_fields.GetItemString( i, 'field_name', filter!, false )Then
+					ll_fieldsalesid = dw_fields.GetItemNumber( i, 'field_id', filter!, false )
+					ll_FRow = dw_map_fields.Find( "isoft_field_id = " + string( ll_fieldsalesid ) , 1, dw_map_fields.RowCount( ) )
+					If ll_FRow > 0 Then EXIT
+					ll_InsertRow = dw_map_fields.InsertRow( 0 )
+					dw_map_fields.SetItem( ll_InsertRow, 'isoft_field_id', ll_fieldsalesid )
+					dw_map_fields.SetItem( ll_InsertRow, 'table_records_id', ll_table_records_id )
+				
+					ll_FRow = dw_field_list.Find( "lower(imp_field_name)='id'", 1, dw_field_list.RowCount( ) )
+					If ll_FRow > 0 Then
+						dw_map_fields.SetItem( ll_InsertRow, 'import_field_id', dw_field_list.GetItemNumber( ll_FRow, 'rec_id' ) )
+						dw_map_fields.SetItem( ll_InsertRow, 'lu_type', '' )
+						dw_map_fields.SetItem( ll_InsertRow, 'lu_table', '' )
+						dw_map_fields.SetItem( ll_InsertRow, 'lu_field_name', '' )
+					End If
+				End If
+			Next
+		End If
+	End If
+	// Insert mapped field records
+	for i = 1 to il_SelectedCount
+		ll_InsertRow = dw_map_fields.InsertRow(0)
+		dw_map_fields.object.table_records_id[ll_InsertRow] = ll_table_records_id
+		dw_map_fields.object.isoft_field_id[ll_InsertRow] = il_DragValue[i]
+		dw_map_fields.object.id_field[ll_InsertRow] = 0		
+		wf_setmapfielddefaultvalue( dw_map_fields, ll_InsertRow ) //added by gavins 20140724
+	next
+	dw_map_fields.ScrollToRow(ll_InsertRow)
+	
+	// Update mapped field records
+	if dw_map_fields.Update() = 1 then
+		of_CompleteTrans(true)
+		dw_detail.SetRedraw(true)
+	else
+		of_CompleteTrans(false)
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	end if
+end if
+end event
+
+event ue_impfield_dragdrop(long al_row);long ll_InsertRow
+long ll_CurrentRow
+long ll_FindRow
+long ll_table_id
+long ll_isoft_table_id
+long ll_mapped_field_id
+long ll_table_records_id
+long ll_dv_import_field_id
+long i, ll_Null
+string displayvalue
+
+SetNull(ll_Null)
+if dw_records.GetRow() <= 0 then
+	MessageBox("Prompt", "There is no import table record.")
+	Return	
+end if
+
+// Insert or replace a mapped field record
+if al_Row > 0 then
+	If is_ImportType = '2' Then
+		//check salesforce id //added by gavins 20140804
+		displayvalue = dw_map_fields.Describe( "Evaluate('LookUpDisplay(isoft_field_id) ', " + string(al_Row) + ")")
+		if lower(displayvalue) = 'salesforce id' and dw_field_list.object.imp_field_name[il_DragRow] <> 'id'	 Then
+			MessageBox( 'Tips', 'The import data id column that is mapped to the Salesforce id column cannot be modified.' )
+			Return
+		End If
+		//
+	End If
+	// Replace a mapped field record	
+	ll_dv_import_field_id = dw_field_list.object.rec_id[il_DragRow]	
+	ll_mapped_field_id = dw_map_fields.object.rec_id[al_Row]	
+	ll_FindRow = dw_prac_cont_id.Find("rec_id=" + String(ll_mapped_field_id), 1, dw_prac_cont_id.RowCount())
+	if ll_FindRow > 0 then
+		dw_prac_cont_id.object.import_field_id[ll_FindRow] = ll_dv_import_field_id
+		dw_prac_cont_id.ScrollToRow(ll_FindRow)
+	end if
+	dw_map_fields.object.import_field_id[al_Row] = ll_dv_import_field_id
+	dw_map_fields.object.facility_id[al_Row] = ll_Null
+	wf_setmapfielddefaultvalue( dw_map_fields, al_Row ) //added by gavins 20140724
+	if dw_map_fields.Update() = 1 then
+		of_CompleteTrans(true)
+	else
+		of_CompleteTrans(false)
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	end if
+else
+	// Insert a mapped field record
+	for i = 1 to il_SelectedCount
+		ll_InsertRow = dw_map_fields.InsertRow(0)
+		ll_table_records_id = dw_records.object.table_records_id[dw_records.GetRow()]
+		dw_map_fields.object.table_records_id[ll_InsertRow] = ll_table_records_id
+		dw_map_fields.object.import_field_id[ll_InsertRow] = il_DragValue[i]
+		dw_map_fields.object.id_field[ll_InsertRow] = 0		
+	next
+	dw_map_fields.ScrollToRow(ll_InsertRow)
+	wf_setmapfielddefaultvalue( dw_map_fields, ll_InsertRow ) //added by gavins 20140724
+	if dw_map_fields.Update() = 1 then
+		of_CompleteTrans(true)
+		dw_detail.SetRedraw(true)
+	else
+		of_CompleteTrans(false)
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	end if
+end if
+end event
+
+event dberror;//override
+is_mapfield_errinfo = SQLErrText
+
+Return 1
+end event
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+dw_detail.ScrollToRow(CurrentRow)
+
+end event
+
+event dragwithin;call super::dragwithin;if Source.tag = "dw_fields" or Source.tag = "dw_field_list" then
+	// Select row	
+	if Row >0 then
+		if not IsSelected(Row) then
+			this.SelectRow(0, false)
+			this.SelectRow(Row, true)
+			this.ScrollToRow(Row)
+		end if		
+	else
+		this.SelectRow(0, false)
+	end if
+end if
+end event
+
+event dragdrop;call super::dragdrop;if Source.tag = "dw_fields" then
+	this.Event ue_sysfield_dragdrop(Row)
+elseif Source.tag = "dw_field_list" then
+	this.Event ue_impfield_dragdrop(Row)
+end if
+end event
+
+event clicked;call super::clicked;//inherit
+il_DragRow = Row
+this.ScrollToRow(Row)
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event getfocus;call super::getfocus;//inherit
+//of_SetMappedDWTitle(2)
+end event
+
+event doubleclicked;call super::doubleclicked;if not ib_LockFile and Row > 0 then
+	if MessageBox("Prompt", "Are you sure you want to delete the record?", Question!, YesNo!) = 1 then
+		il_DragRow = Row
+		dw_fields.Event ue_DragDrop(this.tag)
+	end if
+end if
+end event
+
+event constructor;call super::constructor;//Inherit
+this.of_SetRowSelect(true)
+this.DragIcon = gs_current_path + "\row.ico"
+end event
+
+event mousemove;call super::mousemove;of_BeginDrag(this)
+end event
+
+type dw_records from u_dw within tabpage_field_data
+event ue_dragdrop ( long al_row )
+string tag = "dw_records"
+integer x = 955
+integer y = 8
+integer width = 2203
+integer height = 608
+integer taborder = 80
+string dragicon = "row.ico"
+boolean titlebar = true
+string title = "Import Table Records"
+string dataobject = "d_import_table_list"
+boolean resizable = true
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_dragdrop(long al_row);long ll_InsertRow, ll_FRow
+long i, ll_RowCount
+long ll_dv_table_id, ll_fieldsalesid, ll_Recordid
+string	ls_Filter
+
+ll_dv_table_id = dw_tables.object.table_id[il_DragRow]
+Parent.SetRedraw(false)
+
+// Insert a import table record
+ll_InsertRow = of_GetInsertRow(ll_dv_table_id)
+ll_InsertRow = this.InsertRow(ll_InsertRow)
+this.object.isoft_table_id[ll_InsertRow] = ll_dv_table_id
+this.object.import_id[ll_InsertRow] = il_curr_import_id
+this.ScrollToRow(ll_InsertRow)
+
+// Set sort number
+for i = 1 to this.RowCount()
+	this.SetItem(i, "sort_no", i)
+next
+
+// Update import table records
+if this.Update() <> 1 then
+	of_CompleteTrans(false)
+	Parent.SetRedraw(true)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	Return
+end if
+ll_Recordid = this.object.table_records_id[ this.GetRow() ]
+this.Event RowFocusChanged(this.GetRow())
+
+If is_ImportType = '2' Then
+	//check salesforce id //added by gavins 20140804
+	ls_Filter = dw_fields.Describe( "datawindow.table.Filter" )
+	If Pos( lower(ls_Filter ), 'salesforce_id' ) > 0 Then
+		For i = 1 To dw_fields.FilteredCount()
+			if ll_dv_table_id = dw_fields.GetItemNumber( i, 'table_id', filter!, false ) and  'salesforce_id' = dw_fields.GetItemString( i, 'field_name', filter!, false )Then
+				ll_fieldsalesid = dw_fields.GetItemNumber( i, 'field_id', filter!, false )
+				ll_FRow = dw_map_fields.Find( "isoft_field_id = " + string( ll_fieldsalesid ) , 1, dw_map_fields.RowCount( ) )
+				If ll_FRow > 0 Then EXIT
+				ll_InsertRow = dw_map_fields.InsertRow( 0 )
+				dw_map_fields.SetItem( ll_InsertRow, 'isoft_field_id', ll_fieldsalesid )
+				dw_map_fields.SetItem( ll_InsertRow, 'table_records_id', ll_Recordid )
+				ll_FRow = dw_field_list.Find( "lower(imp_field_name)='id'", 1, dw_field_list.RowCount( ) )
+				If ll_FRow > 0 Then
+					dw_map_fields.SetItem( ll_InsertRow, 'import_field_id', dw_field_list.GetItemNumber( ll_FRow, 'rec_id' ) )
+					dw_map_fields.SetItem( ll_InsertRow, 'lu_type', '' )
+					dw_map_fields.SetItem( ll_InsertRow, 'lu_table', '' )
+					dw_map_fields.SetItem( ll_InsertRow, 'lu_field_name', '' )
+				End If
+			End If
+		Next
+	End If
+End If
+
+// Update mapped record fields
+if dw_map_fields.Update() = 1 then
+	of_CompleteTrans(true)
+else
+	of_CompleteTrans(false)
+	Parent.SetRedraw(true)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+end if
+
+Parent.SetRedraw(true)
+end event
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+long ll_FindRow
+long ll_isoft_table_id
+long ll_table_records_id
+string ls_table_name_allias
+DataWindowChild ldwc_Child
+
+if CurrentRow >0 then
+	this.SelectRow(0, false)
+	this.SelectRow(CurrentRow, true)
+	
+	// Filter Mapped record fields
+	ll_table_records_id = this.object.table_records_id[CurrentRow]
+	if IsNull(ll_table_records_id) then
+		dw_map_fields.SetFilter("1 <> 1")
+	else
+		dw_map_fields.SetFilter("table_records_id = " + String(ll_table_records_id) )//+ " and  lower(LookUpDisplay(isoft_field_id)) <> 'salesforce id'"
+	end if
+	dw_map_fields.Filter()
+	dw_map_fields.ScrollToRow(1)
+	dw_map_fields.Event RowFocusChanged(1)
+	
+	// Filter Provider Identification Field(s)
+	/*
+	dw_prac_cont_id.SetRedraw(false)
+	dw_prac_cont_id.Reset()
+	dw_map_fields.RowsCopy(1, dw_map_fields.RowCount(), Primary!, dw_prac_cont_id, 1, Primary!)	
+	dw_prac_cont_id.SetFilter("id_field = 1")
+	dw_prac_cont_id.Filter()
+	dw_prac_cont_id.SetRedraw(true)
+	*/
+	
+	// Set IntelliSoft Table display name in dw_detail
+	ll_isoft_table_id = this.object.isoft_table_id[CurrentRow]
+	if not IsNull(ll_isoft_table_id) then
+		ll_FindRow = dw_tables.Find("table_id=" + String(ll_isoft_table_id), 1, dw_tables.RowCount())
+		if ll_FindRow > 0 then
+			ls_table_name_allias = dw_tables.object.table_name_allias[ll_FindRow]
+			dw_detail.object.t_intellisoft_table.text = ls_table_name_allias			
+			is_curr_table_name = Lower(dw_tables.object.table_name[ll_FindRow]) // Get current table_name
+			dw_tables.ScrollToRow(ll_FindRow)
+		end if
+	end if
+	if ll_FindRow <= 0 then
+		dw_detail.object.t_intellisoft_table.text = ""
+		is_curr_table_name = ""
+	end if
+	
+	//	Set null_value list of dw_detail
+	dw_detail.GetChild("null_value", ldwc_Child)
+	choose case is_curr_table_name
+		case "pd_address", "pd_hosp_affil", "pd_board_specialty"
+			if is_curr_table_name = "pd_address" then
+				ldwc_Child.SetFilter("lookup_name in ('* Select Value *', '* NULL *', 'Address Type')")
+			else
+				ldwc_Child.SetFilter("lookup_name in ('* Select Value *', '* NULL *', 'Yes/No')")
+			end if
+		case else
+			ldwc_Child.SetFilter("lookup_name in ('* Select Value *', '* NULL *')")
+	end choose
+	ldwc_Child.Filter()
+	
+	// Set facility_id of dw_detail enabled
+	choose case is_curr_table_name
+		case "pd_affil_stat", "pd_address", "pd_hosp_affil", "pd_board_specialty"
+			dw_detail.object.facility_id.protect = 0
+			dw_detail.object.facility_id.background.color = 16777215
+		case else
+			dw_detail.object.facility_id.protect = 1
+			dw_detail.object.facility_id.background.color = 67108864
+	end choose
+else
+	dw_map_fields.SetFilter("1 <> 1")
+	dw_map_fields.Filter()
+	//dw_prac_cont_id.Reset()
+end if
+end event
+
+event dragdrop;call super::dragdrop;if Source.tag = "dw_tables" then
+	this.Event ue_DragDrop(Row)
+end if
+end event
+
+event dragwithin;call super::dragwithin;/*
+if Source.tag = "dw_tables" then
+	// Select row	
+	if Row >0 then
+		if not IsSelected(Row) then
+			this.SelectRow(0, false)
+			this.SelectRow(Row, true)
+		end if		
+	else
+		this.SelectRow(0, false)
+	end if
+end if
+*/
+end event
+
+event dberror;//override
+is_mapfield_errinfo = SQLErrText
+
+Return 1
+end event
+
+event clicked;call super::clicked;//inherit
+il_DragRow = Row
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event doubleclicked;call super::doubleclicked;if not ib_LockFile and Row > 0 then
+	if MessageBox("Prompt", "Are you sure you want to delete the record?", Question!, YesNo!) = 1 then
+		il_DragRow = Row
+		dw_tables.Event ue_DragDrop()
+	end if
+elseif row = 0 then //Start Code Change ----02.04.2008 #V8 maha
+	if this.height < 400 then
+		this.height = 768
+	else
+		this.height = 396
+	end if
+end if
+end event
+
+event constructor;call super::constructor;//Inherit
+this.DragIcon = gs_current_path + "\row.ico"
+end event
+
+event mousemove;call super::mousemove;of_BeginDrag(this)
+end event
+
+type dw_fields from u_dw within tabpage_field_data
+event ue_dragdrop ( string as_dw )
+string tag = "dw_fields"
+integer x = 5
+integer y = 628
+integer width = 896
+integer height = 1352
+integer taborder = 80
+string dragicon = "row.ico"
+boolean titlebar = true
+string title = "ContractLogix Fields"
+string dataobject = "d_import_intellisoftfields"
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_dragdrop(string as_dw);long ll_DeleteRow
+long ll_dv_mapped_field_id
+string displayvalue
+
+if as_dw = "dw_prac_cont_id" then
+	ll_dv_mapped_field_id = dw_prac_cont_id.object.rec_id[il_DragRow]
+elseif as_dw = "dw_map_fields" then
+	ll_dv_mapped_field_id = dw_map_fields.object.rec_id[il_DragRow]
+else
+	Return
+end if
+
+ll_DeleteRow = dw_prac_cont_id.Find("rec_id=" + String(ll_dv_mapped_field_id), 1, dw_prac_cont_id.RowCount())
+if ll_DeleteRow > 0 then dw_prac_cont_id.DeleteRow(ll_DeleteRow)
+
+ll_DeleteRow = dw_map_fields.Find("rec_id=" + String(ll_dv_mapped_field_id), 1, dw_map_fields.RowCount())
+If is_ImportType = '2' and ll_DeleteRow > 0 Then
+	//check salesforce id //added by gavins 20140804
+	displayvalue = dw_map_fields.Describe( "Evaluate('LookUpDisplay(isoft_field_id) ', " + string(ll_DeleteRow) + ")")
+	if lower(displayvalue) = 'salesforce id' Then
+		MessageBox( 'tips', 'Salesforce id column cannot be removed.' )
+		Return
+	End If
+	//
+End If
+if ll_DeleteRow > 0 then dw_map_fields.DeleteRow(ll_DeleteRow)
+dw_detail.ScrollToRow(dw_map_fields.GetRow())
+
+if dw_map_fields.Update() = 1 then
+	of_CompleteTrans(true)
+else
+	of_CompleteTrans(false)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+end if
+end event
+
+event dragdrop;call super::dragdrop;this.Event ue_DragDrop(Source.tag)
+end event
+
+event clicked;call super::clicked;//inherit
+long i
+
+il_DragRow = Row
+il_SelectedCount = 0
+
+for i = 1 to this.RowCount()
+	if this.IsSelected(i) then
+		il_SelectedCount ++
+		il_DragValue[il_SelectedCount] = this.object.field_id[i]
+	end if
+next
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event constructor;call super::constructor;//Inherit
+this.of_SetRowSelect(true)
+inv_RowSelect.of_SetStyle(inv_RowSelect.EXTENDED)
+this.DragIcon = gs_current_path + "\row.ico"
+end event
+
+event doubleclicked;call super::doubleclicked;if not ib_LockFile and Row > 0 then
+	il_DragRow = Row
+	if ii_CurrMappedDW = 1 then
+		dw_prac_cont_id.Event ue_sysfield_dragdrop(0)
+	else
+		dw_map_fields.Event ue_sysfield_dragdrop(0)
+	end if
+end if
+end event
+
+event mousemove;call super::mousemove;of_BeginDrag(this)
+end event
+
+type dw_tables from u_dw within tabpage_field_data
+event ue_dragdrop ( )
+string tag = "dw_tables"
+integer x = 5
+integer y = 8
+integer width = 896
+integer height = 620
+integer taborder = 70
+string dragicon = "row.ico"
+boolean titlebar = true
+string title = "ContractLogix Tables"
+string dataobject = "d_import_intellisofttables"
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_dragdrop();long ll_DeleteRow
+long ll_CurrentRow
+long ll_dv_table_records_id
+
+// Delete import table records and mapped record fields
+ll_dv_table_records_id = dw_records.object.table_records_id[il_DragRow]
+
+ll_DeleteRow = dw_records.Find("table_records_id=" + String(ll_dv_table_records_id), 1, dw_records.RowCount())
+if ll_DeleteRow <= 0 then Return
+
+dw_map_fields.SetFilter("table_records_id = " + String(ll_dv_table_records_id))
+dw_map_fields.Filter()
+dw_map_fields.RowsMove(1, dw_map_fields.RowCount(), Primary!, dw_map_fields, 1, Delete!)
+
+dw_records.DeleteRow(ll_DeleteRow)
+if dw_records.GetSelectedRow(1) <= 0 then
+	dw_records.SelectRow(dw_records.GetRow(), true)
+end if
+
+// Update all
+if dw_records.Update() <> 1 then
+	of_CompleteTrans(false)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	Return
+end if
+
+if dw_map_fields.Update() = 1 then
+	of_CompleteTrans(true)
+else
+	of_CompleteTrans(false)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+end if
+
+// Filter dw_prac_cont_id and mapped fields
+dw_records.Event RowFocusChanged(dw_records.GetRow())
+end event
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+string ls_Filter
+Integer	li_Row
+
+//if Current row less than 1
+if CurrentRow <= 0 then
+	dw_fields.SetFilter("1 <> 1")
+	dw_fields.Filter()
+	Return
+end if
+this.SelectRow(0, false)
+this.SelectRow(CurrentRow, true)
+
+//Filter data of dw_fields
+if ii_curr_isoft_module = 1 then
+	//IntelliCred/App module
+	ls_Filter = "table_id = " + String(this.object.table_id[CurrentRow])
+	ls_Filter += " AND Lower(field_name) not in ('rec_id','prac_id','seq_no')"
+else
+	//Contract Logix module
+	ls_Filter = of_GetContractFieldFilter(this)
+end if
+dw_fields.SetFilter(ls_Filter)
+dw_fields.Filter()
+
+//added by gavins 20140505
+If lower(GetItemString( currentrow, 'table_name' ) )= 'ctx_contract_contacts' and  is_ImportType = '2' Then
+	If dw_fields.Find( "field_id = -999999", 1, dw_fields.RowCount( ) ) = 0 Then
+		li_Row = dw_fields.InsertRow( 0 )
+		dw_fields.SetItem( li_Row, 'table_id', GetItemNumber( currentrow, 'table_id' ) ) 
+		dw_fields.SetItem( li_Row, 'field_id', -999999 ) 
+		dw_fields.SetItem( li_Row, 'field_name_allias', 'Contracted Company Contact Salesforce ID' ) 
+		dw_fields.SetItem( li_Row, 'field_name', 'sfcontact_id' ) 
+		dw_fields.SetItemStatus( li_row, 0, Primary!, NotModified! )		
+		li_Row = dw_fields.InsertRow( 0 )
+		dw_fields.SetItem( li_Row, 'table_id', GetItemNumber( currentrow, 'table_id' ) ) 
+		dw_fields.SetItem( li_Row, 'field_id', -999998 ) 
+		dw_fields.SetItem( li_Row, 'field_name_allias', 'Our Company Contact Salesforce ID' ) //modify by gavins 20140605 ken request
+		dw_fields.SetItem( li_Row, 'field_name', 'ourcontact_id' ) 
+		dw_fields.SetItemStatus( li_row, 0, Primary!, NotModified! )
+	End If
+End If
+
+dw_fields.SetRow(1)
+dw_fields.SelectRow(0, false)
+dw_fields.SelectRow(1, true)
+end event
+
+event dragdrop;call super::dragdrop;if Source.tag = "dw_records" then 
+	this.Event ue_DragDrop()
+end if
+end event
+
+event clicked;call super::clicked;//inherit
+il_DragRow = Row
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event doubleclicked;call super::doubleclicked;if not ib_LockFile and Row > 0 then
+	il_DragRow = Row
+	dw_records.Event ue_DragDrop(0)
+end if
+end event
+
+event constructor;call super::constructor;//Inherit
+this.DragIcon = gs_current_path + "\row.ico"
+end event
+
+event mousemove;call super::mousemove;of_BeginDrag(this)
+end event
+
+type ln_1 from line within tabpage_field_data
+long linecolor = 16711680
+integer linethickness = 8
+integer beginx = 896
+integer beginy = 244
+integer endx = 955
+integer endy = 244
+end type
+
+type ln_2 from line within tabpage_field_data
+boolean visible = false
+long linecolor = 16711680
+integer linethickness = 8
+integer beginx = 741
+integer beginy = 748
+integer endx = 800
+integer endy = 696
+end type
+
+type ln_4 from line within tabpage_field_data
+boolean visible = false
+long linecolor = 16711680
+integer linethickness = 8
+integer beginx = 2994
+integer beginy = 524
+integer endx = 3063
+integer endy = 464
+end type
+
+type ln_5 from line within tabpage_field_data
+long linecolor = 16711680
+integer linethickness = 8
+integer beginx = 3163
+integer beginy = 892
+integer endx = 3223
+integer endy = 840
+end type
+
+type ln_3 from line within tabpage_field_data
+long linecolor = 16711680
+integer linethickness = 8
+integer beginx = 901
+integer beginy = 1144
+integer endx = 960
+integer endy = 1092
+end type
+
+type dw_imp_field_detail from u_dw within tabpage_field_data
+event ue_keydown pbm_dwnkey
+integer x = 3232
+integer y = 984
+integer width = 1029
+integer height = 896
+integer taborder = 90
+boolean bringtotop = true
+boolean titlebar = true
+string title = "Import Field Detail"
+string dataobject = "d_import_field_detail"
+boolean vscrollbar = false
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_keydown;if Key = KeyDownArrow! or Key = KeyUpArrow! or Key = KeyPageUp! or Key = KeyPageDown! then 
+	Return 1
+else
+	Return 0
+end if
+end event
+
+event itemchanged;call super::itemchanged;//inherit
+long ll_FindRow
+string ls_Null
+string ls_Value
+string ls_FindCriteria
+
+SetNull(ls_Null)
+
+choose case dwo.name
+	case "imp_field_name"
+		//Added By Jay Chen 07-16-2014 remark:check field name
+		if Not of_field_name_check(data) then
+			this.post ScrollToRow(row)
+			dw_field_list.post ScrollToRow(row)
+			this.post setfocus()
+			this.post setcolumn("imp_field_name")
+			messagebox("Invalid Field Name","The field name " + data + " is invalid. It must start with a letter and can include any combination of letters, numbers, and underscores.")
+			return -1
+		end if
+		//end
+		
+		ls_FindCriteria = "Lower(imp_field_name)='" + Lower(Data) + "'"
+		ll_FindRow = this.Find(ls_FindCriteria, 1, Row - 1)
+		if ll_FindRow <= 0 then
+			ll_FindRow = this.Find(ls_FindCriteria, Row + 1, RowCount())
+		end if
+		if ll_FindRow > 0 then
+			this.Post SetItem(Row, "imp_field_name", "")
+			this.Post SetColumn("imp_field_name")
+			this.Post SetFocus()
+		end if
+		
+	case "default_value"	
+		if Lower(Trim(Data)) = "* select value *" then
+			if of_SelectValue(ls_Value) = 1 then
+				this.Post SetItem(Row, "default_value", ls_Value)
+			else
+				ls_Value = this.GetItemString(Row, "default_value", Primary!, true)
+				this.Post SetItem(Row, "default_value", ls_Value)
+			end if
+		elseif Lower(Trim(Data)) = "* null *" then
+			this.Post SetItem(Row, "default_value", ls_Null)
+		end if
+end choose
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+type dw_field_list from u_dw within tabpage_field_data
+string tag = "dw_field_list"
+integer x = 3227
+integer y = 8
+integer width = 1024
+integer height = 964
+integer taborder = 80
+string dragicon = "row.ico"
+boolean bringtotop = true
+boolean titlebar = true
+string title = "Import Fields"
+string dataobject = "d_import_fields"
+boolean hscrollbar = true
+borderstyle borderstyle = stylebox!
+end type
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+string ls_comp_def
+
+if CurrentRow > 0 then
+	dw_imp_field_detail.ScrollToRow(CurrentRow)
+	
+	ls_comp_def = Trim(this.object.comp_def[CurrentRow])
+	if IsNull(ls_comp_def) then ls_comp_def = ""
+	If is_ImportType = '1' Then
+		if ib_LockFile or Len(ls_comp_def) > 0 then
+			cb_create_value_list.Enabled = false
+		else
+			cb_create_value_list.Enabled = true
+		end if
+	End If
+end if
+end event
+
+event dragenter;call super::dragenter;tab_1.tabpage_field_data.Event ue_save()
+end event
+
+event dberror;//override
+is_mapfield_errinfo = SQLErrText
+
+Return 1
+end event
+
+event dragdrop;call super::dragdrop;long ll_DeleteRow
+long ll_dv_mapped_field_id
+string displayvalue
+
+if Source.tag = "dw_prac_cont_id" then
+	ll_dv_mapped_field_id = dw_prac_cont_id.object.rec_id[il_DragRow]
+elseif Source.tag = "dw_map_fields" then
+	ll_dv_mapped_field_id = dw_map_fields.object.rec_id[il_DragRow]
+else
+	Return
+end if
+
+ll_DeleteRow = dw_prac_cont_id.Find("rec_id=" + String(ll_dv_mapped_field_id), 1, dw_prac_cont_id.RowCount())
+if ll_DeleteRow > 0 then dw_prac_cont_id.DeleteRow(ll_DeleteRow)
+
+ll_DeleteRow = dw_map_fields.Find("rec_id=" + String(ll_dv_mapped_field_id), 1, dw_map_fields.RowCount())
+If is_ImportType = '2' and ll_DeleteRow > 0 Then
+	//check salesforce id //added by gavins 20140804
+	displayvalue = dw_map_fields.Describe( "Evaluate('LookUpDisplay(isoft_field_id) ', " + string(ll_DeleteRow) + ")")
+	if lower(displayvalue) = 'salesforce id' Then
+		MessageBox( 'tips', 'Salesforce id column cannot be removed.' )
+		Return
+	End If
+	//
+End If
+if ll_DeleteRow > 0 then dw_map_fields.DeleteRow(ll_DeleteRow)
+dw_detail.ScrollToRow(dw_map_fields.GetRow())
+
+if dw_map_fields.Update() = 1 then
+	of_CompleteTrans(true)
+else
+	of_CompleteTrans(false)
+	MessageBox("Error", is_mapfield_errinfo, StopSign!)
+end if
+end event
+
+event clicked;call super::clicked;//inherit
+long i
+
+il_DragRow = Row
+il_SelectedCount = 0
+
+for i = 1 to this.RowCount()
+	if this.IsSelected(i) then
+		il_SelectedCount ++
+		il_DragValue[il_SelectedCount] = this.object.rec_id[i]
+	end if
+next
+end event
+
+event buttonclicked;call super::buttonclicked;integer li_Return, li_Pos, li_i, li_Row, li_Frow
+n_cst_String		ln_string
+string	ls_Result, ls_Fields, ls_Rows[], ls_Columns[]
+n_cst_webapi    ln_api
+str_sflogin_response  lstr_res
+
+choose case dwo.name
+	case "b_add"
+		Event pfc_cst_add()
+	case "b_delete"
+		Event pfc_cst_delete()
+	case "b_compare"
+		If is_ImportType = "1" Then
+			li_Return = tab_1.tabpage_field_data.Event ue_save()
+			if li_Return = 1 then
+				Open(w_import_comparefield)
+			end if
+		ElseIf is_ImportType = "2" Then//added by gavins 20140505
+			li_Return = tab_1.tabpage_field_data.Event ue_save()
+			if li_Return = 1 then
+				istr_SFResponse.s_import_id =  il_curr_import_id 
+				If isnull( is_sfUser  ) or trim( is_sfuser ) = "" Then
+					Open(w_sflogin_response)
+					lstr_res = Message.PowerobjectParm
+					If isvalid( lstr_res ) Then
+						istr_SFResponse = lstr_res
+						is_sfpwd =istr_SFResponse.s_pwd
+						is_sfuser =istr_SFResponse.s_user
+						is_Result = istr_SFResponse.s_Result
+					End If
+					If  Len( is_Result ) > 0 Then
+						istr_SFResponse.s_import_id =  il_curr_import_id 
+						openwithparm( w_sflogin_objects, istr_SFResponse )
+						lstr_res = Message.PowerObjectParm
+						istr_SFResponse = lstr_Res
+						ls_Fields = lstr_Res.s_fields
+					End If
+		
+				Else
+					
+					openwithparm( w_sflogin_objects, istr_SFResponse )
+					lstr_res = Message.PowerObjectParm
+					
+					If isvalid( lstr_res ) Then
+						istr_SFResponse = lstr_Res
+						ls_Fields = lstr_Res.s_fields
+					End If
+					
+				End If
+				If Len( ls_Fields) > 0 Then
+					
+					ln_String.of_Parsetoarray( ls_Fields, "~r", ls_Rows)
+					If tab_1.tabpage_hdr.dw_imp_hdr.GetRow() <= 0 Then
+						MessageBox( 'tips', 'Retrieving of the import Id failed. Please check the database connection.' )
+						Return 
+					End If
+					tab_1.tabpage_hdr.dw_imp_hdr.SetItem(  tab_1.tabpage_hdr.dw_imp_hdr.GetRow( ), 'import_sfobject', istr_SFResponse.s_oname )
+					
+					integer		li_count
+					
+					If dw_imp_field_detail.RowCount( ) > 0 Then
+						li_count =   dw_imp_field_detail.object.field_order[ dw_imp_field_detail.RowCount( )]  
+					End If
+					For li_i = 1 To UpperBound( ls_Rows )
+						ln_String.of_Parsetoarray( ls_Rows[li_i], "~t", ls_Columns)
+						if Upperbound( ls_columns ) = 0 Then Continue
+						li_Frow = dw_field_list.Find( "lower(imp_field_name) = '" + lower(ls_columns[2]) + "'", 1, dw_field_list.Rowcount( ) )
+						If li_Frow = 0 Then
+							li_Row = dw_imp_field_detail.InsertRow( 0 )
+							li_count = li_count + 10
+							dw_imp_field_detail.SetItem(li_Row, 'field_order',  li_count  )
+							
+							dw_imp_field_detail.SetItem(li_Row, 'import_id', tab_1.tabpage_hdr.dw_imp_hdr.GetItemNumber(tab_1.tabpage_hdr.dw_imp_hdr.GetRow(),'import_id' ) )
+							dw_imp_field_detail.SetItem(li_Row, 'imp_field_label', ls_columns[1] )
+							dw_imp_field_detail.SetItem(li_Row, 'imp_field_name', ls_columns[2] )
+							dw_imp_field_detail.SetItem(li_Row, 'imp_field_type', ls_columns[3] )
+							dw_imp_field_detail.SetItem(li_Row, 'field_length', long(ls_columns[4] ))
+						ElseIf li_Frow > 0  Then
+							dw_imp_field_detail.SetItem(li_Frow, 'imp_field_label', ls_columns[1] )
+							dw_imp_field_detail.SetItem(li_Row, 'imp_field_type', ls_columns[3] )
+							dw_imp_field_detail.SetItem(li_Frow, 'field_length', long(ls_columns[4] ))
+						End If						
+					Next
+					// Save data
+					tab_1.tabpage_hdr.Event ue_save()
+					tab_1.tabpage_field_data.Event ue_save()
+				End If
+			end if
+		End If
+end choose
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event constructor;call super::constructor;//inherit
+this.of_SetRowSelect(true)
+inv_RowSelect.of_SetStyle(inv_RowSelect.EXTENDED)
+this.DragIcon = gs_current_path + "\row.ico"
+end event
+
+event doubleclicked;call super::doubleclicked;if not ib_LockFile and Row > 0 then
+	il_DragRow = Row
+	if ii_CurrMappedDW = 1 then
+		dw_prac_cont_id.Event ue_impfield_dragdrop(0)
+	else
+		dw_map_fields.Event ue_impfield_dragdrop(0)
+	end if
+end if
+end event
+
+event mousemove;call super::mousemove;of_BeginDrag(this)
+end event
+
+type dw_compute_verify from datawindow within tabpage_field_data
+boolean visible = false
+integer x = 4343
+integer y = 2460
+integer width = 169
+integer height = 88
+integer taborder = 100
+boolean bringtotop = true
+string title = "none"
+string dataobject = "d_import_compute_syntax"
+boolean hscrollbar = true
+boolean livescroll = true
+borderstyle borderstyle = stylelowered!
+end type
+
+type dw_prac_cont_id from u_dw within tabpage_field_data
+event ue_sysfield_dragdrop ( long al_row )
+event ue_impfield_dragdrop ( long al_row )
+string tag = "dw_prac_cont_id"
+boolean visible = false
+integer x = 805
+integer y = 616
+integer width = 2203
+integer height = 372
+integer taborder = 90
+string dragicon = "row.ico"
+boolean titlebar = true
+string title = "Provider Identification Fields (must be from Basic Information table)"
+string dataobject = "d_import_mapping_prac_cont"
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_sysfield_dragdrop(long al_row);long ll_InsertRow
+long ll_CurrentRow
+long ll_FindRow
+long ll_table_id
+long ll_isoft_table_id
+long ll_mapped_field_id
+long ll_table_records_id
+long ll_dv_field_id
+string ls_table_name
+
+if dw_records.RowCount() <= 0 then
+	MessageBox("Prompt", "There is no import table record.")
+	Return	
+end if
+
+// Verify table name
+ls_table_name = Lower(dw_tables.object.table_name[dw_tables.GetRow()])
+if dw_records.RowCount() > 0 and is_curr_table_name <> "pd_basic" and is_curr_table_name <> "ctx_basic_info" then
+	MessageBox("ID field", "ID field is not required for selected import table.")
+	Return
+end if
+if ls_table_name <> "pd_basic" and ls_table_name <> "ctx_basic_info" then
+	MessageBox("ID field", "ID fields must be from the Basic Information table.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return	
+end if
+
+ll_dv_field_id = dw_fields.object.field_id[il_DragRow]
+ll_FindRow = dw_prac_cont_id.Find("isoft_field_id=" + String(ll_dv_field_id), 1, dw_prac_cont_id.RowCount())
+if ll_FindRow > 0 then
+	dw_prac_cont_id.ScrollToRow(ll_FindRow)
+	MessageBox("Prompt", "The ContractLogix Field already exists.")
+	Return
+end if
+
+// Get table ID
+ll_table_id = dw_tables.object.table_id[dw_tables.GetRow()]
+if dw_records.GetRow() > 0 then
+	ll_isoft_table_id = dw_records.object.isoft_table_id[dw_records.GetRow()]
+else
+	ll_isoft_table_id = -1
+end if
+
+// Insert or replace a mapped field record
+if al_Row > 0 then
+	// Replace a mapped field record
+	dw_prac_cont_id.object.isoft_field_id[al_Row] = ll_dv_field_id
+	ll_mapped_field_id = dw_prac_cont_id.object.rec_id[al_Row]	
+	ll_FindRow = dw_map_fields.Find("rec_id=" + String(ll_mapped_field_id), 1, dw_map_fields.RowCount())
+	if ll_FindRow > 0 then
+		dw_map_fields.object.isoft_field_id[ll_FindRow] = ll_dv_field_id
+		if Lower(is_curr_table_name) = "pd_basic" or Lower(is_curr_table_name) = "ctx_basic_info" then
+			dw_map_fields.object.key_field[ll_FindRow] = 1
+		end if
+		dw_map_fields.ScrollToRow(ll_FindRow)
+		if dw_map_fields.Update() = 1 then
+			of_CompleteTrans(true)
+		else
+			of_CompleteTrans(false)
+			MessageBox("Error", is_mapfield_errinfo, StopSign!)
+		end if
+	end if
+else
+	// Insert a import table record
+	if dw_records.GetRow() <= 0 then
+		ll_InsertRow = dw_records.InsertRow(0)
+		ll_CurrentRow = tab_1.tabpage_hdr.dw_browse.GetRow()
+		dw_records.object.import_id[ll_InsertRow] = tab_1.tabpage_hdr.dw_browse.object.import_id[ll_CurrentRow]
+		dw_records.object.isoft_table_id[ll_InsertRow] = ll_table_id
+		dw_records.ScrollToRow(ll_InsertRow)
+		if dw_records.Update() <> 1 then
+			of_CompleteTrans(false)
+			MessageBox("Error", is_mapfield_errinfo, StopSign!)
+			Return
+		end if
+		dw_records.Event RowFocusChanged(ll_InsertRow)
+	end if
+		
+	// Insert a mapped field record
+	ll_InsertRow = dw_prac_cont_id.InsertRow(0)
+	ll_table_records_id = dw_records.object.table_records_id[dw_records.GetRow()]
+	dw_prac_cont_id.object.table_records_id[ll_InsertRow] = ll_table_records_id
+	dw_prac_cont_id.object.isoft_field_id[ll_InsertRow] = ll_dv_field_id
+	dw_prac_cont_id.object.id_field[ll_InsertRow] = 1
+	dw_prac_cont_id.ScrollToRow(ll_InsertRow)
+	
+	ll_FindRow = dw_map_fields.Find("isoft_field_id=" + String(ll_dv_field_id), 1, dw_map_fields.RowCount())
+	if ll_FindRow > 0 then
+		dw_map_fields.object.id_field[ll_FindRow] = 1
+		dw_prac_cont_id.object.import_field_id[ll_InsertRow] = dw_map_fields.object.import_field_id[ll_FindRow]
+		dw_map_fields.ScrollToRow(ll_FindRow)
+		ll_InsertRow = ll_FindRow
+	else
+		ll_InsertRow = dw_map_fields.InsertRow(0)
+		dw_map_fields.object.table_records_id[ll_InsertRow] = ll_table_records_id
+		dw_map_fields.object.isoft_field_id[ll_InsertRow] = ll_dv_field_id
+		dw_map_fields.object.id_field[ll_InsertRow] = 1
+		dw_map_fields.ScrollToRow(ll_InsertRow)
+	end if
+	if is_curr_table_name = "pd_basic" or is_curr_table_name = "ctx_basic_info" then
+		dw_map_fields.object.key_field[ll_InsertRow] = 1
+	end if
+		
+	if dw_map_fields.Update() = 1 then
+		of_CompleteTrans(true)
+		dw_prac_cont_id.object.rec_id[dw_prac_cont_id.GetRow()] = dw_map_fields.object.rec_id[dw_map_fields.GetRow()]
+		dw_detail.SetRedraw(true)
+	else
+		of_CompleteTrans(false)		
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	end if	
+end if
+end event
+
+event ue_impfield_dragdrop(long al_row);long ll_InsertRow
+long ll_CurrentRow
+long ll_FindRow
+long ll_table_id
+long ll_isoft_table_id
+long ll_mapped_field_id
+long ll_table_records_id
+long ll_dv_import_field_id
+string ls_table_name
+
+if dw_records.RowCount() <= 0 then
+	MessageBox("Prompt", "There is no import table record.")
+	Return	
+end if
+
+// Verify table name
+ll_dv_import_field_id = dw_field_list.object.rec_id[il_DragRow]
+ls_table_name = Lower(dw_tables.object.table_name[dw_tables.GetRow()])
+if is_curr_table_name <> "pd_basic" and is_curr_table_name <> "ctx_basic_info" then
+	MessageBox("ID field", "ID field is not required for selected import table.")
+	Return
+end if
+
+// Insert or replace a mapped field record
+if al_Row > 0 then
+	// Replace a mapped field record
+	dw_prac_cont_id.object.import_field_id[al_Row] = ll_dv_import_field_id
+	ll_mapped_field_id = dw_prac_cont_id.object.rec_id[al_Row]	
+	ll_FindRow = dw_map_fields.Find("rec_id=" + String(ll_mapped_field_id), 1, dw_map_fields.RowCount())
+	if ll_FindRow > 0 then
+		dw_map_fields.object.import_field_id[ll_FindRow] = ll_dv_import_field_id
+		dw_map_fields.ScrollToRow(ll_FindRow)
+		if dw_map_fields.Update() = 1 then
+			of_CompleteTrans(true)
+		else
+			of_CompleteTrans(false)
+			MessageBox("Error", is_mapfield_errinfo, StopSign!)
+		end if
+	end if
+else	
+	// Insert a mapped field record	
+	ll_InsertRow = dw_prac_cont_id.InsertRow(0)
+	ll_table_records_id = dw_records.object.table_records_id[dw_records.GetRow()]
+	dw_prac_cont_id.object.table_records_id[ll_InsertRow] = ll_table_records_id
+	dw_prac_cont_id.object.import_field_id[ll_InsertRow] = ll_dv_import_field_id
+	dw_prac_cont_id.object.id_field[ll_InsertRow] = 1
+	dw_prac_cont_id.ScrollToRow(ll_InsertRow)
+	
+	ll_InsertRow = dw_map_fields.InsertRow(0)
+	dw_map_fields.object.table_records_id[ll_InsertRow] = ll_table_records_id
+	dw_map_fields.object.import_field_id[ll_InsertRow] = ll_dv_import_field_id
+	dw_map_fields.object.id_field[ll_InsertRow] = 1
+	dw_map_fields.ScrollToRow(ll_InsertRow)
+	if is_curr_table_name = "pd_basic" or is_curr_table_name = "ctx_basic_info" then
+		dw_map_fields.object.key_field[ll_InsertRow] = 1
+	end if
+	
+	if dw_map_fields.Update() = 1 then
+		of_CompleteTrans(true)
+		dw_prac_cont_id.object.rec_id[dw_prac_cont_id.GetRow()] = dw_map_fields.object.rec_id[dw_map_fields.GetRow()]
+		dw_detail.SetRedraw(true)
+	else
+		of_CompleteTrans(false)		
+		MessageBox("Error", is_mapfield_errinfo, StopSign!)
+	end if	
+end if
+end event
+
+event dragwithin;call super::dragwithin;if Source.tag = "dw_fields" then	
+	dw_fields.SelectRow(0, false)
+	dw_fields.SelectRow(il_DragRow, true)
+elseif Source.tag = "dw_field_list" then
+	dw_field_list.SelectRow(0, false)
+	dw_field_list.SelectRow(il_DragRow, true)	
+end if
+
+// Select row
+if Source.tag = "dw_fields" or Source.tag = "dw_field_list" then		
+	if Row >0 then
+		if not IsSelected(Row) then
+			this.SelectRow(0, false)
+			this.SelectRow(Row, true)
+		end if		
+	else
+		this.SelectRow(0, false)
+	end if
+end if
+end event
+
+event dragdrop;call super::dragdrop;if Source.tag = "dw_fields" then
+	this.Event ue_sysfield_dragdrop(Row)
+elseif Source.tag = "dw_field_list" then
+	this.Event ue_impfield_dragdrop(Row)
+end if
+end event
+
+event clicked;call super::clicked;//inherit
+il_DragRow = Row
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event getfocus;call super::getfocus;//inherit
+//of_SetMappedDWTitle(1)
+end event
+
+event constructor;call super::constructor;//Inherit
+this.of_SetRowSelect(true)
+this.DragIcon = gs_current_path + "\row.ico"
+end event
+
+event doubleclicked;call super::doubleclicked;if not ib_LockFile and Row > 0 then
+	if MessageBox("Prompt", "Are you sure you want to delete the record?", Question!, YesNo!) = 1 then
+		il_DragRow = Row
+		dw_fields.Event ue_DragDrop(this.tag)
+	end if
+end if
+end event
+
+event mousemove;call super::mousemove;of_BeginDrag(this)
+end event
+
+type tabpage_data from userobject within tab_1
+event ue_init ( )
+event ue_resize ( )
+integer x = 18
+integer y = 112
+integer width = 4261
+integer height = 1972
+boolean enabled = false
+long backcolor = 79680469
+string text = "Data"
+long tabtextcolor = 33554432
+long tabbackcolor = 79680469
+string picturename = "DataWindow!"
+long picturemaskcolor = 12632256
+dw_imp_data dw_imp_data
+gb_operation gb_operation
+cb_imp_data cb_imp_data
+cb_imp_pro cb_imp_pro
+cb_savedata cb_savedata
+cb_get_saved cb_get_saved
+cb_sort cb_sort
+cb_filter cb_filter
+end type
+
+event ue_resize();dw_imp_data.Width = this.Width - 10
+dw_imp_data.Height = this.Height - dw_imp_data.Y - 10
+gb_operation.Width = dw_imp_data.Width - 5
+end event
+
+on tabpage_data.create
+this.dw_imp_data=create dw_imp_data
+this.gb_operation=create gb_operation
+this.cb_imp_data=create cb_imp_data
+this.cb_imp_pro=create cb_imp_pro
+this.cb_savedata=create cb_savedata
+this.cb_get_saved=create cb_get_saved
+this.cb_sort=create cb_sort
+this.cb_filter=create cb_filter
+this.Control[]={this.dw_imp_data,&
+this.gb_operation,&
+this.cb_imp_data,&
+this.cb_imp_pro,&
+this.cb_savedata,&
+this.cb_get_saved,&
+this.cb_sort,&
+this.cb_filter}
+end on
+
+on tabpage_data.destroy
+destroy(this.dw_imp_data)
+destroy(this.gb_operation)
+destroy(this.cb_imp_data)
+destroy(this.cb_imp_pro)
+destroy(this.cb_savedata)
+destroy(this.cb_get_saved)
+destroy(this.cb_sort)
+destroy(this.cb_filter)
+end on
+
+type dw_imp_data from u_dw within tabpage_data
+event ue_modifystyle ( )
+event ue_settitle ( long al_rowcount )
+integer y = 196
+integer width = 4242
+integer height = 1776
+integer taborder = 100
+boolean titlebar = true
+string title = "Imported Data: 0 row"
+boolean hscrollbar = true
+borderstyle borderstyle = stylebox!
+end type
+
+event ue_modifystyle();string ls_Name
+string ls_Style
+integer ll_PosX
+integer i, li_FieldCount
+
+w_import_painter.SetRedraw(false)
+
+li_FieldCount = Integer(this.object.datawindow.column.count)
+for i = 1 to li_FieldCount
+	ls_Name = this.Describe("#" + String(i) + ".name")
+	ls_Style = ls_Name + ".width=400"
+	ls_Style += " " + ls_Name + "_t.width=400"
+	if i = 1 then
+		ls_Style += " " + ls_Name + "_t.X=0"
+	else
+		ls_Style += " " + ls_Name + "_t.X=" + String(ll_PosX)
+	end if
+	ls_Style += " " + ls_Name + "_t.border=6"
+	ls_Style += " " + ls_Name + "_t.background.mode=2"
+	ls_Style += " " + ls_Name + "_t.background.color=67108864"
+	
+	this.Modify(ls_Style)	
+	ll_PosX = Long(this.Describe(ls_Name + ".X")) + 400
+next
+this.Modify("sys_pc_id.visible=0")
+this.Modify("sys_facility_id.visible=0")
+this.Modify("sys_contact_id.visible=0")
+this.Modify("sys_hdr_id.visible=0")		//Added By Mark Lee 04/17/2014
+this.Modify("sys_user_id.visible=0")	//Added By Mark Lee 04/17/2014
+w_import_painter.SetRedraw(true)
+end event
+
+event ue_settitle(long al_rowcount);if al_RowCount > 1 then
+	this.Title = "Imported Data Rows: " + String(al_RowCount)
+elseif al_RowCount = 1 then
+	this.Title = "Imported Data Rows: 1"
+else
+	this.Title = "Imported Data Rows: 0"
+end if
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event constructor;call super::constructor;//Inherit
+this.of_SetRowSelect(true)
+end event
+
+type gb_operation from groupbox within tabpage_data
+integer x = 5
+integer y = 12
+integer width = 4229
+integer height = 176
+integer taborder = 20
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+long textcolor = 33554432
+long backcolor = 67108864
+string text = "Data Operation"
+end type
+
+type cb_imp_data from commandbutton within tabpage_data
+integer x = 46
+integer y = 76
+integer width = 480
+integer height = 84
+integer taborder = 110
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Get &Import Data"
+end type
+
+event clicked; string ls_Error
+string ls_Syntax
+string ls_Name
+DataStore lds_imp_data
+n_cst_import lnv_import
+
+SetPointer(HourGlass!)
+
+//Get import basic information
+lnv_import = Create n_cst_import
+lnv_import.of_GetImportInfo(il_curr_import_id, false)
+
+//Get import data
+dw_imp_data.Reset()
+lds_imp_data = Create DataStore
+//debugbreak()
+ls_Error = lnv_import.of_GetImportData(il_curr_import_id, lds_imp_data)
+if Len(ls_Error) > 0 then
+	Destroy lds_imp_data
+	Destroy lnv_import
+	SetPointer(Arrow!)
+	MessageBox("Prompt", ls_Error)
+	Return
+end if
+
+//Display import data
+ls_Syntax = lds_imp_data.object.datawindow.syntax
+dw_imp_data.Create(ls_Syntax, ls_Error)
+dw_imp_data.Event ue_ModifyStyle()
+if lds_imp_data.RowCount() > 0 then
+	lds_imp_data.RowsMove(1, lds_imp_data.RowCount(), Primary!, dw_imp_data, 1, Primary!)
+end if
+dw_imp_data.Modify("DataWindow.ReadOnly = 'yes'")
+dw_imp_data.Event ue_SetTitle(dw_imp_data.RowCount())
+
+Destroy lds_imp_data
+Destroy lnv_import
+
+SetPointer(Arrow!)
+end event
+
+type cb_imp_pro from commandbutton within tabpage_data
+integer x = 581
+integer y = 76
+integer width = 512
+integer height = 84
+integer taborder = 120
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "&Process Import Data"
+end type
+
+event clicked;long ll_LastRow
+n_cst_import_credapp lnv_import_credapp
+n_cst_import_contract lnv_import_contract
+
+if dw_imp_data.RowCount() <= 0 then
+	//MessageBox("Prompt", "There is no Import data to be imported.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	MessageBox("Prompt", "You need to Click the Get Import Data button first to retrieve the import data into the system before clicking the Process Import Data.") //Add by Evan 02.19.2008
+	Return
+end if
+
+// Import data
+SetPointer(HourGlass!)
+if ii_curr_isoft_module = 1 then
+	lnv_import_credapp = Create n_cst_import_credapp
+	lnv_import_credapp.of_Execute(il_curr_import_id, dw_imp_data)
+	Destroy lnv_import_credapp
+else
+	lnv_import_contract = Create n_cst_import_contract
+	lnv_import_contract.of_Execute(il_curr_import_id, dw_imp_data)
+	Destroy lnv_import_contract
+end if
+
+// Display log
+il_page4_import_id = -1
+tab_1.SelectTab(4)
+ll_LastRow = tab_1.tabpage_log.dw_imp_proc.RowCount()
+tab_1.tabpage_log.dw_imp_proc.ScrollToRow(ll_LastRow)
+SetPointer(Arrow!)
+end event
+
+type cb_savedata from commandbutton within tabpage_data
+integer x = 1659
+integer y = 76
+integer width = 507
+integer height = 84
+integer taborder = 100
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "&Save Imported Data"
+end type
+
+event clicked;long ll_CurrentRow
+integer li_Count
+integer li_field_length
+integer i, li_FieldCount
+string  ls_TableName
+string  ls_import_name
+string  ls_imp_field_name
+string  ls_comp_def
+string  ls_SQLSelect
+string  ls_TableSyntax
+string  ls_DWSyntax
+string  ls_Error
+string  ls_PrimaryKey
+boolean lb_OldAutoCommit
+n_import_ds lds_Data
+
+if dw_imp_data.RowCount() <= 0 then
+	MessageBox("Prompt", "There is no Import data to be saved.")  //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return
+end if
+ll_CurrentRow = tab_1.tabpage_hdr.dw_imp_hdr.GetRow()
+if ll_CurrentRow <= 0 then Return
+
+//Check table if exists
+ls_import_name = Trim(tab_1.tabpage_hdr.dw_imp_hdr.object.import_name[ll_CurrentRow])
+if IsNull(ls_import_name) or Len(ls_import_name) <= 0 then
+	MessageBox("Prompt", "Import name can not be null.")
+	Return
+end if
+ls_TableName = of_CorrectTableName(ls_import_name) //"impt_" + of_ReplaceBlank(ls_import_name, "_") ; //Modify by Evan 09/18/2008
+SELECT count(*) INTO :li_Count FROM sysobjects WHERE name = :ls_TableName and type = 'U';
+if li_Count > 0 then
+	if MessageBox("Prompt", "The Import table already exists.~r~nWould you like to replace it?", Question!, YesNo!)=2 then
+		Return 
+	end if
+end if
+
+//Build sql of select and create table 
+lds_Data = Create n_import_ds
+lds_Data.DataObject = "d_import_ds_impfield_save"
+lds_Data.SetTransObject(SQLCA)
+lds_Data.Retrieve(il_curr_import_id)
+for i = 1 to lds_Data.RowCount()
+	ls_comp_def = Trim(lds_Data.object.comp_def[i])
+	if Len(ls_comp_def) > 0 then Continue
+	
+	ls_imp_field_name = Trim(lds_Data.object.imp_field_name[i])
+	if IsNull(ls_imp_field_name) or ls_imp_field_name = "" then Continue
+		
+	li_field_length = lds_Data.object.field_length[i]
+	if Len(ls_SQLSelect) > 0 then ls_SQLSelect += ","
+	ls_SQLSelect += ls_imp_field_name
+	if Len(ls_TableSyntax) > 0 then ls_TableSyntax += ","
+	ls_TableSyntax += ls_imp_field_name + " varchar(" + String(li_field_length) + ") null"
+next
+ls_PrimaryKey = ls_TableName + "_id"
+ls_TableSyntax = "create table " + ls_TableName + " (" + ls_TableSyntax + "," + ls_PrimaryKey + " int identity not null, primary key (" + ls_PrimaryKey + "))"
+if li_Count > 0 then	ls_TableSyntax = "drop table " + ls_TableName + "; " + ls_TableSyntax
+ls_SQLSelect = "SELECT " + ls_SQLSelect + ", " + ls_PrimaryKey + " FROM " + ls_TableName
+
+//Create a table structure in database
+lb_OldAutoCommit = SQLCA.AutoCommit
+if lb_OldAutoCommit = false then SQLCA.AutoCommit = true		
+EXECUTE IMMEDIATE :ls_TableSyntax;
+if SQLCA.SQLCode <> 0 then
+	Destroy lds_Data
+	if SQLCA.AutoCommit <> lb_OldAutoCommit then SQLCA.AutoCommit = lb_OldAutoCommit
+	MessageBox("Prompt", "Failed to create table structure.~r~n" + ls_TableSyntax)
+	Return
+end if
+if SQLCA.AutoCommit <> lb_OldAutoCommit then SQLCA.AutoCommit = lb_OldAutoCommit
+
+//Dynamic create DW
+ls_DWSyntax = SQLCA.SyntaxFromSQL(ls_SQLSelect, "", ls_Error)
+if Len(ls_Error) > 0 then
+	Destroy lds_Data
+	MessageBox("Prompt", "Failed to dynamically create DataWindow.~r~n" + ls_Error)
+	Return	
+end if
+lds_Data.Create(ls_DWSyntax, ls_Error)
+lds_Data.SetTransObject(SQLCA)
+
+//Save data
+if lds_Data.ImportString(dw_imp_data.object.datawindow.data) < 0 then
+	Destroy lds_Data
+	MessageBox("Prompt", "Saving Import data to DataStore failed.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return
+end if
+if lds_Data.Update() = 1 then
+	of_CompleteTrans(true)
+else
+	of_CompleteTrans(false)
+	MessageBox("Prompt", "Save imported data failed.~r~n" + lds_Data.is_SQLErrText)
+end if
+
+Destroy lds_Data
+end event
+
+type cb_get_saved from commandbutton within tabpage_data
+integer x = 2226
+integer y = 76
+integer width = 480
+integer height = 84
+integer taborder = 110
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "&Get Saved Data"
+end type
+
+event clicked;long ll_PosX
+long i, ll_CurrentRow
+string ls_TableName
+string ls_PrimaryKey
+string ls_DWSyntax
+string ls_Error
+string ls_Name
+string ls_comp_def
+string ls_imp_field_name
+string ls_import_name
+string ls_SQLSelect
+integer li_FieldCount
+DataStore lds_Data
+
+//Get table name
+ll_CurrentRow = tab_1.tabpage_hdr.dw_imp_hdr.GetRow()
+if ll_CurrentRow <= 0 then Return
+ls_import_name = Trim(tab_1.tabpage_hdr.dw_imp_hdr.object.import_name[ll_CurrentRow])
+if IsNull(ls_import_name) then ls_import_name = ""
+ls_TableName = of_CorrectTableName(ls_import_name) //"impt_" + of_ReplaceBlank(ls_import_name, "_") ; //Modify by Evan 09/18/2008
+
+//Build select sql
+lds_Data = Create DataStore
+lds_Data.DataObject = "d_import_ds_impfield_save"
+lds_Data.SetTransObject(SQLCA)
+lds_Data.Retrieve(il_curr_import_id)
+for i = 1 to lds_Data.RowCount()
+	ls_comp_def = Trim(lds_Data.object.comp_def[i])
+	if Len(ls_comp_def) > 0 then Continue
+	
+	ls_imp_field_name = Trim(lds_Data.object.imp_field_name[i])
+	if IsNull(ls_imp_field_name) or ls_imp_field_name = "" then Continue
+
+	if Len(ls_SQLSelect) > 0 then ls_SQLSelect += ","
+	ls_SQLSelect += ls_imp_field_name
+next
+if ls_SQLSelect = "" then
+	MessageBox("Prompt", "Failed to get import fields.")
+	Return
+end if
+//Added By Mark Lee 04/17/2014 add sys_user_id column
+//ls_SQLSelect = "SELECT " + ls_SQLSelect + ",0 sys_pc_id, 0 sys_facility_id, 0 sys_contact_id FROM " + ls_TableName		
+ls_SQLSelect = "SELECT " + ls_SQLSelect + ",0 sys_pc_id, 0 sys_facility_id, 0 sys_contact_id, 0 sys_hdr_id, '' as sys_user_id FROM " + ls_TableName
+
+//Dynamic create DW
+ls_DWSyntax = SQLCA.SyntaxFromSQL(ls_SQLSelect, "Style(Type=Grid)", ls_Error)
+if Len(ls_Error) > 0 then
+	MessageBox("Prompt", "Please save imported data first.")
+	Return
+end if
+dw_imp_data.Create(ls_DWSyntax, ls_Error)
+dw_imp_data.SetTransObject(SQLCA)
+dw_imp_data.Event ue_ModifyStyle()
+
+//Retrieve data from import table
+if dw_imp_data.Retrieve() = -1 then
+	dw_imp_data.Event ue_SetTitle(dw_imp_data.RowCount())
+	MessageBox("Prompt", "Failed to retrieve data from " + ls_TableName + ".")
+else
+	dw_imp_data.Event ue_SetTitle(dw_imp_data.RowCount())
+end if
+end event
+
+type cb_sort from commandbutton within tabpage_data
+integer x = 3269
+integer y = 76
+integer width = 421
+integer height = 84
+integer taborder = 90
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Sor&t..."
+end type
+
+event clicked;string ls_Null
+
+if dw_imp_data.RowCount() <= 0 then
+	MessageBox("Prompt", "There is no import data to be sorted.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return
+end if
+
+SetNull(ls_Null)
+dw_imp_data.SetSort(ls_Null)
+dw_imp_data.Sort()
+end event
+
+type cb_filter from commandbutton within tabpage_data
+integer x = 3758
+integer y = 76
+integer width = 421
+integer height = 84
+integer taborder = 90
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "&Filter..."
+end type
+
+event clicked;string ls_Null
+
+if dw_imp_data.RowCount() + dw_imp_data.FilteredCount() <= 0 then
+	MessageBox("Prompt", "There is no import data to filter.") //Start Code Change ----02.07.2008 #V8 maha - modified message
+	Return
+end if
+
+SetNull(ls_Null)
+dw_imp_data.SetFilter(ls_Null)
+dw_imp_data.Filter()
+end event
+
+type tabpage_log from userobject within tab_1
+event ue_retrieve ( )
+event ue_resize ( )
+integer x = 18
+integer y = 112
+integer width = 4261
+integer height = 1972
+boolean enabled = false
+long backcolor = 79680469
+string text = "Error logs"
+long tabtextcolor = 33554432
+long tabbackcolor = 79680469
+string picturename = "ExecuteSQL5!"
+long picturemaskcolor = 12632256
+dw_imp_table dw_imp_table
+dw_imp_proc dw_imp_proc
+dw_imp_err dw_imp_err
+end type
+
+event ue_retrieve();if il_curr_import_id = il_page4_import_id then Return
+il_page4_import_id = il_curr_import_id
+
+if dw_imp_proc.Retrieve(il_curr_import_id) > 0 then
+	dw_imp_proc.SelectRow(0, false)
+	dw_imp_proc.SelectRow(1, true)
+	dw_imp_proc.Event RowFocusChanged(1)
+else
+	dw_imp_table.Reset()
+	dw_imp_err.Reset()	
+end if
+end event
+
+event ue_resize();dw_imp_proc.Width = this.Width - 10
+dw_imp_table.Width = dw_imp_proc.Width
+dw_imp_err.Width = dw_imp_proc.Width
+
+dw_imp_err.Y = dw_imp_table.Y + dw_imp_table.Height
+dw_imp_err.Height = this.Height - dw_imp_err.Y - 10
+
+end event
+
+on tabpage_log.create
+this.dw_imp_table=create dw_imp_table
+this.dw_imp_proc=create dw_imp_proc
+this.dw_imp_err=create dw_imp_err
+this.Control[]={this.dw_imp_table,&
+this.dw_imp_proc,&
+this.dw_imp_err}
+end on
+
+on tabpage_log.destroy
+destroy(this.dw_imp_table)
+destroy(this.dw_imp_proc)
+destroy(this.dw_imp_err)
+end on
+
+type dw_imp_table from u_dw within tabpage_log
+integer y = 692
+integer width = 4242
+integer height = 516
+integer taborder = 120
+boolean titlebar = true
+string title = "Import Table Details"
+string dataobject = "d_import_process_tables"
+boolean hscrollbar = true
+borderstyle borderstyle = stylebox!
+end type
+
+event constructor;call super::constructor;//inherit
+this.Modify("DataWindow.ReadOnly = 'yes'")
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+long ll_process_tables_id
+
+this.SelectRow(0, false)
+this.SelectRow(CurrentRow, true)
+
+if CurrentRow > 0 then
+	ll_process_tables_id = this.object.process_tables_id[CurrentRow]
+	if dw_imp_err.Retrieve(ll_process_tables_id) > 0 then
+		dw_imp_err.SelectRow(0, false)
+		dw_imp_err.SelectRow(1, true)
+	end if
+else
+	dw_imp_err.Reset()
+end if
+end event
+
+type dw_imp_proc from u_dw within tabpage_log
+integer y = 8
+integer width = 4242
+integer height = 684
+integer taborder = 120
+boolean titlebar = true
+string title = "Import Process"
+string dataobject = "d_import_process"
+boolean hscrollbar = true
+borderstyle borderstyle = stylebox!
+end type
+
+event rowfocuschanged;call super::rowfocuschanged;//inhert
+long ll_process_id
+
+this.SelectRow(0, false)
+
+if CurrentRow > 0 then
+	this.SelectRow(CurrentRow, true)
+	ll_process_id = this.object.process_id[CurrentRow]
+	dw_imp_table.Retrieve(ll_process_id)
+	if dw_imp_table.RowCount() > 0 then
+		dw_imp_table.Event RowFocusChanged(1)
+	else
+		dw_imp_err.Reset()
+	end if
+else
+	dw_imp_table.Reset()
+	dw_imp_err.Reset()
+end if
+end event
+
+event constructor;call super::constructor;//inherit
+this.Modify("DataWindow.ReadOnly = 'yes'")
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event doubleclicked;call super::doubleclicked;string ls_err_value
+
+if row > 0 and dwo.name = "err_value" then
+	ls_err_value = this.object.err_value[row]
+	if Len(ls_err_value) > 0 then
+		OpenWithParm(w_import_loglist, "LOG#" + ls_err_value)
+	end if
+end if
+end event
+
+type dw_imp_err from u_dw within tabpage_log
+integer y = 1208
+integer width = 4242
+integer height = 772
+integer taborder = 110
+boolean titlebar = true
+string title = "Import Process Error Details"
+string dataobject = "d_import_process_errors"
+boolean hscrollbar = true
+borderstyle borderstyle = stylebox!
+end type
+
+event rowfocuschanged;call super::rowfocuschanged;//inherit
+this.SelectRow(0, false)
+this.SelectRow(CurrentRow, true)
+end event
+
+event constructor;call super::constructor;//inherit
+this.Modify("DataWindow.ReadOnly = 'yes'")
+end event
+
+event other;call super::other;if Message.WordParm = 61458 then 
+	Message.Processed = true
+	Message.ReturnValue = 0 
+end if
+end event
+
+event doubleclicked;call super::doubleclicked;string ls_err_value
+
+if row > 0 and dwo.name = "err_value" then
+	ls_err_value = this.object.err_value[row]
+	if Len(ls_err_value) > 0 then
+		OpenWithParm(w_import_loglist, "LOG#" + ls_err_value)
+	end if
+end if
+end event
+
+type cb_preprocess from commandbutton within w_import_painter_bak
+boolean visible = false
+integer x = 1609
+integer y = 12
+integer width = 343
+integer height = 92
+integer taborder = 41
+boolean bringtotop = true
+integer textsize = -8
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "MS Sans Serif"
+string text = "Pre-Process"
+end type
+
+event clicked;//open(w_indy_pre_process)
+integer itest
+integer li_row
+string ls_from
+string ls_to
+string ls_file
+n_getfilename ln_getfilename //Added By Jay Chen 08-15-2014
+
+li_row =  tab_1.tabpage_hdr.dw_imp_hdr.getrow()
+//ls_from = tab_1.tabpage_hdr.dw_imp_hdr.getitemstring(li_row,"preprocess_path")
+ls_from = ""
+
+ls_to = tab_1.tabpage_hdr.dw_imp_hdr.getitemstring(li_row,"imp_file")
+
+if isnull(ls_from) or len(ls_from ) = 0 then
+	gf_load_dir_path() //Added by Ken.Guo on 2009-03-10
+//	GetFileOpenName ( "Select Preprocess File", ls_from, ls_file )
+	ln_getfilename.of_getopenfilename( "Select Preprocess File", ls_from, ls_file )
+	gf_save_dir_path(ls_from) //Added by Ken.Guo on 2009-03-10
+	//ChangeDirectory(gs_current_path) //Add by Evan 12/11/2008
+end if
+debugbreak()
+itest = of_preprocess_data( ii_preprocess , ls_from,ls_to) //Start Code Change ----07.03.2008 #V81 maha
+
+if itest = 1 then
+	messagebox("Process Successful","File saved: " + ls_to)
+else
+	messagebox("Complete","Process Failed")
+end if
+end event
+

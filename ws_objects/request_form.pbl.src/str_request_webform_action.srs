@@ -1,0 +1,22 @@
+﻿$PBExportHeader$str_request_webform_action.srs
+global type str_request_webform_action from structure
+	string		as_request_name
+	string		as_action
+	string		as_notes
+	long		al_rwf_id
+	long		al_template_id
+	long		al_row
+	string		as_from
+	long		al_export_id
+	long		al_ctx_id
+	string		as_send_email_setting
+	long		al_steps
+	string		as_submit_step
+	string		as_do_steps
+	string		as_reject_step
+	string		as_status
+	string		as_submit_request_to
+	string		as_bypass
+	long		al_workflow
+end type
+

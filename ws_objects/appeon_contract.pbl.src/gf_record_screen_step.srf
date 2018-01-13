@@ -1,0 +1,83 @@
+﻿$PBExportHeader$gf_record_screen_step.srf
+global type gf_record_screen_step from function_object
+end type
+
+forward prototypes
+global subroutine gf_record_screen_step (string as_field, string as_property, string as_syntax, string as_syntax2)
+end prototypes
+
+global subroutine gf_record_screen_step (string as_field, string as_property, string as_syntax, string as_syntax2);//====================================================================
+// Function: gf_record_screen_step
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    string    as_field
+// 	value    string    as_property
+// 	value    string    as_syntax
+// 	value    string    as_syntax2
+//--------------------------------------------------------------------
+// Returns:  (None)
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 02-24-2016
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2014 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//
+//====================================================================
+
+//Added By Jay Chen 02-24-2016 record step syntax before modify
+string ls_syntax,ls_step,ls_string,ls_value
+long ll_insert,ll_find
+
+//Added By Jay Chen 02-26-2016
+if lower(as_property) = 'paste' or lower(as_property) = 'add' or lower(as_property) = 'cut' or lower(as_property) = 'delete' or lower(as_property) = 'move' or lower(as_property) = 'moveresize'  then //Added By Jay Chen 02-26-2016
+	ls_step = as_property + ' ' + as_field 
+else
+	ls_step = 'Modify ' + as_field + ' ' + as_property
+end if
+
+if isvalid(w_contract_data_design) then
+	if isvalid(w_contract_field_properties) and (lower(as_property) = 'field style' or lower(as_property) = 'lookup table name' or lower(as_property) = 'display name') then
+		ll_find = w_contract_field_properties.ids_extra_record_undo.find("lower(as_field) = '"+lower(as_field)+"' and lower(as_property) = '"+lower(as_property)+"' ",1,w_contract_field_properties.ids_extra_record_undo.rowcount())
+		if ll_find > 0 then
+			ls_value = w_contract_field_properties.ids_extra_record_undo.getitemstring(ll_find,"ab_record_undo")
+			if ls_value = '0' then
+				if w_contract_data_design.uo_design.ids_step_list.rowcount() > 0 then
+					if w_contract_data_design.uo_design.ids_step_list.getitemstring(1,"field_name") = as_field then w_contract_data_design.uo_design.ids_step_list.setitem(1, "step_name", ls_step)
+					return 
+				end if
+			end if
+		end if
+	end if
+	
+	if isvalid(w_contract_mul_field_properties) and (lower(as_property) = 'field style' or lower(as_property) = 'lookup table name' or lower(as_property) = 'display name') then
+		ll_find = w_contract_mul_field_properties.ids_extra_record_undo.find("lower(as_field) = '"+lower(as_field)+"' and lower(as_property) = '"+lower(as_property)+"' ",1,w_contract_mul_field_properties.ids_extra_record_undo.rowcount())
+		if ll_find > 0 then
+			ls_value = w_contract_mul_field_properties.ids_extra_record_undo.getitemstring(ll_find,"ab_record_undo")
+			if ls_value = '0' then
+				if w_contract_data_design.uo_design.ids_step_list.rowcount() > 0 then
+					ll_find = w_contract_data_design.uo_design.ids_step_list.find(" field_name = '"+as_field+"' ",1,w_contract_data_design.uo_design.ids_step_list.rowcount())
+					if ll_find > 0 then
+//					if w_contract_data_design.uo_design.ids_step_list.getitemstring(1,"field_name") = as_field then 
+						w_contract_data_design.uo_design.ids_step_list.setitem(ll_find, "step_name", ls_step)
+					end if
+					return 
+				end if
+			end if
+		end if
+	end if
+	
+	if w_contract_data_design.uo_design.ids_step_list.rowcount() = 200 then
+		w_contract_data_design.uo_design.ids_step_list.deleterow(w_contract_data_design.uo_design.ids_step_list.rowcount())
+	end if
+	ll_insert = w_contract_data_design.uo_design.ids_step_list.insertrow(1)
+	w_contract_data_design.uo_design.ids_step_list.setitem(ll_insert, "field_name", as_field)
+	w_contract_data_design.uo_design.ids_step_list.setitem(ll_insert, "step_name", ls_step)
+	w_contract_data_design.uo_design.ids_step_list.setitem(ll_insert, "step_syntax", as_syntax)
+	w_contract_data_design.uo_design.ids_step_list.setitem(ll_insert, "step_syntax2", as_syntax2)
+end if
+//end
+end subroutine
+

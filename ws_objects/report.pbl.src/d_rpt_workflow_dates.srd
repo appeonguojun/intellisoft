@@ -1,0 +1,134 @@
+﻿$PBExportHeader$d_rpt_workflow_dates.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=568 color="536870912" )
+summary(height=132 color="536870912" )
+footer(height=8 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=date_rqst_rcvd dbname="pd_affil_stat.date_rqst_rcvd" )
+ column=(type=datetime updatewhereclause=yes name=date_app_sent dbname="pd_affil_stat.date_app_sent" )
+ column=(type=datetime updatewhereclause=yes name=date_app_signed dbname="pd_affil_stat.date_app_signed" )
+ column=(type=datetime updatewhereclause=yes name=date_app_rcvd dbname="pd_affil_stat.date_app_rcvd" )
+ column=(type=datetime updatewhereclause=yes name=date_app_audit_completed dbname="pd_affil_stat.date_app_audit_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_data_entry_completed dbname="pd_affil_stat.date_data_entry_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_verif_completed dbname="pd_affil_stat.date_verif_completed" )
+ column=(type=datetime updatewhereclause=yes name=date_rls_form_exp dbname="pd_affil_stat.date_rls_form_exp" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" )
+ column=(type=datetime updatewhereclause=yes name=apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" )
+ column=(type=char(10) updatewhereclause=yes name=pd_affil_stat_priority_user dbname="pd_affil_stat.priority_user" )
+ column=(type=datetime updatewhereclause=yes name=date_closed dbname="pd_affil_stat.date_comm_review_completed" )
+ column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="v_full_name.prac_id" )
+ column=(type=datetime updatewhereclause=yes name=pd_affil_stat_date_comm_review_completed dbname="pd_affil_stat.date_comm_review_completed" )
+ column=(type=char(100) updatewhereclause=yes name=last_name dbname="v_full_name.last_name" )
+ retrieve="  SELECT pd_affil_stat.date_rqst_rcvd,   
+         pd_affil_stat.date_app_sent,   
+         pd_affil_stat.date_app_signed,   
+         pd_affil_stat.date_app_rcvd,   
+         pd_affil_stat.date_app_audit_completed,   
+         pd_affil_stat.date_data_entry_completed,   
+         pd_affil_stat.date_verif_completed,   
+         pd_affil_stat.date_rls_form_exp,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_end_date,
+			pd_affil_stat.priority_user,
+   		pd_affil_stat.date_comm_review_completed,
+         v_full_name.full_name,
+			v_full_name.prac_id,   
+         pd_affil_stat.date_comm_review_completed,   
+         v_full_name.last_name  
+    FROM pd_affil_stat,   
+         v_full_name  
+   WHERE ( pd_affil_stat.prac_id = v_full_name.prac_id ) and  
+         ( ( pd_affil_stat.active_status in (1,4) ) AND  
+         ( pd_affil_stat.parent_facility_id in ( :facility_id ) ) AND  
+         ( pd_affil_stat.date_app_rcvd >= :from_date ) AND  
+         ( pd_affil_stat.date_app_rcvd <= :to_date ) )   
+   UNION   
+  SELECT pd_affil_stat.date_rqst_rcvd,   
+         pd_affil_stat.date_app_sent,   
+         pd_affil_stat.date_app_signed,   
+         pd_affil_stat.date_app_rcvd,   
+         pd_affil_stat.date_app_audit_completed,   
+         pd_affil_stat.date_data_entry_completed,   
+         pd_affil_stat.date_verif_completed,   
+         pd_affil_stat.date_rls_form_exp,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_end_date, 
+			pd_affil_stat.priority_user, 
+			pd_affil_stat.date_comm_review_completed, 
+         v_full_name.full_name,  
+			v_full_name.prac_id, 
+         pd_affil_stat.date_comm_review_completed,   
+         v_full_name.last_name  
+    FROM pd_affil_stat,   
+         v_full_name  
+   WHERE ( pd_affil_stat.prac_id = v_full_name.prac_id ) and  
+         ( ( pd_affil_stat.active_status in (1,4) ) AND  
+         ( pd_affil_stat.parent_facility_id in ( :facility_id ) ) AND  
+         ( pd_affil_stat.date_comm_review_completed >= :from_date ) AND  
+         ( pd_affil_stat.date_comm_review_completed <= :to_date ) )     
+" arguments=(("facility_id", numberlist),("from_date", date),("to_date", date))  sort="v_full_name_full_name A " )
+line(band=header x1="64" y1="16" x2="4498" y2="16"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="52" x2="4498" y2="52"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="69" y="64" height="76" width="389" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="4059" y="68" height="76" width="425" format="[general]" html.valueishtml="0"  name=page visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="340" x2="4498" y2="340"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="376" x2="4498" y2="376"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Name" border="0" color="0" x="69" y="476" height="64" width="174" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Workflow Dates Report" border="0" color="0" x="1833" y="68" height="64" width="681" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="All Facilities" border="0" color="0" x="1198" y="156" height="80" width="1952" html.valueishtml="0"  name=selected_facility_t visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression=" from_date + ~" to ~" +  to_date  "border="0" color="0" x="1751" y="252" height="76" width="846" format="[general]" html.valueishtml="0"  name=compute_2 visible="1~tif( from_date = 1800-01-01 or  to_date = 3000-12-31,0,1)"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Assigned
+ User" border="0" color="0" x="1097" y="424" height="128" width="274" html.valueishtml="0"  name=date_rqst_rcvd_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+App Sent" border="0" color="0" x="1403" y="424" height="128" width="261" html.valueishtml="0"  name=date_app_sent_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date
+ App Rcvd" border="0" color="0" x="1705" y="424" height="128" width="297" html.valueishtml="0"  name=date_app_rcvd_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date App
+ Signed" border="0" color="0" x="2021" y="424" height="128" width="265" html.valueishtml="0"  name=date_app_signed_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Rls
+ Form Signed" border="0" color="0" x="2277" y="424" height="128" width="338" html.valueishtml="0"  name=date_rls_form_exp_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Audit
+ Completed" border="0" color="0" x="2619" y="424" height="128" width="334" html.valueishtml="0"  name=date_app_audit_completed_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date D/E
+ Completed" border="0" color="0" x="2930" y="424" height="128" width="334" html.valueishtml="0"  name=date_data_entry_completed_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date Verif
+ Completed" border="0" color="0" x="3241" y="424" height="128" width="334" html.valueishtml="0"  name=date_verif_completed_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Date File
+Closed" border="0" color="0" x="3579" y="424" height="128" width="265" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rcvd
+ to Close" border="0" color="0" x="3849" y="424" height="128" width="229" html.valueishtml="0"  name=t_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Signed
+ to Close" border="0" color="0" x="4082" y="424" height="128" width="219" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rcvd to 
+ DE Comp" border="0" color="0" x="4306" y="424" height="128" width="247" html.valueishtml="0"  name=t_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="41" y="8" height="60" width="997" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1399" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_app_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1710" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_app_rcvd visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2016" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_app_signed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2327" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_rls_form_exp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2638" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_app_audit_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2949" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_data_entry_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3259" y="8" height="60" width="293" format="mm/dd/yyyy" html.valueishtml="0"  name=date_verif_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3566" y="128" height="60" width="297" format="mm/dd/yyyy" html.valueishtml="0"  name=date_closed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if( Not IsNull(date_closed ), 1, 0 )"border="0" color="16777215" x="4073" y="92" height="48" width="96" format="[general]" html.valueishtml="0"  name=closed visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if( Not IsNull( date_app_rcvd  ), 1, 0 )"border="0" color="16777215" x="4206" y="84" height="56" width="87" format="[general]" html.valueishtml="0"  name=rcvd visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1065" y="4" height="64" width="320" format="[general]" html.valueishtml="0"  name=pd_affil_stat_priority_user visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="3566" y="8" height="64" width="283" format="mm/dd/yyyy" html.valueishtml="0"  name=pd_affil_stat_date_comm_review_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="DaysAfter(  date_app_rcvd , date_closed )"border="0" color="0" x="3867" y="8" height="60" width="215" format="[general]" html.valueishtml="0"  name=rcvd_to_close visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="DaysAfter(   date_app_signed , date_closed )"border="0" color="0" x="4096" y="8" height="60" width="215" format="[general]" html.valueishtml="0"  name=signed_to_close visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="DaysAfter(  date_app_rcvd ,  date_data_entry_completed )"border="0" color="0" x="4329" y="8" height="60" width="215" format="[general]" html.valueishtml="0"  name=rcvd_to_dec visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="if (  date_app_rcvd  >=  from_date and  date_app_rcvd <=  to_date,1,0 )"border="0" color="0" x="1225" y="320" height="64" width="1797" format="[general]" html.valueishtml="0"  name=rdates visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="~"Total Applications Received ~" + from_date + ~" to ~" +  to_date  + ~" :~""border="0" color="0" x="722" y="48" height="76" width="1769" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="Sum( rdates for all)"border="0" color="0" x="2519" y="48" height="76" width="183" format="[general]" html.valueishtml="0"  name=total_rcvd visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="1" expression="~"Total Applications Closed ~" + from_date + ~" to ~" +  to_date  + ~" :~""border="0" color="0" x="2711" y="48" height="76" width="1280" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="sum(cdates for all)"border="0" color="0" x="4023" y="48" height="76" width="183" format="[general]" html.valueishtml="0"  name=closed_count visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="if (   date_closed   >=  from_date and  date_closed  <=  to_date,1,0 )"border="0" color="0" x="3141" y="288" height="64" width="183" format="[general]" html.valueishtml="0"  name=cdates visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="if (   date_app_rcvd <=  to_date,1,0 )"border="0" color="0" x="1221" y="400" height="64" width="1801" format="[general]" html.valueishtml="0"  name=newcount visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="0" expression="Sum( newcount for all)"border="0" color="0" x="1257" y="192" height="76" width="183" format="[general]" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

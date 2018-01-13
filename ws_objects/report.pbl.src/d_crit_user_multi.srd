@@ -1,0 +1,16 @@
+﻿$PBExportHeader$d_crit_user_multi.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=124 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes key=yes name=user_id dbname="security_users.user_id" )
+ column=(type=long update=yes updatewhereclause=yes name=selected dbname="selected" values="	1/	0" )
+ retrieve="  SELECT security_users.user_id,
+			selected = 0  
+    FROM security_users   
+" update="security_users" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="613" y="4" height="64" width="101" format="[general]"  name=selected checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="727" y="4" height="64" width="251" format="[general]"  name=user_id edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

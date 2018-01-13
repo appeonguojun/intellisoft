@@ -1,0 +1,12 @@
+﻿$PBExportHeader$ws_pxy_echosign.srj
+$PBExportComments$Generated Web Service Proxy Project
+GeneratorID:{1B1DCEE2-E514-11D1-B30A-006008925BD4}GENBC00000000
+WSDLLOCATION:Gateway_echo.wsdl
+ASSEMBLY:0	0	
+COMPONENT:1	EchoSign::EchoSignSoap::EchoSignSoap
+PACKAGE:10	tns__DocumentInformation	tns__Documents	tns__Signature	tns__SignedDocument	tns__DownloadSignedDoc	tns__GetDocumentLink	tns__GetFileInfo	tns__RemoveSignedDoc	tns__SendDocument	tns__SendDocuments
+COMMENT:Web Service Proxy Generator
+DEPLOYMENT:..\webservice_echo\webservice_echo.pbl	0	0
+PROJECT:ws_pxy_echosign
+PREFIX:
+

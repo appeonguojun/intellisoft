@@ -1,0 +1,18 @@
+﻿$PBExportHeader$d_rpt_ctx_wiz_status_select.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1088 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=as_startstatus dbname="as_startstatus" )
+ column=(type=number updatewhereclause=yes name=as_endstatus dbname="as_endstatus" )
+ )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="33554432" x="841" y="356" height="72" width="603" format="[general]" html.valueishtml="0"  name=as_startstatus visible="1" dddw.name=d_dddw_contract_status dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=350 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="33554432" x="841" y="532" height="72" width="603" format="[general]" html.valueishtml="0"  name=as_endstatus visible="1" dddw.name=d_dddw_contract_status dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=350 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Processing Start Status:" border="0" color="33554432" x="302" y="368" height="52" width="517" html.valueishtml="0"  name=as_startstatus_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Processing End Status:" border="0" color="33554432" x="302" y="544" height="52" width="507" html.valueishtml="0"  name=as_endstatus_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

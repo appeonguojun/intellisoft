@@ -1,0 +1,24 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "meet_priv.pbl" "";
+@end;
+@begin Objects 
+ "d_add_cme_meeting_detail.srd" "meet_priv.pbl";
+ "d_dddw_cme_category.srd" "meet_priv.pbl";
+ "d_dddw_meeting_committee.srd" "meet_priv.pbl";
+ "d_dddw_meeting_department.srd" "meet_priv.pbl";
+ "d_dddw_meeting_section.srd" "meet_priv.pbl";
+ "d_dddw_meeting_subject.srd" "meet_priv.pbl";
+ "d_non_prac_browse.srd" "meet_priv.pbl";
+ "d_non_prac_detail.srd" "meet_priv.pbl";
+ "d_pd_meetings.srd" "meet_priv.pbl";
+ "d_pd_prac_folder_meetings.srd" "meet_priv.pbl";
+ "d_rpt_attendence_roster.srd" "meet_priv.pbl";
+ "d_rpt_meeting_roster.srd" "meet_priv.pbl";
+ "d_rpt_meeting_roster_inova.srd" "meet_priv.pbl";
+ "dddw_meeting_subject.srd" "meet_priv.pbl";
+ "dataent.srj" "meet_priv.pbl";
+ "pfc_cst_u_calendar_dw.sru" "meet_priv.pbl";
+ "w_meeting_detail.srw" "meet_priv.pbl";
+ "w_meetings.srw" "meet_priv.pbl";
+@end;

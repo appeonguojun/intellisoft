@@ -1,0 +1,110 @@
+﻿$PBExportHeader$m_pfe_cst_imaging_browse.srm
+forward
+global type m_pfe_cst_imaging_browse from m_pfe_cst_imaging
+end type
+type m_faximage from menu within m_file
+end type
+end forward
+
+global type m_pfe_cst_imaging_browse from m_pfe_cst_imaging
+end type
+global m_pfe_cst_imaging_browse m_pfe_cst_imaging_browse
+
+on m_pfe_cst_imaging_browse.create
+m_pfe_cst_imaging_browse=this
+call super::create
+end on
+
+on m_pfe_cst_imaging_browse.destroy
+call super::destroy
+end on
+
+type m_file from m_pfe_cst_imaging`m_file within m_pfe_cst_imaging_browse
+m_faximage m_faximage
+end type
+
+on m_file.create
+call super::create
+this.m_faximage=create m_faximage
+this.Item[UpperBound(this.item)+1]=this.m_faximage
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_faximage)
+end on
+
+on m_privileging.create
+call super::create
+this.Text="Privile&ging~tCtrl+G"
+this.Shortcut=327
+end on
+
+on m_sitesurvey.create
+call super::create
+this.Text="Site Survey~tCtrl+U"
+this.Shortcut=341
+end on
+
+on m_saveimage.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_annotations.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_select.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_note.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_highlight.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_stamptext.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_deleteannotation.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_pageproperties.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+type m_faximage from menu within m_file
+end type
+
+event clicked;of_sendmessage( "pfc_cst_fax_image_documents" )
+end event
+
+on m_faximage.create
+this.Text="Fax Image"
+this.ToolBarItemName="Custom084!"
+this.ToolBarItemText="Fax Image"
+this.ToolBarItemOrder=7
+this.ToolBarItemBarIndex=2
+end on
+

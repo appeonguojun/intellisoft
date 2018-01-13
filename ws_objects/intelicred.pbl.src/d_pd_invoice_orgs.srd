@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_pd_invoice_orgs.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=pd_invoice_prac_id dbname="pd_invoice.prac_id" )
+ column=(type=long updatewhereclause=yes name=facility_id dbname="pd_invoice.facility_id" )
+ column=(type=char(100) updatewhereclause=yes name=facility_facility_name dbname="facility.facility_name" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"pd_invoice~" )  TABLE(NAME=~"security_user_facilities~" )  TABLE(NAME=~"facility~" ) COLUMN(NAME=~"pd_invoice.prac_id~") COLUMN(NAME=~"pd_invoice.facility_id~") COLUMN(NAME=~"facility.facility_name~")    JOIN (LEFT=~"pd_invoice.facility_id~"    OP =~"=~"RIGHT=~"facility.facility_id~" )    JOIN (LEFT=~"pd_invoice.facility_id~"    OP =~"=~"RIGHT=~"security_user_facilities.facility_id~" )WHERE(    EXP1 =~"( security_user_facilities.access_rights~"   OP =~"=~"    EXP2 =~"1)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( security_user_facilities.user_id~"   OP =~"=~"    EXP2 =~":as_user)~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"( ( pd_invoice.prac_id~"   OP =~"=~"    EXP2 =~":prac_id ) )~" ) ) ARG(NAME = ~"prac_id~" TYPE = number)  ARG(NAME = ~"as_user~" TYPE = string) " arguments=(("prac_id", number),("as_user", string))  sort="facility_facility_name A " )
+group(level=1 header.height=0 trailer.height=0 by=("" ) header.color="536870912" trailer.color="536870912" )
+bitmap(band=detail filename="facility.bmp" x="32" y="0" height="60" width="73" border="0~t1" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="137" y="4" height="68" width="869" format="[general]"  name=facility_facility_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79680469" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

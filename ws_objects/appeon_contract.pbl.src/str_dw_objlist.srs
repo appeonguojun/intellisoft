@@ -1,0 +1,9 @@
+﻿$PBExportHeader$str_dw_objlist.srs
+global type str_dw_objlist from structure
+	string		as_header_objlist[]
+	string		as_detail_objlist[]
+	string		as_summary_objlist[]
+	string		as_footer_objlist[]
+	pfc_cst_u_contract_data_design		uo_design
+end type
+

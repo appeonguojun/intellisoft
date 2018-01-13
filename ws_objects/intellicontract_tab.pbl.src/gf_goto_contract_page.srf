@@ -1,0 +1,69 @@
+﻿$PBExportHeader$gf_goto_contract_page.srf
+global type gf_goto_contract_page from function_object
+end type
+
+forward prototypes
+global subroutine gf_goto_contract_page (long al_ctx_id, string as_type)
+end prototypes
+
+global subroutine gf_goto_contract_page (long al_ctx_id, string as_type);//====================================================================
+// Function: gf_goto_contract_page
+//--------------------------------------------------------------------
+// Description:
+//--------------------------------------------------------------------
+// Arguments:
+// 	value    long    al_ctx_id
+//--------------------------------------------------------------------
+// Returns:  (None)
+//--------------------------------------------------------------------
+// Author:	Jay Chen		Date: 05-13-2015
+//--------------------------------------------------------------------
+//	Copyright (c) 2008-2014 ContractLogix, All rights reserved.
+//--------------------------------------------------------------------
+// Modify History:
+//as_type = other              clean sql where
+//as_type = designscreen  do not clean sql where
+//====================================================================
+
+string ls_display_page,ls_pagesize
+long ll_pagesize,ll_cpage,ll_sumpage,ll_find,ll_cnt
+//if AppeonGetClientType() = 'WEB' then
+if isvalid(gw_contract) then
+	ls_display_page = gnv_user_option.of_Get_option_value( gs_user_id, "display_page" )
+	if isnull(ls_display_page) or ls_display_page = '' then ls_display_page = '0'
+	ls_pagesize = gnv_user_option.of_Get_option_value( gs_user_id, "perpage_rows" )
+	if isnull(ls_pagesize) or ls_pagesize = '' then ls_pagesize = '100'
+	if long(ls_pagesize) > 0 then
+		ll_pagesize = long(ls_pagesize)
+	else
+		ll_pagesize = 100
+	end if
+	if ls_display_page = '1' then
+		if as_type <> 'designscreen' then
+			update ctx_basic_info_log set sqlwhere = '' where session_id = :gs_session_id;
+		end if
+		gw_contract.tab_contract_details.tabpage_search.ids_search.DataObject = 'd_sp_contract_search_web'
+		gw_contract.tab_contract_details.tabpage_search.ids_search.SetTransObject( sqlca)
+		gw_contract.tab_contract_details.tabpage_search.ids_search.Retrieve(gs_user_id,'1',0,ll_pagesize,gs_session_id,al_ctx_id)
+		gw_contract.tab_contract_details.tabpage_search.dw_search_det1.reset()
+		gw_contract.tab_contract_details.tabpage_search.ids_search.RowsCopy(1,gw_contract.tab_contract_details.tabpage_search.ids_search.rowcount(), Primary!, gw_contract.tab_contract_details.tabpage_search.dw_search_det1, 1, Primary!)
+		select cpage,pcount into :ll_cpage,:ll_sumpage from ctx_basic_info_log where session_id = :gs_session_id;
+		gw_contract.tab_contract_details.tabpage_search.sle_page.text = string(ll_cpage) + '/' + string(ll_sumpage)
+		gw_contract.tab_contract_details.tabpage_search.uo_page.sle_page.text = string(ll_cpage) + '/' + string(ll_sumpage) //Added By Jay Chen 03-25-2016
+		gw_contract.tab_contract_details.tabpage_search.dw_search_det1.Title = gs_left_title_sign + 'Contract Browse (' + string(gw_contract.tab_contract_details.tabpage_search.il_last_row) + ')' + gs_right_title_sign
+		gw_contract.tab_contract_details.tabpage_search.il_current_page = ll_cpage
+		gw_contract.tab_contract_details.tabpage_search.il_sum_pages = ll_sumpage
+		ll_cnt = gw_contract.tab_contract_details.tabpage_search.dw_search_det1.rowcount()
+		if ll_cnt > 0 then
+			ll_find = gw_contract.tab_contract_details.tabpage_search.dw_search_det1.find("ctx_id = " +String(al_ctx_id), 1, ll_cnt)
+			if ll_find > 0 then
+				gw_contract.tab_contract_details.tabpage_search.dw_search_det1.ScrolltoRow(ll_find)
+				gw_contract.tab_contract_details.tabpage_search.dw_search_det1.event rowfocuschanged(ll_find)
+			end if
+		end if
+	end if
+end if
+//end if
+
+end subroutine
+

@@ -1,0 +1,26 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "security.pbl" "";
+@end;
+@begin Objects 
+ "d_dept_security_all.srd" "security.pbl";
+ "d_login_audit.srd" "security.pbl";
+ "d_new_act.srd" "security.pbl";
+ "d_new_mod.srd" "security.pbl";
+ "d_new_sub.srd" "security.pbl";
+ "d_newrole_rights.srd" "security.pbl";
+ "d_role_print.srd" "security.pbl";
+ "d_roles.srd" "security.pbl";
+ "d_rpt_user_list.srd" "security.pbl";
+ "d_rpt_user_role_detail.srd" "security.pbl";
+ "d_scrty_actions.srd" "security.pbl";
+ "d_scrty_actions_all.srd" "security.pbl";
+ "d_scrty_actions_ret.srd" "security.pbl";
+ "d_scrty_mod_submod.srd" "security.pbl";
+ "d_scrty_mod_submod_action.srd" "security.pbl";
+ "d_security_settings.srd" "security.pbl";
+ "w_login_audit.srw" "security.pbl";
+ "w_security_builder.srw" "security.pbl";
+ "w_security_painter.srw" "security.pbl";
+ "w_security_update.srw" "security.pbl";
+@end;

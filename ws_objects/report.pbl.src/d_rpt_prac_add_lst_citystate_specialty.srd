@@ -1,0 +1,108 @@
+﻿$PBExportHeader$d_rpt_prac_add_lst_citystate_specialty.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 60 print.margin.right = 60 print.margin.top = 60 print.margin.bottom = 60 print.paper.source = 0 print.paper.size = 1 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=440 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=88 color="536870912" )
+detail(height=164 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=pd_basic_last_name dbname="pd_basic.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_middle_name dbname="pd_basic.middle_name" )
+ column=(type=char(15) updatewhereclause=yes name=pd_basic_first_name dbname="pd_basic.first_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="pd_basic.prac_id" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_basic_prof_suffix dbname="pd_basic.prof_suffix" )
+ column=(type=char(20) updatewhereclause=yes name=provider_id dbname="pd_basic.provider_id" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street dbname="pd_address.street" )
+ column=(type=char(150) updatewhereclause=yes name=pd_address_street_2 dbname="pd_address.street_2" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_city dbname="pd_address.city" )
+ column=(type=decimal(0) updatewhereclause=yes name=pd_address_state dbname="pd_address.state" )
+ column=(type=char(11) updatewhereclause=yes name=pd_address_zip dbname="pd_address.zip" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_specialty dbname="specialty" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_phone dbname="pd_address.phone" )
+ column=(type=char(25) updatewhereclause=yes name=pd_address_fax dbname="pd_address.fax" )
+ column=(type=char(100) updatewhereclause=yes name=facility_name dbname="facility.facility_name" )
+ column=(type=char(75) updatewhereclause=yes name=pd_address_web_address dbname="pd_address.web_address" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_practicing dbname="code_lookup.practicing" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_states dbname="code_lookup.states" )
+ column=(type=char(75) updatewhereclause=yes name=code_lookup_state_full_name dbname="code_lookup.state_full_name" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_prof_suffix dbname="code_lookup.prof_suffix" )
+ column=(type=char(58) updatewhereclause=yes name=ccity_state dbname="city_state" )
+ column=(type=char(30) updatewhereclause=yes name=code_lookup_name_suffix dbname="code_lookup.name_suffix" )
+ retrieve=" SELECT DISTINCT
+	      pd_basic.last_name,   
+         pd_basic.middle_name,   
+         pd_basic.first_name,   
+	      pd_basic.prac_id,
+         pd_basic.prof_suffix, 
+         pd_basic.provider_id,  
+	      pd_address.street,
+	      pd_address.street_2,
+         pd_address.city,   
+         pd_address.state,   
+	      pd_address.zip,
+        (select  code_lookup_a.description 
+         from   code_lookup code_lookup_a
+         where    pd_board_specialty.specialty = code_lookup_a.lookup_code )specialty,   
+         pd_address.phone,  
+	      pd_address.fax,
+	      facility.facility_name,
+	      pd_address.web_address, 
+         code_lookup_b.code practicing,   
+         code_lookup_d.code states,
+         code_lookup_d.description state_full_name,
+         code_lookup_e.code prof_suffix,
+         city_state = ' ' + ltrim(rtrim(isnull(pd_address.city,''))) + ', ' +  ltrim(rtrim(isnull(code_lookup_d.code,''))),
+         code_lookup_f.code name_suffix
+    FROM {oj pd_basic  LEFT OUTER JOIN code_lookup code_lookup_f  ON pd_basic.name_suffix = code_lookup_f.lookup_code
+                       left outer join code_lookup code_lookup_e  on pd_basic.prof_suffix = code_lookup_e.lookup_code},   
+         {oj pd_address left outer join code_lookup code_lookup_d on pd_address.state = code_lookup_d.lookup_code},   
+	      {oj pd_spec_facility_link left outer join code_lookup code_lookup_b  on pd_spec_facility_link.practicing = code_lookup_b.lookup_code},
+         pd_address_link,
+	      pd_affil_stat,
+	      facility,
+	      pd_board_specialty
+   WHERE ( pd_address.prac_id = pd_basic.prac_id ) and  
+	 ( pd_address.rec_id = pd_address_link.address_id ) and
+	 ( pd_affil_stat.prac_id = pd_basic.prac_id ) and
+	 ( pd_affil_stat.parent_facility_id = facility.facility_id ) and
+	 ( pd_board_specialty.rec_id = pd_spec_facility_link.specialty_id ) and
+	 ( pd_spec_facility_link.facility_id =  pd_affil_stat.parent_facility_id ) and
+	 ( pd_address_link.facility_id =  pd_affil_stat.parent_facility_id ) and 
+    ( pd_board_specialty.prac_id = pd_basic.prac_id ) and  
+    (( pd_address.active_status = 1 ) and
+    ( code_lookup_b.code = 'YES' ))
+"  sort="ccity_state A code_lookup_specialty A name A " )
+group(level=1 header.height=80 trailer.height=12 by=("ccity_state" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=172 trailer.height=20 by=("code_lookup_specialty" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="82" y="92" height="76" width="407" format="mm/dd/yyyy" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Practitioner List by City + Specialty" border="0" color="0" x="503" y="92" height="80" width="3351" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="3854" y="92" height="76" width="453" format="[general]" html.valueishtml="0"  name=page visible="1"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="64" y1="44" x2="4325" y2="44"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="80" x2="4325" y2="80"  name=l_2 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="268" x2="4325" y2="268"  name=l_3 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+line(band=header x1="64" y1="304" x2="4325" y2="304"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+column(band=header.1 id=21 alignment="0" tabsequence=32766 border="0" color="16777215" x="50" y="0" height="68" width="667" format="[general]" html.valueishtml="0"  name=ccity_state visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+column(band=header.2 id=12 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="4" height="76" width="1248" format="[general]" html.valueishtml="0"  name=code_lookup_specialty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-11" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="Name" border="0" color="0" x="50" y="100" height="64" width="174" html.valueishtml="0"  name=t_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="Address" border="0" color="0" x="969" y="100" height="64" width="242" html.valueishtml="0"  name=t_3 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="Phone" border="0" color="0" x="2779" y="100" height="64" width="187" html.valueishtml="0"  name=t_4 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="Fax" border="0" color="0" x="3255" y="100" height="64" width="110" html.valueishtml="0"  name=t_5 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="Internet Address" border="0" color="0" x="3726" y="104" height="64" width="485" html.valueishtml="0"  name=t_6 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="  pd_basic_first_name +
+ IF( isnull( pd_basic_middle_name ), ~"~",~" ~" + Left( pd_basic_middle_name,1 ) + ~".~") + ~" ~" +
+ pd_basic_last_name  + ~", ~" + 
+ IF( isnull(  code_lookup_name_suffix ), ~"~",  code_lookup_name_suffix + ~", ~") +
+   code_lookup_prof_suffix "border="0" color="0" x="50" y="4" height="68" width="873" format="[general]" html.valueishtml="0"  name=name visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" pd_address_street  + ~"  ~" + 
+ if(isnull( pd_address_street_2 ), ~"~",  ~"  ~" + pd_address_street_2 ) + ~" ~" +  
+ccity_state + ~" ~" +  pd_address_zip "border="0" color="0" x="955" y="4" height="128" width="1765" format="[general]" html.valueishtml="0"  name=city_state_zip visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2779" y="4" height="68" width="453" format="[general]" html.valueishtml="0"  name=pd_address_phone visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3255" y="4" height="68" width="453" format="[general]" html.valueishtml="0"  name=pd_address_fax visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="3726" y="4" height="64" width="576" format="[general]" html.valueishtml="0"  name=pd_address_web_address visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="Facility:" border="0" color="0" x="55" y="12" height="64" width="197" html.valueishtml="0"  name=t_7 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="" border="0" color="0" x="283" y="12" height="64" width="2843" html.valueishtml="0"  name=selected_facility_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+
+sparse(names="name")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

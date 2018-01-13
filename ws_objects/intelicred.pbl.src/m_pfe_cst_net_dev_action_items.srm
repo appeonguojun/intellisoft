@@ -1,0 +1,122 @@
+﻿$PBExportHeader$m_pfe_cst_net_dev_action_items.srm
+forward
+global type m_pfe_cst_net_dev_action_items from m_pfe_cst_net_dev
+end type
+type m_8 from menu within m_view
+end type
+type m_intellibatch1 from menu within m_view
+end type
+end forward
+
+global type m_pfe_cst_net_dev_action_items from m_pfe_cst_net_dev
+end type
+global m_pfe_cst_net_dev_action_items m_pfe_cst_net_dev_action_items
+
+on m_pfe_cst_net_dev_action_items.create
+m_pfe_cst_net_dev_action_items=this
+call super::create
+end on
+
+on m_pfe_cst_net_dev_action_items.destroy
+call super::destroy
+end on
+
+on m_dash12.create
+call super::create
+this.Visible=false
+end on
+
+on m_dash14.create
+call super::create
+this.Visible=false
+end on
+
+on m_printapps.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_insert.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_110.create
+call super::create
+this.Visible=false
+end on
+
+on m_delete1.create
+call super::create
+this.Visible=false
+this.ToolBarItemVisible=false
+end on
+
+on m_3.create
+call super::create
+this.Visible=false
+end on
+
+on m_111.create
+call super::create
+this.Visible=false
+end on
+
+on m_61.create
+call super::create
+this.Visible=false
+end on
+
+type m_view from m_pfe_cst_net_dev`m_view within m_pfe_cst_net_dev_action_items
+m_8 m_8
+m_intellibatch1 m_intellibatch1
+end type
+
+on m_view.create
+call super::create
+this.m_8=create m_8
+this.m_intellibatch1=create m_intellibatch1
+this.Item[UpperBound(this.item)+1]=this.m_8
+this.Item[UpperBound(this.item)+1]=this.m_intellibatch1
+end on
+
+on m_view.destroy
+call super::destroy
+destroy(this.m_8)
+destroy(this.m_intellibatch1)
+end on
+
+on m_ruler.create
+call super::create
+this.Visible=false
+end on
+
+on m_dash31.create
+call super::create
+this.Visible=false
+end on
+
+on m_dash34.create
+call super::create
+this.Visible=true
+end on
+
+type m_8 from menu within m_view
+end type
+
+on m_8.create
+this.Text="-"
+end on
+
+type m_intellibatch1 from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_cst_intellibatch_filter")
+end event
+
+on m_intellibatch1.create
+this.Text="IntelliBatch"
+end on
+

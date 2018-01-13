@@ -1,0 +1,119 @@
+﻿$PBExportHeader$d_pd_affil_status_ia.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79741120 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=264 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="pd_affil_stat.rec_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_affil_stat.prac_id" )
+ column=(type=long update=yes updatewhereclause=yes name=parent_facility_id dbname="pd_affil_stat.parent_facility_id" )
+ column=(type=long update=yes updatewhereclause=yes name=seq_no dbname="pd_affil_stat.seq_no" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_rqst_rcvd dbname="pd_affil_stat.date_rqst_rcvd" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_sent dbname="pd_affil_stat.date_app_sent" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_signed dbname="pd_affil_stat.date_app_signed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_rcvd dbname="pd_affil_stat.date_app_rcvd" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_app_audit_completed dbname="pd_affil_stat.date_app_audit_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_data_entry_completed dbname="pd_affil_stat.date_data_entry_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_verif_completed dbname="pd_affil_stat.date_verif_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_closed dbname="pd_affil_stat.date_comm_review_completed" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_rls_form_exp dbname="pd_affil_stat.date_rls_form_exp" initial="NULL" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=apptmnt_type dbname="pd_affil_stat.apptmnt_type" initial="I" values="Initial	I/Reapp.	R/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=apptmnt_start_date dbname="pd_affil_stat.apptmnt_start_date" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=apptmnt_end_date dbname="pd_affil_stat.apptmnt_end_date" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=affil_ended dbname="pd_affil_stat.affil_ended" initial="NULL" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=affil_ended_reason dbname="pd_affil_stat.affil_ended_reason" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=cred_proccess_status dbname="pd_affil_stat.cred_proccess_status" )
+ column=(type=datetime update=yes updatewhereclause=yes name=init_prov_period_from dbname="pd_affil_stat.init_prov_period_from" initial="NULL" )
+ column=(type=datetime update=yes updatewhereclause=yes name=init_prov_period_to dbname="pd_affil_stat.init_prov_period_to" initial="NULL" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=leave_of_absence_reason dbname="pd_affil_stat.leave_of_absence_reason" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_month_from dbname="pd_affil_stat.leave_month_from" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_year_from dbname="pd_affil_stat.leave_year_from" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_month_to dbname="pd_affil_stat.leave_month_to" )
+ column=(type=long update=yes updatewhereclause=yes name=leave_year_to dbname="pd_affil_stat.leave_year_to" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=staff_category dbname="pd_affil_stat.staff_category" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_affil_stat.active_status" initial="1" values="Active	1/Inactive	3/Purge	2/Pending	4/" )
+ column=(type=long update=yes updatewhereclause=yes name=verifying_facility dbname="pd_affil_stat.verifying_facility" )
+ column=(type=long update=yes updatewhereclause=yes name=application_audit_facility dbname="pd_affil_stat.application_audit_facility" )
+ column=(type=long update=yes updatewhereclause=yes name=approval_facility dbname="pd_affil_stat.approval_facility" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=fee dbname="pd_affil_stat.fee" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_invoiced dbname="pd_affil_stat.date_invoiced" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_paid dbname="pd_affil_stat.date_paid" )
+ column=(type=long update=yes updatewhereclause=yes name=priority dbname="pd_affil_stat.priority" initial="1" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=priority_user dbname="pd_affil_stat.priority_user" initial="PUBLIC" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=custom_1 dbname="pd_affil_stat.custom_1" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=custom_2 dbname="pd_affil_stat.custom_2" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=custom_3 dbname="pd_affil_stat.custom_3" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_4 dbname="pd_affil_stat.custom_4" )
+ column=(type=datetime update=yes updatewhereclause=yes name=custom_5 dbname="pd_affil_stat.custom_5" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=affiliation_status dbname="pd_affil_stat.affiliation_status" )
+ column=(type=datetime update=yes updatewhereclause=yes name=check_date dbname="pd_affil_stat.check_date" )
+ column=(type=long updatewhereclause=yes name=access_rights dbname="security_user_facilities.access_rights" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pd_affil_stat_inital_appmnt_date dbname="pd_affil_stat.inital_appmnt_date" )
+ retrieve="  SELECT DISTINCT pd_affil_stat.rec_id,   
+         pd_affil_stat.prac_id,   
+         pd_affil_stat.parent_facility_id,   
+         pd_affil_stat.seq_no,   
+         pd_affil_stat.date_rqst_rcvd,   
+         pd_affil_stat.date_app_sent,   
+         pd_affil_stat.date_app_signed,   
+         pd_affil_stat.date_app_rcvd,   
+         pd_affil_stat.date_app_audit_completed,   
+         pd_affil_stat.date_data_entry_completed,   
+         pd_affil_stat.date_verif_completed,   
+         pd_affil_stat.date_comm_review_completed,   
+         pd_affil_stat.date_rls_form_exp,   
+         pd_affil_stat.apptmnt_type,   
+         pd_affil_stat.apptmnt_start_date,   
+         pd_affil_stat.apptmnt_end_date,   
+         pd_affil_stat.affil_ended,   
+         pd_affil_stat.affil_ended_reason,   
+         pd_affil_stat.cred_proccess_status,   
+         pd_affil_stat.init_prov_period_from,   
+         pd_affil_stat.init_prov_period_to,   
+         pd_affil_stat.leave_of_absence_reason,   
+         pd_affil_stat.leave_month_from,   
+         pd_affil_stat.leave_year_from,   
+         pd_affil_stat.leave_month_to,   
+         pd_affil_stat.leave_year_to,   
+         pd_affil_stat.staff_category,   
+         pd_affil_stat.active_status,   
+         pd_affil_stat.verifying_facility,   
+         pd_affil_stat.application_audit_facility,   
+         pd_affil_stat.approval_facility,   
+         pd_affil_stat.fee,   
+         pd_affil_stat.date_invoiced,   
+         pd_affil_stat.date_paid,   
+         pd_affil_stat.priority,   
+         pd_affil_stat.priority_user,   
+         pd_affil_stat.custom_1,   
+         pd_affil_stat.custom_2,   
+         pd_affil_stat.custom_3,   
+         pd_affil_stat.custom_4,   
+         pd_affil_stat.custom_5,   
+         pd_affil_stat.affiliation_status,   
+         pd_affil_stat.check_date,   
+         security_user_facilities.access_rights,   
+         pd_affil_stat.inital_appmnt_date  
+    FROM pd_affil_stat,   
+         security_user_facilities  
+   WHERE ( pd_affil_stat.parent_facility_id = security_user_facilities.facility_id ) and  
+         ( pd_affil_stat.prac_id = :prac_id ) AND  
+         ( pd_affil_stat.parent_facility_id = :facility_id )    
+" update="pd_affil_stat" updatewhere=0 updatekeyinplace=no arguments=(("prac_id", number),("facility_id", number))  sort="active_status D " )
+groupbox(band=detail text="Application Info"border="5" color="128" x="14" y="0" height="236" width="928"  name=gb_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+groupbox(band=detail text="Appointment Dates"border="5" color="128" x="1065" y="0" height="236" width="942"  name=gb_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+groupbox(band=detail text="Record Status"border="5" color="128" x="2139" y="0" height="236" width="526"  name=gb_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="81324524" )
+column(band=detail id=14 alignment="1" tabsequence=40 border="5" color="0" x="50" y="140" height="56" width="384" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2 OR active_status = 3, 1, 0 )"  name=apptmnt_type visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.required=yes ddlb.nilisnull=yes ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 12632256, 16777215 )" )
+text(band=detail alignment="0" text="App. Type" border="0" color="0" x="50" y="68" height="52" width="293" html.valueishtml="0"  name=apptmnt_type_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Release Signed" border="0" color="0" x="480" y="68" height="52" width="352" html.valueishtml="0"  name=date_rls_form_exp_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=100 border="5" color="0" x="480" y="140" height="56" width="384" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 1, 0 )"  name=date_rls_form_exp visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 12632256, 16777215 )" )
+column(band=detail id=15 alignment="0" tabsequence=150 border="5" color="0" x="1106" y="140" height="56" width="407" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 1, 0 )"  name=apptmnt_start_date visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 12632256, 16777215 )" )
+text(band=detail alignment="0" text="Begins" border="0" color="0" x="1106" y="68" height="52" width="210" html.valueishtml="0"  name=apptmnt_start_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=160 border="5" color="0" x="1554" y="140" height="56" width="407" format="mm/dd/yyyy" html.valueishtml="0" protect="0~tif( active_status = 0 OR active_status = 2  OR active_status = 3, 1, 0 )"  name=apptmnt_end_date visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 OR active_status = 2 OR active_status = 3, 12632256, 16777215 )" )
+text(band=detail alignment="0" text="Expires" border="0" color="0" x="1554" y="68" height="52" width="229" html.valueishtml="0"  name=apptmnt_end_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=210 border="5" color="0" x="2181" y="108" height="60" width="453" format="[general]" html.valueishtml="0" protect="0~tif( active_status = 0 , 1, 0 )"  name=active_status visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif( active_status = 0 , 12632256, 16777215 )" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

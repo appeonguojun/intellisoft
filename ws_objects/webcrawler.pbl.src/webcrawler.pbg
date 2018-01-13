@@ -1,0 +1,38 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "webcrawler.pbl" "";
+@end;
+@begin Objects 
+ "d_dddw_data_objects.srd" "webcrawler.pbl";
+ "d_dddw_lookup_data_with_parm.srd" "webcrawler.pbl";
+ "d_dddw_step_actions.srd" "webcrawler.pbl";
+ "d_dddw_verif_resp.srd" "webcrawler.pbl";
+ "d_dddw_verif_resp_codes.srd" "webcrawler.pbl";
+ "d_dddw_verification_status_response.srd" "webcrawler.pbl";
+ "d_dddw_wc_lookup_table_names.srd" "webcrawler.pbl";
+ "d_dddw_wc_screen_field_linked.srd" "webcrawler.pbl";
+ "d_dddw_wc_screen_fields.srd" "webcrawler.pbl";
+ "d_dddw_wc_screen_names.srd" "webcrawler.pbl";
+ "d_select_prac_for_ama_crawl.srd" "webcrawler.pbl";
+ "d_test_wc.srd" "webcrawler.pbl";
+ "d_web_crawler_ama_verif_info.srd" "webcrawler.pbl";
+ "d_web_crawler_verif_info.srd" "webcrawler.pbl";
+ "d_web_data_comp_imp.srd" "webcrawler.pbl";
+ "d_web_data_comparison.srd" "webcrawler.pbl";
+ "d_web_data_map_user.srd" "webcrawler.pbl";
+ "f_wc_create_database.srf" "webcrawler.pbl";
+ "of_open_capture.srf" "webcrawler.pbl";
+ "str_web_crawler.srs" "webcrawler.pbl";
+ "nvo_web_crawler_engine.sru" "webcrawler.pbl";
+ "w_capture_imacro.srw" "webcrawler.pbl";
+ "w_create_db.srw" "webcrawler.pbl";
+ "w_export_webcrawler.srw" "webcrawler.pbl";
+ "w_import_webcrawler.srw" "webcrawler.pbl";
+ "w_wc_copy_steps.srw" "webcrawler.pbl";
+ "w_wc_crawl_select.srw" "webcrawler.pbl";
+ "w_wc_site_input.srw" "webcrawler.pbl";
+ "w_web_browse_ocx.srw" "webcrawler.pbl";
+ "w_web_crawler_painter.srw" "webcrawler.pbl";
+ "w_web_crawler_user_info.srw" "webcrawler.pbl";
+ "w_web_data_mapping.srw" "webcrawler.pbl";
+@end;

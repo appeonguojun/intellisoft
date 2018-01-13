@@ -1,0 +1,8 @@
+﻿$PBExportHeader$tns__removepayment.srs
+$PBExportComments$Proxy imported from Web service using Web Service Proxy Generator.
+global type tns__RemovePayment from structure
+   string p_APICode
+   string p_FileID
+   string paymentId
+end type
+

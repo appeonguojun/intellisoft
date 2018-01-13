@@ -1,0 +1,104 @@
+﻿$PBExportHeader$d_rpt_expiring_priv_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=420 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=240 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=rec_id dbname="pd_priv_list.rec_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="pd_priv_list.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_priv_list.prac_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=clinical_area_id dbname="pd_priv_list.clinical_area_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=priv_core_id dbname="pd_priv_list.priv_core_id" )
+ column=(type=long update=yes updatewhereclause=yes name=ir_code dbname="pd_priv_list.ir_code" values="Inital	1/Renew	2/" )
+ column=(type=datetime update=yes updatewhereclause=yes name=start_date dbname="pd_priv_list.start_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=end_date dbname="pd_priv_list.end_date" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=status_code dbname="pd_priv_list.status_code" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=notes dbname="pd_priv_list.notes" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_priv_list.active_status" values="active	1/inactive	2/" )
+ column=(type=char(100) updatewhereclause=yes name=priv_core_priv_core_description dbname="priv_core.priv_core_description" )
+ column=(type=char(32766) updatewhereclause=no name=priv_core_procd_core_procd_description dbname="priv_core_procd.core_procd_description" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=procd_id dbname="pd_priv_list.procd_id" )
+ column=(type=char(100) updatewhereclause=yes name=priv_clinical_area_clinical_area_descrip dbname="priv_clinical_area.clinical_area_description" )
+ column=(type=char(15) updatewhereclause=yes name=code_lookup_code dbname="code_lookup.code" )
+ column=(type=datetime update=yes updatewhereclause=yes name=pd_priv_list_enter_date dbname="pd_priv_list.enter_date" )
+ column=(type=char(153) updatewhereclause=yes name=v_full_name_full_name dbname="v_full_name.full_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=v_full_name_prac_id dbname="v_full_name.prac_id" )
+ column=(type=char(50) updatewhereclause=yes name=priv_core_procd_procd_name dbname="priv_core_procd.procd_name" )
+ column=(type=long updatewhereclause=yes name=priv_core_procd_sort_order dbname="priv_core_procd.sort_order" )
+ column=(type=long updatewhereclause=yes name=priv_core_sort_order dbname="priv_core.sort_order" )
+ retrieve="  SELECT pd_priv_list.rec_id,   
+         pd_priv_list.facility_id,   
+         pd_priv_list.prac_id,   
+         pd_priv_list.clinical_area_id,   
+         pd_priv_list.priv_core_id,   
+         pd_priv_list.ir_code,   
+         pd_priv_list.start_date,   
+         pd_priv_list.end_date,   
+         pd_priv_list.status_code,   
+         pd_priv_list.notes,   
+         pd_priv_list.active_status,   
+         priv_core.priv_core_description,   
+         priv_core_procd.core_procd_description,   
+         pd_priv_list.procd_id,   
+         priv_clinical_area.clinical_area_description,   
+         code_lookup.code,   
+         pd_priv_list.enter_date,   
+         v_full_name.full_name,
+         v_full_name.prac_id,   
+         priv_core_procd.procd_name,   
+         priv_core_procd.sort_order,   
+         priv_core.sort_order  
+    FROM pd_priv_list,   
+         code_lookup,   
+         priv_core,   
+         priv_core_procd,   
+         priv_clinical_area,   
+         v_full_name,   
+         pd_affil_stat  
+   WHERE ( code_lookup.lookup_code = pd_priv_list.status_code ) and  
+         ( priv_core.priv_core_id = pd_priv_list.priv_core_id ) and  
+         ( pd_priv_list.procd_id = priv_core_procd.procd_id ) and  
+         ( pd_priv_list.clinical_area_id = priv_clinical_area.clinical_area_id ) and  
+         ( pd_priv_list.prac_id = v_full_name.prac_id ) and  
+         ( pd_priv_list.facility_id = pd_affil_stat.parent_facility_id ) and  
+         ( ( pd_priv_list.end_date - 30 < {fn curdate()} ) AND  
+         ( pd_priv_list.end_date is not null ) )    
+"  sort="v_full_name_full_name A priv_core_sort_order A procd_id A priv_core_procd_sort_order A " )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="247" y="100" height="68" width="329" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text=" Expiring Privilege List" border="0" color="0" x="1088" y="88" height="92" width="1093" html.valueishtml="0"  name=t_1 visible="1"  font.face="Times New Roman" font.height="-14" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="2693" y="104" height="68" width="562" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Practitioner" border="0" color="0" x="87" y="348" height="64" width="338" html.valueishtml="0"  name=t_2 visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Expiration" border="0" color="0" x="914" y="348" height="64" width="302" html.valueishtml="0"  name=end_date_t visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Clinical Area:" border="0" color="0" x="1307" y="344" height="64" width="389" html.valueishtml="0"  name=status_code_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Core Privilege:" border="0" color="0" x="2203" y="344" height="64" width="439" html.valueishtml="0"  name=priv_core_id_t visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="27" y="4" height="64" width="873" format="[general]" html.valueishtml="0"  name=v_full_name_full_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="919" y="4" height="64" width="293" format="[shortdate] " html.valueishtml="0"  name=end_date visible="1"  slideup=allabove editmask.mask="mm/dd/yy " editmask.imemode=0 editmask.focusrectangle=no  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="1298" y="4" height="64" width="873" format="[general]" html.valueishtml="0"  name=priv_clinical_area_clinical_area_descrip visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="2194" y="4" height="64" width="1111" format="[general]" html.valueishtml="0"  name=priv_core_priv_core_description visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Procedure:" border="0" color="0" x="256" y="88" height="56" width="320" html.valueishtml="0"  name=ir_code_t visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="539" y="84" height="64" width="1353" format="[general]" html.valueishtml="0"  name=priv_core_procd_procd_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Times New Roman" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Notes:" border="0" color="0" x="265" y="168" height="56" width="192" html.valueishtml="0"  name=notes_t visible="1"  slideup=allabove  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="535" y="168" height="64" width="2770" format="[general]" html.valueishtml="0"  name=notes visible="1"  slideup=allabove edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autovscroll=yes edit.imemode=0  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="78" y1="68" x2="3319" y2="68"  name=l_1 visible="1" pen.style="0" pen.width="9" pen.color="0"  background.mode="1" background.color="553648127" )
+line(band=header x1="78" y1="196" x2="3319" y2="196"  name=l_2 visible="1" pen.style="0" pen.width="9" pen.color="0"  background.mode="1" background.color="553648127" )
+line(band=header x1="78" y1="416" x2="3319" y2="416"  name=l_3 visible="1" pen.style="0" pen.width="9" pen.color="0"  background.mode="1" background.color="553648127" )
+line(band=detail x1="78" y1="236" x2="3319" y2="236"  name=l_4 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="2" color="0" x="46" y="780" height="164" width="1851" format="[general]" html.valueishtml="0"  name=priv_core_procd_core_procd_description visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="1" color="0" x="1810" y="620" height="64" width="91" format="[general]" html.valueishtml="0"  name=rec_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="1" color="0" x="1943" y="624" height="64" width="78" format="[general]" html.valueishtml="0"  name=facility_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="1" color="0" x="2066" y="636" height="64" width="69" format="[general]" html.valueishtml="0"  name=prac_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1774" y="704" height="76" width="87" format="[general]" html.valueishtml="0"  name=clinical_area_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="5" color="0" x="2185" y="680" height="64" width="137" format="[general]" html.valueishtml="0"  name=priv_core_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="2" color="0" x="2062" y="712" height="68" width="78" format="[general]" html.valueishtml="0"  name=procd_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="2459" y="804" height="64" width="407" format="[general]" html.valueishtml="0"  name=code_lookup_code visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Status:" border="0" color="0" x="2935" y="820" height="52" width="206" html.valueishtml="0"  name=active_status_t visible="1"  slideup=allabove  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="2153" y="596" height="64" width="782" format="[shortdate] [time]" html.valueishtml="0"  name=pd_priv_list_enter_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="2601" y="700" height="64" width="393" format="[general]" html.valueishtml="0"  name=status_code visible="1"  slideup=allabove edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="2715" y="900" height="64" width="293" format="[general]" html.valueishtml="0"  name=ir_code visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="0" x="2345" y="904" height="64" width="325" format="[general]" html.valueishtml="0"  name=active_status visible="1" ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes ddlb.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

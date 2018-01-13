@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_choose_compare_doc.srs
+global type str_choose_compare_doc from structure
+	boolean		ib_original
+	boolean		ib_revised
+	boolean		ib_compare_doc
+	boolean		ib_compare_pdf
+end type
+

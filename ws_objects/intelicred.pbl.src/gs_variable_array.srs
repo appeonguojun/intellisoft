@@ -1,0 +1,7 @@
+﻿$PBExportHeader$gs_variable_array.srs
+global type gs_variable_array from structure
+	string		as_string[]
+	double		as_number[]
+	datetime		as_datetime[]
+end type
+

@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_scr_att_quest_new.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=80269524 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=20000 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=prac_id dbname="pd_attest_questions.prac_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=rec_id dbname="pd_attest_questions.rec_id" )
+ column=(type=long update=yes updatewhereclause=yes name=facility_id dbname="pd_attest_questions.facility_id" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=answer_code dbname="pd_attest_questions.answer_code" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=question_id dbname="pd_attest_questions.question_id" )
+ column=(type=long update=yes updatewhereclause=yes name=active_status dbname="pd_attest_questions.active_status" initial="1" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=appt_stat_id dbname="pd_attest_questions.appt_stat_id" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=explain_yes dbname="pd_attest_questions.explain_yes" )
+ retrieve=" SELECT pd_attest_questions.prac_id,   
+         pd_attest_questions.rec_id,   
+         pd_attest_questions.facility_id,   
+         pd_attest_questions.answer_code,   
+         pd_attest_questions.question_id,   
+         pd_attest_questions.active_status,   
+         pd_attest_questions.appt_stat_id,   
+         pd_attest_questions.explain_yes  
+    FROM pd_attest_questions  
+   WHERE ( pd_attest_questions.prac_id = :prac_id ) AND  
+         ( pd_attest_questions.facility_id = :fac_id )   
+ORDER BY pd_attest_questions.rec_id ASC  " update="pd_attest_questions" updatewhere=0 updatekeyinplace=yes arguments=(("fac_id", number),("prac_id", number)) )
+text(band=detail alignment="1" text="Prac Id:" border="0" color="0" x="37" y="4" height="52" width="302" html.valueishtml="0"  name=prac_id_t visible="0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="5" color="0" x="357" y="4" height="64" width="274" format="[general]" html.valueishtml="0"  name=prac_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Rec Id:" border="0" color="0" x="37" y="128" height="52" width="302" html.valueishtml="0"  name=rec_id_t visible="0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="5" color="0" x="357" y="128" height="64" width="274" format="[general]" html.valueishtml="0"  name=rec_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0 edit.displayonly=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="1" text="Facility Id:" border="0" color="0" x="37" y="252" height="52" width="302" html.valueishtml="0"  name=facility_id_t visible="0"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="5" color="0" x="357" y="252" height="64" width="274" format="[general]" html.valueishtml="0"  name=facility_id visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+text(band=detail alignment="0" text="Response" border="0" color="0" x="41" y="16" height="52" width="306" html.valueishtml="0"  name=answer_code_t  tag="200604" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="617140436" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="5" color="0" x="41" y="84" height="64" width="306" format="[general]" html.valueishtml="0"  name=answer_code  tag="200604" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Question" border="0" color="0" x="384" y="16" height="52" width="498" html.valueishtml="0"  name=question_id_t  tag="200603" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="617140436" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="5" color="0" x="384" y="84" height="64" width="2144" format="[general]" html.valueishtml="0"  name=question_id  tag="200603" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Appt Id" border="0" color="0" x="3301" y="40" height="52" width="59" html.valueishtml="0"  name=active_status_t  tag="200605" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="617140436" )
+column(band=detail id=6 alignment="0" tabsequence=30 border="5" color="0" x="2761" y="52" height="64" width="306" format="[general]" html.valueishtml="0"  name=active_status  tag="200605" visible="1" dddw.name=d_code_lookup_active_inactive dddw.displaycolumn=description dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.required=yes dddw.nilisnull=yes dddw.imemode=2 dddw.vscrollbar=yes dddw.autoretrieve=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Active Status" border="0" color="0" x="3168" y="56" height="52" width="82" html.valueishtml="0"  name=appt_stat_id_t  tag="200606" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="617140436" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="2816" y="72" height="64" width="503" format="[general]" html.valueishtml="0"  name=appt_stat_id  tag="200606" visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.autohscroll=yes edit.imemode=2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Explanation" border="0" color="0" x="82" y="176" height="52" width="274" html.valueishtml="0"  name=explain_yes_t  tag="200607" visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="617140436" )
+column(band=detail id=8 alignment="0" tabsequence=50 border="5" color="0" x="384" y="168" height="128" width="2144" format="[general]" html.valueishtml="0"  name=explain_yes  tag="200607" visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.nilisnull=yes edit.imemode=2  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="0" cellpadding="1" cellspacing="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

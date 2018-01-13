@@ -1,0 +1,13 @@
+﻿$PBExportHeader$str_print_dw.srs
+global type str_print_dw from structure
+	datawindow		adw_data
+	datawindow		adw_columns
+	string		as_title
+	string		as_label_alignment
+	string		as_fields_alignment
+	long		al_fields_width
+	long		al_title_font_size
+	long		al_fields_font_size
+	long		al_fields_border
+end type
+

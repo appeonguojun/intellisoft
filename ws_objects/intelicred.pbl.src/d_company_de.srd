@@ -1,0 +1,42 @@
+﻿$PBExportHeader$d_company_de.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79680469 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=544 color="536870912" )
+table(column=(type=real update=yes updatewhereclause=yes key=yes name=rec_id dbname="inv_company.rec_id" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=address dbname="inv_company.address" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=term_label dbname="inv_company.term_label" )
+ column=(type=real update=yes updatewhereclause=yes name=term_days dbname="inv_company.term_days" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=comp_name dbname="inv_company.comp_name" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=phone dbname="inv_company.phone" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=fax dbname="inv_company.fax" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=penalty dbname="inv_company.penalty" )
+ retrieve="SELECT  inv_company.rec_id ,
+           inv_company.address ,
+           inv_company.term_label ,
+           inv_company.term_days ,
+           inv_company.comp_name ,
+           inv_company.phone ,
+           inv_company.fax ,
+           inv_company.penalty 
+        FROM inv_company    " update="inv_company" updatewhere=0 updatekeyinplace=no )
+text(band=detail alignment="0" text="Company Name" border="0" color="0" x="69" y="4" height="52" width="471" html.valueishtml="0"  name=t_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=10 border="5" color="0" x="69" y="84" height="64" width="2299" format="[general]" html.valueishtml="0"  name=comp_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Address" border="0" color="0" x="59" y="176" height="52" width="2345" html.valueishtml="0"  name=address_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="0" x="59" y="248" height="120" width="2313" format="[general]" html.valueishtml="0"  name=address visible="1" edit.limit=150 edit.case=any edit.autoselect=yes edit.autovscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="59" y="464" height="64" width="594" format="[general]" html.valueishtml="0"  name=term_label visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="5" color="0" x="686" y="464" height="64" width="274" format="[general]" html.valueishtml="0"  name=term_days visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Term Label" border="0" color="0" x="59" y="392" height="52" width="594" html.valueishtml="0"  name=term_label_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Term Days" border="0" color="0" x="686" y="392" height="52" width="274" html.valueishtml="0"  name=term_days_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=50 border="5" color="0" x="1051" y="464" height="64" width="206" format="[general]" html.valueishtml="0"  name=penalty visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="2" text="Penality %age" border="0" color="0" x="1006" y="392" height="52" width="320" html.valueishtml="0"  name=t_2 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Phone" border="0" color="0" x="1381" y="392" height="52" width="187" html.valueishtml="0"  name=t_3 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="0" x="1390" y="464" height="64" width="439" format="[general]" html.valueishtml="0"  name=phone visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Fax" border="0" color="0" x="1893" y="392" height="52" width="110" html.valueishtml="0"  name=t_4 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="5" color="0" x="1893" y="464" height="64" width="471" format="[general]" html.valueishtml="0"  name=fax visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

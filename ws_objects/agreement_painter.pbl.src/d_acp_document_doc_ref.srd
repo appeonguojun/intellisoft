@@ -1,0 +1,118 @@
+﻿$PBExportHeader$d_acp_document_doc_ref.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=72 color="67108864" )
+summary(height=0 color="536870912" )
+footer(height=60 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=doc_id dbname="ctx_am_document.doc_id" )
+ column=(type=long updatewhereclause=yes name=ctx_id dbname="ctx_am_document.ctx_id" )
+ column=(type=char(200) updatewhereclause=yes name=doc_name dbname="ctx_am_document.doc_name" )
+ column=(type=decimal(1) updatewhereclause=yes name=revision dbname="ctx_am_document.revision" )
+ column=(type=char(30) updatewhereclause=yes name=doc_type dbname="ctx_am_document.doc_type" )
+ column=(type=char(10) updatewhereclause=yes name=doc_ext dbname="ctx_am_document.doc_ext" )
+ column=(type=long updatewhereclause=yes name=export_id dbname="ctx_am_document.export_id" )
+ column=(type=long updatewhereclause=yes name=wf_id dbname="ctx_am_document.wf_id" )
+ column=(type=char(10) updatewhereclause=yes name=create_by dbname="ctx_am_document.create_by" )
+ column=(type=datetime updatewhereclause=yes name=create_date dbname="ctx_am_document.create_date" )
+ column=(type=decimal(0) updatewhereclause=yes name=status dbname="ctx_am_document.status" )
+ column=(type=char(10) updatewhereclause=yes name=status_by dbname="ctx_am_document.status_by" )
+ column=(type=datetime updatewhereclause=yes name=status_date dbname="ctx_am_document.status_date" )
+ column=(type=char(500) updatewhereclause=yes name=filename dbname="ctx_am_document.filename" )
+ column=(type=decimal(0) updatewhereclause=yes name=category dbname="ctx_am_document.category" )
+ column=(type=char(1) updatewhereclause=yes name=doc_from_type dbname="ctx_am_document.doc_from_type" )
+ column=(type=char(20) updatewhereclause=yes name=doc_from_name dbname="ctx_am_document.doc_from_name" )
+ column=(type=char(255) updatewhereclause=yes name=notes dbname="ctx_am_document.notes" )
+ column=(type=char(10) updatewhereclause=yes name=checkout_by dbname="ctx_am_document.checkout_by" )
+ column=(type=datetime updatewhereclause=yes name=checkout_date dbname="ctx_am_document.checkout_date" )
+ column=(type=char(1) updatewhereclause=yes name=checkout_status dbname="ctx_am_document.checkout_status" )
+ column=(type=char(1) updatewhereclause=yes name=revision_control dbname="ctx_am_document.revision_control" )
+ column=(type=char(20) updatewhereclause=yes name=received_by dbname="ctx_am_document.received_by" )
+ column=(type=datetime updatewhereclause=yes name=received_date dbname="ctx_am_document.received_date" )
+ column=(type=char(1) updatewhereclause=yes name=base_type dbname="ctx_am_document.base_type" )
+ column=(type=char(255) updatewhereclause=yes name=notes dbname="ctx_am_document.notes" )
+ column=(type=char(150) updatewhereclause=yes name=facility_name dbname="app_facility.facility_name" )
+ column=(type=decimal(0) updatewhereclause=yes name=ctx_basic_info_category dbname="ctx_basic_info.category" )
+ column=(type=char(1) updatewhereclause=yes name=style dbname="style" )
+ column=(type=long updatewhereclause=yes name=level dbname="level" )
+ column=(type=char(1) updatewhereclause=yes name=compare_status dbname="compare_status" )
+ column=(type=long updatewhereclause=yes name=audit_version dbname="audit_version" )
+ column=(type=long updatewhereclause=yes name=audit_count dbname="audit_count" )
+ column=(type=decimal(0) updatewhereclause=yes name=from_templete_id dbname="from_templete_id" )
+ retrieve="  SELECT ctx_am_document.doc_id,   
+         ctx_am_document.ctx_id,   
+         ctx_am_document.doc_name,   
+         ctx_am_document.revision,   
+         ctx_am_document.doc_type,   
+         ctx_am_document.doc_ext,   
+         ctx_am_document.export_id,   
+         ctx_am_document.wf_id,   
+         ctx_am_document.create_by,   
+         ctx_am_document.create_date,   
+         ctx_am_document.status,   
+         ctx_am_document.status_by,   
+         ctx_am_document.status_date,   
+         ctx_am_document.filename,   
+			ctx_am_document.category,
+         ctx_am_document.doc_from_type,   
+         ctx_am_document.doc_from_name,   
+         ctx_am_document.notes,   
+         ctx_am_document.checkout_by,   
+         ctx_am_document.checkout_date,   
+         ctx_am_document.checkout_status,   
+         ctx_am_document.revision_control,   
+			ctx_am_document.Received_By,
+			ctx_am_document.Received_date,
+			ctx_am_document.base_type,
+			ctx_am_document.notes,
+	 		app_facility.facility_name,
+			ctx_basic_info.category,
+			style = ' ',
+			level = 1,
+			compare_status = ' ',
+			audit_version = 0,
+			audit_count = 0 ,
+			from_templete_id = ctx_am_document.from_templete_id 
+    FROM ctx_am_document,   
+         ctx_basic_info Left Join app_facility On ctx_basic_info.app_facility = app_facility.facility_id
+	 Where ctx_am_document.ctx_id = ctx_basic_info.ctx_id
+			 And ctx_am_document.from_templete_id  = :al_template_id
+			 And ctx_am_document.base_type = :as_base_type
+	Order BY   ctx_am_document.ctx_id Asc,   ctx_am_document.doc_name Asc   
+" arguments=(("as_base_type", string),("al_template_id", number)) )
+text(band=header alignment="2" text="Category" border="6" color="33554432" x="2857" y="8" height="52" width="453" html.valueishtml="0"  name=category_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status" border="6" color="33554432" x="3319" y="8" height="52" width="398" html.valueishtml="0"  name=status_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Document Name" border="6" color="33554432" x="1189" y="8" height="52" width="1230" html.valueishtml="0"  name=doc_name_full_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Company Name" border="6" color="33554432" x="489" y="8" height="52" width="690" html.valueishtml="0"  name=facility_name_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Checkout Date" border="6" color="33554432" x="4910" y="8" height="52" width="379" html.valueishtml="0"  name=checkout_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Create By" border="6" color="33554432" x="3726" y="8" height="52" width="370" html.valueishtml="0"  name=create_by_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Create Date" border="6" color="33554432" x="4105" y="8" height="52" width="379" html.valueishtml="0"  name=create_date_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Checkout By" border="6" color="33554432" x="4494" y="8" height="52" width="407" html.valueishtml="0"  name=checkout_by_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contract ID" border="6" color="33554432" x="174" y="8" height="52" width="306" html.valueishtml="0"  name=ctx_id_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="" border="0" color="33554432" x="9" y="8" height="52" width="155" html.valueishtml="0"  name=t_status visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Checkout Status" border="0" color="33554432" x="5298" y="4" height="52" width="329" html.valueishtml="0"  name=checkout_status_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Docuent Type" border="6" color="33554432" x="2427" y="8" height="52" width="421" html.valueishtml="0"  name=doc_type_t visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="2857" y="12" height="52" width="453" format="[general]" html.valueishtml="0"  name=category  tag="Contract Category" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="doc_name + ' ' + String(  doc_id )+ '.' + String(  revision ,'##0.0') + '.' +  doc_ext"border="0" color="33554432" x="1189" y="12" height="52" width="1230" format="[GENERAL]" html.valueishtml="0"  name=doc_name_full visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="33554432" x="489" y="12" height="52" width="690" format="[general]" html.valueishtml="0"  name=facility_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="3319" y="12" height="52" width="398" format="[general]" html.valueishtml="0"  name=status  tag="Contract Document Status" visible="1" dddw.name=d_dddw_code_lookup dddw.displaycolumn=code dddw.datacolumn=lookup_code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+bitmap(band=detail filename="checkin.bmp" x="96" y="8" height="48" width="46" border="0"  name=p_3 visible="1~tif(checkout_status = ~"0~",1,0)" )
+bitmap(band=detail filename="checkout.bmp" x="91" y="8" height="56" width="55" border="0"  name=p_4 visible="1~tif(checkout_status = ~"1~",1,0)" )
+bitmap(band=detail filename="checkout_web.gif" x="87" y="8" height="60" width="69" border="0"  name=p_7 visible="1~tif(checkout_status = ~"2~" or checkout_status = ~"3~" ,1,0)" )
+bitmap(band=detail filename="checkout_webup.gif" x="87" y="8" height="60" width="69" border="0"  name=p_8 visible="1~tif(checkout_status = ~"4~",1,0)" )
+bitmap(band=detail filename="CHECK.BMP" x="18" y="12" height="56" width="55" border="0"  name=p_6 visible="1~tif(compare_status = ~"2~",1,0)" )
+bitmap(band=detail filename="checkmark.bmp" x="23" y="8" height="56" width="55" border="0"  name=p_5 visible="1~tif(compare_status = ~"1~",1,0) " )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="3726" y="12" height="52" width="370" format="[general]" html.valueishtml="0"  name=create_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="2" tabsequence=32766 border="0" color="33554432" x="4105" y="12" height="52" width="379" format="[shortdate] [time]" html.valueishtml="0"  name=create_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="33554432" x="4494" y="12" height="52" width="407" format="[general]" html.valueishtml="0"  name=checkout_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="174" y="12" height="52" width="306" format="[general]" html.valueishtml="0"  name=ctx_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="getrow()"border="0" color="33554432" x="9" y="112" height="76" width="155" format="[GENERAL]" html.valueishtml="0"  name=row visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="33554432" x="5298" y="8" height="76" width="329" format="[general]" html.valueishtml="0"  name=checkout_status visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="33554432" x="4910" y="12" height="52" width="379" format="[shortdate] [time]" html.valueishtml="0"  name=checkout_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="2427" y="12" height="52" width="421" format="[general]" html.valueishtml="0"  name=doc_type visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Count: ' + String(rowcount())"border="0" color="0" x="174" y="4" height="52" width="306" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

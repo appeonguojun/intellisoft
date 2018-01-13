@@ -1,0 +1,8 @@
+﻿$PBExportHeader$str_export_columns.srs
+global type str_export_columns from structure
+	long		al_selected[]
+	long		al_rec_id[]
+	string		as_column_name[]
+	n_ds		ads_columns
+end type
+
